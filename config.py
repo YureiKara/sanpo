@@ -21,7 +21,7 @@ FUTURES_GROUPS = OrderedDict([
     ('US Sectors',['XLB', 'XLC', 'XLY', 'XLP', 'XLE', 'XLF', 'XLV', 'XLI', 'XLK', 'XLU', 'XLRE', 'SPY']),
     ('Countries', ['EWA', 'EWZ', 'EWC', 'GXC', 'EWQ', 'EWG', 'EWH', 'PIN', 'EWI', 'EWJ', 'EWM', 'EWW', 'EWS', 'EWY', 'EWP', 'EWT', 'EWU', 'VNM', 'KSA', 'ARGT']),
     ('Macro',     ['DBC', 'USO', 'GLD', 'SLV', 'CPER', 'BIL', 'HYG', 'LQD', 'TLT', 'BND', 'EMB', 'EEM', 'SPY', 'BTC-USD', 'ETH-USD']),
-    ('Core 5',    ['IAU', 'VOO', 'VTI', 'SHV', 'IBIT']),
+    ('Core 5',    ['IAU', 'VOO', 'VTI', 'SHV', 'BTC-USD']),
     ('Exchanges', ['ICE', 'NDAQ', 'CME', 'CBOE', 'X.TO', 'LSEG.L', 'DB1.DE', 'ENX.PA', '8697.T', '0388.HK', 'ASX.AX', 'S68.SI']),
 ])
 
@@ -53,7 +53,7 @@ SYMBOL_NAMES = {
     'X.TO': 'TMX Group', 'LSEG.L': 'LSEG', 'DB1.DE': 'Deutsche Börse',
     'ENX.PA': 'Euronext', '8697.T': 'JPX', '0388.HK': 'HKEX', 'ASX.AX': 'ASX Ltd',
     'IAU': 'iShares Gold', 'VOO': 'Vanguard S&P 500', 'VTI': 'Vanguard Total Mkt',
-    'SHV': 'Short Treasury', 'IBIT': 'iShares Bitcoin',
+    'SHV': 'Short Treasury', 'BTC-USD': 'Bitcoin',
 }
 
 # =============================================================================

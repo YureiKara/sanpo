@@ -78,7 +78,7 @@ def render_single_tab(is_mobile):
     with c3:
         st.markdown(f"<div style='{_lbl}'>PERIOD</div>", unsafe_allow_html=True)
         period_label = st.selectbox("Period", list(PERIOD_OPTIONS.keys()),
-                                     index=3, key='port_period', label_visibility='collapsed')
+                                     index=2, key='port_period', label_visibility='collapsed')
     with c4:
         st.markdown(f"<div style='{_lbl}'>DIRECTION</div>", unsafe_allow_html=True)
         direction = st.selectbox("Direction", ['Long Only', 'Long/Short'],
@@ -202,7 +202,7 @@ def _run_mc(symbols, score, rebal_label, rebal, period_label, fetch_days,
             preset_name = 'Portfolio'
     st.session_state.port_params = {
         'score': score, 'rebal_label': st.session_state.get('port_rebal', 'Quarterly'),
-        'period_label': st.session_state.get('port_period', '10 Years'),
+        'period_label': st.session_state.get('port_period', '5 Years'),
         'direction': 'L/S' if allow_short else 'Long',
         'min_wt': min_wt, 'max_wt': max_wt, 'n_sims': n_sims, 'txn_cost': txn_cost,
         'max_vol': max_vol, 'min_ann_ret': min_ann_ret,
