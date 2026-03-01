@@ -89,6 +89,7 @@ def main():
     from spreads import render_spreads_tab
     from portfolio import render_portfolio_tab
     from news import render_news_tab
+    from research import render as render_research_tab
 
     # Init session state
     if 'sector' not in st.session_state: st.session_state.sector = 'Futures'
@@ -144,7 +145,7 @@ def main():
     """, unsafe_allow_html=True)
 
     # Tabs
-    tab_pulse, tab_news, tab_portfolio, tab_spreads, tab_charts = st.tabs(["PULSE", "NEWS", "PORTFOLIO", "SPREADS", "CHARTS"])
+    tab_pulse, tab_news, tab_portfolio, tab_spreads, tab_charts, tab_research = st.tabs(["PULSE", "NEWS", "PORTFOLIO", "SPREADS", "CHARTS", "RESEARCH"])
 
     with tab_pulse:
         render_pulse_tab(is_mobile)
@@ -160,6 +161,9 @@ def main():
 
     with tab_charts:
         render_charts_tab(is_mobile, est)
+
+    with tab_research:
+        render_research_tab()
 
     # Global auto-refresh aligned to :00 :30
     from streamlit.components.v1 import html as st_html
