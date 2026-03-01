@@ -444,16 +444,17 @@ def _render_weights_all(sorted_results, theme, is_mc=False):
         f"<th style='{th}text-align:left'>BAR</th>"
         f"</tr></thead><tbody>")
 
-    max_w = max(v for _, v in sorted_w) if sorted_w else 1.0
+    max_abs = max(abs(v) for _, v in sorted_w) if sorted_w else 1.0
     for sym, wt in sorted_w:
         pct = wt * 100
-        bar_w = (wt / max_w) * 100 if max_w > 0 else 0
+        bar_w = (abs(wt) / max_abs) * 100 if max_abs > 0 else 0
+        w_c = pos_c if wt >= 0 else neg_c
         html += (f"<tr>"
             f"<td style='{td}color:{_txt};font-weight:600'>{sym}</td>"
-            f"<td style='{td}text-align:right;color:{pos_c};font-weight:700'>{pct:.1f}%</td>"
+            f"<td style='{td}text-align:right;color:{w_c};font-weight:700'>{pct:+.1f}%</td>"
             f"<td style='{td}width:50%'>"
-            f"<div style='background:{pos_c}22;border-radius:2px;height:14px;width:100%'>"
-            f"<div style='background:{pos_c};border-radius:2px;height:14px;width:{bar_w:.1f}%'></div>"
+            f"<div style='background:{w_c}22;border-radius:2px;height:14px;width:100%'>"
+            f"<div style='background:{w_c};border-radius:2px;height:14px;width:{bar_w:.1f}%'></div>"
             f"</div></td>"
             f"</tr>")
 
