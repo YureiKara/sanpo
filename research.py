@@ -112,7 +112,7 @@ def render():
                 border-bottom:1px solid {bdr}15;
             ">
                 <div style="flex-shrink:0;width:90px">
-                    <div style="font-size:9px;color:{acc}">{a['date']}</div>
+                    <div style="font-size:9px;color:#f59e0b">{a['date']}</div>
                     <div style="font-size:8px;color:{mut};margin-top:1px">{a['rt']}</div>
                 </div>
                 <div style="flex:1;min-width:0">
