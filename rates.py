@@ -270,9 +270,9 @@ def _render_curve_chart(us, theme):
         if idx < len(us['yields']) and us['yields'][idx] is not None:
             fig.add_annotation(x=us_x[idx], y=us['yields'][idx],
                 text=f"<b>{label}</b> {us['yields'][idx]:.2f}%",
-                showarrow=True, arrowhead=0, arrowcolor='#f59e0b40', ax=0, ay=-25,
+                showarrow=True, arrowhead=0, arrowcolor='rgba(245,158,11,0.25)', ax=0, ay=-25,
                 font=dict(size=10, color='#f59e0b', family=FONTS),
-                bgcolor='#0f111780', borderpad=2)
+                bgcolor='rgba(15,17,23,0.5)', borderpad=2)
 
     fig.update_layout(template='plotly_dark', height=450,
         margin=dict(l=40, r=20, t=30, b=40), plot_bgcolor=_pbg, paper_bgcolor=_pbg,
@@ -366,9 +366,9 @@ def _render_sg_curve_chart(sg, theme):
         if idx < len(sg['yields']) and sg['yields'][idx] is not None:
             fig.add_annotation(x=sg_x[idx], y=sg['yields'][idx],
                 text=f"<b>{label}</b> {sg['yields'][idx]:.2f}%",
-                showarrow=True, arrowhead=0, arrowcolor='#f59e0b40', ax=0, ay=-25,
+                showarrow=True, arrowhead=0, arrowcolor='rgba(245,158,11,0.25)', ax=0, ay=-25,
                 font=dict(size=10, color='#f59e0b', family=FONTS),
-                bgcolor='#0f111780', borderpad=2)
+                bgcolor='rgba(15,17,23,0.5)', borderpad=2)
 
     fig.update_layout(template='plotly_dark', height=450,
         margin=dict(l=40, r=20, t=30, b=40), plot_bgcolor=_pbg, paper_bgcolor=_pbg,
