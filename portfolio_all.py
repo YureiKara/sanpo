@@ -11,7 +11,7 @@ from portfolio import (C_MUTE, C_BG, C_HDR, C_TXT, C_TXT2, C_BORDER,
                        C_GOLD, C_EW, _short,
                        REBAL_OPTIONS, PERIOD_OPTIONS, SCORE_TO_RANK,
                        fetch_symbol_history, _calc_oos_metrics,
-                       run_walkforward_grid, _section)
+                       run_walkforward_grid, run_fullsample, _section)
 
 logger = logging.getLogger(__name__)
 
@@ -154,6 +154,57 @@ def _run_mc_scan(period_days, rebal_months, txn_cost, score_type, n_sims,
 
 
 # =============================================================================
+# FULL SAMPLE SCAN
+# =============================================================================
+
+def _run_fs_scan(period_days, rebal_months, txn_cost, score_type, n_sims,
+                 max_wt, min_wt, allow_short, max_vol, min_ann_ret,
+                 rank_by, progress_bar=None):
+    """Scan all groups with Monte Carlo full-sample (in-sample) optimization."""
+    all_results = []
+    groups = list(FUTURES_GROUPS.items())
+
+    for i, (gname, syms) in enumerate(groups):
+        if progress_bar:
+            progress_bar.progress((i + 1) / len(groups), text=f'Full sample: {gname}')
+        if len(syms) < 2:
+            continue
+        try:
+            grid = run_fullsample(
+                syms, score_type=score_type, n_portfolios=n_sims,
+                fetch_days=period_days, max_weight=max_wt, min_weight=min_wt,
+                txn_cost=txn_cost, allow_short=allow_short,
+                max_vol=max_vol, min_ann_ret=min_ann_ret,
+                rebal_months=rebal_months)
+            if not grid or not grid['results']:
+                continue
+            # Pick best approach by rank metric
+            rank_metric = SCORE_TO_RANK.get(score_type, 'win_rate')
+            best_name = max(grid['results'].keys(),
+                           key=lambda k: grid['results'][k]['metrics'].get(rank_metric, 0))
+            best = grid['results'][best_name]
+            m = best['metrics']
+            m['group'] = gname
+            m['n_assets'] = len(grid['symbols'])
+            m['symbols'] = grid['symbols']
+            m['best_approach'] = best_name
+            m['ew_returns'] = best['wf']['oos_returns']
+            curr_w = best['wf'].get('current_weights', None)
+            if curr_w is not None:
+                m['weights'] = {s: float(w) for s, w in zip(grid['symbols'], curr_w)}
+            else:
+                m['weights'] = {s: 1.0/len(grid['symbols']) for s in grid['symbols']}
+            all_results.append(m)
+        except Exception as e:
+            logger.warning(f"FS scan error for {gname}: {e}")
+
+    if progress_bar:
+        progress_bar.empty()
+
+    return all_results
+
+
+# =============================================================================
 # MAIN RENDER
 # =============================================================================
 
@@ -165,14 +216,15 @@ def render_all_tab(is_mobile):
     _lbl = f"color:#f8fafc;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
 
     # Row 0: Mode
-    m1, m2 = st.columns([2, 6])
+    m1, m2 = st.columns([3, 5])
     with m1:
         st.markdown(f"<div style='{_lbl}'>MODE</div>", unsafe_allow_html=True)
-        mode = st.selectbox("Mode", ['Monte Carlo', 'Equal Weight'],
+        mode = st.selectbox("Mode", ['Monte Carlo (Walk-Forward)', 'Monte Carlo (Full Sample)', 'Equal Weight'],
                              key='portall_mode', label_visibility='collapsed')
 
-    is_mc = mode == 'Monte Carlo'
-    _dis = not is_mc  # disabled for EW-only fields
+    is_mc = mode == 'Monte Carlo (Walk-Forward)'
+    is_fs = mode == 'Monte Carlo (Full Sample)'
+    _dis = not (is_mc or is_fs)  # disabled for EW-only fields
 
     # Row 1: Objective, Rebalance, Period, Direction, Sims
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -234,7 +286,7 @@ def render_all_tab(is_mobile):
     except (ValueError, TypeError): txn_cost = 0.001
 
     if scan_clicked:
-        if is_mc:
+        if is_mc or is_fs:
             score_type = score
             try: max_wt = max(10, min(100, float(max_wt_str))) / 100.0
             except (ValueError, TypeError): max_wt = 0.50
@@ -250,10 +302,16 @@ def render_all_tab(is_mobile):
             rank_by_mc = SCORE_TO_RANK.get(score_type, 'win_rate')
             rank_display = next((k for k, v in SCAN_SORT_KEYS.items() if v[0] == rank_by_mc), 'Win Rate')
 
-            progress = st.progress(0, text='Starting MC scan...')
-            results = _run_mc_scan(period_days, rebal, txn_cost, score_type, n_sims,
-                                   max_wt, min_wt, allow_short, max_vol, min_ann_ret,
-                                   rank_display, progress)
+            if is_mc:
+                progress = st.progress(0, text='Starting MC walk-forward scan...')
+                results = _run_mc_scan(period_days, rebal, txn_cost, score_type, n_sims,
+                                       max_wt, min_wt, allow_short, max_vol, min_ann_ret,
+                                       rank_display, progress)
+            else:
+                progress = st.progress(0, text='Starting MC full-sample scan...')
+                results = _run_fs_scan(period_days, rebal, txn_cost, score_type, n_sims,
+                                       max_wt, min_wt, allow_short, max_vol, min_ann_ret,
+                                       rank_display, progress)
             if not results:
                 st.warning('No valid groups found'); return
             st.session_state.portall_results = results

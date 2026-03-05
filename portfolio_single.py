@@ -48,7 +48,7 @@ def render_single_tab(is_mobile):
             st.session_state.port_sym_input = ', '.join(syms)
         st.session_state.port_preset_name = sel
 
-    m0, p1, p2 = st.columns([2, 1, 3])
+    m0, p1, p2 = st.columns([3, 2, 5])
     with m0:
         st.markdown(f"<div style='{_lbl}'>MODE</div>", unsafe_allow_html=True)
         mode = st.selectbox("Mode", ['Monte Carlo (Walk-Forward)', 'Monte Carlo (Full Sample)', 'Equal Weight'],
