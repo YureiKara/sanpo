@@ -236,14 +236,12 @@ def _render_curve_chart(us, theme):
     compare_days = [
         ('1 Year',   365),
         ('3 Months', 91),
-        ('1 Month',  30),
     ]
 
     # Orange gradient dotted: oldest = darkest, newest = lightest
     comp_styles = [
         {'color': '#7c2d12', 'width': 1.3},   # 1Y — darkest orange
-        {'color': '#ea580c', 'width': 1.3},   # 3M — mid orange
-        {'color': '#fb923c', 'width': 1.3},   # 1M — lighter orange
+        {'color': '#fb923c', 'width': 1.3},   # 3M — lighter orange
     ]
 
     fig = go.Figure()
@@ -336,12 +334,10 @@ def _render_sg_curve_chart(sg, theme):
     compare_days = [
         ('1 Year',   365),
         ('3 Months', 91),
-        ('1 Month',  30),
     ]
 
     comp_styles = [
         {'color': '#7c2d12', 'width': 1.3},
-        {'color': '#ea580c', 'width': 1.3},
         {'color': '#fb923c', 'width': 1.3},
     ]
 
@@ -456,14 +452,17 @@ def render_rates_tab(is_mobile):
             st.warning('Could not fetch US rate data')
         else:
             # Summary bar
+            us_1m = us['yields'][0] if us['yields'][0] else None
             us_10y = us['yields'][10] if us['yields'][10] else None
             us_2y = us['yields'][6] if us['yields'][6] else None
             _bg3 = t.get('bg3', '#0f172a'); _txt2 = t.get('text2', '#94a3b8')
             parts = [f"US Treasury {_fmt_date(us['date'])}"]
-            if us_10y:
-                parts.append(f"10Y <b style='color:{t['pos']}'>{us_10y:.2f}%</b>")
+            if us_1m:
+                parts.append(f"1M <b style='color:{t['pos']}'>{us_1m:.2f}%</b>")
             if us_2y:
                 parts.append(f"2Y <b style='color:{t['pos']}'>{us_2y:.2f}%</b>")
+            if us_10y:
+                parts.append(f"10Y <b style='color:{t['pos']}'>{us_10y:.2f}%</b>")
             if us_2y and us_10y:
                 s = us_10y - us_2y
                 c = t['pos'] if s >= 0 else t['neg']
