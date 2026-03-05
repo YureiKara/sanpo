@@ -217,46 +217,43 @@ def _get_comparison_curves(data, compare_days_list):
 # =============================================================================
 
 def _render_curve_chart(us, theme):
-    """US yield curve with all historical comparisons."""
+    """US yield curve — today + 1M/3M/1Y ago in blue gradient."""
     _pbg = theme.get('plot_bg', '#0f1117'); _grd = theme.get('grid', '#1a1f2e')
 
     if not us:
         return
 
-    # All comparison periods
     compare_days = [
-        ('1 Week', 7),
-        ('1 Month', 30),
+        ('1 Year',   365),
         ('3 Months', 91),
-        ('6 Months', 182),
-        ('1 Year', 365),
+        ('1 Month',  30),
     ]
 
-    # Distinct colors for each historical curve — bright enough to see
+    # Blue gradient: oldest = faintest, newest = brightest
     comp_styles = [
-        {'color': '#94a3b8', 'dash': 'dot',     'width': 1.5},   # 1W — grey
-        {'color': '#f59e0b', 'dash': 'dash',    'width': 1.5},   # 1M — amber
-        {'color': '#a78bfa', 'dash': 'dashdot', 'width': 1.5},   # 3M — purple
-        {'color': '#f472b6', 'dash': 'dot',     'width': 1.5},   # 6M — pink
-        {'color': '#ef4444', 'dash': 'dash',    'width': 1.5},   # 1Y — red
+        {'color': '#1e3a5f', 'width': 1.5},   # 1Y — darkest
+        {'color': '#2563eb', 'width': 1.5},   # 3M — mid
+        {'color': '#60a5fa', 'width': 1.5},   # 1M — lighter
     ]
 
     fig = go.Figure()
     us_x = [m / 12 for m in us['months']]
 
-    # Historical curves first (behind current)
+    # Historical curves — oldest first (drawn behind)
     comps = _get_comparison_curves(us, compare_days)
     for i, (label, row) in enumerate(comps.items()):
         style = comp_styles[i % len(comp_styles)]
         fig.add_trace(go.Scatter(x=us_x, y=row['yields'], mode='lines+markers',
-            name=f"{label} ({row['date']})", line=dict(color=style['color'], width=style['width'], dash=style['dash']),
+            name=f"{label} ({row['date']})",
+            line=dict(color=style['color'], width=style['width']),
             marker=dict(size=3, color=style['color']),
             hovertemplate='%{y:.2f}%<extra>' + label + '</extra>'))
 
-    # Current curve on top — thick, bright
+    # Today — brightest, thickest
     fig.add_trace(go.Scatter(x=us_x, y=us['yields'], mode='lines+markers',
-        name=f"Today ({us['date']})", line=dict(color='#60a5fa', width=3.5),
-        marker=dict(size=7, color='#60a5fa'),
+        name=f"Today ({us['date']})",
+        line=dict(color='#93c5fd', width=3),
+        marker=dict(size=6, color='#93c5fd'),
         hovertemplate='%{text}<br>%{y:.2f}%<extra>Today</extra>',
         text=us['tenors']))
 
@@ -310,7 +307,7 @@ def _render_us_table(us, theme):
 
 
 def _render_sg_curve_chart(sg, theme):
-    """SG SGS yield curve with historical comparisons."""
+    """SG SGS yield curve — today + 1M/3M/1Y ago in green gradient."""
     pos_c = theme['pos']
     _pbg = theme.get('plot_bg', '#0f1117'); _grd = theme.get('grid', '#1a1f2e')
 
@@ -318,15 +315,16 @@ def _render_sg_curve_chart(sg, theme):
         return
 
     compare_days = [
-        ('1 Week', 7), ('1 Month', 30), ('3 Months', 91),
-        ('6 Months', 182), ('1 Year', 365),
+        ('1 Year',   365),
+        ('3 Months', 91),
+        ('1 Month',  30),
     ]
+
+    # Green gradient: oldest = darkest, newest = brightest
     comp_styles = [
-        {'color': '#94a3b8', 'dash': 'dot',     'width': 1.5},
-        {'color': '#f59e0b', 'dash': 'dash',    'width': 1.5},
-        {'color': '#a78bfa', 'dash': 'dashdot', 'width': 1.5},
-        {'color': '#f472b6', 'dash': 'dot',     'width': 1.5},
-        {'color': '#ef4444', 'dash': 'dash',    'width': 1.5},
+        {'color': '#14532d', 'width': 1.5},   # 1Y — darkest
+        {'color': '#16a34a', 'width': 1.5},   # 3M — mid
+        {'color': '#4ade80', 'width': 1.5},   # 1M — lighter
     ]
 
     fig = go.Figure()
@@ -336,13 +334,15 @@ def _render_sg_curve_chart(sg, theme):
     for i, (label, row) in enumerate(comps.items()):
         style = comp_styles[i % len(comp_styles)]
         fig.add_trace(go.Scatter(x=sg_x, y=row['yields'], mode='lines+markers',
-            name=f"{label} ({row['date']})", line=dict(color=style['color'], width=style['width'], dash=style['dash']),
+            name=f"{label} ({row['date']})",
+            line=dict(color=style['color'], width=style['width']),
             marker=dict(size=3, color=style['color']),
             hovertemplate='%{y:.2f}%<extra>' + label + '</extra>'))
 
     fig.add_trace(go.Scatter(x=sg_x, y=sg['yields'], mode='lines+markers',
-        name=f"Today ({sg['date']})", line=dict(color=pos_c, width=3.5),
-        marker=dict(size=7, color=pos_c),
+        name=f"Today ({sg['date']})",
+        line=dict(color='#86efac', width=3),
+        marker=dict(size=6, color='#86efac'),
         hovertemplate='%{text}<br>%{y:.2f}%<extra>Today</extra>',
         text=sg['tenors']))
 
