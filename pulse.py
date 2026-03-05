@@ -476,19 +476,32 @@ def _render_pulse_news():
     t = get_theme(); s = _s()
     pos_c = t['pos']
 
-    # 1/N per region, then per source within region
-    max_items = 15
-    per_region = max(1, max_items // len(NEWS_FEEDS))
+    # Priority sources for Pulse — pull more from these
+    priority_feeds = [
+        ('CNA',            'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511'),
+        ('Straits Times',  'https://www.straitstimes.com/news/business/rss.xml'),
+        ('Bloomberg',      'https://feeds.bloomberg.com/markets/news.rss'),
+        ('FT',             'https://www.ft.com/rss/home'),
+    ]
+
     all_items = []
+    for name, url in priority_feeds:
+        items = fetch_rss_feed(name, url)
+        all_items.extend(items[:8])
+
+    # Fill remaining slots from other feeds
+    other_feeds = []
+    priority_names = {n for n, _ in priority_feeds}
     for region, feeds in NEWS_FEEDS.items():
-        region_items = []
-        per_src = max(1, per_region // len(feeds))
         for name, url in feeds:
-            region_items.extend(fetch_rss_feed(name, url)[:per_src])
-        region_items.sort(key=lambda x: x['date'], reverse=True)
-        all_items.extend(region_items[:per_region])
-    all_items.sort(key=lambda x: x['date'], reverse=True)
-    all_items = all_items[:max_items]
+            if name not in priority_names:
+                other_feeds.append((name, url))
+    for name, url in other_feeds:
+        all_items.extend(fetch_rss_feed(name, url)[:2])
+
+    # Sort by ISO sort_key (not display date string)
+    all_items.sort(key=lambda x: x.get('sort_key', ''), reverse=True)
+    all_items = all_items[:15]
     if not all_items:
         return
 
