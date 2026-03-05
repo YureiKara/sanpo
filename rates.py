@@ -212,12 +212,21 @@ def _get_comparison_curves(data, compare_days_list):
     return comps
 
 
+def _fmt_date(d):
+    """Format '2026-03-04' as '2026-Mar-04'."""
+    try:
+        dt = datetime.strptime(d[:10], '%Y-%m-%d')
+        return dt.strftime('%Y-%b-%d')
+    except Exception:
+        return d
+
+
 # =============================================================================
 # RENDER
 # =============================================================================
 
 def _render_curve_chart(us, theme):
-    """US yield curve — today + 1M/3M/1Y ago in blue gradient."""
+    """US yield curve — today + 1M/3M/1Y ago in green gradient."""
     _pbg = theme.get('plot_bg', '#0f1117'); _grd = theme.get('grid', '#1a1f2e')
 
     if not us:
@@ -229,11 +238,11 @@ def _render_curve_chart(us, theme):
         ('1 Month',  30),
     ]
 
-    # Blue gradient: oldest = faintest, newest = brightest
+    # Green gradient: oldest = darkest, newest = brightest
     comp_styles = [
-        {'color': '#1e3a5f', 'width': 1.5},   # 1Y — darkest
-        {'color': '#2563eb', 'width': 1.5},   # 3M — mid
-        {'color': '#60a5fa', 'width': 1.5},   # 1M — lighter
+        {'color': '#14532d', 'width': 1.5},   # 1Y — darkest green
+        {'color': '#16a34a', 'width': 1.5},   # 3M — mid green
+        {'color': '#4ade80', 'width': 1.5},   # 1M — lighter green
     ]
 
     fig = go.Figure()
@@ -244,16 +253,16 @@ def _render_curve_chart(us, theme):
     for i, (label, row) in enumerate(comps.items()):
         style = comp_styles[i % len(comp_styles)]
         fig.add_trace(go.Scatter(x=us_x, y=row['yields'], mode='lines+markers',
-            name=f"{label} ({row['date']})",
+            name=f"{label} ({_fmt_date(row['date'])})",
             line=dict(color=style['color'], width=style['width']),
             marker=dict(size=3, color=style['color']),
             hovertemplate='%{y:.2f}%<extra>' + label + '</extra>'))
 
     # Today — brightest, thickest
     fig.add_trace(go.Scatter(x=us_x, y=us['yields'], mode='lines+markers',
-        name=f"Today ({us['date']})",
-        line=dict(color='#93c5fd', width=3),
-        marker=dict(size=6, color='#93c5fd'),
+        name=f"Today ({_fmt_date(us['date'])})",
+        line=dict(color='#86efac', width=3),
+        marker=dict(size=6, color='#86efac'),
         hovertemplate='%{text}<br>%{y:.2f}%<extra>Today</extra>',
         text=us['tenors']))
 
@@ -285,7 +294,7 @@ def _render_us_table(us, theme):
     <table style='border-collapse:collapse;font-family:{FONTS};width:100%;line-height:1.3'>
     <thead style='background:{_bg3}'><tr>
         <th style='{th}text-align:left'>TENOR</th>
-        <th style='{th}text-align:right;color:#60a5fa'>YIELD</th>
+        <th style='{th}text-align:right;color:#4ade80'>YIELD</th>
         <th style='{th}text-align:right'>Δ 1D</th>
     </tr></thead><tbody>"""
 
@@ -298,7 +307,7 @@ def _render_us_table(us, theme):
             d_str = f"<span style='color:{c}'>{d:+.2f}</span>"
         html += f"""<tr>
             <td style='{td}color:{_txt};font-weight:600'>{tenor}</td>
-            <td style='{td}text-align:right;color:#60a5fa'>{y_str}</td>
+            <td style='{td}text-align:right;color:#4ade80'>{y_str}</td>
             <td style='{td}text-align:right'>{d_str}</td>
         </tr>"""
 
@@ -334,13 +343,13 @@ def _render_sg_curve_chart(sg, theme):
     for i, (label, row) in enumerate(comps.items()):
         style = comp_styles[i % len(comp_styles)]
         fig.add_trace(go.Scatter(x=sg_x, y=row['yields'], mode='lines+markers',
-            name=f"{label} ({row['date']})",
+            name=f"{label} ({_fmt_date(row['date'])})",
             line=dict(color=style['color'], width=style['width']),
             marker=dict(size=3, color=style['color']),
             hovertemplate='%{y:.2f}%<extra>' + label + '</extra>'))
 
     fig.add_trace(go.Scatter(x=sg_x, y=sg['yields'], mode='lines+markers',
-        name=f"Today ({sg['date']})",
+        name=f"Today ({_fmt_date(sg['date'])})",
         line=dict(color='#86efac', width=3),
         marker=dict(size=6, color='#86efac'),
         hovertemplate='%{text}<br>%{y:.2f}%<extra>Today</extra>',
@@ -432,11 +441,11 @@ def render_rates_tab(is_mobile):
             us_10y = us['yields'][10] if us['yields'][10] else None
             us_2y = us['yields'][6] if us['yields'][6] else None
             _bg3 = t.get('bg3', '#0f172a'); _txt2 = t.get('text2', '#94a3b8')
-            parts = [f"US Treasury {us['date']}"]
+            parts = [f"US Treasury {_fmt_date(us['date'])}"]
             if us_10y:
-                parts.append(f"10Y <b style='color:#60a5fa'>{us_10y:.2f}%</b>")
+                parts.append(f"10Y <b style='color:{t['pos']}'>{us_10y:.2f}%</b>")
             if us_2y:
-                parts.append(f"2Y <b style='color:#60a5fa'>{us_2y:.2f}%</b>")
+                parts.append(f"2Y <b style='color:{t['pos']}'>{us_2y:.2f}%</b>")
             if us_2y and us_10y:
                 s = us_10y - us_2y
                 c = t['pos'] if s >= 0 else t['neg']
@@ -464,7 +473,7 @@ def render_rates_tab(is_mobile):
             pos_c = t['pos']
             sg_10y = sg['yields'][4] if sg['yields'][4] else None
             sg_2y = sg['yields'][2] if sg['yields'][2] else None
-            parts = [f"SGS Benchmarks {sg['date']}"]
+            parts = [f"SGS Benchmarks {_fmt_date(sg['date'])}"]
             if sg_10y:
                 parts.append(f"10Y <b style='color:{pos_c}'>{sg_10y:.2f}%</b>")
             if sg_2y:
