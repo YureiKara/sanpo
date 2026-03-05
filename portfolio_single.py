@@ -48,10 +48,10 @@ def render_single_tab(is_mobile):
             st.session_state.port_sym_input = ', '.join(syms)
         st.session_state.port_preset_name = sel
 
-    m0, p1, p2 = st.columns([1, 1, 4])
+    m0, p1, p2 = st.columns([2, 1, 3])
     with m0:
         st.markdown(f"<div style='{_lbl}'>MODE</div>", unsafe_allow_html=True)
-        mode = st.selectbox("Mode", ['MC (Walk-Forward)', 'MC (Full Sample)', 'Equal Weight'],
+        mode = st.selectbox("Mode", ['Monte Carlo (Walk-Forward)', 'Monte Carlo (Full Sample)', 'Equal Weight'],
                              key='port_mode', label_visibility='collapsed')
     with p1:
         st.markdown(f"<div style='{_lbl}'>PORTFOLIO</div>", unsafe_allow_html=True)
@@ -63,8 +63,8 @@ def render_single_tab(is_mobile):
         sym_input = st.text_input("Symbols", key='port_sym_input', label_visibility='collapsed',
                                    placeholder='AAPL, MSFT, GOOG, ...')
 
-    is_mc = mode == 'MC (Walk-Forward)'
-    is_fs = mode == 'MC (Full Sample)'
+    is_mc = mode == 'Monte Carlo (Walk-Forward)'
+    is_fs = mode == 'Monte Carlo (Full Sample)'
     _dis = not (is_mc or is_fs)
 
     # Row 1: Objective, Rebalance, Period, Direction, Sims

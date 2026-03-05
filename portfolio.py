@@ -686,7 +686,7 @@ def render_oos_chart(grid, approach_name):
     # Title — use preset name instead of symbols
     params = st.session_state.get('port_params', st.session_state.get('port_fs_params', {}))
     title_name = params.get('preset_name', 'Portfolio').upper()
-    is_fullsample = 'port_fs_result' in st.session_state and st.session_state.get('port_mode') == 'MC (Full Sample)'
+    is_fullsample = 'port_fs_result' in st.session_state and st.session_state.get('port_mode') == 'Monte Carlo (Full Sample)'
     mode_tag = 'FULL SAMPLE (IN-SAMPLE)' if is_fullsample else 'OOS WALK-FORWARD'
     tag_color = '#60a5fa' if is_fullsample else C_GOLD
     fig.update_layout(template='plotly_dark', height=400, margin=dict(l=55, r=55, t=35, b=25),
