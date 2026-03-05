@@ -114,17 +114,33 @@ SG_YF_TICKERS = {
 
 
 def _fetch_sg_mas():
-    """Try MAS API first."""
+    """Try MAS API — avoid sort param (causes issues), use between filter + client-side sort."""
     import urllib.parse
+    from datetime import date
+
+    end = date.today()
+    start = date(end.year - 2, end.month, end.day)
+
     params = urllib.parse.urlencode({
         'resource_id': SGS_RESOURCE,
-        'limit': 400,
-        'sort': 'end_of_day desc'
+        'limit': 800,
     })
-    url = f'https://eservices.mas.gov.sg/api/action/datastore/search.json?{params}'
-    req = urllib.request.Request(url, headers={'User-Agent': _UA})
-    resp = urllib.request.urlopen(req, timeout=15)
-    data = json.loads(resp.read())
+    between = f"&between[end_of_day]={start.isoformat()},{end.isoformat()}"
+    url = f'https://eservices.mas.gov.sg/api/action/datastore/search.json?{params}{between}'
+
+    # Try requests first (better header handling), fall back to urllib
+    try:
+        import requests as _req
+        resp = _req.get(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/json',
+        }, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception:
+        req = urllib.request.Request(url, headers={'User-Agent': _UA})
+        resp = urllib.request.urlopen(req, timeout=15)
+        data = json.loads(resp.read())
 
     records = data.get('result', {}).get('records', [])
     if not records:
@@ -226,16 +242,28 @@ def _fetch_sora():
         import urllib.parse
         params = urllib.parse.urlencode({
             'resource_id': SORA_RESOURCE,
-            'limit': 5,
-            'sort': 'end_of_day desc'
+            'limit': 10,
         })
         url = f'https://eservices.mas.gov.sg/api/action/datastore/search.json?{params}'
-        req = urllib.request.Request(url, headers={'User-Agent': _UA})
-        resp = urllib.request.urlopen(req, timeout=15)
-        data = json.loads(resp.read())
+
+        try:
+            import requests as _req
+            resp = _req.get(url, headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'application/json',
+            }, timeout=15)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception:
+            req = urllib.request.Request(url, headers={'User-Agent': _UA})
+            resp = urllib.request.urlopen(req, timeout=15)
+            data = json.loads(resp.read())
+
         records = data.get('result', {}).get('records', [])
         if not records:
             return None
+        # Sort by date descending, pick latest
+        records.sort(key=lambda x: x.get('end_of_day', ''), reverse=True)
         r = records[0]
         return {
             'date': r.get('end_of_day', ''),
