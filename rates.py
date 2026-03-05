@@ -226,7 +226,7 @@ def _fmt_date(d):
 # =============================================================================
 
 def _render_curve_chart(us, theme):
-    """US yield curve — today + 1M/3M/1Y ago in green gradient."""
+    """US yield curve — today (amber) + 1M/3M/1Y ago (green dotted gradient)."""
     _pbg = theme.get('plot_bg', '#0f1117'); _grd = theme.get('grid', '#1a1f2e')
 
     if not us:
@@ -238,33 +238,41 @@ def _render_curve_chart(us, theme):
         ('1 Month',  30),
     ]
 
-    # Green gradient: oldest = darkest, newest = brightest
     comp_styles = [
-        {'color': '#14532d', 'width': 1.5},   # 1Y — darkest green
-        {'color': '#16a34a', 'width': 1.5},   # 3M — mid green
-        {'color': '#4ade80', 'width': 1.5},   # 1M — lighter green
+        {'color': '#14532d', 'width': 1.3},   # 1Y — darkest green
+        {'color': '#16a34a', 'width': 1.3},   # 3M — mid green
+        {'color': '#4ade80', 'width': 1.3},   # 1M — lighter green
     ]
 
     fig = go.Figure()
     us_x = [m / 12 for m in us['months']]
 
-    # Historical curves — oldest first (drawn behind)
+    # Historical curves — dotted green gradient
     comps = _get_comparison_curves(us, compare_days)
     for i, (label, row) in enumerate(comps.items()):
         style = comp_styles[i % len(comp_styles)]
-        fig.add_trace(go.Scatter(x=us_x, y=row['yields'], mode='lines+markers',
+        fig.add_trace(go.Scatter(x=us_x, y=row['yields'], mode='lines',
             name=f"{label} ({_fmt_date(row['date'])})",
-            line=dict(color=style['color'], width=style['width']),
-            marker=dict(size=3, color=style['color']),
+            line=dict(color=style['color'], width=style['width'], dash='dot'),
             hovertemplate='%{y:.2f}%<extra>' + label + '</extra>'))
 
-    # Today — brightest, thickest
+    # Today — amber, thick, solid, markers
     fig.add_trace(go.Scatter(x=us_x, y=us['yields'], mode='lines+markers',
         name=f"Today ({_fmt_date(us['date'])})",
-        line=dict(color='#86efac', width=3),
-        marker=dict(size=6, color='#86efac'),
+        line=dict(color='#f59e0b', width=3),
+        marker=dict(size=6, color='#f59e0b'),
         hovertemplate='%{text}<br>%{y:.2f}%<extra>Today</extra>',
         text=us['tenors']))
+
+    # Tenor labels on today's curve — 1Mo, 2Yr, 10Yr
+    tenor_labels = {0: '1M', 6: '2Y', 10: '10Y'}
+    for idx, label in tenor_labels.items():
+        if idx < len(us['yields']) and us['yields'][idx] is not None:
+            fig.add_annotation(x=us_x[idx], y=us['yields'][idx],
+                text=f"<b>{label}</b> {us['yields'][idx]:.2f}%",
+                showarrow=True, arrowhead=0, arrowcolor='#f59e0b40', ax=0, ay=-25,
+                font=dict(size=10, color='#f59e0b', family=FONTS),
+                bgcolor='#0f111780', borderpad=2)
 
     fig.update_layout(template='plotly_dark', height=450,
         margin=dict(l=40, r=20, t=30, b=40), plot_bgcolor=_pbg, paper_bgcolor=_pbg,
