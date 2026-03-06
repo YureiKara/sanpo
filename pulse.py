@@ -512,25 +512,22 @@ def _render_heatmap_grid(data):
     sectors_html = ''
     active_sectors = 0
     for sector, syms in HEATMAP_SECTORS.items():
-        sector_items = []
-        for sym in syms:
-            d = data.get(sym)
-            if d:
-                sector_items.append((sym, d['change']))
-        if not sector_items:
+        # top 2 gainers + top 2 losers
+        sector_data = [(sym, data.get(sym, {}).get('change', 0)) for sym in syms if data.get(sym)]
+        if not sector_data:
             continue
-        sector_items.sort(key=lambda x: x[1], reverse=True)
-        display = sector_items if len(sector_items) <= 4 else sector_items[:2] + sector_items[-2:]
+        sector_data.sort(key=lambda x: x[1], reverse=True)
+        display = sector_data if len(sector_data) <= 4 else sector_data[:2] + sector_data[-2:]
         cells = ''
         for sym, change in display:
             name = clean_symbol(sym)
             bg, intensity = _bg(change, pos_c, neg_c)
             if intensity > 3:
                 name_c = '#ffffff' if not is_light else '#1e293b'
-                val_c  = '#ffffff' if not is_light else '#1e293b'
+                val_c = '#ffffff' if not is_light else '#1e293b'
             else:
                 name_c = s['hm_txt']
-                val_c  = pos_c if change >= 0 else neg_c
+                val_c = pos_c if change >= 0 else neg_c
             sign = '+' if change >= 0 else ''
             cell_border = 'rgba(0,0,0,0.06)' if is_light else 'rgba(255,255,255,0.04)'
             cells += (
@@ -828,14 +825,10 @@ def render_pulse_tab(is_mobile):
         st.info('Markets data loading — try refreshing.')
         return
 
-    _G = "<div style='margin-top:-10px'></div>"
     _render_market_status_bar()
-    st.markdown(_G, unsafe_allow_html=True)
     _render_hero_row(data)
-    st.markdown(_G, unsafe_allow_html=True)
     if spark_data:
         _render_sparkline_row(spark_data, data)
-        st.markdown(_G, unsafe_allow_html=True)
 
     if is_mobile:
         _render_movers(data)
