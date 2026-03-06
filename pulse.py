@@ -290,213 +290,6 @@ def _compute_breakout_status(hist, period_type):
         return None
 
 
-def _render_breakout_panel(breakout_data):
-    """
-    Movers-style breakout panel.
-
-    Layout: two equal columns side by side.
-      Left  — WEEK:  above-mid list (green bars, sorted highest %R first)
-                     | divider |
-                     below-mid list (amber bars, sorted lowest %R first)
-      Right — MONTH: same structure.
-
-    Bar semantics (matching movers panel exactly):
-      - Green bar  : above prev period midpoint  (%R 50–100+)
-      - Amber bar  : below prev period midpoint  (%R 0–50-)
-      - Bar width  : proportional to distance from midpoint (not from zero)
-      - ▲ BREAK label : price > prev period high  (%R > 100)
-      - ▼ BREAK label : price < prev period low   (%R < 0)
-      - ● dot       : reversal signal (bounced off low / rejected at high)
-
-    No purple. No ambiguity.
-    """
-    t   = get_theme()
-    s   = _s()
-    pos_c = t['pos']    # #4ade80  green
-    neg_c = t['neg']    # #f59e0b  amber
-    bdr   = s['border']
-    bg2   = s['bg2']
-    bg3   = s['bg3']
-    muted = s['muted']
-
-    # ── Collect results ───────────────────────────────────────────────────────
-    week_items  = []   # list of (label, sym, res)
-    month_items = []
-
-    for sym, label in BREAKOUT_SYMBOLS.items():
-        hist = breakout_data.get(sym)
-        if hist is None:
-            continue
-        wr = _compute_breakout_status(hist, 'week')
-        mr = _compute_breakout_status(hist, 'month')
-        if wr is not None:
-            week_items.append((label, sym, wr))
-        if mr is not None:
-            month_items.append((label, sym, mr))
-
-    if not week_items and not month_items:
-        html = (
-            f"<div style='padding:10px 12px;background:{bg2};border:1px solid {bdr};"
-            f"border-radius:6px;color:{muted};font-size:10px;font-family:{FONTS}'>"
-            f"Breakout data loading…</div>"
-        )
-        _wrap(html, 40)
-        return
-
-    # ── Split into above/below mid, sort ─────────────────────────────────────
-    def _split_sort(items):
-        # above mid: status in (above_high, above_mid) — sort highest %R first
-        above = sorted(
-            [(l, sym, r) for l, sym, r in items if r['status'] in ('above_high', 'above_mid')],
-            key=lambda x: x[2]['pct_r'], reverse=True
-        )
-        # below mid: status in (below_mid, below_low) — sort lowest %R first (most broken down)
-        below = sorted(
-            [(l, sym, r) for l, sym, r in items if r['status'] in ('below_mid', 'below_low')],
-            key=lambda x: x[2]['pct_r'], reverse=False
-        )
-        return above, below
-
-    w_above, w_below = _split_sort(week_items)
-    m_above, m_below = _split_sort(month_items)
-
-    # ── Bar row builder (mirrors _render_movers exactly) ─────────────────────
-    def _bar_rows(items, color, is_above, max_abs_dist):
-        """
-        items      : list of (label, sym, res)
-        color      : pos_c or neg_c
-        is_above   : True = green side, False = amber side
-        max_abs_dist: max |%R - 50| across this list, for bar scaling
-        """
-        if not items:
-            return ''
-        html = ''
-        for label, sym, res in items:
-            pct_r  = res['pct_r']
-            status = res['status']
-            rev    = res['reversal']
-
-            # Distance from midpoint (50) drives bar width, capped at 85%
-            dist = abs(pct_r - 50)
-            bar_pct = max(dist / max(max_abs_dist, 1) * 85, 8)
-
-            # Label for breakouts
-            if status == 'above_high':
-                pct_label = f"▲{pct_r:+.0f}%"
-            elif status == 'below_low':
-                pct_label = f"▼{pct_r:.0f}%"
-            else:
-                pct_label = f"{pct_r:.0f}%"
-
-            rev_dot = ''
-            if rev == 'buy':
-                rev_dot = f"<span style='color:{pos_c};font-size:8px;margin-left:2px'>●</span>"
-            elif rev == 'sell':
-                rev_dot = f"<span style='color:{neg_c};font-size:8px;margin-left:2px'>●</span>"
-
-            grad_dir = '90deg' if is_above else '270deg'
-
-            html += (
-                f"<div style='display:flex;align-items:center;padding:4px 0;gap:5px'>"
-                # Symbol name
-                f"<div style='width:42px;flex-shrink:0'>"
-                f"<span style='color:#e2e8f0;font-size:10px;font-weight:600'>{label}</span>"
-                f"{rev_dot}"
-                f"</div>"
-                # Bar
-                f"<div style='flex:1;position:relative;height:18px;"
-                f"background:{bdr};border-radius:2px;overflow:hidden'>"
-                f"<div style='position:absolute;top:0;"
-                f"{'left' if is_above else 'right'}:0;"
-                f"height:100%;width:{bar_pct:.0f}%;"
-                f"background:linear-gradient({grad_dir},{color}20,{color}60);"
-                f"border-radius:2px'></div>"
-                f"<span style='position:absolute;top:50%;transform:translateY(-50%);"
-                f"{'right' if is_above else 'left'}:5px;"
-                f"color:{color};font-size:10px;font-weight:700;"
-                f"font-variant-numeric:tabular-nums'>"
-                f"{pct_label}</span>"
-                f"</div>"
-                f"</div>"
-            )
-        return html
-
-    def _period_col(above, below, period_label):
-        """Render one period column (WEEK or MONTH) with above + divider + below."""
-        # Scale bars independently per side so relative intensity is clear
-        above_dists = [abs(r['pct_r'] - 50) for _, _, r in above] or [1]
-        below_dists = [abs(r['pct_r'] - 50) for _, _, r in below] or [1]
-        max_above = max(above_dists)
-        max_below = max(below_dists)
-
-        above_html = _bar_rows(above, pos_c, True,  max_above)
-        below_html = _bar_rows(below, neg_c, False, max_below)
-
-        # Section headers
-        def _sub_hdr(label, color, count):
-            return (
-                f"<div style='display:flex;align-items:center;gap:4px;margin-bottom:4px'>"
-                f"<span style='color:{color};font-size:9px'>{'▲' if color == pos_c else '▼'}</span>"
-                f"<span style='color:#f8fafc;font-size:9px;font-weight:600;"
-                f"letter-spacing:0.1em;text-transform:uppercase'>{label}</span>"
-                f"<span style='color:{muted};font-size:8px'>({count})</span>"
-                f"</div>"
-            )
-
-        divider = (
-            f"<div style='height:1px;background:{bdr};margin:6px 0'></div>"
-            if above and below else ''
-        )
-
-        n_rows = len(above) + len(below)
-
-        return (
-            f"<div style='background:{bg2};border:1px solid {bdr};"
-            f"border-radius:6px;padding:8px 10px;font-family:{FONTS}'>"
-            # Period header
-            f"<div style='color:{muted};font-size:8px;font-weight:600;"
-            f"letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;"
-            f"padding-bottom:5px;border-bottom:1px solid {bdr}'>"
-            f"PREV {period_label} H/L POSITION</div>"
-            # Above mid section
-            + (_sub_hdr('ABOVE MID', pos_c, len(above)) + above_html if above else '') +
-            divider +
-            # Below mid section
-            (_sub_hdr('BELOW MID', neg_c, len(below)) + below_html if below else '') +
-            f"</div>",
-            n_rows
-        )
-
-    week_col_html,  w_rows = _period_col(w_above, w_below, 'WEEK')
-    month_col_html, m_rows = _period_col(m_above, m_below, 'MONTH')
-
-    # Height: header(24) + sub-hdr(20) + rows(22each) + divider(13) + padding(20)
-    max_rows = max(w_rows, m_rows, 1)
-    # above + below each have a sub-header; divider if both present
-    n_above_max = max(len(w_above), len(m_above))
-    n_below_max = max(len(w_below), len(m_below))
-    has_both = (n_above_max > 0 and n_below_max > 0)
-    height = (
-        24                          # period header
-        + (20 if n_above_max else 0)  # above sub-header
-        + n_above_max * 26
-        + (13 if has_both else 0)   # divider
-        + (20 if n_below_max else 0)  # below sub-header
-        + n_below_max * 26
-        + 40                        # padding
-    )
-    height = max(height, 80)
-
-    html = (
-        f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:8px;"
-        f"font-family:{FONTS}'>"
-        f"{week_col_html}"
-        f"{month_col_html}"
-        f"</div>"
-    )
-    _wrap(html, height)
-
-
 # ── SVG SPARKLINE ────────────────────────────────────────────────────────────
 
 def _svg_sparkline(data, width=100, height=28, pos_color='#4ade80', neg_color='#f59e0b'):
@@ -823,16 +616,18 @@ def _render_movers(data):
     _wrap(html, 28 * n_rows + 50)
 
 
-def _render_pulse_news():
+
+def _render_pulse_news(iframe_height=600):
+    """News panel — stretches to match left column height."""
     from news import fetch_rss_feed
     t = get_theme(); s = _s()
     pos_c = t['pos']
 
     feeds = [
-        ('CNA',            'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511'),
-        ('Straits Times',  'https://www.straitstimes.com/news/business/rss.xml'),
-        ('Bloomberg',      'https://feeds.bloomberg.com/markets/news.rss'),
-        ('FT',             'https://www.ft.com/rss/home'),
+        ('CNA',           'https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511'),
+        ('Straits Times', 'https://www.straitstimes.com/news/business/rss.xml'),
+        ('Bloomberg',     'https://feeds.bloomberg.com/markets/news.rss'),
+        ('FT',            'https://www.ft.com/rss/home'),
     ]
 
     all_items = []
@@ -840,34 +635,184 @@ def _render_pulse_news():
         all_items.extend(fetch_rss_feed(name, url))
 
     all_items.sort(key=lambda x: x.get('sort_key', ''), reverse=True)
-    all_items = all_items[:15]
+    all_items = all_items[:40]
     if not all_items:
         return
 
     rows = ''
     for i, item in enumerate(all_items):
         bg = s['bg2'] if i % 2 == 0 else s['row_alt']
+        src_col = item['source']
+        dt_col  = item['date']
         rows += (
-            f"<div style='padding:4px 10px;background:{bg};border-bottom:1px solid {s['border']}10;"
-            f"display:flex;align-items:baseline;gap:8px;font-family:{FONTS};white-space:nowrap;overflow:hidden'>"
-            f"<span style='font-size:9px;flex-shrink:0;width:170px;display:flex;gap:6px;align-items:baseline'>"
-            f"<span style='color:{pos_c};font-weight:600'>{item['source']}</span>"
-            f"<span style='color:{s['muted']}'>{item['date']}</span></span>"
-            f"<a href='{item['url']}' target='_blank' style='color:{s['link']};text-decoration:none;"
-            f"font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>{item['title']}</a>"
-            f"</div>"
+            "<div style='padding:4px 10px;background:" + bg + ";border-bottom:1px solid " + s['border'] + "18;"
+            "display:flex;align-items:baseline;gap:6px;font-family:" + FONTS + ";white-space:nowrap;overflow:hidden'>"
+            "<span style='flex-shrink:0;width:115px;display:flex;gap:5px;align-items:baseline'>"
+            "<span style='color:" + pos_c + ";font-weight:600;font-size:9px'>" + src_col + "</span>"
+            "<span style='color:" + s['muted'] + ";font-size:9px'>" + dt_col + "</span></span>"
+            "<a href='" + item['url'] + "' target='_blank' style='color:" + s['link'] + ";text-decoration:none;"
+            "font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>" + item['title'] + "</a>"
+            "</div>"
         )
 
     html = (
-        f"<div style='background:{s['bg2']};border:1px solid {s['border']};border-radius:6px;overflow:hidden;"
-        f"font-family:{FONTS}'>"
-        f"<div style='padding:6px 10px;display:flex;justify-content:space-between;align-items:center;"
-        f"border-bottom:1px solid {s['border']}'>"
-        f"<span style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em'>LATEST</span>"
-        f"<span style='color:{s['muted']};font-size:9px;font-weight:500'>{len(all_items)}</span></div>"
-        f"<div style='max-height:160px;overflow-y:auto'>{rows}</div></div>"
+        "<div style='background:" + s['bg2'] + ";border:1px solid " + s['border'] + ";border-radius:6px;"
+        "overflow:hidden;font-family:" + FONTS + ";height:" + str(iframe_height) + "px;"
+        "display:flex;flex-direction:column'>"
+        "<div style='padding:6px 10px;display:flex;justify-content:space-between;align-items:center;"
+        "border-bottom:1px solid " + s['border'] + ";flex-shrink:0'>"
+        "<span style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em'>LATEST</span>"
+        "<span style='color:" + s['muted'] + ";font-size:9px;font-weight:500'>" + str(len(all_items)) + "</span></div>"
+        "<div style='overflow-y:auto;flex:1'>" + rows + "</div>"
+        "</div>"
     )
-    _wrap(html, 190)
+    _wrap(html, iframe_height)
+
+
+# ── BREAKOUT TABLES (week + month) ───────────────────────────────────────────
+
+TOP_N_BREAKOUTS = 5   # max rows per side (above/below) per period
+
+
+def _render_breakout_tables(breakout_data):
+    """
+    Two compact tables stacked:
+      Table 1 — WEEK BREAKOUTS  : ▲ above prev week high | ▼ below prev week low
+      Table 2 — MONTH BREAKOUTS : ▲ above prev month high | ▼ below prev month low
+
+    Only TRUE breakouts shown (price outside the prev period range).
+    Sorted by distance from the level (furthest first).
+    Format identical to _render_movers: left=green bars, right=amber bars.
+    Top 5 per side.
+    Returns total iframe height used so news panel can match.
+    """
+    t     = get_theme()
+    s     = _s()
+    pos_c = t['pos']
+    neg_c = t['neg']
+    bdr   = s['border']
+    bg2   = s['bg2']
+    bg3   = s['bg3']
+    muted = s['muted']
+    bar_bg = s['bar_bg']
+
+    # ── Collect and classify ─────────────────────────────────────────────────
+    def _classify(period_type):
+        """
+        Returns (above_list, below_list) where each item is (label, pct_beyond).
+        pct_beyond = how far price has moved beyond the level as % of prev range.
+          above: (curr - prev_high) / prev_range * 100  — always >= 0
+          below: (prev_low - curr)  / prev_range * 100  — always >= 0
+        Sorted descending (furthest break first). Capped at TOP_N_BREAKOUTS.
+        """
+        above_list = []
+        below_list = []
+        for sym, label in BREAKOUT_SYMBOLS.items():
+            hist = breakout_data.get(sym)
+            if hist is None:
+                continue
+            res = _compute_breakout_status(hist, period_type)
+            if res is None:
+                continue
+            status = res['status']
+            prev_range = max(res['prev_high'] - res['prev_low'], 1e-9)
+            rev = res['reversal']
+
+            if status == 'above_high':
+                pct = (res['curr_price'] - res['prev_high']) / prev_range * 100
+                above_list.append((label, pct, rev))
+            elif status == 'below_low':
+                pct = (res['prev_low'] - res['curr_price']) / prev_range * 100
+                below_list.append((label, pct, rev))
+            # inside range → not shown
+
+        above_list.sort(key=lambda x: x[1], reverse=True)
+        below_list.sort(key=lambda x: x[1], reverse=True)
+        return above_list[:TOP_N_BREAKOUTS], below_list[:TOP_N_BREAKOUTS]
+
+    w_above, w_below = _classify('week')
+    m_above, m_below = _classify('month')
+
+    # ── Bar row builder ──────────────────────────────────────────────────────
+    def _rows(items, color, is_above):
+        if not items:
+            return "<div style='color:" + muted + ";font-size:10px;padding:6px 2px'>No breakouts</div>"
+        max_pct = max(x[1] for x in items) or 1
+        html = ''
+        for label, pct, rev in items:
+            bar_pct = max(pct / max_pct * 85, 8)
+            grad_dir = '90deg' if is_above else '270deg'
+            align    = 'left'  if is_above else 'right'
+            pct_str  = ("+" if is_above else "-") + f"{pct:.0f}%"
+            rev_dot  = ''
+            if rev == 'buy':
+                rev_dot = "<span style='color:" + pos_c + ";font-size:8px;margin-left:2px'>&#9679;</span>"
+            elif rev == 'sell':
+                rev_dot = "<span style='color:" + neg_c + ";font-size:8px;margin-left:2px'>&#9679;</span>"
+            html += (
+                "<div style='display:flex;align-items:center;padding:5px 0;gap:6px'>"
+                "<div style='width:45px;flex-shrink:0'>"
+                "<span style='color:#e2e8f0;font-size:10px;font-weight:600'>" + label + "</span>"
+                + rev_dot +
+                "</div>"
+                "<div style='flex:1;position:relative;height:18px;background:" + bar_bg + ";border-radius:2px;overflow:hidden'>"
+                "<div style='position:absolute;top:0;" + align + ":0;height:100%;width:" + f"{bar_pct:.0f}" + "%;background:linear-gradient(" + grad_dir + "," + color + "20," + color + "60);border-radius:2px'></div>"
+                "<span style='position:absolute;top:50%;transform:translateY(-50%);" + align + ":6px;"
+                "color:" + color + ";font-size:10px;font-weight:700;font-variant-numeric:tabular-nums'>"
+                + pct_str + "</span>"
+                "</div>"
+                "</div>"
+            )
+        return html
+
+    # ── Single breakout table ────────────────────────────────────────────────
+    def _table(above, below, period_label):
+        """One table: header + gainers-style left + losers-style right in a 2-col grid."""
+        above_html = _rows(above, pos_c, True)
+        below_html = _rows(below, neg_c, False)
+        n_rows = max(len(above), len(below), 1)
+        height = 34 + n_rows * 28 + 14   # header + rows + padding
+
+        html = (
+            "<div style='background:" + bg2 + ";border:1px solid " + bdr + ";border-radius:6px;"
+            "padding:8px 10px;font-family:" + FONTS + "'>"
+            # Table header
+            "<div style='color:" + muted + ";font-size:8px;font-weight:600;letter-spacing:0.12em;"
+            "text-transform:uppercase;margin-bottom:7px;padding-bottom:5px;"
+            "border-bottom:1px solid " + bdr + "'>"
+            "PREV " + period_label + " BREAKOUTS</div>"
+            # Two columns
+            "<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>"
+            # Above col
+            "<div>"
+            "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
+            "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
+            "<span style='color:" + pos_c + ";font-size:11px'>&#9650;</span> ABOVE HIGH</div>"
+            + above_html +
+            "</div>"
+            # Below col
+            "<div>"
+            "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
+            "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
+            "<span style='color:" + neg_c + ";font-size:11px'>&#9660;</span> BELOW LOW</div>"
+            + below_html +
+            "</div>"
+            "</div>"
+            "</div>"
+        )
+        return html, height
+
+    week_html,  week_h  = _table(w_above, w_below,  'WEEK')
+    month_html, month_h = _table(m_above, m_below, 'MONTH')
+
+    total_height = week_h + month_h + 8   # 8px gap between tables
+    combined = (
+        "<div style='display:flex;flex-direction:column;gap:8px;font-family:" + FONTS + "'>"
+        + week_html + month_html +
+        "</div>"
+    )
+    _wrap(combined, total_height)
+    return total_height
 
 
 # ── MAIN ─────────────────────────────────────────────────────────────────────
@@ -888,18 +833,24 @@ def render_pulse_tab(is_mobile):
         _render_sparkline_row(spark_data, data)
 
     if is_mobile:
-        _render_breakout_panel(breakout_data)
         _render_movers(data)
-        _render_pulse_news()
+        _render_breakout_tables(breakout_data)
+        _render_pulse_news(iframe_height=400)
         _render_heatmap_grid(data)
     else:
-        # Row: movers (left) | breakout week+month (centre) | news (right)
-        col_movers, col_breakout, col_news = st.columns([22, 45, 33])
-        with col_movers:
+        # Left column: movers + week breakouts + month breakouts (3 stacked tables)
+        # Right column: news stretching full height of left column
+        col_left, col_right = st.columns([55, 45])
+
+        with col_left:
+            # Render movers — fixed height ~190px
             _render_movers(data)
-        with col_breakout:
-            _render_breakout_panel(breakout_data)
-        with col_news:
-            _render_pulse_news()
+            # Render breakout tables — returns total height used
+            bo_height = _render_breakout_tables(breakout_data)
+
+        with col_right:
+            # News panel height = movers(~190) + gap(8) + breakout tables + buffer
+            news_height = 190 + 8 + bo_height
+            _render_pulse_news(iframe_height=news_height)
 
         _render_heatmap_grid(data)
