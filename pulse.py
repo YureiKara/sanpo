@@ -8,7 +8,7 @@ import pytz
 import logging
 from streamlit.components.v1 import html as st_html
 
-from config import FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol, HEATMAP_SECTORS
+from config import FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol, HEATMAP_SECTORS, sym_short
 
 logger = logging.getLogger(__name__)
 
@@ -137,20 +137,13 @@ def _fetch_sparklines():
 # ── BREAKOUT SCANNER ─────────────────────────────────────────────────────────
 
 # Symbols shown in the breakout panel — curated cross-asset watchlist
-BREAKOUT_SYMBOLS = OrderedDict([
-    ('ES=F',    'S&P'),
-    ('NQ=F',    'NQ'),
-    ('GC=F',    'Gold'),
-    ('CL=F',    'Crude'),
-    ('ZW=F',    'Wheat'),
-    ('NG=F',    'NatGas'),
-    ('BTC-USD', 'BTC'),
-    ('ZN=F',    '10Y'),
-    ('6J=F',    'JPY'),
-    ('USDSGD=X','SGDUSD'),
-    ('^STI',    'STI'),
-    ('ZC=F',    'Corn'),
-])
+# Breakout scanner uses the full HEATMAP universe — single source of truth
+# Flat ordered dict: sym -> short label, deduped, preserving sector order
+BREAKOUT_SYMBOLS = OrderedDict()
+for _syms in HEATMAP_SECTORS.values():
+    for _s in _syms:
+        if _s not in BREAKOUT_SYMBOLS:
+            BREAKOUT_SYMBOLS[_s] = sym_short(_s)
 
 
 @st.cache_data(ttl=1800, show_spinner=False)
@@ -509,7 +502,7 @@ def _render_heatmap_grid(data):
                 continue
             has_data = True
             change = d['change']
-            name = clean_symbol(sym)
+            name = sym_short(sym)
             bg, intensity = _bg(change, pos_c, neg_c)
             # Dynamic text: use high-contrast on strong backgrounds
             if intensity > 3:
@@ -532,7 +525,7 @@ def _render_heatmap_grid(data):
             active_sectors += 1
             sectors_html += (
                 f"<div style='margin-bottom:6px'>"
-                f"<div style='color:{s['muted']};font-size:8px;font-weight:600;letter-spacing:0.1em;"
+                f"<div style='color:#f8fafc;font-size:8px;font-weight:600;letter-spacing:0.1em;"
                 f"text-transform:uppercase;margin-bottom:4px;padding-left:2px'>{sector}</div>"
                 f"<div style='display:flex;gap:4px;flex-wrap:wrap'>{cells}</div>"
                 f"</div>"
