@@ -27,6 +27,26 @@ FUTURES_GROUPS = OrderedDict([
     ('Strategy',  ['MSTR', 'STRK', 'STRF', 'STRC', 'STRD', 'MSTU', 'MSTX', 'MSTZ', 'MSTY']),
 ])
 
+# =============================================================================
+# HEATMAP SECTORS — shown in Pulse tab, max 4 per sector
+# Edit here to change what appears in the heatmap
+# =============================================================================
+
+HEATMAP_SECTORS = OrderedDict([
+    ('Indices',    ['ES=F',    'NQ=F',    'NKD=F',   'RTY=F'   ]),
+    ('Crypto',     ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD' ]),
+    ('Energy',     ['CL=F',    'NG=F',    'RB=F',    'HO=F'    ]),
+    ('Metals',     ['GC=F',    'SI=F',    'HG=F',    'PL=F'    ]),
+    ('Grains',     ['ZC=F',    'ZW=F',    'ZS=F',    'ZM=F'    ]),
+    ('Softs',      ['CC=F',    'KC=F',    'SB=F',    'CT=F'    ]),
+    ('Rates',      ['ZB=F',    'ZN=F',    'ZF=F',    'ZT=F'    ]),
+    ('FX',         ['6J=F',    '6E=F',    '6B=F',    '6A=F'    ]),
+    ('US Sectors', ['XLE',     'XLF',     'XLK',     'XLV'     ]),
+    ('Shipping',   ['ZIM',     'GOGL',    'STNG',     'FRO'    ]),
+    ('Strategy',   ['MSTR',    'MSTU',    'MSTY',    'MSTX'    ]),
+    ('Singapore',  ['^STI',    'ES3.SI',  'S68.SI',  'MBH.SI'  ]),
+])
+
 SYMBOL_NAMES = {
     'ES=F': 'E-mini S&P 500', 'NQ=F': 'E-mini Nasdaq 100', 'YM=F': 'E-mini Dow',
     'RTY=F': 'E-mini Russell 2000', 'NKD=F': 'Nikkei 225',

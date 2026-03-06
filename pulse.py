@@ -8,7 +8,7 @@ import pytz
 import logging
 from streamlit.components.v1 import html as st_html
 
-from config import FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol
+from config import FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol, HEATMAP_SECTORS
 
 logger = logging.getLogger(__name__)
 
@@ -78,17 +78,6 @@ HERO_SYMBOLS = OrderedDict([
     ('^STI',     {'label': 'STI',      'fmt': ',.0f'}),
 ])
 
-HEATMAP_SECTORS = OrderedDict([
-    ('Indices',   ['ES=F', 'NQ=F', 'YM=F', 'RTY=F', 'NKD=F']),
-    ('Crypto',    ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD']),
-    ('Energy',    ['CL=F', 'NG=F', 'RB=F', 'HO=F']),
-    ('Metals',    ['GC=F', 'SI=F', 'PL=F', 'HG=F']),
-    ('Grains',    ['ZC=F', 'ZS=F', 'ZW=F', 'ZM=F']),
-    ('Softs',     ['SB=F', 'KC=F', 'CC=F', 'CT=F']),
-    ('Rates',     ['ZB=F', 'ZN=F', 'ZF=F', 'ZT=F']),
-    ('FX',        ['6E=F', '6J=F', '6B=F', '6A=F']),
-    ('Singapore', ['ES3.SI', 'S68.SI']),
-])
 
 SPARKLINE_SYMBOLS = ['ES=F', 'BTC-USD', 'GC=F', 'CL=F', 'USDSGD=X', '^STI']
 
@@ -715,16 +704,16 @@ def _render_breakout_tables(breakout_data):
             if res is None:
                 continue
             status = res['status']
-            prev_range = max(res['prev_high'] - res['prev_low'], 1e-9)
             rev = res['reversal']
 
             if status == 'above_high':
-                pct = (res['curr_price'] - res['prev_high']) / prev_range * 100
+                # % above prev high relative to prev high price — comparable across assets
+                pct = (res['curr_price'] - res['prev_high']) / res['prev_high'] * 100
                 above_list.append((label, pct, rev))
             elif status == 'below_low':
-                pct = (res['prev_low'] - res['curr_price']) / prev_range * 100
+                # % below prev low relative to prev low price
+                pct = (res['prev_low'] - res['curr_price']) / res['prev_low'] * 100
                 below_list.append((label, pct, rev))
-            # inside range → not shown
 
         above_list.sort(key=lambda x: x[1], reverse=True)
         below_list.sort(key=lambda x: x[1], reverse=True)
