@@ -159,7 +159,7 @@ for _syms in HEATMAP_SECTORS.values():
             BREAKOUT_SYMBOLS[_sym] = clean_symbol(_sym)
 
 
-@st.cache_data(ttl=1800, show_spinner=False)
+@st.cache_data(ttl=300, show_spinner=False)
 def _fetch_breakout_data():
     """
     Fetch 3 months of daily data per symbol.
