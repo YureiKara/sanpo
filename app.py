@@ -48,6 +48,7 @@ def _inject_theme_css():
     .stSelectbox > div > div {{ background-color: {sel_bg}; color: {sel_c}; font-family: 'Inter', sans-serif; border: 1px solid {sel_bdr}; }}
     .stTextInput > div > div > input {{ font-family: 'Inter', sans-serif; }}
     div[data-testid="stHorizontalBlock"] {{ gap: 0.3rem; }}
+    div[data-testid="stVerticalBlock"] {{ gap: 0.3rem !important; }}
     .stTabs [data-baseweb="tab-list"] {{ gap: 0; background-color: transparent; padding: 0; border-radius: 0; border-bottom: 1px solid {tab_bdr}; }}
     .stTabs [data-baseweb="tab"] {{
         background-color: transparent; color: {tab_c}; border: none;
@@ -75,36 +76,7 @@ def _inject_theme_css():
 </style>
 """, unsafe_allow_html=True)
 
-    # CSS-only animated dot wave background
-    st.markdown("""
-<style>
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        pointer-events: none;
-        z-index: 0;
-        background-image: radial-gradient(circle, rgba(180,210,255,0.35) 1px, transparent 1px);
-        background-size: 28px 28px;
-        mask-image: 
-            radial-gradient(ellipse 80% 60% at 20% 50%, black 0%, transparent 70%),
-            radial-gradient(ellipse 60% 80% at 80% 30%, black 0%, transparent 60%);
-        -webkit-mask-image:
-            radial-gradient(ellipse 80% 60% at 20% 50%, black 0%, transparent 70%),
-            radial-gradient(ellipse 60% 80% at 80% 30%, black 0%, transparent 60%);
-        animation: wavemask 12s ease-in-out infinite alternate;
-        opacity: 0.6;
-    }
-    @keyframes wavemask {
-        0%   { mask-position: 0% 0%, 100% 100%; -webkit-mask-position: 0% 0%, 100% 100%; }
-        33%  { mask-position: 30% 60%, 70% 20%; -webkit-mask-position: 30% 60%, 70% 20%; }
-        66%  { mask-position: 60% 20%, 40% 80%; -webkit-mask-position: 60% 20%, 40% 80%; }
-        100% { mask-position: 100% 50%, 0% 50%; -webkit-mask-position: 100% 50%, 0% 50%; }
-    }
-    .stApp > * { position: relative; z-index: 1; }
-</style>
-""", unsafe_allow_html=True)
+
 
 
 def _detect_mobile():
