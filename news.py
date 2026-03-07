@@ -1,5 +1,6 @@
 import streamlit as st
 import feedparser
+from streamlit.components.v1 import html as st_html
 import logging
 import re
 import urllib.request
@@ -109,42 +110,54 @@ def fetch_rss_feed(name, url):
         logger.warning(f"RSS error [{name}]: {e}")
         return []
 
-def render_news_panel(region, feeds, max_items=20, max_height='75vh'):
-    """Render a single news feed — compact rows matching charts panel."""
+def render_news_panel(region, feeds, max_items=20, height=600):
+    """Render a single news feed in iframe — matches Pulse news row spacing."""
     t = get_theme(); pos_c = t['pos']
     _body_bg = t.get('bg2', '#0f1522')
     _bdr = t.get('border', '#1e293b')
-    _mut = t.get('muted', '#4a5568'); _link_c = t.get('text', '#c9d1d9')
+    _mut = t.get('muted', '#4a5568')
+    _link_c = t.get('text', '#c9d1d9')
     _row_alt = t.get('bg3', '#131b2e')
+    _txt2 = t.get('text2', '#94a3b8')
+    _accent = pos_c
 
-    # Fetch all items, sort by date then source
     all_items = []
     for name, url in feeds:
         all_items.extend(fetch_rss_feed(name, url))
     all_items.sort(key=lambda x: x.get('sort_key', ''), reverse=True)
     all_items = all_items[:max_items]
 
-    html = f"<div style='background:{_body_bg};border:1px solid {_bdr};border-radius:4px;max-height:{max_height};overflow-y:auto'>"
+    rows = ''
     if not all_items:
-        html += f"<div style='padding:12px;color:{_mut};font-size:10px;font-family:{FONTS};text-align:center'>Feeds loading…</div>"
+        rows = f"<div style='padding:12px;color:{_mut};font-size:10px;text-align:center'>Feeds loading…</div>"
     else:
-        _txt2 = t.get('text2', '#94a3b8')
-        _accent = t.get('accent', pos_c)
         for i, item in enumerate(all_items):
             bg = _body_bg if i % 2 == 0 else _row_alt
-            title_el = f"<a href='{item['url']}' target='_blank' style='color:{_link_c};text-decoration:none;font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>{item['title']}</a>" if item['url'] else f"<span style='color:{_link_c};font-size:10.5px'>{item['title']}</span>"
-            html += (
-                f"<div style='padding:3px 10px;border-bottom:1px solid {_bdr}10;font-family:{FONTS};background:{bg};"
-                f"display:flex;align-items:baseline;gap:6px;white-space:nowrap;overflow:hidden'>"
-                f"<span style='flex-shrink:0;width:65px;overflow:hidden;text-overflow:ellipsis'>"
-                f"<span style='color:{_accent};font-weight:600;font-size:9px'>{item['source']}</span></span>"
-                f"<span style='flex-shrink:0;width:38px'>"
-                f"<span style='color:{_txt2};font-size:9px'>{item['date']}</span></span>"
-                f"<span style='overflow:hidden;text-overflow:ellipsis'>{title_el}</span>"
-                f"</div>"
+            rows += (
+                "<div style='padding:4px 10px;background:" + bg + ";border-bottom:1px solid " + _bdr + "18;"
+                "display:flex;align-items:baseline;gap:6px;font-family:" + FONTS + ";white-space:nowrap;overflow:hidden'>"
+                "<span style='flex-shrink:0;width:115px;display:flex;gap:5px;align-items:baseline'>"
+                "<span style='color:" + _accent + ";font-weight:600;font-size:9px'>" + item['source'] + "</span>"
+                "<span style='color:" + _txt2 + ";font-size:9px'>" + item['date'] + "</span></span>"
+                "<a href='" + item['url'] + "' target='_blank' style='color:" + _link_c + ";text-decoration:none;"
+                "font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>" + item['title'] + "</a>"
+                "</div>"
             )
-    html += "</div>"
-    st.markdown(html, unsafe_allow_html=True)
+
+    page = (
+        "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+        "<style>* { margin:0; padding:0; box-sizing:border-box; }"
+        "body { background:transparent; overflow:hidden; }"
+        "::-webkit-scrollbar { width:4px; }"
+        "::-webkit-scrollbar-track { background:" + _body_bg + "; }"
+        "::-webkit-scrollbar-thumb { background:" + _bdr + ";border-radius:2px; }"
+        "</style></head><body>"
+        "<div style='background:" + _body_bg + ";border:1px solid " + _bdr + ";border-radius:4px;"
+        "height:" + str(height) + "px;overflow-y:auto'>"
+        + rows +
+        "</div></body></html>"
+    )
+    st_html(page, height=height)
 
 def render_news_tab(is_mobile):
     # Left: general news tabs | Right: portfolio news tabs
@@ -155,11 +168,11 @@ def render_news_tab(is_mobile):
         tabs = st.tabs(general_tabs)
         for tab, region in zip(tabs, general_tabs):
             with tab:
-                render_news_panel(region, NEWS_FEEDS[region])
+                render_news_panel(region, NEWS_FEEDS[region], height=580)
 
     with right:
         portfolio_tabs = ['Macro', 'Singapore', 'CPF']
         tabs = st.tabs(portfolio_tabs)
         for tab, region in zip(tabs, portfolio_tabs):
             with tab:
-                render_news_panel(region, NEWS_FEEDS[region])
+                render_news_panel(region, NEWS_FEEDS[region], height=580)
