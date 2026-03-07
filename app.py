@@ -71,68 +71,39 @@ def _inject_theme_css():
     #MainMenu {{visibility: hidden;}}
     footer {{visibility: hidden;}}
     [data-testid="stStatusWidget"] {{visibility: hidden;}}
-    #dot-wave-canvas {{
+
+</style>
+""", unsafe_allow_html=True)
+
+    # CSS-only animated dot wave background
+    st.markdown("""
+<style>
+    .stApp::before {
+        content: '';
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
         pointer-events: none;
         z-index: 0;
-        opacity: 0.18;
-    }}
-    .stApp > * {{ position: relative; z-index: 1; }}
+        background-image: radial-gradient(circle, rgba(180,210,255,0.35) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: 
+            radial-gradient(ellipse 80% 60% at 20% 50%, black 0%, transparent 70%),
+            radial-gradient(ellipse 60% 80% at 80% 30%, black 0%, transparent 60%);
+        -webkit-mask-image:
+            radial-gradient(ellipse 80% 60% at 20% 50%, black 0%, transparent 70%),
+            radial-gradient(ellipse 60% 80% at 80% 30%, black 0%, transparent 60%);
+        animation: wavemask 12s ease-in-out infinite alternate;
+        opacity: 0.6;
+    }
+    @keyframes wavemask {
+        0%   { mask-position: 0% 0%, 100% 100%; -webkit-mask-position: 0% 0%, 100% 100%; }
+        33%  { mask-position: 30% 60%, 70% 20%; -webkit-mask-position: 30% 60%, 70% 20%; }
+        66%  { mask-position: 60% 20%, 40% 80%; -webkit-mask-position: 60% 20%, 40% 80%; }
+        100% { mask-position: 100% 50%, 0% 50%; -webkit-mask-position: 100% 50%, 0% 50%; }
+    }
+    .stApp > * { position: relative; z-index: 1; }
 </style>
-""", unsafe_allow_html=True)
-
-    st.markdown("""
-<canvas id="dot-wave-canvas"></canvas>
-<script>
-(function() {
-    const canvas = document.getElementById('dot-wave-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, dots, t = 0;
-
-    function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-        buildDots();
-    }
-
-    function buildDots() {
-        dots = [];
-        const cols = Math.ceil(W / 28);
-        const rows = Math.ceil(H / 28);
-        for (let r = 0; r <= rows; r++) {
-            for (let c = 0; c <= cols; c++) {
-                dots.push({ bx: c * 28, by: r * 28 });
-            }
-        }
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, W, H);
-        t += 0.008;
-        for (const d of dots) {
-            // wave displacement
-            const wave = Math.sin(d.bx * 0.018 + d.by * 0.012 + t) * 0.5
-                       + Math.sin(d.bx * 0.009 - d.by * 0.022 + t * 1.3) * 0.5;
-            // brightness based on wave
-            const bright = Math.max(0, wave);
-            const size   = 1.0 + bright * 1.6;
-            const alpha  = 0.15 + bright * 0.65;
-            ctx.beginPath();
-            ctx.arc(d.bx, d.by, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(200,220,255,${alpha.toFixed(2)})`;
-            ctx.fill();
-        }
-        requestAnimationFrame(draw);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-    draw();
-})();
-</script>
 """, unsafe_allow_html=True)
 
 
