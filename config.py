@@ -25,6 +25,7 @@ FUTURES_GROUPS = OrderedDict([
     ('Exchanges', ['ICE', 'NDAQ', 'CME', 'CBOE', 'X.TO', 'LSEG.L', 'DB1.DE', 'ENX.PA', '8697.T', '0388.HK', 'ASX.AX', 'S68.SI']),
     ('Shipping',  ['BOAT', 'SEA', 'ZIM', 'MATX', 'DAC', 'CMRE', 'FRO', 'STNG', 'INSW', 'TK', 'GOGL', 'SBLK', 'GNK', 'GSL', 'AMKBY']),
     ('Strategy',  ['MSTR', 'STRK', 'STRF', 'STRC', 'STRD', 'MSTU', 'MSTX', 'MSTZ', 'MSTY']),
+    ('Crypto Co', ['COIN', 'MSTR', 'MARA', 'RIOT', 'HOOD', 'CORZ', 'CLSK', 'HUT', 'GLXY.TO', 'CRCL']),
 ])
 
 SYMBOL_NAMES = {
@@ -65,6 +66,9 @@ SYMBOL_NAMES = {
     'STRC': 'Stretch Pref', 'STRD': 'Stride Pref',
     'MSTU': '2x Long MSTR', 'MSTX': '2x Long MSTR', 'MSTZ': '2x Inv MSTR',
     'MSTY': 'MSTR Options Income',
+    'COIN': 'Coinbase', 'MARA': 'Marathon Digital', 'RIOT': 'Riot Platforms',
+    'HOOD': 'Robinhood', 'CORZ': 'Core Scientific', 'CLSK': 'CleanSpark',
+    'HUT': 'Hut 8', 'GLXY.TO': 'Galaxy Digital', 'CRCL': 'Circle',
 }
 
 # =============================================================================
