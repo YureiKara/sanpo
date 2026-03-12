@@ -52,7 +52,7 @@ def _wrap(body, height):
         "<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>"
         "<style>"
         "* { margin:0; padding:0; box-sizing:border-box; }"
-        f"body {{ background:transparent; font-family:{FONTS}; color:{s['text']}; overflow:hidden; }}"
+        f"body {{ background:transparent; font-family:{FONTS}; color:{s['text']}; overflow:auto; }}"
         f"a {{ color:{s['link']}; text-decoration:none; }}"
         "a:hover { text-decoration:underline; }"
         f"::-webkit-scrollbar {{ width:4px; }}"
@@ -764,47 +764,51 @@ def _render_breakout_tables(breakout_data, pulse_data=None):
         return html
 
     # ── Single breakout table ────────────────────────────────────────────────
+    TABLE_H = 200  # fixed scrollable body height per table
+
     def _table(above, below, period_label):
-        """One table: header + gainers-style left + losers-style right in a 2-col grid."""
         above_html = _rows(above, pos_c, True)
         below_html = _rows(below, neg_c, False)
-        n_rows = max(len(above), len(below), 1)
-        height = 34 + n_rows * 28 + 14   # header + rows + padding
 
         html = (
             "<div style='background:" + bg2 + ";border:1px solid " + bdr + ";border-radius:6px;"
-            "padding:8px 10px;font-family:" + FONTS + "'>"
-            # Table header
+            "font-family:" + FONTS + ";flex-shrink:0'>"
+            # Header
             "<div style='color:" + muted + ";font-size:8px;font-weight:600;letter-spacing:0.12em;"
-            "text-transform:uppercase;margin-bottom:7px;padding-bottom:5px;"
+            "text-transform:uppercase;padding:7px 10px 5px 10px;"
             "border-bottom:1px solid " + bdr + "'>"
             "PREV " + period_label + " BREAKOUTS</div>"
-            # Two columns
+            # Scrollable body
+            "<div style='overflow-y:auto;max-height:" + str(TABLE_H) + "px;padding:4px 10px 6px 10px'>"
             "<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>"
             # Above col
             "<div>"
             "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
-            "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
-            "<span style='color:" + pos_c + ";font-size:11px'>&#9650;</span> ABOVE HIGH</div>"
+            "margin-bottom:4px;margin-top:4px;display:flex;align-items:center;gap:4px'>"
+            "<span style='color:" + pos_c + ";font-size:11px'>&#9650;</span> ABOVE HIGH"
+            "<span style='margin-left:auto;color:" + muted + ";font-size:8px;font-weight:500'>YTD</span></div>"
             + above_html +
             "</div>"
             # Below col
             "<div>"
             "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
-            "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
-            "<span style='color:" + neg_c + ";font-size:11px'>&#9660;</span> BELOW LOW</div>"
+            "margin-bottom:4px;margin-top:4px;display:flex;align-items:center;gap:4px'>"
+            "<span style='color:" + neg_c + ";font-size:11px'>&#9660;</span> BELOW LOW"
+            "<span style='margin-left:auto;color:" + muted + ";font-size:8px;font-weight:500'>YTD</span></div>"
             + below_html +
             "</div>"
             "</div>"
             "</div>"
+            "</div>"
         )
+        height = TABLE_H + 42  # header + scrollable body + padding
         return html, height
 
     week_html,  week_h  = _table(w_above, w_below,  'WEEK')
     month_html, month_h = _table(m_above, m_below, 'MONTH')
     year_html,  year_h  = _table(y_above, y_below,  'YEAR')
 
-    total_height = week_h + month_h + year_h + 16   # 8px gap between each table
+    total_height = week_h + month_h + year_h + 16
     combined = (
         "<div style='display:flex;flex-direction:column;gap:8px;font-family:" + FONTS + "'>"
         + week_html + month_html + year_html +
