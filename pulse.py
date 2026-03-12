@@ -111,6 +111,13 @@ def _fetch_pulse_batch():
     except Exception as e:
         logger.warning(f"Pulse batch failed: {e}")
         batch = pd.DataFrame()
+
+    # Separate YTD batch (1y data needed for YTD calc)
+    try:
+        batch_ytd = yf.download(batch_syms, period='1y', group_by='ticker', threads=True, progress=False)
+    except Exception as e:
+        logger.warning(f"Pulse YTD batch failed: {e}")
+        batch_ytd = pd.DataFrame()
     for sym in all_syms:
         try:
             if sym.startswith('^'):
@@ -129,7 +136,33 @@ def _fetch_pulse_batch():
             current = float(hist['Close'].iloc[-1])
             prev_close = float(hist['Close'].iloc[-2]) if len(hist) >= 2 else current
             change = ((current - prev_close) / prev_close) * 100 if prev_close else 0
-            result[sym] = {'price': current, 'change': round(change, 2)}
+
+            # YTD change
+            ytd_change = 0.0
+            try:
+                if sym.startswith('^'):
+                    hist_ytd = yf.Ticker(sym).history(period='1y')
+                elif not batch_ytd.empty:
+                    if len(batch_syms) == 1:
+                        hist_ytd = batch_ytd.copy()
+                    elif sym in batch_ytd.columns.get_level_values(0):
+                        hist_ytd = batch_ytd[sym].dropna(how='all')
+                    else:
+                        hist_ytd = yf.Ticker(sym).history(period='1y')
+                else:
+                    hist_ytd = yf.Ticker(sym).history(period='1y')
+                if not hist_ytd.empty:
+                    import pytz as _pytz
+                    now = pd.Timestamp.now()
+                    ytd_start = now.replace(month=1, day=1).date()
+                    ytd_hist = hist_ytd[hist_ytd.index.map(lambda x: x.date() if hasattr(x, 'date') else x) >= ytd_start]
+                    if not ytd_hist.empty:
+                        ytd_open = float(ytd_hist['Open'].iloc[0])
+                        ytd_change = ((current - ytd_open) / ytd_open) * 100 if ytd_open else 0
+            except Exception as e:
+                logger.debug(f"[{sym}] ytd calc error: {e}")
+
+            result[sym] = {'price': current, 'change': round(change, 2), 'ytd': round(ytd_change, 2)}
         except Exception as e:
             logger.debug(f"[{sym}] pulse fetch error: {e}")
     return result
@@ -669,7 +702,7 @@ def _render_pulse_news(iframe_height=600):
 TOP_N_BREAKOUTS = 5   # max rows per side (above/below) per period
 
 
-def _render_breakout_tables(breakout_data):
+def _render_breakout_tables(breakout_data, pulse_data=None):
     """
     Two compact tables stacked:
       Table 1 — WEEK BREAKOUTS  : ▲ above prev week high | ▼ below prev week low
@@ -692,13 +725,6 @@ def _render_breakout_tables(breakout_data):
 
     # ── Collect and classify ─────────────────────────────────────────────────
     def _classify(period_type):
-        """
-        Returns (above_list, below_list) where each item is (label, pct_beyond).
-        pct_beyond = how far price has moved beyond the level, as % of that level.
-          above: (curr - prev_high) / prev_high * 100  — always >= 0
-          below: (prev_low - curr)  / prev_low  * 100  — always >= 0
-        Sorted descending (furthest break first). Capped at TOP_N_BREAKOUTS.
-        """
         above_list = []
         below_list = []
         for sym in BREAKOUT_SYMBOLS:
@@ -711,16 +737,16 @@ def _render_breakout_tables(breakout_data):
             status = res['status']
             rev = res['reversal']
             display = clean_symbol(sym)
+            ytd = pulse_data.get(sym, {}).get('ytd', 0.0) if pulse_data else 0.0
 
             if status == 'above_high':
                 ph = res['prev_high']
                 pct = (res['curr_price'] - ph) / ph * 100 if ph else 0
-                above_list.append((display, pct, rev))
+                above_list.append((display, pct, rev, ytd))
             elif status == 'below_low':
                 pl = res['prev_low']
                 pct = (pl - res['curr_price']) / pl * 100 if pl else 0
-                below_list.append((display, pct, rev))
-            # inside range → not shown
+                below_list.append((display, pct, rev, ytd))
 
         above_list.sort(key=lambda x: x[1], reverse=True)
         below_list.sort(key=lambda x: x[1], reverse=True)
@@ -735,11 +761,13 @@ def _render_breakout_tables(breakout_data):
             return "<div style='color:" + muted + ";font-size:10px;padding:6px 2px'>No breakouts</div>"
         max_pct = max(x[1] for x in items) or 1
         html = ''
-        for label, pct, rev in items:
+        for label, pct, rev, ytd in items:
             bar_pct = max(pct / max_pct * 85, 8)
             grad_dir = '90deg' if is_above else '270deg'
             align    = 'left'  if is_above else 'right'
             pct_str  = ("+" if is_above else "-") + f"{pct:.0f}%"
+            ytd_sign = '+' if ytd >= 0 else ''
+            ytd_c = pos_c if ytd >= 0 else neg_c
             rev_dot  = ''
             if rev == 'buy':
                 rev_dot = "<span style='color:" + pos_c + ";font-size:8px;margin-left:2px'>&#9679;</span>"
@@ -757,6 +785,10 @@ def _render_breakout_tables(breakout_data):
                 "color:" + color + ";font-size:10px;font-weight:700;font-variant-numeric:tabular-nums'>"
                 + pct_str + "</span>"
                 "</div>"
+                "<div style='flex-shrink:0;width:42px;text-align:right'>"
+                "<span style='color:" + ytd_c + ";font-size:9px;font-weight:600;font-variant-numeric:tabular-nums'>"
+                + ytd_sign + f"{ytd:.1f}%" +
+                "</span></div>"
                 "</div>"
             )
         return html
@@ -783,14 +815,16 @@ def _render_breakout_tables(breakout_data):
             "<div>"
             "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
             "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
-            "<span style='color:" + pos_c + ";font-size:11px'>&#9650;</span> ABOVE HIGH</div>"
+            "<span style='color:" + pos_c + ";font-size:11px'>&#9650;</span> ABOVE HIGH"
+            "<span style='margin-left:auto;color:" + muted + ";font-size:8px;font-weight:500'>YTD</span></div>"
             + above_html +
             "</div>"
             # Below col
             "<div>"
             "<div style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.1em;"
             "margin-bottom:4px;display:flex;align-items:center;gap:4px'>"
-            "<span style='color:" + neg_c + ";font-size:11px'>&#9660;</span> BELOW LOW</div>"
+            "<span style='color:" + neg_c + ";font-size:11px'>&#9660;</span> BELOW LOW"
+            "<span style='margin-left:auto;color:" + muted + ";font-size:8px;font-weight:500'>YTD</span></div>"
             + below_html +
             "</div>"
             "</div>"
@@ -830,17 +864,15 @@ def render_pulse_tab(is_mobile):
 
     if is_mobile:
         _render_movers(data)
-        _render_breakout_tables(breakout_data)
+        _render_breakout_tables(breakout_data, pulse_data=data)
         _render_pulse_news(iframe_height=400)
         _render_heatmap_grid(data)
     else:
-        # Left column: movers + week breakouts + month breakouts (3 stacked tables)
-        # Right column: news stretching full height of left column
         col_left, col_right = st.columns([55, 45])
 
         with col_left:
             movers_height = _render_movers(data)
-            bo_height = _render_breakout_tables(breakout_data)
+            bo_height = _render_breakout_tables(breakout_data, pulse_data=data)
 
         with col_right:
             news_height = movers_height + 8 + bo_height

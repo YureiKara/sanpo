@@ -97,7 +97,7 @@ def main():
     # Init session state
     if 'sector' not in st.session_state: st.session_state.sector = 'Futures'
     if 'symbol' not in st.session_state: st.session_state.symbol = 'ES=F'
-    if 'chart_type' not in st.session_state: st.session_state.chart_type = 'line'
+    if 'chart_type' not in st.session_state: st.session_state.chart_type = 'bars'
 
     st.session_state.theme = 'Dark'
 
