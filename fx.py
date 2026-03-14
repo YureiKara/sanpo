@@ -22,24 +22,10 @@ def get_theme():
 
 
 FX_PAIRS = {
-    'Americas': [
-        ('USDCAD=X', 'USD/CAD'),
-        ('USDMXN=X', 'USD/MXN'),
-        ('USDBRL=X', 'USD/BRL'),
-    ],
-    'Europe': [
-        ('EURUSD=X', 'EUR/USD'),
-        ('GBPUSD=X', 'GBP/USD'),
-        ('USDCHF=X', 'USD/CHF'),
-        ('USDSEK=X', 'USD/SEK'),
-        ('USDNOK=X', 'USD/NOK'),
-        ('USDPLN=X', 'USD/PLN'),
-        ('USDTRY=X', 'USD/TRY'),
-    ],
     'Asia': [
         ('USDJPY=X', 'USD/JPY'),
-        ('AUDUSD=X', 'AUD/USD'),
-        ('NZDUSD=X', 'NZD/USD'),
+        ('USDAUD=X', 'USD/AUD'),
+        ('USDNZD=X', 'USD/NZD'),
         ('USDSGD=X', 'USD/SGD'),
         ('USDHKD=X', 'USD/HKD'),
         ('USDCNY=X', 'USD/CNY'),
@@ -47,8 +33,22 @@ FX_PAIRS = {
         ('USDINR=X', 'USD/INR'),
         ('USDKRW=X', 'USD/KRW'),
     ],
+    'Europe': [
+        ('USDEUR=X', 'USD/EUR'),
+        ('USDGBP=X', 'USD/GBP'),
+        ('USDCHF=X', 'USD/CHF'),
+        ('USDSEK=X', 'USD/SEK'),
+        ('USDNOK=X', 'USD/NOK'),
+        ('USDPLN=X', 'USD/PLN'),
+        ('USDTRY=X', 'USD/TRY'),
+    ],
     'Africa / ME': [
         ('USDZAR=X', 'USD/ZAR'),
+    ],
+    'Americas': [
+        ('USDCAD=X', 'USD/CAD'),
+        ('USDMXN=X', 'USD/MXN'),
+        ('USDBRL=X', 'USD/BRL'),
     ],
 }
 

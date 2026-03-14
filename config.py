@@ -12,15 +12,15 @@ FUTURES_GROUPS = OrderedDict([
     ('Indices',   ['ES=F', 'NQ=F', 'YM=F', 'RTY=F', 'NKD=F']),
     ('Rates',     ['ZB=F', 'ZN=F', 'ZF=F', 'ZT=F']),
     ('FX', [
-        # Americas
-        'USDCAD=X', 'USDMXN=X', 'USDBRL=X',
-        # Europe
-        'EURUSD=X', 'GBPUSD=X', 'USDCHF=X', 'USDSEK=X', 'USDNOK=X', 'USDPLN=X', 'USDTRY=X',
         # Asia
-        'USDJPY=X', 'AUDUSD=X', 'NZDUSD=X', 'USDSGD=X', 'USDHKD=X',
+        'USDJPY=X', 'USDAUD=X', 'USDNZD=X', 'USDSGD=X', 'USDHKD=X',
         'USDCNY=X', 'USDMYR=X', 'USDINR=X', 'USDKRW=X',
+        # Europe
+        'USDEUR=X', 'USDGBP=X', 'USDCHF=X', 'USDSEK=X', 'USDNOK=X', 'USDPLN=X', 'USDTRY=X',
         # Africa/ME
         'USDZAR=X',
+        # Americas
+        'USDCAD=X', 'USDMXN=X', 'USDBRL=X',
     ]),
     ('Crypto',    ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD']),
     ('Energy',    ['CL=F', 'NG=F', 'RB=F', 'HO=F']),
@@ -66,8 +66,9 @@ SYMBOL_NAMES = {
     'BTC=F': 'Bitcoin Futures', 'ETH=F': 'Ethereum Futures',
     '6E=F': 'Euro FX', '6J=F': 'Japanese Yen', '6B=F': 'British Pound', '6A=F': 'Australian Dollar',
     'USDSGD=X': 'USD/SGD',
-    'EURUSD=X': 'EUR/USD', 'GBPUSD=X': 'GBP/USD', 'USDJPY=X': 'USD/JPY',
-    'AUDUSD=X': 'AUD/USD', 'NZDUSD=X': 'NZD/USD', 'USDCAD=X': 'USD/CAD',
+    'USDEUR=X': 'USD/EUR', 'USDGBP=X': 'USD/GBP', 'USDJPY=X': 'USD/JPY',
+    'USDAUD=X': 'USD/AUD', 'USDNZD=X': 'USD/NZD', 'USDCAD=X': 'USD/CAD',
+    'EURUSD=X': 'EUR/USD', 'GBPUSD=X': 'GBP/USD', 'AUDUSD=X': 'AUD/USD', 'NZDUSD=X': 'NZD/USD',
     'USDCHF=X': 'USD/CHF', 'USDSEK=X': 'USD/SEK', 'USDNOK=X': 'USD/NOK',
     'USDHKD=X': 'USD/HKD', 'USDCNY=X': 'USD/CNY', 'USDINR=X': 'USD/INR',
     'USDMYR=X': 'USD/MYR', 'USDKRW=X': 'USD/KRW', 'USDMXN=X': 'USD/MXN',
