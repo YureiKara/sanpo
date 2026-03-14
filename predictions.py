@@ -60,12 +60,18 @@ def fetch_markets(category='All', limit=30):
 
         results = []
         for ev in events:
-            # Each event can have multiple markets
-            markets = ev.get('markets', [])
+            markets  = ev.get('markets', [])
             question = ev.get('title', ev.get('question', ''))
-            slug = ev.get('slug', ev.get('id', ''))
-            vol = float(ev.get('volume', 0) or 0)
-            vol24 = float(ev.get('volume24hr', 0) or 0)
+            slug     = ev.get('slug', ev.get('id', ''))
+            vol      = float(ev.get('volume', 0) or 0)
+            vol24    = float(ev.get('volume24hr', 0) or 0)
+            vol1wk   = float(ev.get('volume1wk', 0) or 0)
+            liq      = float(ev.get('liquidity', 0) or 0)
+            oi = float(ev.get('openInterest', 0) or 0)
+            if oi == 0 and markets:
+                oi = sum(float(m.get('openInterest', 0) or 0) for m in markets)
+            cat      = ev.get('category', '') or ev.get('subcategory', '') or ''
+            subtitle = ev.get('subtitle', '') or ''
 
             end_date = ev.get('endDate', ev.get('end_date_iso', ''))
             expiry_str = ''
@@ -76,51 +82,51 @@ def fetch_markets(category='All', limit=30):
                 except Exception:
                     expiry_str = str(end_date)[:10]
 
-            # Build outcomes from markets
             outcome_list = []
-            for m in markets:
+            is_multi = len(markets) > 1
+
+            if is_multi:
+                # Multi-outcome event: each market = one outcome
+                # Use market question as label, Yes price as probability
+                for m in markets:
+                    mq = m.get('question', m.get('groupItemTitle', ''))
+                    prices = m.get('outcomePrices', '[]')
+                    if isinstance(prices, str):
+                        try: prices = _json.loads(prices)
+                        except: prices = []
+                    outcomes = m.get('outcomes', '[]')
+                    if isinstance(outcomes, str):
+                        try: outcomes = _json.loads(outcomes)
+                        except: outcomes = []
+                    # Yes price is first outcome price
+                    yes_price = None
+                    for o, p in zip(outcomes, prices):
+                        if str(o).lower() == 'yes':
+                            try: yes_price = round(float(p) * 100, 1)
+                            except: pass
+                            break
+                    if yes_price is None and prices:
+                        try: yes_price = round(float(prices[0]) * 100, 1)
+                        except: pass
+                    if mq:
+                        outcome_list.append({'label': mq, 'pct': yes_price})
+            else:
+                # Binary event: single market with Yes/No
+                m = markets[0] if markets else {}
                 outcomes = m.get('outcomes', '[]')
                 prices   = m.get('outcomePrices', '[]')
                 if isinstance(outcomes, str):
-                    try:
-                        outcomes = _json.loads(outcomes)
-                        prices   = _json.loads(prices)
-                    except Exception:
-                        outcomes = []
-                        prices   = []
+                    try: outcomes = _json.loads(outcomes)
+                    except: outcomes = []
+                if isinstance(prices, str):
+                    try: prices = _json.loads(prices)
+                    except: prices = []
                 for o, p in zip(outcomes, prices):
-                    try:
-                        pct = round(float(p) * 100, 1)
-                    except Exception:
-                        pct = None
-                    outcome_list.append({'label': o, 'pct': pct})
+                    try: pct = round(float(p) * 100, 1)
+                    except: pct = None
+                    outcome_list.append({'label': str(o), 'pct': pct})
 
-            # If single binary market, just show Yes/No
-            if not outcome_list and markets:
-                m = markets[0]
-                outcomes = m.get('outcomes', '[]')
-                prices   = m.get('outcomePrices', '[]')
-                if isinstance(outcomes, str):
-                    try:
-                        outcomes = _json.loads(outcomes)
-                        prices   = _json.loads(prices)
-                    except Exception:
-                        outcomes = []
-                        prices   = []
-                for o, p in zip(outcomes, prices):
-                    try:
-                        pct = round(float(p) * 100, 1)
-                    except Exception:
-                        pct = None
-                    outcome_list.append({'label': o, 'pct': pct})
-
-            outcome_list.sort(key=lambda x: x['pct'] or 0, reverse=True)
-
-            liq      = float(ev.get('liquidity', 0) or 0)
-            oi       = float(ev.get('openInterest', 0) or 0)
-            vol1wk   = float(ev.get('volume1wk', 0) or 0)
-            cat      = ev.get('category', '') or ev.get('subcategory', '') or ''
-            subtitle = ev.get('subtitle', '') or ''
+            outcome_list.sort(key=lambda x: x.get('pct') or 0, reverse=True)
 
             results.append({
                 'question': question,
