@@ -254,7 +254,7 @@ def render_worldindices_tab(is_mobile):
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
 
-    col_ts, col_sort = st.columns([3, 1])
+    col_ts, col_sort = st.columns([4, 1])
     with col_ts:
         st.markdown(
             f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
@@ -262,9 +262,15 @@ def render_worldindices_tab(is_mobile):
             unsafe_allow_html=True
         )
     with col_sort:
-        sort_key = st.radio(
-            'Sort by', ['Day %', 'YTD %'],
-            horizontal=True, key='world_sort'
+        st.markdown(
+            f"<div style='font-size:10px;font-weight:600;color:#e2e8f0;"
+            f"font-family:{FONTS};text-transform:uppercase;"
+            f"letter-spacing:0.08em;padding:2px 0'>SORT BY</div>",
+            unsafe_allow_html=True
+        )
+        sort_key = st.selectbox(
+            'sort_world', ['Day %', 'YTD %'],
+            key='world_sort', label_visibility='collapsed'
         )
 
     with st.spinner('Loading world indices...'):
