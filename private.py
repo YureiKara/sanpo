@@ -136,18 +136,28 @@ PRIVATE_COMPANIES = [
 
 @st.cache_data(ttl=600, max_entries=3, show_spinner=False)
 def fetch_prices():
+    import time
     results = {}
-    for row in PRIVATE_COMPANIES:
-        ticker = row[0]
-        try:
-            fi = yf.Ticker(ticker).fast_info
-            last_price  = fi.get('lastPrice')
-            year_change = fi.get('yearChange')
-            ytd_chg = (year_change * 100) if year_change is not None else None
-            results[ticker] = {'price': last_price, 'ytd': ytd_chg}
-        except Exception as e:
-            logger.warning(f"Error {ticker}: {e}")
-            results[ticker] = {'price': None, 'ytd': None}
+    tickers = [row[0] for row in PRIVATE_COMPANIES]
+    
+    # Batch in groups of 10 to avoid rate limiting
+    batch_size = 10
+    for i in range(0, len(tickers), batch_size):
+        batch = tickers[i:i + batch_size]
+        for ticker in batch:
+            try:
+                fi = yf.Ticker(ticker).fast_info
+                last_price  = fi.get('lastPrice')
+                year_change = fi.get('yearChange')
+                ytd_chg = (year_change * 100) if year_change is not None else None
+                results[ticker] = {'price': last_price, 'ytd': ytd_chg}
+            except Exception as e:
+                logger.warning(f"Error {ticker}: {e}")
+                results[ticker] = {'price': None, 'ytd': None}
+        # Small delay between batches to avoid rate limiting
+        if i + batch_size < len(tickers):
+            time.sleep(0.5)
+    
     return results
 
 
