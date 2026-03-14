@@ -1,12 +1,11 @@
 """
 SANPO — World Indices tab
-Two panels: Left = Day Change%, Right = YTD%
-Regions: Asia, Europe, Americas
+Single panel, bar format like PULSE gainers/losers
+Regions: Asia, Europe, Americas with white headers and separator lines
 """
 
 import streamlit as st
 import yfinance as yf
-import pandas as pd
 from datetime import datetime
 import pytz
 import logging
@@ -102,53 +101,94 @@ def _fmt(val):
     return f"{sign}{val:.2f}%", color
 
 
-def _build_panel(data, label, key):
+def _build_panel(data):
     t = get_theme()
     bg2 = t.get('bg2', '#0a0f1a')
     bg3 = t.get('bg3', '#0f172a')
     bdr = t.get('border', '#1e293b')
     mut = t.get('muted', '#475569')
     acc = t.get('accent', '#4ade80')
+    pos_c = t.get('pos', '#4ade80')
+    neg_c = t.get('neg', '#f59e0b')
 
-    region_icons = {'Asia': '🌏', 'Europe': '🌍', 'Americas': '🌎'}
+    # Find max abs day change for bar scaling
+    all_days = [abs(data.get(sym, {}).get('day') or 0)
+                for region in WORLD_INDICES.values()
+                for sym, _ in region]
+    max_day = max(all_days) if all_days else 1.0
+    max_day = max(max_day, 0.01)
 
+    # Column headers
     html = f"""<div style='font-family:{FONTS}'>
-        <div style='font-size:9px;font-weight:700;letter-spacing:0.14em;
-                    text-transform:uppercase;color:{acc};
-                    padding:6px 10px 8px 10px'>{label}</div>"""
+        <div style='display:flex;align-items:center;padding:6px 12px 8px 12px;
+                    border-bottom:1px solid {bdr}'>
+            <div style='width:140px;font-size:8.5px;font-weight:700;
+                        letter-spacing:0.1em;text-transform:uppercase;color:{mut}'>Index</div>
+            <div style='flex:1'></div>
+            <div style='width:56px;font-size:8.5px;font-weight:700;
+                        letter-spacing:0.1em;text-transform:uppercase;
+                        color:{mut};text-align:right'>Day</div>
+            <div style='width:64px;font-size:8.5px;font-weight:700;
+                        letter-spacing:0.1em;text-transform:uppercase;
+                        color:{mut};text-align:right'>YTD</div>
+        </div>"""
 
+    first_region = True
     for region, indices in WORLD_INDICES.items():
-        icon = region_icons.get(region, '')
-        html += f"""<div style='font-size:8.5px;font-weight:700;letter-spacing:0.12em;
-                    text-transform:uppercase;color:{mut};
-                    padding:5px 10px 4px 10px;border-top:1px solid {bdr};
-                    display:flex;align-items:center;gap:5px'>
-                    <span>{icon}</span><span>{region}</span></div>"""
+        # Region separator + header
+        sep = '' if first_region else f"border-top:2px solid {bdr};"
+        first_region = False
+        html += f"""
+        <div style='display:flex;align-items:center;padding:7px 12px 5px 12px;{sep}'>
+            <div style='font-size:9px;font-weight:700;letter-spacing:0.12em;
+                        text-transform:uppercase;color:#f8fafc'>{region}</div>
+            <div style='flex:1;height:1px;background:{bdr};margin-left:10px'></div>
+        </div>"""
 
         for i, (ticker, name) in enumerate(indices):
             d = data.get(ticker, {})
-            val = d.get(key)
-            fmt_val, color = _fmt(val)
+            day = d.get('day')
+            ytd = d.get('ytd')
             price = d.get('price')
+
+            day_str, day_c = _fmt(day)
+            ytd_str, ytd_c = _fmt(ytd)
             price_str = f"{price:,.2f}" if price else '—'
+
+            # Bar width (max 55% of flex area)
+            bar_pct = (abs(day) / max_day * 55) if day is not None else 0
+            bar_color = pos_c if (day or 0) >= 0 else neg_c
             row_bg = bg2 if i % 2 == 0 else bg3
 
-            html += f"""<div style='display:flex;align-items:center;
-                        background:{row_bg};padding:6px 10px;
-                        border-bottom:1px solid {bdr}18'>
-                <div style='flex:1;font-size:11px;font-weight:600;color:#f8fafc'>{name}</div>
-                <div style='font-size:10.5px;font-weight:500;color:#ffffff;
-                            margin-right:16px;font-variant-numeric:tabular-nums'>{price_str}</div>
-                <div style='font-size:11px;font-weight:700;color:{color};
-                            min-width:64px;text-align:right;
-                            font-variant-numeric:tabular-nums'>{fmt_val}</div>
+            html += f"""
+            <div style='display:flex;align-items:center;
+                        background:{row_bg};padding:5px 12px;
+                        border-bottom:1px solid {bdr}10'>
+                <div style='width:140px;font-size:11px;font-weight:600;
+                            color:#f8fafc;white-space:nowrap'>{name}</div>
+                <div style='flex:1;position:relative;height:18px;
+                            display:flex;align-items:center'>
+                    <div style='position:absolute;left:0;top:50%;transform:translateY(-50%);
+                                height:10px;width:{bar_pct:.1f}%;
+                                background:{bar_color}22;
+                                border-radius:2px;
+                                border-left:2px solid {bar_color}'></div>
+                    <span style='position:absolute;right:4px;font-size:9px;
+                                 color:#ffffff66;font-variant-numeric:tabular-nums'>{price_str}</span>
+                </div>
+                <div style='width:56px;font-size:11px;font-weight:700;
+                            color:{day_c};text-align:right;
+                            font-variant-numeric:tabular-nums'>{day_str}</div>
+                <div style='width:64px;font-size:11px;font-weight:700;
+                            color:{ytd_c};text-align:right;
+                            font-variant-numeric:tabular-nums'>{ytd_str}</div>
             </div>"""
 
     html += "</div>"
     return html
 
 
-def _wrap_panel(body, height):
+def _wrap(body, height):
     t = get_theme()
     bg2 = t.get('bg2', '#0a0f1a')
     bdr = t.get('border', '#1e293b')
@@ -170,8 +210,10 @@ def _wrap_panel(body, height):
 def render_worldindices_tab(is_mobile):
     t = get_theme()
     mut = t.get('muted', '#475569')
+    bdr = t.get('border', '#1e293b')
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
+
     st.markdown(
         f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
         f"padding:0 0 8px 0'>Updated: {now_str}</div>",
@@ -181,13 +223,6 @@ def render_worldindices_tab(is_mobile):
     with st.spinner('Loading world indices...'):
         data = fetch_world_indices()
 
-    col_left, col_right = st.columns(2)
-    height = 660
-
-    with col_left:
-        body = _build_panel(data, 'Day Change %', 'day')
-        st_html(_wrap_panel(body, height), height=height)
-
-    with col_right:
-        body = _build_panel(data, 'Year to Date %', 'ytd')
-        st_html(_wrap_panel(body, height), height=height)
+    height = 720
+    body = _build_panel(data)
+    st_html(_wrap(body, height), height=height)
