@@ -221,7 +221,6 @@ def _build_table(markets, theme):
             <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>24H</div>
             <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>7D</div>
             <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>LIQUIDITY</div>
-            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>OPEN INT</div>
             <div style='width:80px;flex-shrink:0;{HDR};text-align:center'>EXPIRY</div>
         </div>"""
 
@@ -243,10 +242,10 @@ def _build_table(markets, theme):
                 pct_str = f"{o['pct']:.0f}%" if o['pct'] is not None else '—'
                 outcomes_html += (
                     f"<div style='display:flex;align-items:center;gap:6px;height:18px'>"
-                    f"<span style='font-size:10px;font-weight:600;color:#f8fafc;"
-                    f"flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>{o['label']}</span>"
                     f"<span style='font-size:10px;font-weight:700;color:{color};"
-                    f"flex-shrink:0;min-width:32px;text-align:right'>{pct_str}</span>"
+                    f"flex-shrink:0;min-width:36px'>{pct_str}</span>"
+                    f"<span style='font-size:10px;color:#94a3b8;"
+                    f"overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>{o['label']}</span>"
                     f"</div>"
                 )
             else:
@@ -281,8 +280,6 @@ def _build_table(markets, theme):
                         color:{txt2};text-align:right'>{vol1wk_str}</div>
             <div style='width:70px;flex-shrink:0;font-size:10px;
                         color:{blue};text-align:right'>{liq_str}</div>
-            <div style='width:65px;flex-shrink:0;font-size:10px;
-                        color:{purp};text-align:right'>{oi_str}</div>
             <div style='width:80px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:center'>{m['expiry']}</div>
         </div>
