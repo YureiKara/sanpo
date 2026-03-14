@@ -1,7 +1,7 @@
 """
 SANPO — World Indices tab
-Single panel, two bar columns (DAY% and YTD%)
-Bars match PULSE style exactly: positive=left, negative=right, gradient
+Centre-axis bars: positive=right, negative=left
+Blue region separators, sorted within region by day%
 """
 
 import streamlit as st
@@ -92,26 +92,41 @@ def fetch_world_indices():
     return results
 
 
-def _bar_html(val, max_abs, pos_c, neg_c, bar_bg):
-    """Render a single bar matching PULSE style."""
+def _centre_bar(val, max_abs, pos_c, neg_c, bar_bg):
+    """Centre-axis bar: positive grows right, negative grows left."""
     if val is None or max_abs == 0:
-        return f"<div style='flex:1;height:18px;background:{bar_bg};border-radius:2px'></div>"
-    
+        return (
+            f"<div style='flex:1;display:flex;align-items:center;position:relative;"
+            f"height:18px;background:{bar_bg};border-radius:2px'>"
+            f"<div style='position:absolute;left:50%;top:0;width:1px;height:100%;background:#334155'></div>"
+            f"</div>"
+        )
+
     is_pos = val >= 0
     color = pos_c if is_pos else neg_c
-    align = 'left' if is_pos else 'right'
-    grad_dir = '90deg' if is_pos else '270deg'
-    bar_pct = max(abs(val) / max_abs * 85, 6)
+    pct = min(abs(val) / max_abs * 48, 48)  # max 48% each side from centre
     sign = '+' if is_pos else ''
+
+    if is_pos:
+        bar_style = f"left:50%;width:{pct:.1f}%;background:linear-gradient(90deg,{color}40,{color}70)"
+        label_side = f"left:{50 + pct + 1:.1f}%"
+        # if bar too small put label inside
+        if pct < 10:
+            label_side = f"left:{50 + pct + 0.5:.1f}%"
+    else:
+        bar_style = f"right:50%;width:{pct:.1f}%;background:linear-gradient(270deg,{color}40,{color}70)"
+        label_side = f"right:{50 + pct + 1:.1f}%"
+        if pct < 10:
+            label_side = f"right:{50 + pct + 0.5:.1f}%"
 
     return (
         f"<div style='flex:1;position:relative;height:18px;"
         f"background:{bar_bg};border-radius:2px;overflow:hidden'>"
-        f"<div style='position:absolute;top:0;{align}:0;height:100%;width:{bar_pct:.1f}%;"
-        f"background:linear-gradient({grad_dir},{color}20,{color}60);border-radius:2px'></div>"
-        f"<span style='position:absolute;top:50%;transform:translateY(-50%);{align}:6px;"
-        f"color:{color};font-size:10px;font-weight:700;font-variant-numeric:tabular-nums'>"
-        f"{sign}{val:.2f}%</span>"
+        f"<div style='position:absolute;top:0;{bar_style};height:100%;border-radius:2px'></div>"
+        f"<div style='position:absolute;left:50%;top:0;width:1px;height:100%;background:#334155;z-index:2'></div>"
+        f"<span style='position:absolute;top:50%;transform:translateY(-50%);{label_side};"
+        f"color:{color};font-size:9.5px;font-weight:700;white-space:nowrap;"
+        f"font-variant-numeric:tabular-nums;z-index:3'>{sign}{val:.2f}%</span>"
         f"</div>"
     )
 
@@ -125,8 +140,9 @@ def _build_panel(data):
     pos_c = t.get('pos', '#4ade80')
     neg_c = t.get('neg', '#f59e0b')
     bar_bg = bg3
+    blue = '#3b82f6'
 
-    # Global max for day and ytd separately for scaling
+    # Global max for day and ytd scaling
     all_day = [abs(data.get(sym, {}).get('day') or 0)
                for region in WORLD_INDICES.values() for sym, _ in region]
     all_ytd = [abs(data.get(sym, {}).get('ytd') or 0)
@@ -136,18 +152,17 @@ def _build_panel(data):
 
     # Header
     html = f"""<div style='font-family:{FONTS}'>
-        <div style='display:flex;align-items:center;padding:6px 12px;
+        <div style='display:flex;align-items:center;padding:6px 12px 5px 12px;
                     border-bottom:1px solid {bdr};gap:8px'>
             <div style='width:130px;font-size:8px;font-weight:700;
-                        letter-spacing:0.1em;text-transform:uppercase;
-                        color:#f8fafc'>INDEX</div>
-            <div style='width:70px;font-size:8px;font-weight:700;
+                        letter-spacing:0.1em;text-transform:uppercase;color:#f8fafc'>INDEX</div>
+            <div style='width:76px;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
                         color:#f8fafc;text-align:right;flex-shrink:0'>PRICE</div>
             <div style='flex:1;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
                         color:#f8fafc;text-align:center'>DAY %</div>
-            <div style='width:8px;flex-shrink:0'></div>
+            <div style='width:10px;flex-shrink:0'></div>
             <div style='flex:1;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
                         color:#f8fafc;text-align:center'>YTD %</div>
@@ -155,32 +170,34 @@ def _build_panel(data):
 
     first = True
     for region, indices in WORLD_INDICES.items():
-        # Region separator — colored line based on avg day performance
-        region_days = [data.get(sym, {}).get('day') or 0 for sym, _ in indices]
-        avg_day = sum(region_days) / len(region_days) if region_days else 0
-        sep_color = pos_c if avg_day >= 0 else neg_c
-
+        # Blue separator between regions
         if not first:
-            html += f"<div style='height:2px;background:linear-gradient(90deg,{sep_color}00,{sep_color}80,{sep_color}00);margin:2px 0'></div>"
+            html += f"<div style='height:2px;background:linear-gradient(90deg,{blue}00,{blue}90,{blue}00);margin:2px 0'></div>"
         first = False
 
         # Region header
         html += f"""
-        <div style='display:flex;align-items:center;gap:8px;
-                    padding:5px 12px 3px 12px'>
+        <div style='display:flex;align-items:center;gap:8px;padding:5px 12px 3px 12px'>
             <div style='font-size:9px;font-weight:700;letter-spacing:0.12em;
                         text-transform:uppercase;color:#f8fafc'>{region}</div>
             <div style='flex:1;height:1px;background:{bdr}'></div>
         </div>"""
 
-        for i, (ticker, name) in enumerate(indices):
+        # Sort within region by day% descending
+        sorted_indices = sorted(
+            indices,
+            key=lambda x: data.get(x[0], {}).get('day') or -999,
+            reverse=True
+        )
+
+        for i, (ticker, name) in enumerate(sorted_indices):
             d = data.get(ticker, {})
             price = d.get('price')
             price_str = f"{price:,.2f}" if price else '—'
             row_bg = bg2 if i % 2 == 0 else bg3
 
-            day_bar = _bar_html(d.get('day'), max_day, pos_c, neg_c, bar_bg)
-            ytd_bar = _bar_html(d.get('ytd'), max_ytd, pos_c, neg_c, bar_bg)
+            day_bar = _centre_bar(d.get('day'), max_day, pos_c, neg_c, bar_bg)
+            ytd_bar = _centre_bar(d.get('ytd'), max_ytd, pos_c, neg_c, bar_bg)
 
             html += f"""
             <div style='display:flex;align-items:center;background:{row_bg};
@@ -188,11 +205,11 @@ def _build_panel(data):
                 <div style='width:130px;font-size:11px;font-weight:600;
                             color:#f8fafc;flex-shrink:0;white-space:nowrap;
                             overflow:hidden;text-overflow:ellipsis'>{name}</div>
-                <div style='width:70px;font-size:10px;font-weight:500;
+                <div style='width:76px;font-size:10px;font-weight:500;
                             color:#ffffff;flex-shrink:0;text-align:right;
                             font-variant-numeric:tabular-nums'>{price_str}</div>
                 {day_bar}
-                <div style='width:8px;flex-shrink:0'></div>
+                <div style='width:10px;flex-shrink:0'></div>
                 {ytd_bar}
             </div>"""
 
