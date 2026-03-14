@@ -5,7 +5,6 @@ Polymarket Gamma API - /events endpoint with tag_id filtering
 
 import streamlit as st
 import requests
-import re
 from datetime import datetime
 import pytz
 import logging
@@ -138,8 +137,7 @@ def fetch_markets(category='All', limit=30):
                         try: yes_price = round(float(prices[0]) * 100, 1)
                         except: pass
                     if mq:
-                        label = _strip_question_prefix(mq, question)
-                        outcome_list.append({'label': label, 'pct': yes_price})
+                        outcome_list.append({'label': mq, 'pct': yes_price})
             else:
                 # Binary: show Yes/No
                 m = markets[0] if markets else {}
@@ -235,17 +233,16 @@ def _build_table(markets, theme):
 
         # Build outcomes rows — each on own line, consistent 3 lines
         outcomes_html = ''
-        padded = (m['outcomes'] + [None, None, None])[:3]
+        padded = [o for o in m['outcomes'][:3] if o]
         for o in padded:
             if o:
                 color = _pct_color(o['pct'], pos_c, neg_c, mut)
                 pct_str = f"{o['pct']:.0f}%" if o['pct'] is not None else '—'
                 outcomes_html += (
-                    f"<div style='display:flex;align-items:center;gap:6px;height:18px'>"
+                    f"<div style='display:flex;align-items:baseline;gap:8px;padding:2px 0'>"
                     f"<span style='font-size:10px;font-weight:700;color:{color};"
-                    f"flex-shrink:0;min-width:36px'>{pct_str}</span>"
-                    f"<span style='font-size:10px;color:#94a3b8;"
-                    f"overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>{o['label']}</span>"
+                    f"flex-shrink:0;min-width:38px'>{pct_str}</span>"
+                    f"<span style='font-size:10px;color:#e2e8f0;line-height:1.3'>{o['label']}</span>"
                     f"</div>"
                 )
             else:
