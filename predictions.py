@@ -116,11 +116,22 @@ def fetch_markets(category='All', limit=30):
 
             outcome_list.sort(key=lambda x: x['pct'] or 0, reverse=True)
 
+            liq      = float(ev.get('liquidity', 0) or 0)
+            oi       = float(ev.get('openInterest', 0) or 0)
+            vol1wk   = float(ev.get('volume1wk', 0) or 0)
+            cat      = ev.get('category', '') or ev.get('subcategory', '') or ''
+            subtitle = ev.get('subtitle', '') or ''
+
             results.append({
                 'question': question,
+                'subtitle': subtitle,
                 'outcomes': outcome_list[:4],
                 'volume': vol,
                 'volume24': vol24,
+                'vol1wk': vol1wk,
+                'liquidity': liq,
+                'open_interest': oi,
+                'category': cat,
                 'expiry': expiry_str,
                 'url': f"https://polymarket.com/event/{slug}",
             })
@@ -175,6 +186,9 @@ def _build_table(markets, theme):
             <div style='flex:3;{HDR}'>TOP OUTCOMES</div>
             <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>VOLUME</div>
             <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>24H VOL</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>7D VOL</div>
+            <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>LIQUIDITY</div>
+            <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>OPEN INT</div>
             <div style='width:80px;flex-shrink:0;{HDR};text-align:center'>EXPIRY</div>
         </div>"""
 
@@ -198,18 +212,31 @@ def _build_table(markets, theme):
                 f"</span>"
             )
 
+        vol1wk_str = _fmt_vol(m.get('vol1wk', 0))
+        liq_str    = _fmt_vol(m.get('liquidity', 0))
+        oi_str     = _fmt_vol(m.get('open_interest', 0))
+
         html += f"""
         <a href='{m["url"]}' target='_blank' style='text-decoration:none;display:block'>
         <div style='display:flex;align-items:center;background:{row_bg};
                     padding:7px 12px;border-bottom:1px solid {bdr}12;gap:8px;
                     transition:background 0.1s'>
-            <div style='flex:2;font-size:11px;font-weight:600;color:#f8fafc;
-                        line-height:1.3'>{m['question']}</div>
+            <div style='flex:2;min-width:0'>
+                <div style='font-size:11px;font-weight:600;color:#f8fafc;line-height:1.3'>{m['question']}</div>
+                {f"<div style='font-size:9px;color:{txt2};margin-top:2px;line-height:1.3'>{m['subtitle']}</div>" if m.get('subtitle') else ''}
+                {f"<div style='display:inline-block;font-size:8px;font-weight:600;color:{blue};background:{blue}18;border-radius:2px;padding:1px 5px;margin-top:2px'>{m['category'].upper()}</div>" if m.get('category') else ''}
+            </div>
             <div style='flex:3;display:flex;flex-wrap:wrap;gap:2px;align-items:center'>{chips}</div>
             <div style='width:70px;flex-shrink:0;font-size:10px;font-weight:600;
                         color:{acc};text-align:right'>{vol_str}</div>
             <div style='width:65px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:right'>{vol24_str}</div>
+            <div style='width:65px;flex-shrink:0;font-size:10px;
+                        color:{txt2};text-align:right'>{vol1wk_str}</div>
+            <div style='width:70px;flex-shrink:0;font-size:10px;
+                        color:#60a5fa;text-align:right'>{liq_str}</div>
+            <div style='width:70px;flex-shrink:0;font-size:10px;
+                        color:#c084fc;text-align:right'>{oi_str}</div>
             <div style='width:80px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:center'>{m['expiry']}</div>
         </div>
