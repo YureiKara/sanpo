@@ -1,6 +1,7 @@
 """
 SANPO — World Indices tab
-Single panel, bar format matching PULSE gainers/losers style
+Single panel, two bar columns (DAY% and YTD%)
+Bars match PULSE style exactly: positive=left, negative=right, gradient
 """
 
 import streamlit as st
@@ -91,44 +92,28 @@ def fetch_world_indices():
     return results
 
 
-def _fmt(val):
-    if val is None:
-        return '—', '#475569'
-    sign = '+' if val >= 0 else ''
-    color = '#4ade80' if val >= 0 else '#f59e0b'
-    return f"{sign}{val:.2f}%", color
+def _bar_html(val, max_abs, pos_c, neg_c, bar_bg):
+    """Render a single bar matching PULSE style."""
+    if val is None or max_abs == 0:
+        return f"<div style='flex:1;height:18px;background:{bar_bg};border-radius:2px'></div>"
+    
+    is_pos = val >= 0
+    color = pos_c if is_pos else neg_c
+    align = 'left' if is_pos else 'right'
+    grad_dir = '90deg' if is_pos else '270deg'
+    bar_pct = max(abs(val) / max_abs * 85, 6)
+    sign = '+' if is_pos else ''
 
-
-def _bar_row(name, price_str, day, ytd, max_abs, pos_c, neg_c, bg, bdr):
-    day_str, day_c = _fmt(day)
-    ytd_str, ytd_c = _fmt(ytd)
-    bar_pct = (abs(day) / max_abs * 100) if day is not None and max_abs > 0 else 0
-    bar_pct = min(bar_pct, 100)
-    bar_color = pos_c if (day or 0) >= 0 else neg_c
-
-    return f"""
-    <div style='display:flex;align-items:center;background:{bg};
-                padding:0 12px;height:28px;border-bottom:1px solid {bdr}15;gap:10px'>
-        <div style='width:130px;font-size:11px;font-weight:600;
-                    color:#f8fafc;flex-shrink:0;white-space:nowrap;
-                    overflow:hidden;text-overflow:ellipsis'>{name}</div>
-        <div style='width:72px;font-size:10px;font-weight:500;
-                    color:#ffffff;flex-shrink:0;text-align:right;
-                    font-variant-numeric:tabular-nums'>{price_str}</div>
-        <div style='flex:1;position:relative;height:16px;border-radius:2px;
-                    background:{bar_color}18'>
-            <div style='position:absolute;left:0;top:0;height:100%;
-                        width:{bar_pct:.1f}%;background:{bar_color}55;
-                        border-radius:2px'></div>
-            <span style='position:absolute;left:6px;top:50%;
-                         transform:translateY(-50%);font-size:10px;
-                         font-weight:700;color:{bar_color};
-                         font-variant-numeric:tabular-nums'>{day_str}</span>
-        </div>
-        <div style='width:60px;font-size:11px;font-weight:700;
-                    color:{ytd_c};text-align:right;flex-shrink:0;
-                    font-variant-numeric:tabular-nums'>{ytd_str}</div>
-    </div>"""
+    return (
+        f"<div style='flex:1;position:relative;height:18px;"
+        f"background:{bar_bg};border-radius:2px;overflow:hidden'>"
+        f"<div style='position:absolute;top:0;{align}:0;height:100%;width:{bar_pct:.1f}%;"
+        f"background:linear-gradient({grad_dir},{color}20,{color}60);border-radius:2px'></div>"
+        f"<span style='position:absolute;top:50%;transform:translateY(-50%);{align}:6px;"
+        f"color:{color};font-size:10px;font-weight:700;font-variant-numeric:tabular-nums'>"
+        f"{sign}{val:.2f}%</span>"
+        f"</div>"
+    )
 
 
 def _build_panel(data):
@@ -139,39 +124,50 @@ def _build_panel(data):
     mut = t.get('muted', '#475569')
     pos_c = t.get('pos', '#4ade80')
     neg_c = t.get('neg', '#f59e0b')
+    bar_bg = bg3
 
-    # Max abs day change for bar scaling PER REGION
-    all_days = [abs(data.get(sym, {}).get('day') or 0)
-                for region in WORLD_INDICES.values()
-                for sym, _ in region]
-    max_abs = max(all_days) if all_days else 1.0
+    # Global max for day and ytd separately for scaling
+    all_day = [abs(data.get(sym, {}).get('day') or 0)
+               for region in WORLD_INDICES.values() for sym, _ in region]
+    all_ytd = [abs(data.get(sym, {}).get('ytd') or 0)
+               for region in WORLD_INDICES.values() for sym, _ in region]
+    max_day = max(all_day) if all_day else 1.0
+    max_ytd = max(all_ytd) if all_ytd else 1.0
 
-    # Header row
+    # Header
     html = f"""<div style='font-family:{FONTS}'>
-        <div style='display:flex;align-items:center;padding:5px 12px;
-                    border-bottom:1px solid {bdr};gap:10px'>
+        <div style='display:flex;align-items:center;padding:6px 12px;
+                    border-bottom:1px solid {bdr};gap:8px'>
             <div style='width:130px;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
-                        color:{mut}'>INDEX</div>
-            <div style='width:72px;font-size:8px;font-weight:700;
+                        color:#f8fafc'>INDEX</div>
+            <div style='width:70px;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
-                        color:{mut};text-align:right'>PRICE</div>
+                        color:#f8fafc;text-align:right;flex-shrink:0'>PRICE</div>
             <div style='flex:1;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
-                        color:{mut}'>DAY %</div>
-            <div style='width:60px;font-size:8px;font-weight:700;
+                        color:#f8fafc;text-align:center'>DAY %</div>
+            <div style='width:8px;flex-shrink:0'></div>
+            <div style='flex:1;font-size:8px;font-weight:700;
                         letter-spacing:0.1em;text-transform:uppercase;
-                        color:{mut};text-align:right'>YTD %</div>
+                        color:#f8fafc;text-align:center'>YTD %</div>
         </div>"""
 
     first = True
     for region, indices in WORLD_INDICES.items():
-        sep = '' if first else f'margin-top:6px;border-top:1px solid {bdr};'
+        # Region separator — colored line based on avg day performance
+        region_days = [data.get(sym, {}).get('day') or 0 for sym, _ in indices]
+        avg_day = sum(region_days) / len(region_days) if region_days else 0
+        sep_color = pos_c if avg_day >= 0 else neg_c
+
+        if not first:
+            html += f"<div style='height:2px;background:linear-gradient(90deg,{sep_color}00,{sep_color}80,{sep_color}00);margin:2px 0'></div>"
         first = False
+
         # Region header
         html += f"""
         <div style='display:flex;align-items:center;gap:8px;
-                    padding:6px 12px 4px 12px;{sep}'>
+                    padding:5px 12px 3px 12px'>
             <div style='font-size:9px;font-weight:700;letter-spacing:0.12em;
                         text-transform:uppercase;color:#f8fafc'>{region}</div>
             <div style='flex:1;height:1px;background:{bdr}'></div>
@@ -181,9 +177,24 @@ def _build_panel(data):
             d = data.get(ticker, {})
             price = d.get('price')
             price_str = f"{price:,.2f}" if price else '—'
-            bg = bg2 if i % 2 == 0 else bg3
-            html += _bar_row(name, price_str, d.get('day'), d.get('ytd'),
-                             max_abs, pos_c, neg_c, bg, bdr)
+            row_bg = bg2 if i % 2 == 0 else bg3
+
+            day_bar = _bar_html(d.get('day'), max_day, pos_c, neg_c, bar_bg)
+            ytd_bar = _bar_html(d.get('ytd'), max_ytd, pos_c, neg_c, bar_bg)
+
+            html += f"""
+            <div style='display:flex;align-items:center;background:{row_bg};
+                        padding:4px 12px;border-bottom:1px solid {bdr}12;gap:8px'>
+                <div style='width:130px;font-size:11px;font-weight:600;
+                            color:#f8fafc;flex-shrink:0;white-space:nowrap;
+                            overflow:hidden;text-overflow:ellipsis'>{name}</div>
+                <div style='width:70px;font-size:10px;font-weight:500;
+                            color:#ffffff;flex-shrink:0;text-align:right;
+                            font-variant-numeric:tabular-nums'>{price_str}</div>
+                {day_bar}
+                <div style='width:8px;flex-shrink:0'></div>
+                {ytd_bar}
+            </div>"""
 
     html += "</div>"
     return html
@@ -220,5 +231,5 @@ def render_worldindices_tab(is_mobile):
     )
     with st.spinner('Loading world indices...'):
         data = fetch_world_indices()
-    height = 740
+    height = 760
     st_html(_wrap(_build_panel(data), height), height=height)
