@@ -279,7 +279,7 @@ def _wrap(body, height):
         "<!DOCTYPE html><html><head><meta charset='utf-8'>"
         "<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap' rel='stylesheet'>"
         "<style>* { margin:0; padding:0; box-sizing:border-box; }"
-        f"body {{ background:transparent; font-family:{FONTS}; color:{txt}; overflow:auto; }}"
+        f"body {{ background:transparent; font-family:{FONTS}; color:{txt}; overflow-y:scroll; overflow-x:auto; height:100%; }}"
         f"::-webkit-scrollbar {{ width:4px; height:4px; }}"
         f"::-webkit-scrollbar-track {{ background:{bg2}; }}"
         f"::-webkit-scrollbar-thumb {{ background:{bdr}; border-radius:2px; }}"
@@ -305,6 +305,5 @@ def render_private_tab(is_mobile):
     with st.spinner('Loading private companies...'):
         data = fetch_prices()
 
-    n = len(PRIVATE_COMPANIES)
-    height = min(50 + n * 32, 800)
+    height = 800  # Fixed height with scroll inside iframe
     st_html(_wrap(_build_table(data, sort_by), height), height=height)
