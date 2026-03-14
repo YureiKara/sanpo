@@ -254,24 +254,12 @@ def render_worldindices_tab(is_mobile):
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
 
-    col_sort, col_ts = st.columns([1, 4])
+    col_sort, col_spacer, col_ts = st.columns([1, 3, 1])
     with col_sort:
-        st.markdown(
-            f"<div style='font-size:10px;font-weight:600;color:#e2e8f0;"
-            f"font-family:{FONTS};text-transform:uppercase;"
-            f"letter-spacing:0.08em;padding:2px 0'>SORT BY</div>",
-            unsafe_allow_html=True
-        )
-        sort_key = st.selectbox(
-            'sort_world', ['Day %', 'YTD %'],
-            key='world_sort', label_visibility='collapsed'
-        )
+        st.markdown(f"<div style='font-size:10px;font-weight:600;color:#e2e8f0;font-family:{FONTS};text-transform:uppercase;letter-spacing:0.08em;padding:2px 0'>SORT BY</div>", unsafe_allow_html=True)
+        sort_key = st.selectbox('sort_world', ['Day %', 'YTD %'], key='world_sort', label_visibility='collapsed')
     with col_ts:
-        st.markdown(
-            f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
-            f"padding:4px 0;text-align:right'>Updated: {now_str}</div>",
-            unsafe_allow_html=True
-        )
+        st.markdown(f"<div style='font-size:9px;color:#f8fafc;font-family:{FONTS};padding:4px 0;text-align:right'>Updated: {now_str}</div>", unsafe_allow_html=True)
 
     with st.spinner('Loading world indices...'):
         data = fetch_world_indices()
