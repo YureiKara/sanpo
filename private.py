@@ -5,6 +5,7 @@ Full list from Yahoo Finance (~100 companies)
 
 import streamlit as st
 import yfinance as yf
+import pandas as pd
 from datetime import datetime
 import pytz
 import logging
@@ -136,28 +137,52 @@ PRIVATE_COMPANIES = [
 
 @st.cache_data(ttl=600, max_entries=3, show_spinner=False)
 def fetch_prices():
-    import time
     results = {}
     tickers = [row[0] for row in PRIVATE_COMPANIES]
-    
-    # Batch in groups of 10 to avoid rate limiting
-    batch_size = 10
-    for i in range(0, len(tickers), batch_size):
-        batch = tickers[i:i + batch_size]
-        for ticker in batch:
+
+    # Step 1: bulk download for price + year change
+    try:
+        raw = yf.download(
+            tickers, period='1y', interval='1d',
+            auto_adjust=True, progress=False, threads=True,
+            group_by='ticker'
+        )
+        for ticker in tickers:
             try:
-                fi = yf.Ticker(ticker).fast_info
-                last_price  = fi.get('lastPrice')
-                year_change = fi.get('yearChange')
-                ytd_chg = (year_change * 100) if year_change is not None else None
-                results[ticker] = {'price': last_price, 'ytd': ytd_chg}
-            except Exception as e:
-                logger.warning(f"Error {ticker}: {e}")
+                if ticker in raw.columns.get_level_values(0):
+                    df = raw[ticker]['Close'].dropna()
+                else:
+                    df = pd.Series(dtype=float)
+
+                if len(df) >= 2:
+                    price = float(df.iloc[-1])
+                    # 52W change from first available price
+                    year_start = float(df.iloc[0])
+                    ytd = (price - year_start) / year_start * 100 if year_start else None
+                    results[ticker] = {'price': price, 'ytd': ytd}
+                else:
+                    results[ticker] = {'price': None, 'ytd': None}
+            except Exception:
                 results[ticker] = {'price': None, 'ytd': None}
-        # Small delay between batches to avoid rate limiting
-        if i + batch_size < len(tickers):
-            time.sleep(0.5)
-    
+    except Exception as e:
+        logger.warning(f"Bulk download error: {e}")
+        for ticker in tickers:
+            results[ticker] = {'price': None, 'ytd': None}
+
+    # Step 2: fill in any missing with fast_info individually
+    missing = [t for t in tickers if results.get(t, {}).get('price') is None]
+    for ticker in missing:
+        try:
+            fi = yf.Ticker(ticker).fast_info
+            price = fi.get('lastPrice')
+            yc = fi.get('yearChange')
+            results[ticker] = {
+                'price': price,
+                'ytd': (yc * 100) if yc is not None else None
+            }
+        except Exception:
+            results[ticker] = {'price': None, 'ytd': None}
+
     return results
 
 
