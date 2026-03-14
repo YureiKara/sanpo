@@ -192,7 +192,7 @@ def _pct_color(pct, pos_c, neg_c, mut):
     return '#60a5fa'
 
 
-def _build_table(markets, theme):
+def _build_table(markets, theme, sort_by='Volume'):
     bg2   = theme.get('bg2', '#0a0f1a')
     bg3   = theme.get('bg3', '#0f172a')
     bdr   = theme.get('border', '#1e293b')
@@ -205,21 +205,33 @@ def _build_table(markets, theme):
     blue  = '#60a5fa'
     purp  = '#c084fc'
 
+    # Sort markets
+    sort_map = {
+        'Volume':    lambda x: x['volume'],
+        '24H Vol':   lambda x: x['volume24'],
+        '7D Vol':    lambda x: x['vol1wk'],
+        'Liquidity': lambda x: x['liquidity'],
+        'Expiry':    lambda x: x['expiry'] or 'zzz',
+    }
+    sort_fn = sort_map.get(sort_by, lambda x: x['volume'])
+    rev = sort_by != 'Expiry'
+    markets = sorted(markets, key=sort_fn, reverse=rev)
+
     HDR = "font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f8fafc"
 
     if not markets:
         return f"<div style='padding:40px;text-align:center;font-family:{FONTS};color:{mut};font-size:11px'>No markets found</div>"
 
     html = f"""<div style='font-family:{FONTS}'>
-        <div style='display:flex;align-items:center;padding:5px 12px;
-                    border-bottom:1px solid {bdr};gap:8px'>
-            <div style='width:220px;flex-shrink:0;{HDR}'>QUESTION</div>
+        <div style='display:flex;align-items:center;padding:5px 10px;
+                    border-bottom:1px solid {bdr};gap:6px'>
+            <div style='width:180px;flex-shrink:0;{HDR}'>QUESTION</div>
             <div style='flex:1;{HDR}'>OUTCOMES</div>
-            <div style='width:75px;flex-shrink:0;{HDR};text-align:right'>VOLUME</div>
-            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>24H</div>
-            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>7D</div>
-            <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>LIQUIDITY</div>
-            <div style='width:80px;flex-shrink:0;{HDR};text-align:center'>EXPIRY</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>VOLUME</div>
+            <div style='width:55px;flex-shrink:0;{HDR};text-align:right'>24H</div>
+            <div style='width:55px;flex-shrink:0;{HDR};text-align:right'>7D</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>LIQUIDITY</div>
+            <div style='width:75px;flex-shrink:0;{HDR};text-align:center'>EXPIRY</div>
         </div>"""
 
     for i, m in enumerate(markets):
@@ -260,8 +272,8 @@ def _build_table(markets, theme):
         html += f"""
         <a href='{m["url"]}' target='_blank' style='text-decoration:none;display:block'>
         <div style='display:flex;align-items:center;background:{row_bg};
-                    padding:6px 12px;border-bottom:1px solid {bdr}12;gap:8px'>
-            <div style='width:220px;flex-shrink:0'>
+                    padding:5px 10px;border-bottom:1px solid {bdr}12;gap:6px'>
+            <div style='width:180px;flex-shrink:0'>
                 <div style='font-size:11px;font-weight:600;color:#f8fafc;
                             line-height:1.3;overflow:hidden;
                             display:-webkit-box;-webkit-line-clamp:2;
@@ -269,15 +281,15 @@ def _build_table(markets, theme):
                 {cat_html}
             </div>
             <div style='flex:1;overflow:hidden'>{outcomes_html}</div>
-            <div style='width:75px;flex-shrink:0;font-size:10px;font-weight:600;
+            <div style='width:65px;flex-shrink:0;font-size:10px;font-weight:600;
                         color:{acc};text-align:right'>{vol_str}</div>
-            <div style='width:65px;flex-shrink:0;font-size:10px;
+            <div style='width:55px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:right'>{vol24_str}</div>
-            <div style='width:65px;flex-shrink:0;font-size:10px;
+            <div style='width:55px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:right'>{vol1wk_str}</div>
-            <div style='width:70px;flex-shrink:0;font-size:10px;
+            <div style='width:65px;flex-shrink:0;font-size:10px;
                         color:{blue};text-align:right'>{liq_str}</div>
-            <div style='width:80px;flex-shrink:0;font-size:10px;
+            <div style='width:75px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:center'>{m['expiry']}</div>
         </div>
         </a>"""
@@ -314,18 +326,13 @@ def render_predictions_tab(is_mobile):
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
 
-    col_cat, col_spacer, col_info = st.columns([1, 3, 2])
+    col_cat, col_sort, col_spacer, col_info = st.columns([1, 1, 2, 2])
     with col_cat:
-        st.markdown(
-            f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;"
-            f"font-family:{FONTS};text-transform:uppercase;"
-            f"letter-spacing:0.08em;margin-bottom:-18px'>CATEGORY</div>",
-            unsafe_allow_html=True
-        )
-        category = st.selectbox(
-            'pred_cat', list(CATEGORIES.keys()),
-            key='pred_category', label_visibility='collapsed'
-        )
+        st.markdown(f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;font-family:{FONTS};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:-18px'>CATEGORY</div>", unsafe_allow_html=True)
+        category = st.selectbox('pred_cat', list(CATEGORIES.keys()), key='pred_category', label_visibility='collapsed')
+    with col_sort:
+        st.markdown(f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;font-family:{FONTS};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:-18px'>SORT BY</div>", unsafe_allow_html=True)
+        sort_by = st.selectbox('pred_sort', ['Volume', '24H Vol', '7D Vol', 'Liquidity', 'Expiry'], key='pred_sort_sel', label_visibility='collapsed')
 
     with st.spinner('Loading prediction markets...'):
         markets = fetch_markets(category)
@@ -342,4 +349,4 @@ def render_predictions_tab(is_mobile):
         )
 
     height = 740
-    st_html(_wrap(_build_table(markets, t), height), height=height)
+    st_html(_wrap(_build_table(markets, t, sort_by), height), height=height)
