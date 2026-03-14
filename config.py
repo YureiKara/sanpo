@@ -19,7 +19,18 @@ FUTURES_GROUPS = OrderedDict([
     ('Softs',     ['SB=F', 'KC=F', 'CC=F', 'CT=F']),
     ('Singapore', ['ES3.SI', 'S68.SI', 'MBH.SI', 'MMS.SI']),
     ('US Sectors',['XLB', 'XLC', 'XLY', 'XLP', 'XLE', 'XLF', 'XLV', 'XLI', 'XLK', 'XLU', 'XLRE', 'SPY']),
-    ('Countries', ['EWA', 'EWZ', 'EWC', 'GXC', 'EWQ', 'EWG', 'EWH', 'PIN', 'EWI', 'EWJ', 'EWM', 'EWW', 'EWS', 'EWY', 'EWP', 'EWT', 'EWU', 'VNM', 'KSA', 'ARGT']),
+    ('Countries', [
+        # Asia Pacific
+        'EWJ', 'EWY', 'EWT', 'EWH', 'EWS', 'EWM', 'THD', 'EIDO', 'VNM', 'EWA',
+        # Europe
+        'EWU', 'EWG', 'EWQ', 'EWI', 'EWP', 'EWL', 'EWD', 'EWN', 'EPOL', 'TUR',
+        # Americas
+        'EWC', 'EWZ', 'EWW', 'ARGT', 'ECH',
+        # Middle East / Africa
+        'KSA', 'EIS', 'EZA',
+        # EM Broad
+        'GXC', 'PIN',
+    ]),
     ('Macro',     ['DBC', 'USO', 'GLD', 'SLV', 'CPER', 'BIL', 'HYG', 'LQD', 'TLT', 'BND', 'EMB', 'EEM', 'SPY', 'BTC-USD', 'ETH-USD']),
     ('Core 5',    ['IAU', 'VOO', 'VTI', 'SHV', 'BTC-USD']),
     ('Exchanges', ['ICE', 'NDAQ', 'CME', 'CBOE', 'X.TO', 'LSEG.L', 'DB1.DE', 'ENX.PA', '8697.T', '0388.HK', 'ASX.AX', 'S68.SI']),
