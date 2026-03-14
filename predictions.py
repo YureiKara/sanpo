@@ -21,74 +21,53 @@ def get_theme():
     return THEMES.get(tn, THEMES['Dark'])
 
 
-CATEGORIES = ['All', 'Finance', 'Crypto', 'Equities', 'Economy', 'Tech', 'Politics']
+CATEGORIES = {
+    'All':         None,
+    'Finance':     120,
+    'Crypto':      21,
+    'Politics':    2,
+    'Tech':        1401,
+    'Geopolitics': 100265,
+    'Culture':     596,
+}
 
 
 @st.cache_data(ttl=300, max_entries=5, show_spinner=False)
 def fetch_markets(category='All', limit=30):
+    import json as _json
     try:
+        tag_id = CATEGORIES.get(category)
         params = {
             'limit': limit,
-            'active': 'true',
             'closed': 'false',
             'order': 'volume24hr',
             'ascending': 'false',
+            'related_tags': 'true',
         }
-        if category != 'All':
-            params['tag'] = category.lower()
+        if tag_id:
+            params['tag_id'] = tag_id
 
         r = requests.get(
-            'https://gamma-api.polymarket.com/markets',
+            'https://gamma-api.polymarket.com/events',
             params=params,
             timeout=15,
             headers={'User-Agent': 'Mozilla/5.0'}
         )
         r.raise_for_status()
-        data = r.json()
-        markets = data if isinstance(data, list) else data.get('data', [])
+        events = r.json()
+        if not isinstance(events, list):
+            events = events.get('data', [])
 
         results = []
-        for m in markets:
-            # Get outcomes and prices
-            outcomes = m.get('outcomes', '[]')
-            prices   = m.get('outcomePrices', '[]')
+        for ev in events:
+            # Each event can have multiple markets
+            markets = ev.get('markets', [])
+            question = ev.get('title', ev.get('question', ''))
+            slug = ev.get('slug', ev.get('id', ''))
+            vol = float(ev.get('volume', 0) or 0)
+            vol24 = float(ev.get('volume24hr', 0) or 0)
 
-            if isinstance(outcomes, str):
-                import json
-                try:
-                    outcomes = json.loads(outcomes)
-                    prices   = json.loads(prices)
-                except Exception:
-                    outcomes = []
-                    prices   = []
-
-            # Build outcome list
-            outcome_list = []
-            for o, p in zip(outcomes, prices):
-                try:
-                    pct = round(float(p) * 100, 1)
-                except Exception:
-                    pct = None
-                outcome_list.append({'label': o, 'pct': pct})
-
-            # Sort by highest probability
-            outcome_list.sort(key=lambda x: x['pct'] or 0, reverse=True)
-
-            # Volume
-            vol = m.get('volume', m.get('volumeNum', 0)) or 0
-            try:
-                vol = float(vol)
-            except Exception:
-                vol = 0
-
-            vol24 = m.get('volume24hr', 0) or 0
-            try:
-                vol24 = float(vol24)
-            except Exception:
-                vol24 = 0
-
-            # Expiry
-            end_date = m.get('endDate', m.get('end_date_iso', ''))
+            end_date = ev.get('endDate', ev.get('end_date_iso', ''))
             expiry_str = ''
             if end_date:
                 try:
@@ -97,17 +76,55 @@ def fetch_markets(category='All', limit=30):
                 except Exception:
                     expiry_str = str(end_date)[:10]
 
+            # Build outcomes from markets
+            outcome_list = []
+            for m in markets:
+                outcomes = m.get('outcomes', '[]')
+                prices   = m.get('outcomePrices', '[]')
+                if isinstance(outcomes, str):
+                    try:
+                        outcomes = _json.loads(outcomes)
+                        prices   = _json.loads(prices)
+                    except Exception:
+                        outcomes = []
+                        prices   = []
+                for o, p in zip(outcomes, prices):
+                    try:
+                        pct = round(float(p) * 100, 1)
+                    except Exception:
+                        pct = None
+                    outcome_list.append({'label': o, 'pct': pct})
+
+            # If single binary market, just show Yes/No
+            if not outcome_list and markets:
+                m = markets[0]
+                outcomes = m.get('outcomes', '[]')
+                prices   = m.get('outcomePrices', '[]')
+                if isinstance(outcomes, str):
+                    try:
+                        outcomes = _json.loads(outcomes)
+                        prices   = _json.loads(prices)
+                    except Exception:
+                        outcomes = []
+                        prices   = []
+                for o, p in zip(outcomes, prices):
+                    try:
+                        pct = round(float(p) * 100, 1)
+                    except Exception:
+                        pct = None
+                    outcome_list.append({'label': o, 'pct': pct})
+
+            outcome_list.sort(key=lambda x: x['pct'] or 0, reverse=True)
+
             results.append({
-                'question': m.get('question', m.get('title', '')),
-                'outcomes': outcome_list[:4],  # top 4 outcomes
+                'question': question,
+                'outcomes': outcome_list[:4],
                 'volume': vol,
                 'volume24': vol24,
                 'expiry': expiry_str,
-                'url': f"https://polymarket.com/event/{m.get('slug', m.get('id', ''))}",
-                'category': m.get('category', m.get('tags', [''])[0] if m.get('tags') else ''),
+                'url': f"https://polymarket.com/event/{slug}",
             })
 
-        # Sort by total volume
         results.sort(key=lambda x: x['volume'], reverse=True)
         return results
 
@@ -240,7 +257,7 @@ def render_predictions_tab(is_mobile):
             unsafe_allow_html=True
         )
         category = st.selectbox(
-            'pred_cat', CATEGORIES,
+            'pred_cat', list(CATEGORIES.keys()),
             key='pred_category', label_visibility='collapsed'
         )
     with col_ts:
