@@ -248,7 +248,7 @@ def render_predictions_tab(is_mobile):
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
 
     # Controls
-    col_cat, col_spacer, col_ts = st.columns([1, 4, 1])
+    col_cat, col_spacer, col_info = st.columns([1, 3, 2])
     with col_cat:
         st.markdown(
             f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;"
@@ -260,23 +260,20 @@ def render_predictions_tab(is_mobile):
             'pred_cat', list(CATEGORIES.keys()),
             key='pred_category', label_visibility='collapsed'
         )
-    with col_ts:
-        st.markdown(
-            f"<div style='font-size:9px;color:#f8fafc;font-family:{FONTS};"
-            f"padding:28px 0 0 0;text-align:right'>Updated: {now_str}</div>",
-            unsafe_allow_html=True
-        )
 
     with st.spinner('Loading prediction markets...'):
         markets = fetch_markets(category)
 
     n = len(markets)
-    st.markdown(
-        f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
-        f"padding:2px 0 4px 0'>{n} markets · Powered by "
-        f"<span style='color:{acc}'>Polymarket</span></div>",
-        unsafe_allow_html=True
-    )
+    with col_info:
+        st.markdown(
+            f"<div style='font-family:{FONTS};text-align:right;padding:4px 0'>"
+            f"<div style='font-size:9px;color:{mut}'>{n} markets · Powered by "
+            f"<span style='color:{acc}'>Polymarket</span></div>"
+            f"<div style='font-size:9px;color:#f8fafc'>Updated: {now_str}</div>"
+            f"</div>",
+            unsafe_allow_html=True
+        )
 
     height = 720
     st_html(_wrap(_build_table(markets, t), height), height=height)
