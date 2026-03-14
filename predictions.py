@@ -5,6 +5,8 @@ Polymarket Gamma API - /events endpoint with tag_id filtering
 
 import streamlit as st
 import requests
+import base64
+import json
 from datetime import datetime
 import pytz
 import logging
@@ -18,6 +20,40 @@ logger = logging.getLogger(__name__)
 def get_theme():
     tn = st.session_state.get('theme', 'Dark')
     return THEMES.get(tn, THEMES['Dark'])
+
+
+def _export_to_github(markets):
+    """Silently write predictions.json to GitHub after fetching data."""
+    try:
+        token = st.secrets.get("GITHUB_TOKEN", "")
+        if not token:
+            return
+        sgt = pytz.timezone('Asia/Singapore')
+        now_str = datetime.now(sgt).isoformat()
+        data = {
+            'updated': now_str,
+            'source': 'SANPO Predictions - Polymarket',
+            'count': len(markets),
+            'markets': markets
+        }
+        url = "https://api.github.com/repos/YureiKara/sanpo/contents/predictions.json"
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        sha = None
+        r = requests.get(url, headers=headers, timeout=5)
+        if r.status_code == 200:
+            sha = r.json().get("sha")
+        content_b64 = base64.b64encode(
+            json.dumps(data, indent=2, ensure_ascii=False).encode()
+        ).decode()
+        payload = {"message": "data: update predictions.json", "content": content_b64}
+        if sha:
+            payload["sha"] = sha
+        requests.put(url, headers=headers, json=payload, timeout=10)
+    except Exception as e:
+        logger.warning(f"GitHub export error: {e}")
 
 
 CATEGORIES = {
@@ -336,6 +372,9 @@ def render_predictions_tab(is_mobile):
 
     with st.spinner('Loading prediction markets...'):
         markets = fetch_markets(category)
+
+    # Export to GitHub for Yurei (silent, background)
+    _export_to_github(markets)
 
     n = len(markets)
     with col_info:
