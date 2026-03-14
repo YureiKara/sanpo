@@ -1,11 +1,11 @@
 """
 SANPO — Predictions tab
-Pulls from Polymarket Gamma API (public, no auth)
-Shows top markets by volume with odds and expiry
+Polymarket Gamma API - /events endpoint with tag_id filtering
 """
 
 import streamlit as st
 import requests
+import re
 from datetime import datetime
 import pytz
 import logging
@@ -30,6 +30,35 @@ CATEGORIES = {
     'Geopolitics': 100265,
     'Culture':     596,
 }
+
+
+def _strip_question_prefix(label, event_title):
+    """Remove repeated question prefix from outcome label."""
+    # Remove common prefixes like "Will X win..." -> "X"
+    label = label.strip()
+    # Try to extract the key entity — remove "Will ... win/be/reach/..."
+    patterns = [
+        r'^Will (.+?) win ',
+        r'^Will (.+?) be ',
+        r'^Will (.+?) reach ',
+        r'^Will (.+?) become ',
+        r'^Will (.+?) get ',
+        r'^Will (.+?) have ',
+        r'^Will (.+?) lose ',
+        r'^Will (.+?) sign ',
+        r'^Will (.+?) release ',
+        r'^Will (.+?) announce ',
+        r'^Will (.+?) hit ',
+    ]
+    for pat in patterns:
+        m = re.match(pat, label, re.IGNORECASE)
+        if m:
+            return m.group(1).strip()
+
+    # If label contains the event title, just return shortened version
+    if len(label) > 40:
+        return label[:38] + '…'
+    return label
 
 
 @st.cache_data(ttl=300, max_entries=5, show_spinner=False)
@@ -67,11 +96,13 @@ def fetch_markets(category='All', limit=30):
             vol24    = float(ev.get('volume24hr', 0) or 0)
             vol1wk   = float(ev.get('volume1wk', 0) or 0)
             liq      = float(ev.get('liquidity', 0) or 0)
-            oi = float(ev.get('openInterest', 0) or 0)
-            if oi == 0 and markets:
-                oi = sum(float(m.get('openInterest', 0) or 0) for m in markets)
+            oi       = float(ev.get('openInterest', 0) or 0)
             cat      = ev.get('category', '') or ev.get('subcategory', '') or ''
             subtitle = ev.get('subtitle', '') or ''
+
+            # Sum OI from markets if event level is zero
+            if oi == 0 and markets:
+                oi = sum(float(m.get('openInterest', 0) or 0) for m in markets)
 
             end_date = ev.get('endDate', ev.get('end_date_iso', ''))
             expiry_str = ''
@@ -86,19 +117,17 @@ def fetch_markets(category='All', limit=30):
             is_multi = len(markets) > 1
 
             if is_multi:
-                # Multi-outcome event: each market = one outcome
-                # Use market question as label, Yes price as probability
+                # Multi-outcome: each market = one outcome, use Yes price
                 for m in markets:
-                    mq = m.get('question', m.get('groupItemTitle', ''))
-                    prices = m.get('outcomePrices', '[]')
+                    mq = m.get('groupItemTitle', m.get('question', ''))
+                    prices   = m.get('outcomePrices', '[]')
+                    outcomes = m.get('outcomes', '[]')
                     if isinstance(prices, str):
                         try: prices = _json.loads(prices)
                         except: prices = []
-                    outcomes = m.get('outcomes', '[]')
                     if isinstance(outcomes, str):
                         try: outcomes = _json.loads(outcomes)
                         except: outcomes = []
-                    # Yes price is first outcome price
                     yes_price = None
                     for o, p in zip(outcomes, prices):
                         if str(o).lower() == 'yes':
@@ -109,9 +138,10 @@ def fetch_markets(category='All', limit=30):
                         try: yes_price = round(float(prices[0]) * 100, 1)
                         except: pass
                     if mq:
-                        outcome_list.append({'label': mq, 'pct': yes_price})
+                        label = _strip_question_prefix(mq, question)
+                        outcome_list.append({'label': label, 'pct': yes_price})
             else:
-                # Binary event: single market with Yes/No
+                # Binary: show Yes/No
                 m = markets[0] if markets else {}
                 outcomes = m.get('outcomes', '[]')
                 prices   = m.get('outcomePrices', '[]')
@@ -131,7 +161,7 @@ def fetch_markets(category='All', limit=30):
             results.append({
                 'question': question,
                 'subtitle': subtitle,
-                'outcomes': outcome_list[:4],
+                'outcomes': outcome_list[:3],  # max 3
                 'volume': vol,
                 'volume24': vol24,
                 'vol1wk': vol1wk,
@@ -151,20 +181,16 @@ def fetch_markets(category='All', limit=30):
 
 
 def _fmt_vol(v):
-    if v >= 1e6:
-        return f"${v/1e6:.1f}M"
-    if v >= 1e3:
-        return f"${v/1e3:.0f}K"
+    if not v: return '—'
+    if v >= 1e6: return f"${v/1e6:.1f}M"
+    if v >= 1e3: return f"${v/1e3:.0f}K"
     return f"${v:.0f}"
 
 
 def _pct_color(pct, pos_c, neg_c, mut):
-    if pct is None:
-        return mut
-    if pct >= 70:
-        return pos_c
-    if pct <= 15:
-        return neg_c
+    if pct is None: return mut
+    if pct >= 70: return pos_c
+    if pct <= 15: return neg_c
     return '#60a5fa'
 
 
@@ -179,22 +205,23 @@ def _build_table(markets, theme):
     pos_c = theme.get('pos', '#4ade80')
     neg_c = theme.get('neg', '#f59e0b')
     blue  = '#60a5fa'
+    purp  = '#c084fc'
 
     HDR = "font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f8fafc"
 
     if not markets:
-        return f"<div style='padding:40px;text-align:center;font-family:{FONTS};color:{mut};font-size:11px'>No markets found — check connection</div>"
+        return f"<div style='padding:40px;text-align:center;font-family:{FONTS};color:{mut};font-size:11px'>No markets found</div>"
 
     html = f"""<div style='font-family:{FONTS}'>
         <div style='display:flex;align-items:center;padding:5px 12px;
                     border-bottom:1px solid {bdr};gap:8px'>
-            <div style='flex:2;{HDR}'>QUESTION</div>
-            <div style='flex:3;{HDR}'>TOP OUTCOMES</div>
-            <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>VOLUME</div>
-            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>24H VOL</div>
-            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>7D VOL</div>
+            <div style='width:220px;flex-shrink:0;{HDR}'>QUESTION</div>
+            <div style='flex:1;{HDR}'>OUTCOMES</div>
+            <div style='width:75px;flex-shrink:0;{HDR};text-align:right'>VOLUME</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>24H</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>7D</div>
             <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>LIQUIDITY</div>
-            <div style='width:70px;flex-shrink:0;{HDR};text-align:right'>OPEN INT</div>
+            <div style='width:65px;flex-shrink:0;{HDR};text-align:right'>OPEN INT</div>
             <div style='width:80px;flex-shrink:0;{HDR};text-align:center'>EXPIRY</div>
         </div>"""
 
@@ -202,47 +229,60 @@ def _build_table(markets, theme):
         row_bg = bg2 if i % 2 == 0 else bg3
         vol_str   = _fmt_vol(m['volume'])
         vol24_str = _fmt_vol(m['volume24'])
+        vol1wk_str= _fmt_vol(m.get('vol1wk', 0))
+        liq_str   = _fmt_vol(m.get('liquidity', 0))
+        oi_val    = m.get('open_interest', 0)
+        oi_str    = _fmt_vol(oi_val) if oi_val else '—'
 
-        # Outcomes chips
-        chips = ''
-        for o in m['outcomes'][:3]:
-            pct = o['pct']
-            color = _pct_color(pct, pos_c, neg_c, mut)
-            pct_str = f"{pct:.0f}%" if pct is not None else '—'
-            chips += (
-                f"<span style='display:inline-flex;align-items:center;gap:4px;"
-                f"background:{color}18;border:1px solid {color}40;"
-                f"border-radius:3px;padding:1px 6px;margin-right:4px;white-space:nowrap'>"
-                f"<span style='font-size:9px;color:{txt2}'>{o['label']}</span>"
-                f"<span style='font-size:10px;font-weight:700;color:{color}'>{pct_str}</span>"
-                f"</span>"
+        # Build outcomes rows — each on own line, consistent 3 lines
+        outcomes_html = ''
+        padded = (m['outcomes'] + [None, None, None])[:3]
+        for o in padded:
+            if o:
+                color = _pct_color(o['pct'], pos_c, neg_c, mut)
+                pct_str = f"{o['pct']:.0f}%" if o['pct'] is not None else '—'
+                outcomes_html += (
+                    f"<div style='display:flex;align-items:center;gap:6px;height:18px'>"
+                    f"<span style='font-size:10px;font-weight:600;color:#f8fafc;"
+                    f"flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap'>{o['label']}</span>"
+                    f"<span style='font-size:10px;font-weight:700;color:{color};"
+                    f"flex-shrink:0;min-width:32px;text-align:right'>{pct_str}</span>"
+                    f"</div>"
+                )
+            else:
+                outcomes_html += "<div style='height:18px'></div>"
+
+        # Category tag
+        cat_html = ''
+        if m.get('category'):
+            cat_html = (
+                f"<span style='font-size:8px;font-weight:600;color:{blue};"
+                f"background:{blue}18;border-radius:2px;padding:1px 4px;"
+                f"margin-top:2px;display:inline-block'>{m['category'].upper()}</span>"
             )
-
-        vol1wk_str = _fmt_vol(m.get('vol1wk', 0))
-        liq_str    = _fmt_vol(m.get('liquidity', 0))
-        oi_str     = _fmt_vol(m.get('open_interest', 0))
 
         html += f"""
         <a href='{m["url"]}' target='_blank' style='text-decoration:none;display:block'>
         <div style='display:flex;align-items:center;background:{row_bg};
-                    padding:7px 12px;border-bottom:1px solid {bdr}12;gap:8px;
-                    transition:background 0.1s'>
-            <div style='flex:2;min-width:0'>
-                <div style='font-size:11px;font-weight:600;color:#f8fafc;line-height:1.3'>{m['question']}</div>
-                {f"<div style='font-size:9px;color:{txt2};margin-top:2px;line-height:1.3'>{m['subtitle']}</div>" if m.get('subtitle') else ''}
-                {f"<div style='display:inline-block;font-size:8px;font-weight:600;color:{blue};background:{blue}18;border-radius:2px;padding:1px 5px;margin-top:2px'>{m['category'].upper()}</div>" if m.get('category') else ''}
+                    padding:6px 12px;border-bottom:1px solid {bdr}12;gap:8px'>
+            <div style='width:220px;flex-shrink:0'>
+                <div style='font-size:11px;font-weight:600;color:#f8fafc;
+                            line-height:1.3;overflow:hidden;
+                            display:-webkit-box;-webkit-line-clamp:2;
+                            -webkit-box-orient:vertical'>{m['question']}</div>
+                {cat_html}
             </div>
-            <div style='flex:3;display:flex;flex-wrap:wrap;gap:2px;align-items:center'>{chips}</div>
-            <div style='width:70px;flex-shrink:0;font-size:10px;font-weight:600;
+            <div style='flex:1;overflow:hidden'>{outcomes_html}</div>
+            <div style='width:75px;flex-shrink:0;font-size:10px;font-weight:600;
                         color:{acc};text-align:right'>{vol_str}</div>
             <div style='width:65px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:right'>{vol24_str}</div>
             <div style='width:65px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:right'>{vol1wk_str}</div>
             <div style='width:70px;flex-shrink:0;font-size:10px;
-                        color:#60a5fa;text-align:right'>{liq_str}</div>
-            <div style='width:70px;flex-shrink:0;font-size:10px;
-                        color:#c084fc;text-align:right'>{oi_str}</div>
+                        color:{blue};text-align:right'>{liq_str}</div>
+            <div style='width:65px;flex-shrink:0;font-size:10px;
+                        color:{purp};text-align:right'>{oi_str}</div>
             <div style='width:80px;flex-shrink:0;font-size:10px;
                         color:{txt2};text-align:center'>{m['expiry']}</div>
         </div>
@@ -280,7 +320,6 @@ def render_predictions_tab(is_mobile):
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
 
-    # Controls
     col_cat, col_spacer, col_info = st.columns([1, 3, 2])
     with col_cat:
         st.markdown(
@@ -308,5 +347,5 @@ def render_predictions_tab(is_mobile):
             unsafe_allow_html=True
         )
 
-    height = 720
+    height = 740
     st_html(_wrap(_build_table(markets, t), height), height=height)
