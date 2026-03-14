@@ -1,0 +1,31 @@
+name: Fetch News
+
+on:
+  workflow_dispatch:  # manual trigger only — called by Yurei via GitHub API
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install feedparser pytz
+
+      - name: Fetch news feeds
+        run: python fetch_news.py
+
+      - name: Commit news.json
+        run: |
+          git config user.email "sanpo-bot@yurei"
+          git config user.name "SANPO Bot"
+          git add news.json
+          git diff --staged --quiet || git commit -m "data: update news.json $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
