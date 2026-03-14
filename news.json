@@ -1,41 +1,789 @@
 {
-  "updated": "2026-03-14T16:59:03+08:00",
+  "updated": "2026-03-14T17:52:21.273416+08:00",
   "source": "SANPO News Feed",
-  "headlines": [
+  "categories": {
+    "Macro": [
+      {
+        "source": "Gold",
+        "title": "Gold (XAU/USD) Price Forecast: Bear Flag Signals Potential Downside Targets - FXEmpire",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOSmF6ZG9MendTak9tTW54S2ppTlVoNHJsa3pyNnZkNlQ1T0hLZ2pLeXBEWXBYS2txd0szV2xpeUhPOV9rMjRicnhZVF9OdHZ0bkVUMDlNVEdQWnNUS01pNkRQMUlQcW80NWZvZ1NvekN2cldyTktfcGk3Q1R4M2Jidjl1SlFmNFRabS0zck94V3ZjdGtvdVY0RmlSc09VeGdnNXVzU2MyY29TZnN3aVVqSnA1eUtjMWdwSFZaTUo2aWU?oc=5",
+        "date": "14 Mar 2026 04:50",
+        "sort_key": "2026-03-14T04:50:00+00:00"
+      },
+      {
+        "source": "Gold",
+        "title": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days - LiteFinance",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ1BXeVdPR08tTmQ4MHdZMkloUzlsNjRjSE5VVmxyeVRrdDZqbDI3Tm5VVUdfYTdZM0dOYjkzVFBuMGhJUzZEM3E0RDBkc0RTUXd2VFdMdm5uenpPXzJobUNvRklvRkt0S0pfYkZ0UWRXaWRDc09MR1pBUkVDRXN2Y2FINkVmUDBlRkZHNGhzZkNyNk5LUzZrM2VUV1pVOV9N?oc=5",
+        "date": "14 Mar 2026 03:47",
+        "sort_key": "2026-03-14T03:47:47+00:00"
+      },
+      {
+        "source": "Gold",
+        "title": "Weekly Gold (XAU/USD) Forecast: 3% Slide to $5000/oz as Rate Cut Bets Tumble, FOMC Up Next - Action Forex",
+        "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQVhFamNMN0pJckhpV3NBSDV4RmE5LWFaZFdzV3p4bE5FTGpJU2hGbGliUEowRy1KR1c1eUpHSjF4UGFlbUF0OVBkS2RRVFdwMndfbW9DY0tqTVNlcy12eXNJOGZLeVNtRjNVa3JHQjUwNFBqcGZpbmJPWEpJOS1QSTB1RHZ0bXFsZnBsRXhRenBKd3VfUG1RZFNPeVpSWlRqQU1QdUQ5YnRqOGFMeXBONEdFQ21MMTUwcGRkM0xXN1Y2SmxlQUpTU2xPTTI1dEpla0p3dnBpWFhPNmdoZlRTQVVlMzhha05QbkE?oc=5",
+        "date": "14 Mar 2026 01:44",
+        "sort_key": "2026-03-14T01:44:31+00:00"
+      },
+      {
+        "source": "Oil",
+        "title": "WTI Crude Oil Plunges Below $82.00 Amid IEA’s Record-Breaking Reserve Release Plan - CryptoRank",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9hcmF4Vm1BdVNjTjNOUkdxVVhpRC1MXzBpZE80QnEyZlBfZVp5QnZSeC16M3ZJYTZKeFBNalBadVBWQUVCb1ZKRVBFNENFbU1RUXNKUGZ6a0p2QXRCVmlfZWxNT3NDR1F6eFFhbkRDVkRsT054S0ltYU84RQ?oc=5",
+        "date": "13 Mar 2026 23:04",
+        "sort_key": "2026-03-13T23:04:55+00:00"
+      },
+      {
+        "source": "Oil",
+        "title": "Highest Crude Oil Price | WTI Historical Chart, Nominal & Inflation-Adjusted | Britannica Money - Britannica",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNNWlvMl92WWlMQjVnSFA0ZGhlbFpMQXRiXzhQNUNDLU92UHpDU19PTU4ya1prUm9XN3NrNy1fSXZsWjczbXhVUVBYTTZCNjVjVWVOZVpmR1VuSHAzVUszNC1vSjFaQ3hSWm95bFhSd2daak9YRzQ0WEtLMkV0akNWSWxwUVd6d21HeGc?oc=5",
+        "date": "13 Mar 2026 21:52",
+        "sort_key": "2026-03-13T21:52:00+00:00"
+      },
+      {
+        "source": "Fed",
+        "title": "The Fed Will Almost Certainly Hold At Its Meeting Next Week-Here's What's Still Up In The Air - Investopedia",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON1J6eTFEYmZTY3RuS1d4ZUNtQmplU0FXQU1FN0JnajAtMWU0RTItUXZBb3JxMlFzWTMtXy1INlZyVV9LYVNLLVVsYVZCNnB0NmhYTU1qQXhodXNZcXNmdmlBRWl1Y2Jxa2xDZ1FQX00ycHY1eEtxbWlCRFB2RDBjZFluR2hwVGotQ21COEgxel9Nd3pwQVNGdE1LTlQ5dllhZlJ6SUFaUjhkQ0V6QUwwVXJhV0dUT0dYVVpFbzJObEp5TW1Id1JDLWlMcw?oc=5",
+        "date": "13 Mar 2026 20:25",
+        "sort_key": "2026-03-13T20:25:59+00:00"
+      },
+      {
+        "source": "S&P 500",
+        "title": "S&P 500 falls to new low for year on Iran oil crisis, posts third-straight losing week: Live updates - CNBC",
+        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE56bVdILXBTMkZXWDlVUkRTNGVyRGZlQVpQMFZaLW5jREQxZE1ZeVZaUDJ5aFMtb2NnSGlJY1Vrdnp5WGVnZWdHc1V5SEV5ZFlKZWlxT0ppSVE1SDJxRGNjZXV2VWppMktyVUtFUHpBdWxGVFZ0SF800gF8QVVfeXFMUDIxV2FtTlFxQTVJNVctNkVIQzZWNHdnOE93d3l6dUFkQVNaS2F0TlJnUEhDcUNya09QSmU3cVdqLXQtc1pWbWY4YzRNRDNOUjVPYzVudFhQdW0xajlweXJua2Q2ZUpmSnlPQXluYzJlY1c4UlFyVGUxcVoyNg?oc=5",
+        "date": "13 Mar 2026 20:21",
+        "sort_key": "2026-03-13T20:21:00+00:00"
+      },
+      {
+        "source": "Bitcoin",
+        "title": "Key Bitcoin price levels to watch as BTC nears new monthly highs - TradingView",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPaDk0cU1NdXE2RVluMnd0OE1pRVZRbnVKZFNFUVhFNnBueWUzT3BLdGR5YzluemZMTDdzYjQ5NHdsbzVWQTVTazhsWXM4aVRFT2Y4amprNVlFemZzR0FZdWVwdmlPVlBtNUNqdWdjaUhGbFNfaW9MN04yNF8xdWc4Nkc5UzFBOHdsbzBMOFZnRXQzTHUyUzhCNVhxckw5VERNVW00ekk5N3QyNXRQN0hHcVQ3OFhDTnJ5RWJkTWVOalQyQ0FqYS13?oc=5",
+        "date": "13 Mar 2026 19:13",
+        "sort_key": "2026-03-13T19:13:03+00:00"
+      },
+      {
+        "source": "Bitcoin",
+        "title": "Bitcoin price news: BTC nears one-month high of $74,000 - CoinDesk",
+        "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNeU93clRqRnY3LWtlMnhQNjM5RmVvektyM202OUFOR2g1OTVBaVpsejRWcG1RQUl2MzB2bkVQV2ZBN3VEWFpQck9DYUMtZFI2N0ZldjctbGJVUE5BWWg3clhQcUlqdERDU3p5VE1Vbkt1OHlwckNXYkVKQmdxbnBKLTNNLWlZTUlfY213bW5HRmpldFF1Z0U0Rzc0RzJDQTVqamNLYVdBcHlIbW5rMVVsUV95XzMwbXZIMmhJSHdTa1VWLVM4MDlBRG5Ocl94MkxNVlNYM2VwdWt2cjg?oc=5",
+        "date": "13 Mar 2026 14:29",
+        "sort_key": "2026-03-13T14:29:15+00:00"
+      },
+      {
+        "source": "Bitcoin",
+        "title": "Iran war oil shock more likely to affect Bitcoin miners through BTC price than energy costs, analysts say - The Block",
+        "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQTWh5c0hnQmtEa2FuZ0VucmhyVjdtY0h2YTZkdEU4N0gwcGR1OVRMcnEyWThfcjN5UlFveGE5TjFxbUM3RGNmNFE2Y1NTV25JaWRwSjRGVFhvNHNFaTNfaVNBblVPSHZLZ2V5UXlhaUpUaVBmT3JjUlNKZVAzcy1DV2RFRnA1SDl0ZUJwTmhoS3JCWWFWRjJJb2Y0RThtU1NnYlp4QktNSXlwdi02V3ZCYWQxdmtpVGJvR3hiZXc5dWxUWklWZVBDbGVTeXZDV0NEVEhjMnEwVQ?oc=5",
+        "date": "13 Mar 2026 12:04",
+        "sort_key": "2026-03-13T12:04:52+00:00"
+      }
+    ],
+    "Singapore": [
+      {
+        "source": "CNA",
+        "title": "US says can provide 'reliable' energy supply to Asia-Pacific",
+        "url": "https://www.channelnewsasia.com/asia/us-asia-pacific-energy-supply-iran-middle-east-5993466",
+        "date": "14 Mar 2026 17:44",
+        "sort_key": "2026-03-14T17:44:58+08:00"
+      },
+      {
+        "source": "CNA",
+        "title": "Thai parliament to open amid scrutiny over election ballots",
+        "url": "https://www.channelnewsasia.com/asia/thailand-parliament-election-prime-minister-anutin-charnvirakul-5993371",
+        "date": "14 Mar 2026 16:03",
+        "sort_key": "2026-03-14T16:03:18+08:00"
+      },
+      {
+        "source": "CNA",
+        "title": "China urges Afghanistan, Pakistan to resolve tensions via talks, not force",
+        "url": "https://www.channelnewsasia.com/asia/china-afghanistan-pakistan-tensions-wang-yi-5993111",
+        "date": "14 Mar 2026 14:16",
+        "sort_key": "2026-03-14T14:16:38+08:00"
+      },
+      {
+        "source": "CNA",
+        "title": "Iran allows two Indian gas tankers through Hormuz; plane leaves India with Iranian sailors, bodies",
+        "url": "https://www.channelnewsasia.com/asia/iran-india-gas-tankers-vessels-hormuz-modi-5993276",
+        "date": "14 Mar 2026 13:16",
+        "sort_key": "2026-03-14T13:16:00+08:00"
+      },
+      {
+        "source": "CNA",
+        "title": "Indonesia minister says sustained high oil prices could see budget deficit breach mandated limit",
+        "url": "https://www.channelnewsasia.com/asia/indonesia-minister-oil-prices-iran-middle-east-war-5991796",
+        "date": "14 Mar 2026 11:11",
+        "sort_key": "2026-03-14T11:11:34+08:00"
+      },
+      {
+        "source": "STI",
+        "title": "The case for an iEdge Singapore Next 50 ETF - The Business Times",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNaUhVRnhPNTFkQ2Vtc3pyRHRlTGVFNjYzVkplRm1faEVGX1JOWk5EWVIzZ0dBQmZWVWUwb0UzQ2JmenNzbDFTSk5ibER4ODN5bGJCYVJ3QkJieFdpMmhSYVkzT19mTDZDYXpKRVc0VVV0SnBBckVSQ2NCemQtblZCUEhTYmtSanFXaVE?oc=5",
+        "date": "13 Mar 2026 23:15",
+        "sort_key": "2026-03-13T23:15:00+00:00"
+      },
+      {
+        "source": "STI",
+        "title": "Elevated crude prices rein in Singapore shares performance; STI down 0.3% - The Business Times",
+        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxObWtDWVY5b05Nb3RrRkx3SFQzNk1mQW9fOThRdnkzNUEtRDZ4dWlKbGZIS1JEV2d4UUQ4Q3NkRTVrNjNmdjJWNzFFN29XSHpBbzA5U2lsbjZndGRfeUI0aGNGZFpGR25ROUFDckNOa18tb2QwYnd4VFA4aWV5T1JxRjU5STRsdldfUFZJWl9jX1MyTlBOZFY3bVpzLUNiSEtWci1XWFA5SXdhWWlnYnpTNzlOZ3JGM2FRTTlzbEN3SVNxVW5FRXBXWWJDUHp1NWx5cDdtSVJfdElkemk2Nnkw?oc=5",
+        "date": "13 Mar 2026 09:53",
+        "sort_key": "2026-03-13T09:53:00+00:00"
+      },
+      {
+        "source": "SGX",
+        "title": "Singapore Exchange (SGX) Market Statistics Report February 2026: Turnover, Market Capitalisation, Indices & Derivatives Trends - Minichart",
+        "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPaTc3bl9YYVBsYTUwY2Y2RWdmQUN1YjNaX1c3MVBsajExdWZFYkJtYW1CZm1nVEE4VXVkYkpGOEFTbWNjaWdkb3N3bW5PU1VzUDZvOXRTeEo3bzF3QUtVd2FnckRtZ0h3QlQxeEo5RHZ0YlBfaXAtbVgxQnBsaVN4T291OEVyWHMwd2l0T0wxM3ZiZ3lZcE16QmNXd0hfejFPRVFRVEMzVC1QTW42WjhaRlJ5Q1hyYmV0WXdpRlhiTFFhcG1GVURVUjdfT1ZZRTlWRXJRYkFuQkp3TVNkUHprLUdkM3EzY1dLbmd6cFB4R0xRdw?oc=5",
+        "date": "12 Mar 2026 10:49",
+        "sort_key": "2026-03-12T10:49:00+00:00"
+      },
+      {
+        "source": "STI",
+        "title": "Blue chips close lower in Singapore; STI slides 0.2% - The Straits Times",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZzltN1FENTZtdVZzRDJ1ZVIxM3lqUEtuSmNUenJadmNqWjhtLVVlMmZUTGdtUEx3VWtmMFhETmdjeHR4MDBvZGRJUFd1VDZrZnRJSjhOTDJ0U0d4VW1iU0daUVJPdFhzTXJhbEZGX0JpWTFHbGxKeXh3cEswSlpScjJvTWVEb29pVF9WUU9xMGlMU0JUcFpKTk5KNjRPTGdtUUpvVDE0N0ZpZw?oc=5",
+        "date": "12 Mar 2026 10:45",
+        "sort_key": "2026-03-12T10:45:00+00:00"
+      },
+      {
+        "source": "SGX",
+        "title": "Singapore Exchange (SGX) February 2026 Market Statistics Report: Key Trends, Volumes & Market Capitalisation Data - Minichart",
+        "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOOFV4VE9wXzd5YWs1aldXQXllVVdxRHQzTUdWVmFBRzdQNVFIV3NSdjBNMU9jenMzcUNEQjRIVVBIakJOU2QxeV90UkVDR1Q2MkNkc2lvc18tZ0FLdk5vbl9SN3Jyd3BvU2NLMW44R2owU1Q4eFNQUDZjMW5JZzFPUkRlZ01jU3N6ZEJacWlYV1pjdmQwV01kRGNUallmcU1CQ1JRR1kxWFRVVW1fRXBiaXJWT0xBdmMzbFMxVXFiMXUtS1VCdWVxTXN1Tm9nN1czVTBvSFlQQlRXR3dDRjJ5NW53?oc=5",
+        "date": "12 Mar 2026 04:37",
+        "sort_key": "2026-03-12T04:37:00+00:00"
+      }
+    ],
+    "Regional": [
+      {
+        "source": "Malay Mail",
+        "title": "Middle East war may trigger 70pc drop in regional oil production, says energy research firm",
+        "url": "https://www.malaymail.com/news/money/2026/03/14/middle-east-war-may-trigger-70pc-drop-in-regional-oil-production-says-energy-research-firm/212626",
+        "date": "14 Mar 2026 14:56",
+        "sort_key": "2026-03-14T14:56:23+08:00"
+      },
+      {
+        "source": "Malay Mail",
+        "title": "US auto groups push government to block Chinese carmakers from market",
+        "url": "https://www.malaymail.com/news/money/2026/03/14/us-auto-groups-push-government-to-block-chinese-carmakers-from-market/212608",
+        "date": "14 Mar 2026 12:54",
+        "sort_key": "2026-03-14T12:54:58+08:00"
+      },
+      {
+        "source": "Malay Mail",
+        "title": "Oil holds above US$100 as Middle East war rattles global stock markets",
+        "url": "https://www.malaymail.com/news/money/2026/03/14/oil-holds-above-us100-as-middle-east-war-rattles-global-stock-markets/212590",
+        "date": "14 Mar 2026 10:21",
+        "sort_key": "2026-03-14T10:21:27+08:00"
+      },
+      {
+        "source": "SCMP",
+        "title": "Aid groups warn of humanitarian crisis in Lebanon as nearly 1 million displaced by war",
+        "url": "https://www.scmp.com/news/world/middle-east/article/3346600/aid-groups-warn-humanitarian-crisis-lebanon-nearly-1-million-displaced-war?utm_source=rss_feed",
+        "date": "14 Mar 2026 09:50",
+        "sort_key": "2026-03-14T09:50:46+00:00"
+      },
+      {
+        "source": "Malay Mail",
+        "title": "Meta plans major layoffs as Zuckerberg chases AI ‘superintelligence’",
+        "url": "https://www.malaymail.com/news/money/2026/03/14/meta-plans-major-layoffs-as-zuckerberg-chases-ai-superintelligence/212578",
+        "date": "14 Mar 2026 09:17",
+        "sort_key": "2026-03-14T09:17:11+08:00"
+      },
+      {
+        "source": "SCMP",
+        "title": "By waging war on Iran, Trump leaves the US economy more vulnerable",
+        "url": "https://www.scmp.com/opinion/world-opinion/article/3346308/waging-war-iran-trump-leaves-us-economy-more-vulnerable?utm_source=rss_feed",
+        "date": "14 Mar 2026 08:30",
+        "sort_key": "2026-03-14T08:30:08+00:00"
+      },
+      {
+        "source": "SCMP",
+        "title": "Iran war fallout puts 9 million Indian workers in the line of fire",
+        "url": "https://www.scmp.com/week-asia/people/article/3346524/iran-war-fallout-puts-9-million-indian-workers-line-fire?utm_source=rss_feed",
+        "date": "14 Mar 2026 08:00",
+        "sort_key": "2026-03-14T08:00:12+00:00"
+      },
+      {
+        "source": "SCMP",
+        "title": "Palestinian actor Motaz Malhees blocked from Oscars by Trump travel ban",
+        "url": "https://www.scmp.com/news/world/united-states-canada/article/3346583/palestinian-actor-motaz-malhees-blocked-oscars-trump-travel-ban?utm_source=rss_feed",
+        "date": "14 Mar 2026 05:34",
+        "sort_key": "2026-03-14T05:34:36+00:00"
+      },
+      {
+        "source": "SCMP",
+        "title": "US moves 2,000 Marines from Japan to Middle East as Iran war intensifies",
+        "url": "https://www.scmp.com/news/asia/east-asia/article/3346580/us-moves-2000-marines-japan-middle-east-iran-war-intensifies?utm_source=rss_feed",
+        "date": "14 Mar 2026 04:52",
+        "sort_key": "2026-03-14T04:52:25+00:00"
+      },
+      {
+        "source": "Malay Mail",
+        "title": "Malaysia scores dairy first with bulk milk export to Singapore",
+        "url": "https://www.malaymail.com/news/money/2026/03/13/malaysia-scores-dairy-first-with-bulk-milk-export-to-singapore/212563",
+        "date": "13 Mar 2026 19:35",
+        "sort_key": "2026-03-13T19:35:19+08:00"
+      }
+    ],
+    "World": [
+      {
+        "source": "Bloomberg",
+        "title": "China State Grid Investment Surges in First Two Months of 2026",
+        "url": "https://www.bloomberg.com/news/articles/2026-03-14/china-state-grid-investment-surges-in-first-two-months-of-2026",
+        "date": "14 Mar 2026 08:38",
+        "sort_key": "2026-03-14T08:38:30+00:00"
+      },
+      {
+        "source": "Bloomberg",
+        "title": "Some Fujairah Oil Operations Suspended After Drone Attack, Fire",
+        "url": "https://www.bloomberg.com/news/articles/2026-03-14/some-fujairah-oil-operations-suspended-after-drone-attack-fire",
+        "date": "14 Mar 2026 07:36",
+        "sort_key": "2026-03-14T07:36:49+00:00"
+      },
+      {
+        "source": "FT",
+        "title": "Israel calls for Iranian factory evacuation, suggesting attack imminent",
+        "url": "https://www.ft.com/content/d1b23f3e-a976-4ff1-a653-4155e7a8695e",
+        "date": "14 Mar 2026 07:24",
+        "sort_key": "2026-03-14T07:24:26+00:00"
+      },
+      {
+        "source": "Bloomberg",
+        "title": "China Travelers Make Record Number of Trips in Spring Holidays",
+        "url": "https://www.bloomberg.com/news/articles/2026-03-14/china-travelers-make-record-number-of-trips-in-spring-holidays",
+        "date": "14 Mar 2026 07:07",
+        "sort_key": "2026-03-14T07:07:40+00:00"
+      },
+      {
+        "source": "Bloomberg",
+        "title": "Russian Refinery, Port Hit by Drones; Kyiv Comes Under Fire",
+        "url": "https://www.bloomberg.com/news/articles/2026-03-14/russia-says-major-oil-refinery-key-port-hit-by-ukraine-drones",
+        "date": "14 Mar 2026 05:11",
+        "sort_key": "2026-03-14T05:11:25+00:00"
+      },
+      {
+        "source": "FT",
+        "title": "Why Iran could become the next Iraq",
+        "url": "https://www.ft.com/content/bf9b5746-b44b-4fd3-a5cd-c469c5388c5d",
+        "date": "14 Mar 2026 05:00",
+        "sort_key": "2026-03-14T05:00:43+00:00"
+      },
+      {
+        "source": "FT",
+        "title": "Are markets being too complacent about the Iran war?",
+        "url": "https://www.ft.com/content/36474089-8b7e-4fc8-aa76-1643796a57d9",
+        "date": "14 Mar 2026 05:00",
+        "sort_key": "2026-03-14T05:00:43+00:00"
+      },
+      {
+        "source": "Bloomberg",
+        "title": "Trump Strikes Iran’s Kharg Oil Hub and Urges Reopening of Hormuz",
+        "url": "https://www.bloomberg.com/news/articles/2026-03-14/iran-repeats-retaliation-threat-as-us-hits-kharg-island-military",
+        "date": "14 Mar 2026 04:52",
+        "sort_key": "2026-03-14T04:52:20+00:00"
+      },
+      {
+        "source": "BBC Biz",
+        "title": "Chancellor to offer support over rising heating oil costs",
+        "url": "https://www.bbc.com/news/articles/cvg3y9dpvxgo?at_medium=RSS&at_campaign=rss",
+        "date": "14 Mar 2026 03:49",
+        "sort_key": "2026-03-14T03:49:14+00:00"
+      },
+      {
+        "source": "FT",
+        "title": "Wall Street warns Iran war will trigger prolonged energy crisis",
+        "url": "https://www.ft.com/content/e5d1f192-c9f1-448f-9aa4-528d6e867cd2",
+        "date": "13 Mar 2026 23:32",
+        "sort_key": "2026-03-13T23:32:10+00:00"
+      }
+    ],
+    "Tech": [
+      {
+        "source": "CoinDesk",
+        "title": "Bitcoin holds $71,000 despite Trump warning of strikes on Iran's oil-rich Kharg Island",
+        "url": "https://www.coindesk.com/markets/2026/03/14/bitcoin-holds-usd71-000-despite-trump-warning-after-iran-oil-strikes",
+        "date": "14 Mar 2026 06:08",
+        "sort_key": "2026-03-14T06:08:27+00:00"
+      },
+      {
+        "source": "CoinDesk",
+        "title": "Bitcoin can survive 72% of the world's submarine cables being cut, but a targeted attack on five hosting providers could cripple it",
+        "url": "https://www.coindesk.com/markets/2026/03/13/bitcoin-can-survive-72-of-the-world-s-submarine-cables-being-cut-but-a-targeted-attack-on-five-hosting-providers-could-cripple-it",
+        "date": "14 Mar 2026 03:30",
+        "sort_key": "2026-03-14T03:30:00+00:00"
+      },
+      {
+        "source": "TechCrunch",
+        "title": "‘Not built right the first time’ — Musk’s xAI is starting over again, again",
+        "url": "https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/",
+        "date": "14 Mar 2026 00:12",
+        "sort_key": "2026-03-14T00:12:22+00:00"
+      },
+      {
+        "source": "TechCrunch",
+        "title": "Lawyer behind AI psychosis cases warns of mass casualty risks",
+        "url": "https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/",
+        "date": "14 Mar 2026 00:01",
+        "sort_key": "2026-03-14T00:01:02+00:00"
+      },
+      {
+        "source": "CoinDesk",
+        "title": "A huge gap between network use and token value is the most important thing happening in XRP right now",
+        "url": "https://www.coindesk.com/markets/2026/03/13/dnp-xrp-ledger-activity-is-hitting-records-but-why-are-xrp-prices-down-62-from-peak",
+        "date": "13 Mar 2026 23:30",
+        "sort_key": "2026-03-13T23:30:00+00:00"
+      },
+      {
+        "source": "TechCrunch",
+        "title": "Nyne, founded by a father-son duo, gives AI agents the human context they’re missing",
+        "url": "https://techcrunch.com/2026/03/13/nyne-founded-by-a-father-son-duo-gives-ai-agents-the-human-context-theyre-missing/",
+        "date": "13 Mar 2026 21:37",
+        "sort_key": "2026-03-13T21:37:01+00:00"
+      },
+      {
+        "source": "CoinDesk",
+        "title": "Court closes Custodia fight with Federal Reserve just as Fed opens master-account door",
+        "url": "https://www.coindesk.com/policy/2026/03/13/court-closes-custodia-fight-with-federal-reserve-just-as-fed-opens-master-account-door",
+        "date": "13 Mar 2026 21:04",
+        "sort_key": "2026-03-13T21:04:03+00:00"
+      },
+      {
+        "source": "TechCrunch",
+        "title": "Steven Spielberg says he’s ‘never used AI’ in any of his films",
+        "url": "https://techcrunch.com/2026/03/13/steven-spielberg-says-hes-never-used-ai-in-any-of-his-films/",
+        "date": "13 Mar 2026 19:47",
+        "sort_key": "2026-03-13T19:47:58+00:00"
+      },
+      {
+        "source": "CoinDesk",
+        "title": "Circle overtakes BlackRock in tokenized Treasuries as market hits record $11 billion",
+        "url": "https://www.coindesk.com/markets/2026/03/13/circle-overtakes-blackrock-in-tokenized-treasuries-as-market-hits-record-usd11-billion",
+        "date": "13 Mar 2026 19:41",
+        "sort_key": "2026-03-13T19:41:14+00:00"
+      },
+      {
+        "source": "TechCrunch",
+        "title": "The biggest AI stories of the year (so far)",
+        "url": "https://techcrunch.com/2026/03/13/the-biggest-ai-stories-of-the-year-so-far/",
+        "date": "13 Mar 2026 19:38",
+        "sort_key": "2026-03-13T19:38:11+00:00"
+      }
+    ]
+  },
+  "all_headlines": [
     {
-      "category": "World",
-      "source": "Bloomberg",
-      "title": "Oil tops $100 per barrel as Trump says US will strike Iran very hard over next week",
-      "url": "https://finance.yahoo.com",
-      "date": "14 Mar 2026"
-    },
-    {
-      "category": "World",
-      "source": "FT",
-      "title": "Wall Street closes lower, posts weekly loss as war on Iran fuels inflation worries",
-      "url": "https://finance.yahoo.com",
-      "date": "14 Mar 2026"
-    },
-    {
-      "category": "Singapore",
       "source": "CNA",
-      "title": "ASEAN ministers urge halt to Middle East war as crisis rattles energy and trade",
-      "url": "https://channelnewsasia.com",
-      "date": "14 Mar 2026"
+      "title": "US says can provide 'reliable' energy supply to Asia-Pacific",
+      "url": "https://www.channelnewsasia.com/asia/us-asia-pacific-energy-supply-iran-middle-east-5993466",
+      "date": "14 Mar 2026 17:44",
+      "sort_key": "2026-03-14T17:44:58+08:00"
     },
     {
-      "category": "Tech",
+      "source": "CNA",
+      "title": "Thai parliament to open amid scrutiny over election ballots",
+      "url": "https://www.channelnewsasia.com/asia/thailand-parliament-election-prime-minister-anutin-charnvirakul-5993371",
+      "date": "14 Mar 2026 16:03",
+      "sort_key": "2026-03-14T16:03:18+08:00"
+    },
+    {
+      "source": "Malay Mail",
+      "title": "Middle East war may trigger 70pc drop in regional oil production, says energy research firm",
+      "url": "https://www.malaymail.com/news/money/2026/03/14/middle-east-war-may-trigger-70pc-drop-in-regional-oil-production-says-energy-research-firm/212626",
+      "date": "14 Mar 2026 14:56",
+      "sort_key": "2026-03-14T14:56:23+08:00"
+    },
+    {
+      "source": "CNA",
+      "title": "China urges Afghanistan, Pakistan to resolve tensions via talks, not force",
+      "url": "https://www.channelnewsasia.com/asia/china-afghanistan-pakistan-tensions-wang-yi-5993111",
+      "date": "14 Mar 2026 14:16",
+      "sort_key": "2026-03-14T14:16:38+08:00"
+    },
+    {
+      "source": "CNA",
+      "title": "Iran allows two Indian gas tankers through Hormuz; plane leaves India with Iranian sailors, bodies",
+      "url": "https://www.channelnewsasia.com/asia/iran-india-gas-tankers-vessels-hormuz-modi-5993276",
+      "date": "14 Mar 2026 13:16",
+      "sort_key": "2026-03-14T13:16:00+08:00"
+    },
+    {
+      "source": "Malay Mail",
+      "title": "US auto groups push government to block Chinese carmakers from market",
+      "url": "https://www.malaymail.com/news/money/2026/03/14/us-auto-groups-push-government-to-block-chinese-carmakers-from-market/212608",
+      "date": "14 Mar 2026 12:54",
+      "sort_key": "2026-03-14T12:54:58+08:00"
+    },
+    {
+      "source": "CNA",
+      "title": "Indonesia minister says sustained high oil prices could see budget deficit breach mandated limit",
+      "url": "https://www.channelnewsasia.com/asia/indonesia-minister-oil-prices-iran-middle-east-war-5991796",
+      "date": "14 Mar 2026 11:11",
+      "sort_key": "2026-03-14T11:11:34+08:00"
+    },
+    {
+      "source": "Malay Mail",
+      "title": "Oil holds above US$100 as Middle East war rattles global stock markets",
+      "url": "https://www.malaymail.com/news/money/2026/03/14/oil-holds-above-us100-as-middle-east-war-rattles-global-stock-markets/212590",
+      "date": "14 Mar 2026 10:21",
+      "sort_key": "2026-03-14T10:21:27+08:00"
+    },
+    {
+      "source": "SCMP",
+      "title": "Aid groups warn of humanitarian crisis in Lebanon as nearly 1 million displaced by war",
+      "url": "https://www.scmp.com/news/world/middle-east/article/3346600/aid-groups-warn-humanitarian-crisis-lebanon-nearly-1-million-displaced-war?utm_source=rss_feed",
+      "date": "14 Mar 2026 09:50",
+      "sort_key": "2026-03-14T09:50:46+00:00"
+    },
+    {
+      "source": "Malay Mail",
+      "title": "Meta plans major layoffs as Zuckerberg chases AI ‘superintelligence’",
+      "url": "https://www.malaymail.com/news/money/2026/03/14/meta-plans-major-layoffs-as-zuckerberg-chases-ai-superintelligence/212578",
+      "date": "14 Mar 2026 09:17",
+      "sort_key": "2026-03-14T09:17:11+08:00"
+    },
+    {
+      "source": "Bloomberg",
+      "title": "China State Grid Investment Surges in First Two Months of 2026",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-14/china-state-grid-investment-surges-in-first-two-months-of-2026",
+      "date": "14 Mar 2026 08:38",
+      "sort_key": "2026-03-14T08:38:30+00:00"
+    },
+    {
+      "source": "SCMP",
+      "title": "By waging war on Iran, Trump leaves the US economy more vulnerable",
+      "url": "https://www.scmp.com/opinion/world-opinion/article/3346308/waging-war-iran-trump-leaves-us-economy-more-vulnerable?utm_source=rss_feed",
+      "date": "14 Mar 2026 08:30",
+      "sort_key": "2026-03-14T08:30:08+00:00"
+    },
+    {
+      "source": "SCMP",
+      "title": "Iran war fallout puts 9 million Indian workers in the line of fire",
+      "url": "https://www.scmp.com/week-asia/people/article/3346524/iran-war-fallout-puts-9-million-indian-workers-line-fire?utm_source=rss_feed",
+      "date": "14 Mar 2026 08:00",
+      "sort_key": "2026-03-14T08:00:12+00:00"
+    },
+    {
+      "source": "Bloomberg",
+      "title": "Some Fujairah Oil Operations Suspended After Drone Attack, Fire",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-14/some-fujairah-oil-operations-suspended-after-drone-attack-fire",
+      "date": "14 Mar 2026 07:36",
+      "sort_key": "2026-03-14T07:36:49+00:00"
+    },
+    {
+      "source": "FT",
+      "title": "Israel calls for Iranian factory evacuation, suggesting attack imminent",
+      "url": "https://www.ft.com/content/d1b23f3e-a976-4ff1-a653-4155e7a8695e",
+      "date": "14 Mar 2026 07:24",
+      "sort_key": "2026-03-14T07:24:26+00:00"
+    },
+    {
+      "source": "Bloomberg",
+      "title": "China Travelers Make Record Number of Trips in Spring Holidays",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-14/china-travelers-make-record-number-of-trips-in-spring-holidays",
+      "date": "14 Mar 2026 07:07",
+      "sort_key": "2026-03-14T07:07:40+00:00"
+    },
+    {
+      "source": "CoinDesk",
+      "title": "Bitcoin holds $71,000 despite Trump warning of strikes on Iran's oil-rich Kharg Island",
+      "url": "https://www.coindesk.com/markets/2026/03/14/bitcoin-holds-usd71-000-despite-trump-warning-after-iran-oil-strikes",
+      "date": "14 Mar 2026 06:08",
+      "sort_key": "2026-03-14T06:08:27+00:00"
+    },
+    {
+      "source": "SCMP",
+      "title": "Palestinian actor Motaz Malhees blocked from Oscars by Trump travel ban",
+      "url": "https://www.scmp.com/news/world/united-states-canada/article/3346583/palestinian-actor-motaz-malhees-blocked-oscars-trump-travel-ban?utm_source=rss_feed",
+      "date": "14 Mar 2026 05:34",
+      "sort_key": "2026-03-14T05:34:36+00:00"
+    },
+    {
+      "source": "Bloomberg",
+      "title": "Russian Refinery, Port Hit by Drones; Kyiv Comes Under Fire",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-14/russia-says-major-oil-refinery-key-port-hit-by-ukraine-drones",
+      "date": "14 Mar 2026 05:11",
+      "sort_key": "2026-03-14T05:11:25+00:00"
+    },
+    {
+      "source": "FT",
+      "title": "Why Iran could become the next Iraq",
+      "url": "https://www.ft.com/content/bf9b5746-b44b-4fd3-a5cd-c469c5388c5d",
+      "date": "14 Mar 2026 05:00",
+      "sort_key": "2026-03-14T05:00:43+00:00"
+    },
+    {
+      "source": "FT",
+      "title": "Are markets being too complacent about the Iran war?",
+      "url": "https://www.ft.com/content/36474089-8b7e-4fc8-aa76-1643796a57d9",
+      "date": "14 Mar 2026 05:00",
+      "sort_key": "2026-03-14T05:00:43+00:00"
+    },
+    {
+      "source": "SCMP",
+      "title": "US moves 2,000 Marines from Japan to Middle East as Iran war intensifies",
+      "url": "https://www.scmp.com/news/asia/east-asia/article/3346580/us-moves-2000-marines-japan-middle-east-iran-war-intensifies?utm_source=rss_feed",
+      "date": "14 Mar 2026 04:52",
+      "sort_key": "2026-03-14T04:52:25+00:00"
+    },
+    {
+      "source": "Bloomberg",
+      "title": "Trump Strikes Iran’s Kharg Oil Hub and Urges Reopening of Hormuz",
+      "url": "https://www.bloomberg.com/news/articles/2026-03-14/iran-repeats-retaliation-threat-as-us-hits-kharg-island-military",
+      "date": "14 Mar 2026 04:52",
+      "sort_key": "2026-03-14T04:52:20+00:00"
+    },
+    {
+      "source": "Gold",
+      "title": "Gold (XAU/USD) Price Forecast: Bear Flag Signals Potential Downside Targets - FXEmpire",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOSmF6ZG9MendTak9tTW54S2ppTlVoNHJsa3pyNnZkNlQ1T0hLZ2pLeXBEWXBYS2txd0szV2xpeUhPOV9rMjRicnhZVF9OdHZ0bkVUMDlNVEdQWnNUS01pNkRQMUlQcW80NWZvZ1NvekN2cldyTktfcGk3Q1R4M2Jidjl1SlFmNFRabS0zck94V3ZjdGtvdVY0RmlSc09VeGdnNXVzU2MyY29TZnN3aVVqSnA1eUtjMWdwSFZaTUo2aWU?oc=5",
+      "date": "14 Mar 2026 04:50",
+      "sort_key": "2026-03-14T04:50:00+00:00"
+    },
+    {
+      "source": "BBC Biz",
+      "title": "Chancellor to offer support over rising heating oil costs",
+      "url": "https://www.bbc.com/news/articles/cvg3y9dpvxgo?at_medium=RSS&at_campaign=rss",
+      "date": "14 Mar 2026 03:49",
+      "sort_key": "2026-03-14T03:49:14+00:00"
+    },
+    {
+      "source": "Gold",
+      "title": "Gold (XAU/USD) Price Forecast for Today, Tomorrow, Next Week, and the Next 30 Days - LiteFinance",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ1BXeVdPR08tTmQ4MHdZMkloUzlsNjRjSE5VVmxyeVRrdDZqbDI3Tm5VVUdfYTdZM0dOYjkzVFBuMGhJUzZEM3E0RDBkc0RTUXd2VFdMdm5uenpPXzJobUNvRklvRkt0S0pfYkZ0UWRXaWRDc09MR1pBUkVDRXN2Y2FINkVmUDBlRkZHNGhzZkNyNk5LUzZrM2VUV1pVOV9N?oc=5",
+      "date": "14 Mar 2026 03:47",
+      "sort_key": "2026-03-14T03:47:47+00:00"
+    },
+    {
+      "source": "CoinDesk",
+      "title": "Bitcoin can survive 72% of the world's submarine cables being cut, but a targeted attack on five hosting providers could cripple it",
+      "url": "https://www.coindesk.com/markets/2026/03/13/bitcoin-can-survive-72-of-the-world-s-submarine-cables-being-cut-but-a-targeted-attack-on-five-hosting-providers-could-cripple-it",
+      "date": "14 Mar 2026 03:30",
+      "sort_key": "2026-03-14T03:30:00+00:00"
+    },
+    {
+      "source": "Gold",
+      "title": "Weekly Gold (XAU/USD) Forecast: 3% Slide to $5000/oz as Rate Cut Bets Tumble, FOMC Up Next - Action Forex",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQQVhFamNMN0pJckhpV3NBSDV4RmE5LWFaZFdzV3p4bE5FTGpJU2hGbGliUEowRy1KR1c1eUpHSjF4UGFlbUF0OVBkS2RRVFdwMndfbW9DY0tqTVNlcy12eXNJOGZLeVNtRjNVa3JHQjUwNFBqcGZpbmJPWEpJOS1QSTB1RHZ0bXFsZnBsRXhRenBKd3VfUG1RZFNPeVpSWlRqQU1QdUQ5YnRqOGFMeXBONEdFQ21MMTUwcGRkM0xXN1Y2SmxlQUpTU2xPTTI1dEpla0p3dnBpWFhPNmdoZlRTQVVlMzhha05QbkE?oc=5",
+      "date": "14 Mar 2026 01:44",
+      "sort_key": "2026-03-14T01:44:31+00:00"
+    },
+    {
       "source": "TechCrunch",
-      "title": "Anthropic sues to block Pentagon blacklisting over AI use restrictions",
-      "url": "https://techcrunch.com",
-      "date": "14 Mar 2026"
+      "title": "‘Not built right the first time’ — Musk’s xAI is starting over again, again",
+      "url": "https://techcrunch.com/2026/03/13/not-built-right-the-first-time-musks-xai-is-starting-over-again-again/",
+      "date": "14 Mar 2026 00:12",
+      "sort_key": "2026-03-14T00:12:22+00:00"
     },
     {
-      "category": "Macro",
-      "source": "Reuters",
-      "title": "US dollar hovers near 2026 highs as oil rise spurs hawkish central bank bets",
-      "url": "https://reuters.com",
-      "date": "14 Mar 2026"
+      "source": "TechCrunch",
+      "title": "Lawyer behind AI psychosis cases warns of mass casualty risks",
+      "url": "https://techcrunch.com/2026/03/13/lawyer-behind-ai-psychosis-cases-warns-of-mass-casualty-risks/",
+      "date": "14 Mar 2026 00:01",
+      "sort_key": "2026-03-14T00:01:02+00:00"
+    },
+    {
+      "source": "FT",
+      "title": "Wall Street warns Iran war will trigger prolonged energy crisis",
+      "url": "https://www.ft.com/content/e5d1f192-c9f1-448f-9aa4-528d6e867cd2",
+      "date": "13 Mar 2026 23:32",
+      "sort_key": "2026-03-13T23:32:10+00:00"
+    },
+    {
+      "source": "CoinDesk",
+      "title": "A huge gap between network use and token value is the most important thing happening in XRP right now",
+      "url": "https://www.coindesk.com/markets/2026/03/13/dnp-xrp-ledger-activity-is-hitting-records-but-why-are-xrp-prices-down-62-from-peak",
+      "date": "13 Mar 2026 23:30",
+      "sort_key": "2026-03-13T23:30:00+00:00"
+    },
+    {
+      "source": "STI",
+      "title": "The case for an iEdge Singapore Next 50 ETF - The Business Times",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNaUhVRnhPNTFkQ2Vtc3pyRHRlTGVFNjYzVkplRm1faEVGX1JOWk5EWVIzZ0dBQmZWVWUwb0UzQ2JmenNzbDFTSk5ibER4ODN5bGJCYVJ3QkJieFdpMmhSYVkzT19mTDZDYXpKRVc0VVV0SnBBckVSQ2NCemQtblZCUEhTYmtSanFXaVE?oc=5",
+      "date": "13 Mar 2026 23:15",
+      "sort_key": "2026-03-13T23:15:00+00:00"
+    },
+    {
+      "source": "Oil",
+      "title": "WTI Crude Oil Plunges Below $82.00 Amid IEA’s Record-Breaking Reserve Release Plan - CryptoRank",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9hcmF4Vm1BdVNjTjNOUkdxVVhpRC1MXzBpZE80QnEyZlBfZVp5QnZSeC16M3ZJYTZKeFBNalBadVBWQUVCb1ZKRVBFNENFbU1RUXNKUGZ6a0p2QXRCVmlfZWxNT3NDR1F6eFFhbkRDVkRsT054S0ltYU84RQ?oc=5",
+      "date": "13 Mar 2026 23:04",
+      "sort_key": "2026-03-13T23:04:55+00:00"
+    },
+    {
+      "source": "BBC Biz",
+      "title": "We're not profiteering on fuel. But my staff still face abuse",
+      "url": "https://www.bbc.com/news/articles/c626mdvn6d5o?at_medium=RSS&at_campaign=rss",
+      "date": "13 Mar 2026 22:42",
+      "sort_key": "2026-03-13T22:42:19+00:00"
+    },
+    {
+      "source": "Oil",
+      "title": "Highest Crude Oil Price | WTI Historical Chart, Nominal & Inflation-Adjusted | Britannica Money - Britannica",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNNWlvMl92WWlMQjVnSFA0ZGhlbFpMQXRiXzhQNUNDLU92UHpDU19PTU4ya1prUm9XN3NrNy1fSXZsWjczbXhVUVBYTTZCNjVjVWVOZVpmR1VuSHAzVUszNC1vSjFaQ3hSWm95bFhSd2daak9YRzQ0WEtLMkV0akNWSWxwUVd6d21HeGc?oc=5",
+      "date": "13 Mar 2026 21:52",
+      "sort_key": "2026-03-13T21:52:00+00:00"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Nyne, founded by a father-son duo, gives AI agents the human context they’re missing",
+      "url": "https://techcrunch.com/2026/03/13/nyne-founded-by-a-father-son-duo-gives-ai-agents-the-human-context-theyre-missing/",
+      "date": "13 Mar 2026 21:37",
+      "sort_key": "2026-03-13T21:37:01+00:00"
+    },
+    {
+      "source": "BBC Biz",
+      "title": "Judge says 'no evidence' to justify Federal Reserve probe",
+      "url": "https://www.bbc.com/news/articles/cwy6z25y7z0o?at_medium=RSS&at_campaign=rss",
+      "date": "13 Mar 2026 21:28",
+      "sort_key": "2026-03-13T21:28:26+00:00"
+    },
+    {
+      "source": "CoinDesk",
+      "title": "Court closes Custodia fight with Federal Reserve just as Fed opens master-account door",
+      "url": "https://www.coindesk.com/policy/2026/03/13/court-closes-custodia-fight-with-federal-reserve-just-as-fed-opens-master-account-door",
+      "date": "13 Mar 2026 21:04",
+      "sort_key": "2026-03-13T21:04:03+00:00"
+    },
+    {
+      "source": "Fed",
+      "title": "The Fed Will Almost Certainly Hold At Its Meeting Next Week-Here's What's Still Up In The Air - Investopedia",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxON1J6eTFEYmZTY3RuS1d4ZUNtQmplU0FXQU1FN0JnajAtMWU0RTItUXZBb3JxMlFzWTMtXy1INlZyVV9LYVNLLVVsYVZCNnB0NmhYTU1qQXhodXNZcXNmdmlBRWl1Y2Jxa2xDZ1FQX00ycHY1eEtxbWlCRFB2RDBjZFluR2hwVGotQ21COEgxel9Nd3pwQVNGdE1LTlQ5dllhZlJ6SUFaUjhkQ0V6QUwwVXJhV0dUT0dYVVpFbzJObEp5TW1Id1JDLWlMcw?oc=5",
+      "date": "13 Mar 2026 20:25",
+      "sort_key": "2026-03-13T20:25:59+00:00"
+    },
+    {
+      "source": "S&P 500",
+      "title": "S&P 500 falls to new low for year on Iran oil crisis, posts third-straight losing week: Live updates - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE56bVdILXBTMkZXWDlVUkRTNGVyRGZlQVpQMFZaLW5jREQxZE1ZeVZaUDJ5aFMtb2NnSGlJY1Vrdnp5WGVnZWdHc1V5SEV5ZFlKZWlxT0ppSVE1SDJxRGNjZXV2VWppMktyVUtFUHpBdWxGVFZ0SF800gF8QVVfeXFMUDIxV2FtTlFxQTVJNVctNkVIQzZWNHdnOE93d3l6dUFkQVNaS2F0TlJnUEhDcUNya09QSmU3cVdqLXQtc1pWbWY4YzRNRDNOUjVPYzVudFhQdW0xajlweXJua2Q2ZUpmSnlPQXluYzJlY1c4UlFyVGUxcVoyNg?oc=5",
+      "date": "13 Mar 2026 20:21",
+      "sort_key": "2026-03-13T20:21:00+00:00"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Steven Spielberg says he’s ‘never used AI’ in any of his films",
+      "url": "https://techcrunch.com/2026/03/13/steven-spielberg-says-hes-never-used-ai-in-any-of-his-films/",
+      "date": "13 Mar 2026 19:47",
+      "sort_key": "2026-03-13T19:47:58+00:00"
+    },
+    {
+      "source": "CoinDesk",
+      "title": "Circle overtakes BlackRock in tokenized Treasuries as market hits record $11 billion",
+      "url": "https://www.coindesk.com/markets/2026/03/13/circle-overtakes-blackrock-in-tokenized-treasuries-as-market-hits-record-usd11-billion",
+      "date": "13 Mar 2026 19:41",
+      "sort_key": "2026-03-13T19:41:14+00:00"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "The biggest AI stories of the year (so far)",
+      "url": "https://techcrunch.com/2026/03/13/the-biggest-ai-stories-of-the-year-so-far/",
+      "date": "13 Mar 2026 19:38",
+      "sort_key": "2026-03-13T19:38:11+00:00"
+    },
+    {
+      "source": "Malay Mail",
+      "title": "Malaysia scores dairy first with bulk milk export to Singapore",
+      "url": "https://www.malaymail.com/news/money/2026/03/13/malaysia-scores-dairy-first-with-bulk-milk-export-to-singapore/212563",
+      "date": "13 Mar 2026 19:35",
+      "sort_key": "2026-03-13T19:35:19+08:00"
+    },
+    {
+      "source": "Bitcoin",
+      "title": "Key Bitcoin price levels to watch as BTC nears new monthly highs - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPaDk0cU1NdXE2RVluMnd0OE1pRVZRbnVKZFNFUVhFNnBueWUzT3BLdGR5YzluemZMTDdzYjQ5NHdsbzVWQTVTazhsWXM4aVRFT2Y4amprNVlFemZzR0FZdWVwdmlPVlBtNUNqdWdjaUhGbFNfaW9MN04yNF8xdWc4Nkc5UzFBOHdsbzBMOFZnRXQzTHUyUzhCNVhxckw5VERNVW00ekk5N3QyNXRQN0hHcVQ3OFhDTnJ5RWJkTWVOalQyQ0FqYS13?oc=5",
+      "date": "13 Mar 2026 19:13",
+      "sort_key": "2026-03-13T19:13:03+00:00"
+    },
+    {
+      "source": "FT",
+      "title": "The oil price war",
+      "url": "https://www.ft.com/content/e21a55b0-1678-4611-94ff-d9b6d429ed4c",
+      "date": "13 Mar 2026 18:54",
+      "sort_key": "2026-03-13T18:54:01+00:00"
+    },
+    {
+      "source": "BBC Biz",
+      "title": "Petrol retailers in row with government over 'rip off' accusations",
+      "url": "https://www.bbc.com/news/articles/crk83e2g65no?at_medium=RSS&at_campaign=rss",
+      "date": "13 Mar 2026 17:42",
+      "sort_key": "2026-03-13T17:42:49+00:00"
+    },
+    {
+      "source": "CNBC",
+      "title": "Fourth-quarter GDP revised down to just 0.7% growth; January core inflation was 3.1%",
+      "url": "https://www.cnbc.com/2026/03/13/fourth-quarter-gdp-revised-down-to-just-0point7percent-growth-january-core-inflation-was-3point1percent.html",
+      "date": "13 Mar 2026 16:47",
+      "sort_key": "2026-03-13T16:47:25+00:00"
+    },
+    {
+      "source": "BBC Biz",
+      "title": "Why has Trump eased sanctions on Russian oil - and will it help Putin?",
+      "url": "https://www.bbc.com/news/articles/cm2871wyz9ko?at_medium=RSS&at_campaign=rss",
+      "date": "13 Mar 2026 16:07",
+      "sort_key": "2026-03-13T16:07:39+00:00"
+    },
+    {
+      "source": "CNBC",
+      "title": "Iran war oil shock stokes fears of 1970s-style stagflation — why this time could be different",
+      "url": "https://www.cnbc.com/2026/03/13/iran-oil-shock-differs-1970s-stagflation.html",
+      "date": "13 Mar 2026 14:44",
+      "sort_key": "2026-03-13T14:44:52+00:00"
+    },
+    {
+      "source": "Bitcoin",
+      "title": "Bitcoin price news: BTC nears one-month high of $74,000 - CoinDesk",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNeU93clRqRnY3LWtlMnhQNjM5RmVvektyM202OUFOR2g1OTVBaVpsejRWcG1RQUl2MzB2bkVQV2ZBN3VEWFpQck9DYUMtZFI2N0ZldjctbGJVUE5BWWg3clhQcUlqdERDU3p5VE1Vbkt1OHlwckNXYkVKQmdxbnBKLTNNLWlZTUlfY213bW5HRmpldFF1Z0U0Rzc0RzJDQTVqamNLYVdBcHlIbW5rMVVsUV95XzMwbXZIMmhJSHdTa1VWLVM4MDlBRG5Ocl94MkxNVlNYM2VwdWt2cjg?oc=5",
+      "date": "13 Mar 2026 14:29",
+      "sort_key": "2026-03-13T14:29:15+00:00"
+    },
+    {
+      "source": "Bitcoin",
+      "title": "Iran war oil shock more likely to affect Bitcoin miners through BTC price than energy costs, analysts say - The Block",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQTWh5c0hnQmtEa2FuZ0VucmhyVjdtY0h2YTZkdEU4N0gwcGR1OVRMcnEyWThfcjN5UlFveGE5TjFxbUM3RGNmNFE2Y1NTV25JaWRwSjRGVFhvNHNFaTNfaVNBblVPSHZLZ2V5UXlhaUpUaVBmT3JjUlNKZVAzcy1DV2RFRnA1SDl0ZUJwTmhoS3JCWWFWRjJJb2Y0RThtU1NnYlp4QktNSXlwdi02V3ZCYWQxdmtpVGJvR3hiZXc5dWxUWklWZVBDbGVTeXZDV0NEVEhjMnEwVQ?oc=5",
+      "date": "13 Mar 2026 12:04",
+      "sort_key": "2026-03-13T12:04:52+00:00"
+    },
+    {
+      "source": "Bitcoin",
+      "title": "Bitcoin Faces Whale Sell Walls Near $74K—Here’s Where BTC Price May Head Next - Binance",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1sVmR3ZzZCSFFFOWtmLUdlZS1WQmZLd0ktLWtHbHB1VnpQNHIzOHJVRHVtT3pZWGItdkhsaF96NG5NdzZmaEFPeFF5eDdOc0xBWHhwODNnbjZrWmZuYlJhLVF0RUY?oc=5",
+      "date": "13 Mar 2026 11:03",
+      "sort_key": "2026-03-13T11:03:03+00:00"
+    },
+    {
+      "source": "STI",
+      "title": "Elevated crude prices rein in Singapore shares performance; STI down 0.3% - The Business Times",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxObWtDWVY5b05Nb3RrRkx3SFQzNk1mQW9fOThRdnkzNUEtRDZ4dWlKbGZIS1JEV2d4UUQ4Q3NkRTVrNjNmdjJWNzFFN29XSHpBbzA5U2lsbjZndGRfeUI0aGNGZFpGR25ROUFDckNOa18tb2QwYnd4VFA4aWV5T1JxRjU5STRsdldfUFZJWl9jX1MyTlBOZFY3bVpzLUNiSEtWci1XWFA5SXdhWWlnYnpTNzlOZ3JGM2FRTTlzbEN3SVNxVW5FRXBXWWJDUHp1NWx5cDdtSVJfdElkemk2Nnkw?oc=5",
+      "date": "13 Mar 2026 09:53",
+      "sort_key": "2026-03-13T09:53:00+00:00"
+    },
+    {
+      "source": "S&P 500",
+      "title": "What are the four new companies being added to the S&P 500 index in March? - Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE56MTl6WkttcG9fLU5fTHpuYWU4YkR3REhsMDF1ZW81d2Jva05TUzJNZHVVYUxpSlhDLURNX2kyY3JXUlk3VWRVUlhENDNzQnFUZ28yb05tU3BTcGN5QkFPZDBDeV8wekdadFNPN1hCNXJWUTFqYVJFdjNUWERXY1U?oc=5",
+      "date": "13 Mar 2026 06:00",
+      "sort_key": "2026-03-13T06:00:00+00:00"
+    },
+    {
+      "source": "Bitcoin",
+      "title": "Why Bitcoin's Price Is at a Weekly High Despite Middle East Tensions - Yahoo Finance",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQWlJRQnJvVEdKU2tESHAwOGNManhxN1VSbUwyd01zUk01YmRtMDdXeEZ2RXdYNnJ5VW5aX0lHUWtTWDZhYlFSenlTV2NlWGs5VlFlVDdmMkI1TDZPM3o1LWdJYVJ3Tm5VR2tyYXRLU0ZfR3hLeDVxei1yVXlLcy10VDFn?oc=5",
+      "date": "13 Mar 2026 03:43",
+      "sort_key": "2026-03-13T03:43:00+00:00"
+    },
+    {
+      "source": "S&P 500",
+      "title": "Opinion: The S&P 500 just broke a major support. Another 10% decline is likely. - MarketWatch",
+      "url": "https://news.google.com/rss/articles/CBMitANBVV95cUxNOFMxSTJSakswUk5RZ21UNEcwbVgza2RGdjQtZVU1dGc0aEl5c09rdlA0Qng3VDc3NWdrZkR1QTU3aXM3ckVSU09VS25oYTBHUmpvVkQwa1pnMEFGZDFzNEJaa0lpZDFoU3ByeWtJUEZjOW0xbkVRWFdxSXBhR2pHQ0lnMFNtVGlwN3l3MktrTHY3ZlFzaDNBRnVtZUxZUk5ZOGZjelloQndSdWFsbWROSHVaamFGdzQwVFZwOUpCQzhfTU5XRTdKYkFSdWpwZDZaM2tqaUk1NGtGOTZwcWJ5SEFEUmR1ZHdZbW9TNmM0MTk2eURfbVZhUzBvM25OMG1UVlpDbWVQbEdYMHdyR0pUMjFGSFNlRW5ibjlmdm9WNWVMX0IxS0t3ZXVuRV96aWJBbGg5WElfcUJwYzN3N1QxQ0J0LV9mdXdyY05rNzVzRjVobk1fUlFzNWhnbXI3REc3UUVpQllzSl9VWWVvam44S1JydEk5ckF5SmJ1NkRrRHZDWnpKUUdHODlGUVFlRm1lOTdOUjQzRllMTGNIQjFZaGU1d3VGd1VjMHBCb1o3YUo5MTJh?oc=5",
+      "date": "12 Mar 2026 22:40",
+      "sort_key": "2026-03-12T22:40:00+00:00"
+    },
+    {
+      "source": "Fed",
+      "title": "Trump demands Fed cut rates. His Iran war has investors betting otherwise - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNNkJCd3EzTW5OUUkwMlNuNFlBMml5ZkZNZFpHNGdzSjgzVnVMT0ZxMFczemgwZ0JfWHdxQ0dQamxOUFZvcG42LW80NXhpNnZmUUw3LTJ4N1pxQTFLbE1yVDRnZVQzYlQxWURIbmZBek56Tk1KUUw3aVpUS0tZYk04aTlCQXNEN25lT2ZmR2E3cF9NQU1IT2QzQU5ZUFo3TWtranVrM01hTVJQZU1HZ1BCclhjSE5QdXdC?oc=5",
+      "date": "12 Mar 2026 22:09",
+      "sort_key": "2026-03-12T22:09:04+00:00"
+    },
+    {
+      "source": "Fed",
+      "title": "Traders Are No Longer Fully Pricing In a Fed Rate Cut This Year - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObmxlRGFteVh1akF0UmdOU2hJSTZWd0U5Zk1RWVpaaUM3R1k1cGFGaE9ZUVo5MjFtSWE5emxXUDNwdzFoY24wWFMxVVVFY2FGamZGYzFjTDdrU2tpdk9uSUhEdWQ2NlFPT1ZwSmpVZXV4amVFVXg2X0JMR19pRDZJTUNwaEEzakNRd3dadWNKb0RlLVBQNU9kR2p2MUpWTzN4OVdrUlo0U1QzQmpoOHVnVy1kUjM?oc=5",
+      "date": "12 Mar 2026 20:56",
+      "sort_key": "2026-03-12T20:56:01+00:00"
     }
-  ]
+  ],
+  "total": 90
 }
