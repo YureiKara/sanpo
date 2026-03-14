@@ -11,7 +11,17 @@ FUTURES_GROUPS = OrderedDict([
     ('Futures',   ['ES=F', 'NQ=F', 'GC=F', 'SI=F', 'CL=F', 'NG=F', 'ZC=F', 'ZS=F', 'BTC=F', 'ETH=F', 'SB=F', 'KC=F']),
     ('Indices',   ['ES=F', 'NQ=F', 'YM=F', 'RTY=F', 'NKD=F']),
     ('Rates',     ['ZB=F', 'ZN=F', 'ZF=F', 'ZT=F']),
-    ('FX',        ['6E=F', '6J=F', '6B=F', '6A=F', 'USDSGD=X']),
+    ('FX', [
+        # Americas
+        'USDCAD=X', 'USDMXN=X', 'USDBRL=X',
+        # Europe
+        'EURUSD=X', 'GBPUSD=X', 'USDCHF=X', 'USDSEK=X', 'USDNOK=X', 'USDPLN=X', 'USDTRY=X',
+        # Asia
+        'USDJPY=X', 'AUDUSD=X', 'NZDUSD=X', 'USDSGD=X', 'USDHKD=X',
+        'USDCNY=X', 'USDMYR=X', 'USDINR=X', 'USDKRW=X',
+        # Africa/ME
+        'USDZAR=X',
+    ]),
     ('Crypto',    ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD']),
     ('Energy',    ['CL=F', 'NG=F', 'RB=F', 'HO=F']),
     ('Metals',    ['GC=F', 'SI=F', 'PL=F', 'HG=F']),
@@ -56,6 +66,13 @@ SYMBOL_NAMES = {
     'BTC=F': 'Bitcoin Futures', 'ETH=F': 'Ethereum Futures',
     '6E=F': 'Euro FX', '6J=F': 'Japanese Yen', '6B=F': 'British Pound', '6A=F': 'Australian Dollar',
     'USDSGD=X': 'USD/SGD',
+    'EURUSD=X': 'EUR/USD', 'GBPUSD=X': 'GBP/USD', 'USDJPY=X': 'USD/JPY',
+    'AUDUSD=X': 'AUD/USD', 'NZDUSD=X': 'NZD/USD', 'USDCAD=X': 'USD/CAD',
+    'USDCHF=X': 'USD/CHF', 'USDSEK=X': 'USD/SEK', 'USDNOK=X': 'USD/NOK',
+    'USDHKD=X': 'USD/HKD', 'USDCNY=X': 'USD/CNY', 'USDINR=X': 'USD/INR',
+    'USDMYR=X': 'USD/MYR', 'USDKRW=X': 'USD/KRW', 'USDMXN=X': 'USD/MXN',
+    'USDBRL=X': 'USD/BRL', 'USDZAR=X': 'USD/ZAR', 'USDTRY=X': 'USD/TRY',
+    'USDPLN=X': 'USD/PLN',
     'ES3.SI': 'STI ETF', 'S68.SI': 'SGX', 'MBH.SI': 'Amova IG Bond', 'MMS.SI': 'SGD Money Mkt',
     'XLB': 'Materials', 'XLC': 'Comms', 'XLY': 'Cons Disc', 'XLP': 'Cons Staples',
     'XLE': 'Energy', 'XLF': 'Financials', 'XLV': 'Healthcare', 'XLI': 'Industrials',
