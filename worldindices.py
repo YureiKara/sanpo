@@ -258,13 +258,7 @@ def render_worldindices_tab(is_mobile):
     with col_sort:
         st.markdown(f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;font-family:{FONTS};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:-18px'>SORT BY</div>", unsafe_allow_html=True)
         sort_key = st.selectbox('sort_world', ['Day %', 'YTD %'], key='world_sort', label_visibility='collapsed')
-        st.markdown("""<style>
-            div[data-testid="stSelectbox"] > div > div {
-                font-size: 10px !important;
-                padding: 2px 6px !important;
-                min-height: 26px !important;
-            }
-        </style>""", unsafe_allow_html=True)
+
     with col_ts:
         st.markdown(f"<div style='font-size:9px;color:#f8fafc;font-family:{FONTS};padding:28px 0 0 0;text-align:right'>Updated: {now_str}</div>", unsafe_allow_html=True)
 

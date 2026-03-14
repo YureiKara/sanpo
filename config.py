@@ -26,6 +26,11 @@ FUTURES_GROUPS = OrderedDict([
     ('Shipping',  ['BOAT', 'SEA', 'ZIM', 'MATX', 'DAC', 'CMRE', 'FRO', 'STNG', 'INSW', 'TK', 'GOGL', 'SBLK', 'GNK', 'GSL', 'AMKBY']),
     ('Strategy',  ['MSTR', 'STRK', 'STRF', 'STRC', 'STRD', 'MSTU', 'MSTX', 'MSTZ', 'MSTY']),
     ('Crypto Co', ['COIN', 'MSTR', 'MARA', 'RIOT', 'HOOD', 'CORZ', 'CLSK', 'HUT', 'GLXY.TO', 'CRCL']),
+    ('World Indices', ['^STI', '^HSI', '000001.SS', '^N225', '^AXJO',
+                       '^BSESN', '^KS11', '^KLSE', '^TWII',
+                       '^FTSE', '^GDAXI', '^FCHI', '^STOXX50E',
+                       '^GSPC', '^IXIC', '^DJI', '^RUT',
+                       '^GSPTSE', '^BVSP', '^MXX']),
 ])
 
 SYMBOL_NAMES = {
