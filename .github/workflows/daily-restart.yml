@@ -1,0 +1,19 @@
+name: Daily Restart
+on:
+  schedule:
+    - cron: '0 22 * * *'
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Daily restart trigger
+        run: |
+          echo "$(date -u)" > .restart_timestamp
+          git config user.email "sanpo-bot@restart"
+          git config user.name "SANPO Bot"
+          git add .restart_timestamp
+          git commit -m "chore: daily restart"
+          git push
