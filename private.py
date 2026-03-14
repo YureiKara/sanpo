@@ -9,6 +9,9 @@ import pandas as pd
 from datetime import datetime
 import pytz
 import logging
+import base64
+import requests
+import json
 from streamlit.components.v1 import html as st_html
 
 from config import THEMES, FONTS
@@ -135,12 +138,67 @@ PRIVATE_COMPANIES = [
 ]
 
 
+def _export_to_github(companies, prices):
+    """Silently write private.json to GitHub after fetching data."""
+    try:
+        token = st.secrets.get("GITHUB_TOKEN", "")
+        if not token:
+            return
+        sgt = pytz.timezone('Asia/Singapore')
+        now_str = datetime.now(sgt).isoformat()
+
+        data = {
+            'updated': now_str,
+            'source': 'SANPO Private Companies',
+            'count': len(companies),
+            'companies': []
+        }
+
+        for row in companies:
+            ticker, company, val_b, raised_b, latest_date, latest_amt, round_class, sector = row
+            d = prices.get(ticker, {})
+            price = d.get('price')
+            ytd = d.get('ytd')
+            data['companies'].append({
+                'symbol': ticker,
+                'name': company,
+                'price': round(price, 4) if price else None,
+                'price_52w_pct': round(ytd, 2) if ytd else None,
+                'valuation_b': val_b,
+                'total_raised_b': raised_b,
+                'latest_date': latest_date,
+                'latest_amt': latest_amt,
+                'round': round_class,
+                'sector': sector,
+            })
+
+        url = "https://api.github.com/repos/YureiKara/sanpo/contents/private.json"
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        sha = None
+        r = requests.get(url, headers=headers, timeout=5)
+        if r.status_code == 200:
+            sha = r.json().get("sha")
+
+        content = base64.b64encode(
+            json.dumps(data, indent=2, ensure_ascii=False).encode()
+        ).decode()
+        payload = {"message": "data: update private.json", "content": content}
+        if sha:
+            payload["sha"] = sha
+        requests.put(url, headers=headers, json=payload, timeout=10)
+
+    except Exception as e:
+        logger.warning(f"GitHub export error: {e}")
+
+
 @st.cache_data(ttl=600, max_entries=3, show_spinner=False)
 def fetch_prices():
     results = {}
     tickers = [row[0] for row in PRIVATE_COMPANIES]
 
-    # Step 1: bulk download for price + year change
     try:
         raw = yf.download(
             tickers, period='1y', interval='1d',
@@ -156,7 +214,6 @@ def fetch_prices():
 
                 if len(df) >= 2:
                     price = float(df.iloc[-1])
-                    # 52W change from first available price
                     year_start = float(df.iloc[0])
                     ytd = (price - year_start) / year_start * 100 if year_start else None
                     results[ticker] = {'price': price, 'ytd': ytd}
@@ -169,7 +226,6 @@ def fetch_prices():
         for ticker in tickers:
             results[ticker] = {'price': None, 'ytd': None}
 
-    # Step 2: fill in any missing with fast_info individually
     missing = [t for t in tickers if results.get(t, {}).get('price') is None]
     for ticker in missing:
         try:
@@ -310,6 +366,9 @@ def render_private_tab(is_mobile):
 
     with st.spinner('Loading private companies...'):
         data = fetch_prices()
+
+    # Export to GitHub for Yurei (silent, background)
+    _export_to_github(PRIVATE_COMPANIES, data)
 
     height = 820
     st_html(_wrap(_build_table(data, sort_by), height), height=height)
