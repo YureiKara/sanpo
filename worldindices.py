@@ -144,7 +144,7 @@ def _centre_bar(val, max_abs, pos_c, neg_c, bar_bg):
     )
 
 
-def _build_panel(data):
+def _build_panel(data, sort_key="Day %"):
     t   = get_theme()
     bg2 = t.get('bg2', '#0a0f1a')
     bg3 = t.get('bg3', '#0f172a')
@@ -197,7 +197,7 @@ def _build_panel(data):
         # Sort by day% desc
         sorted_indices = sorted(
             indices,
-            key=lambda x: data.get(x[0], {}).get('day') or -999,
+            key=lambda x: data.get(x[0], {}).get("ytd" if sort_key == "YTD %" else "day") or -999,
             reverse=True
         )
 
@@ -253,12 +253,22 @@ def render_worldindices_tab(is_mobile):
     mut = t.get('muted', '#475569')
     sgt = pytz.timezone('Asia/Singapore')
     now_str = datetime.now(sgt).strftime('%d %b %Y %H:%M SGT')
-    st.markdown(
-        f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
-        f"padding:0 0 4px 0'>Updated: {now_str}</div>",
-        unsafe_allow_html=True
-    )
+
+    col_ts, col_sort = st.columns([3, 1])
+    with col_ts:
+        st.markdown(
+            f"<div style='font-size:9px;color:{mut};font-family:{FONTS};"
+            f"padding:4px 0'>Updated: {now_str}</div>",
+            unsafe_allow_html=True
+        )
+    with col_sort:
+        sort_key = st.radio(
+            'Sort by', ['Day %', 'YTD %'],
+            horizontal=True, key='world_sort'
+        )
+
     with st.spinner('Loading world indices...'):
         data = fetch_world_indices()
+
     height = 780
-    st_html(_wrap(_build_panel(data), height), height=height)
+    st_html(_wrap(_build_panel(data, sort_key), height), height=height)
