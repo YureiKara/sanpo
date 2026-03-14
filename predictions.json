@@ -1,0 +1,783 @@
+{
+  "updated": "2026-03-14T23:40:37.113382+08:00",
+  "source": "SANPO Predictions - Polymarket",
+  "count": 30,
+  "markets": [
+    {
+      "question": "Democratic Presidential Nominee 2028",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Gavin Newsom",
+          "pct": 24.1
+        },
+        {
+          "label": "Alexandria Ocasio-Cortez",
+          "pct": 8.7
+        },
+        {
+          "label": "Kamala Harris",
+          "pct": 5.5
+        }
+      ],
+      "volume": 821672554.4825358,
+      "volume24": 7793513.588109002,
+      "vol1wk": 41951994.09655801,
+      "liquidity": 42466729.27195,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
+    },
+    {
+      "question": "Republican Presidential Nominee 2028",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Robert F. Kennedy Jr.",
+          "pct": 49.0
+        },
+        {
+          "label": "J.D. Vance",
+          "pct": 38.1
+        },
+        {
+          "label": "Marco Rubio",
+          "pct": 27.3
+        }
+      ],
+      "volume": 407065416.46205556,
+      "volume24": 3318195.874391,
+      "vol1wk": 44542440.005779,
+      "liquidity": 22648168.98529,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
+    },
+    {
+      "question": "Presidential Election Winner 2028",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "JD Vance",
+          "pct": 20.4
+        },
+        {
+          "label": "Gavin Newsom",
+          "pct": 17.3
+        },
+        {
+          "label": "Marco Rubio",
+          "pct": 14.5
+        }
+      ],
+      "volume": 401087307.02672696,
+      "volume24": 3602591.4579010005,
+      "vol1wk": 28854411.481432013,
+      "liquidity": 25989142.84983,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/presidential-election-winner-2028"
+    },
+    {
+      "question": "Fed decision in March?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "No change",
+          "pct": 99.6
+        },
+        {
+          "label": "50+ bps decrease",
+          "pct": 0.1
+        },
+        {
+          "label": "25 bps decrease",
+          "pct": 0.1
+        }
+      ],
+      "volume": 383179339.3579923,
+      "volume24": 15563584.824224,
+      "vol1wk": 129663332.8572299,
+      "liquidity": 31336968.68399,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "18 Mar 2026",
+      "url": "https://polymarket.com/event/fed-decision-in-march-885"
+    },
+    {
+      "question": "2026 FIFA World Cup Winner ",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Spain",
+          "pct": 15.3
+        },
+        {
+          "label": "England",
+          "pct": 13.2
+        },
+        {
+          "label": "Argentina",
+          "pct": 11.5
+        }
+      ],
+      "volume": 297656674.4134648,
+      "volume24": 2829416.7860289966,
+      "vol1wk": 27251816.601939995,
+      "liquidity": 44301127.10068,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "20 Jul 2026",
+      "url": "https://polymarket.com/event/2026-fifa-world-cup-winner-595"
+    },
+    {
+      "question": "UEFA Champions League Winner ",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Arsenal",
+          "pct": 25.5
+        },
+        {
+          "label": "Bayern Munich",
+          "pct": 22.5
+        },
+        {
+          "label": "Barcelona",
+          "pct": 13.5
+        }
+      ],
+      "volume": 280520545.21571445,
+      "volume24": 1442915.209916,
+      "vol1wk": 33057362.251052998,
+      "liquidity": 9195259.12923,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 May 2026",
+      "url": "https://polymarket.com/event/uefa-champions-league-winner"
+    },
+    {
+      "question": "2026 NBA Champion",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Oklahoma City Thunder",
+          "pct": 34.5
+        },
+        {
+          "label": "Boston Celtics",
+          "pct": 13.8
+        },
+        {
+          "label": "San Antonio Spurs",
+          "pct": 13.4
+        }
+      ],
+      "volume": 249291151.73176807,
+      "volume24": 1728755.8976000021,
+      "vol1wk": 17807558.969077997,
+      "liquidity": 14017807.41186,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "01 Jul 2026",
+      "url": "https://polymarket.com/event/2026-nba-champion"
+    },
+    {
+      "question": "What price will Bitcoin hit in March?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "↑ 70,000",
+          "pct": 100.0
+        },
+        {
+          "label": "↑ 75,000",
+          "pct": 56.5
+        },
+        {
+          "label": "↓ 65,000",
+          "pct": 51.6
+        }
+      ],
+      "volume": 41850555.23841085,
+      "volume24": 4426905.267506,
+      "vol1wk": 22343923.702041004,
+      "liquidity": 4596441.48048,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "01 Apr 2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-march-2026"
+    },
+    {
+      "question": "The Masters - Winner ",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Scottie Scheffler",
+          "pct": 19.5
+        },
+        {
+          "label": "Rory McIlroy",
+          "pct": 9.5
+        },
+        {
+          "label": "Bryson Dechambeau",
+          "pct": 5.5
+        }
+      ],
+      "volume": 41300973.753370054,
+      "volume24": 1741285.614573,
+      "vol1wk": 13342232.557782998,
+      "liquidity": 1993572.61352,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "13 Apr 2026",
+      "url": "https://polymarket.com/event/the-masters-winner"
+    },
+    {
+      "question": "Oscars 2026: Best Picture Winner",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "One Battle After Another",
+          "pct": 75.5
+        },
+        {
+          "label": "Sinners",
+          "pct": 21.1
+        },
+        {
+          "label": "Hamnet",
+          "pct": 2.0
+        }
+      ],
+      "volume": 32707764.008289922,
+      "volume24": 1453160.363251,
+      "vol1wk": 7736812.474774003,
+      "liquidity": 1700540.99274,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "15 Mar 2026",
+      "url": "https://polymarket.com/event/oscars-2026-best-picture-winner"
+    },
+    {
+      "question": "Will Crude Oil (CL) hit__ by end of March?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "↑ $90",
+          "pct": 100.0
+        },
+        {
+          "label": "↑ $80",
+          "pct": 100.0
+        },
+        {
+          "label": "↑ $75",
+          "pct": 100.0
+        }
+      ],
+      "volume": 29185323.087252945,
+      "volume24": 2347051.123119999,
+      "vol1wk": 24459923.254596017,
+      "liquidity": 1407949.81396,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 Mar 2026",
+      "url": "https://polymarket.com/event/will-crude-oil-cl-hit-by-end-of-march"
+    },
+    {
+      "question": "F1 Drivers' Champion",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "George Russell",
+          "pct": 62.0
+        },
+        {
+          "label": "Kimi Antonelli",
+          "pct": 11.1
+        },
+        {
+          "label": "Max Verstappen",
+          "pct": 6.5
+        }
+      ],
+      "volume": 27487226.670297947,
+      "volume24": 1496001.04061,
+      "vol1wk": 8570456.904825002,
+      "liquidity": 4829714.84857,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "06 Dec 2026",
+      "url": "https://polymarket.com/event/2026-f1-drivers-champion"
+    },
+    {
+      "question": "US x Iran ceasefire by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 69.0
+        },
+        {
+          "label": "June 30",
+          "pct": 56.5
+        },
+        {
+          "label": "May 31",
+          "pct": 51.5
+        }
+      ],
+      "volume": 25891056.485963244,
+      "volume24": 2357250.3691889998,
+      "vol1wk": 17618981.59488299,
+      "liquidity": 1585213.74413,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "",
+      "url": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+    },
+    {
+      "question": "US forces enter Iran by..?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 71.5
+        },
+        {
+          "label": "March 31",
+          "pct": 42.5
+        },
+        {
+          "label": "March 14",
+          "pct": 2.1
+        }
+      ],
+      "volume": 20957567.376685053,
+      "volume24": 3898199.8881349945,
+      "vol1wk": 15493238.918702014,
+      "liquidity": 540568.81168,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "",
+      "url": "https://polymarket.com/event/us-forces-enter-iran-by"
+    },
+    {
+      "question": "Iran strikes Israel on...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "March 4",
+          "pct": 100.0
+        },
+        {
+          "label": "March 1",
+          "pct": 100.0
+        },
+        {
+          "label": "March 2",
+          "pct": 100.0
+        }
+      ],
+      "volume": 7711655.63885298,
+      "volume24": 2868309.398589996,
+      "vol1wk": 7675229.3966470035,
+      "liquidity": 1645614.39113,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "",
+      "url": "https://polymarket.com/event/iran-strikes-israel-on"
+    },
+    {
+      "question": "Elon Musk # tweets March 10 - March 17, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "340-359",
+          "pct": 22.5
+        },
+        {
+          "label": "360-379",
+          "pct": 20.5
+        },
+        {
+          "label": "320-339",
+          "pct": 15.5
+        }
+      ],
+      "volume": 6261976.700827997,
+      "volume24": 2394003.016056,
+      "vol1wk": 5898773.139050999,
+      "liquidity": 1325739.06169,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "17 Mar 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-march-10-march-17"
+    },
+    {
+      "question": "Elon Musk # tweets March 13 - March 20, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "340-359",
+          "pct": 15.5
+        },
+        {
+          "label": "320-339",
+          "pct": 13.5
+        },
+        {
+          "label": "360-379",
+          "pct": 13.5
+        }
+      ],
+      "volume": 4832885.46543,
+      "volume24": 1048611.339359,
+      "vol1wk": 4832885.46543,
+      "liquidity": 1277080.08925,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "20 Mar 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-march-13-march-20"
+    },
+    {
+      "question": "Bitcoin above ___ on March 14?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "58,000",
+          "pct": 100.0
+        },
+        {
+          "label": "60,000",
+          "pct": 100.0
+        },
+        {
+          "label": "62,000",
+          "pct": 100.0
+        }
+      ],
+      "volume": 4726966.080076001,
+      "volume24": 3679744.457532,
+      "vol1wk": 4726966.080075999,
+      "liquidity": 1907360.9232,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-march-14"
+    },
+    {
+      "question": "Iran leadership change by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 68.5
+        },
+        {
+          "label": "April 30",
+          "pct": 52.5
+        },
+        {
+          "label": "March 31",
+          "pct": 24.0
+        }
+      ],
+      "volume": 4340471.978635004,
+      "volume24": 1174536.718428,
+      "vol1wk": 4340871.978634999,
+      "liquidity": 1158224.93336,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/iran-leadership-change-by"
+    },
+    {
+      "question": "Elon Musk # tweets March 12 - March 14, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "90-114",
+          "pct": 95.5
+        },
+        {
+          "label": "115-139",
+          "pct": 3.5
+        },
+        {
+          "label": "140-164",
+          "pct": 0.1
+        }
+      ],
+      "volume": 3715429.2615750018,
+      "volume24": 2546070.380794,
+      "vol1wk": 3715429.261574999,
+      "liquidity": 655166.93376,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-march-12-march-14"
+    },
+    {
+      "question": "Eintracht Frankfurt vs. 1. FC Heidenheim 1846",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Eintracht Frankfurt",
+          "pct": 48.5
+        },
+        {
+          "label": "Draw (Eintracht Frankfurt vs. 1. FC Heidenheim 1846)",
+          "pct": 33.5
+        },
+        {
+          "label": "1. FC Heidenheim 1846",
+          "pct": 17.5
+        }
+      ],
+      "volume": 2511621.5010670004,
+      "volume24": 2501585.430032001,
+      "vol1wk": 2510742.6458170014,
+      "liquidity": 133507.9025,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/bun-ein-hei-2026-03-14"
+    },
+    {
+      "question": "Sunderland AFC vs. Brighton & Hove Albion FC",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Brighton & Hove Albion FC",
+          "pct": 41.5
+        },
+        {
+          "label": "Draw (Sunderland AFC vs. Brighton & Hove Albion FC)",
+          "pct": 33.0
+        },
+        {
+          "label": "Sunderland AFC",
+          "pct": 25.5
+        }
+      ],
+      "volume": 2009528.6008140012,
+      "volume24": 1872662.5205479986,
+      "vol1wk": 1999345.7641929993,
+      "liquidity": 170156.2054,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/epl-sun-bri-2026-03-14"
+    },
+    {
+      "question": "Dota 2: Heroic vs Team Liquid (BO3) - PGL Wallachia Playoffs",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Game Handicap: Liquid (-1.5) vs Heroic (+1.5)",
+          "pct": 100.0
+        },
+        {
+          "label": "Both Teams Destroy Barracks",
+          "pct": 100.0
+        },
+        {
+          "label": "Any Player Ultra Kill",
+          "pct": 100.0
+        }
+      ],
+      "volume": 2005013.3084170015,
+      "volume24": 2005013.308417,
+      "vol1wk": 2005013.308417,
+      "liquidity": 1785585.83068,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/dota2-heroic-liquid-2026-03-14"
+    },
+    {
+      "question": "Netanyahu out by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 50.5
+        },
+        {
+          "label": "June 30",
+          "pct": 19.5
+        },
+        {
+          "label": "March 31",
+          "pct": 7.2
+        }
+      ],
+      "volume": 1683498.0695600004,
+      "volume24": 1041453.6645129997,
+      "vol1wk": 1261391.4324029996,
+      "liquidity": 332205.92733,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/netanyahu-out-before-2027"
+    },
+    {
+      "question": "Bayer 04 Leverkusen vs. FC Bayern München - More Markets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 1.5",
+          "pct": 86.5
+        },
+        {
+          "label": "Both Teams to Score",
+          "pct": 61.2
+        },
+        {
+          "label": "O/U 2.5",
+          "pct": 58.5
+        }
+      ],
+      "volume": 1661499.1164700014,
+      "volume24": 1653267.2090810016,
+      "vol1wk": 1661422.3512580015,
+      "liquidity": 78043.69434,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/bun-b04-bay-2026-03-14-more-markets"
+    },
+    {
+      "question": "Bayer 04 Leverkusen vs. FC Bayern München",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Bayer 04 Leverkusen",
+          "pct": 67.5
+        },
+        {
+          "label": "Draw (Bayer 04 Leverkusen vs. FC Bayern München)",
+          "pct": 21.5
+        },
+        {
+          "label": "FC Bayern München",
+          "pct": 11.5
+        }
+      ],
+      "volume": 1561885.364205008,
+      "volume24": 1476468.1291220004,
+      "vol1wk": 1561081.5986800008,
+      "liquidity": 149630.4399,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/bun-b04-bay-2026-03-14"
+    },
+    {
+      "question": "Burnley FC vs. AFC Bournemouth",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "AFC Bournemouth",
+          "pct": 43.5
+        },
+        {
+          "label": "Draw (Burnley FC vs. AFC Bournemouth)",
+          "pct": 30.5
+        },
+        {
+          "label": "Burnley FC",
+          "pct": 26.5
+        }
+      ],
+      "volume": 1516605.407360985,
+      "volume24": 1467393.411535997,
+      "vol1wk": 1507434.244580997,
+      "liquidity": 160071.4663,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/epl-bur-bou-2026-03-14"
+    },
+    {
+      "question": "Counter-Strike: Natus Vincere vs FUT Esports (BO3) - ESL Pro League Playoffs",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 1 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Odd/Even Total Kills",
+          "pct": 100.0
+        },
+        {
+          "label": "Match Winner",
+          "pct": 84.5
+        }
+      ],
+      "volume": 1085432.1424749992,
+      "volume24": 1085432.1424749994,
+      "vol1wk": 1085432.1424749994,
+      "liquidity": 741385.83181,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/cs2-navi-fut-2026-03-14"
+    },
+    {
+      "question": "Bitcoin Up or Down on March 14?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Down",
+          "pct": 100.0
+        },
+        {
+          "label": "Up",
+          "pct": 0.1
+        }
+      ],
+      "volume": 1067064.004887001,
+      "volume24": 1066707.3953950007,
+      "vol1wk": 1067064.0048870007,
+      "liquidity": 194441.97098,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-march-14-2026"
+    },
+    {
+      "question": "Nets vs. 76ers",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Justin Edwards: Points O/U 8.5",
+          "pct": 57.0
+        },
+        {
+          "label": "VJ Edgecombe: Points O/U 19.5",
+          "pct": 54.0
+        },
+        {
+          "label": "O/U 215.5",
+          "pct": 54.0
+        }
+      ],
+      "volume": 1028251.1122809997,
+      "volume24": 1013736.8967719998,
+      "vol1wk": 1028292.2222809998,
+      "liquidity": 664055.533,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "14 Mar 2026",
+      "url": "https://polymarket.com/event/nba-bkn-phi-2026-03-14"
+    }
+  ]
+}
