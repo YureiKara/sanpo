@@ -215,6 +215,12 @@ def _build_table(data, sort_by):
         rows.sort(key=lambda x: x[2], reverse=True)
     elif sort_by == 'Total Raised':
         rows.sort(key=lambda x: x[3], reverse=True)
+    elif sort_by == 'Latest Date':
+        rows.sort(key=lambda x: x[4], reverse=True)
+    elif sort_by == 'Round':
+        rows.sort(key=lambda x: x[6])
+    elif sort_by == 'Sector':
+        rows.sort(key=lambda x: x[7])
 
     HDR = "font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#f8fafc"
 
@@ -298,7 +304,7 @@ def render_private_tab(is_mobile):
     col_sort, col_spacer, col_ts = st.columns([1, 4, 1])
     with col_sort:
         st.markdown(f"<div style='font-size:9px;font-weight:700;color:#e2e8f0;font-family:{FONTS};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:-18px'>SORT BY</div>", unsafe_allow_html=True)
-        sort_by = st.selectbox('sort_private', ['Valuation', '52W %', 'Total Raised'], key='private_sort', label_visibility='collapsed')
+        sort_by = st.selectbox('sort_private', ['Valuation', '52W %', 'Total Raised', 'Latest Date', 'Round', 'Sector'], key='private_sort', label_visibility='collapsed')
     with col_ts:
         st.markdown(f"<div style='font-size:9px;color:#f8fafc;font-family:{FONTS};padding:28px 0 0 0;text-align:right'>Updated: {now_str}</div>", unsafe_allow_html=True)
 
