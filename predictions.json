@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-16T04:30:34.212968+08:00",
+  "updated": "2026-03-16T05:00:05.413970+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -9,21 +9,21 @@
       "outcomes": [
         {
           "label": "Gavin Newsom",
-          "pct": 24.6
+          "pct": 24.8
         },
         {
           "label": "Alexandria Ocasio-Cortez",
-          "pct": 8.3
+          "pct": 8.8
         },
         {
           "label": "Kamala Harris",
           "pct": 5.5
         }
       ],
-      "volume": 830226950.0840456,
-      "volume24": 6869176.732255998,
-      "vol1wk": 45900887.29496399,
-      "liquidity": 43012118.6178,
+      "volume": 830279968.3256787,
+      "volume24": 6847239.705951998,
+      "vol1wk": 45850596.70649699,
+      "liquidity": 43005135.44616,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -46,10 +46,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 419708307.8429261,
-      "volume24": 23055732.806474004,
-      "vol1wk": 139919394.5298199,
-      "liquidity": 20160037.89594,
+      "volume": 419888234.3243411,
+      "volume24": 22971434.250559002,
+      "vol1wk": 140031041.88885793,
+      "liquidity": 19992505.49823,
       "open_interest": 0.0,
       "category": "",
       "expiry": "18 Mar 2026",
@@ -65,17 +65,17 @@
         },
         {
           "label": "J.D. Vance",
-          "pct": 38.6
+          "pct": 38.9
         },
         {
           "label": "Marco Rubio",
           "pct": 26.2
         }
       ],
-      "volume": 417417975.14916885,
-      "volume24": 8220513.480986998,
-      "vol1wk": 52007877.06412602,
-      "liquidity": 22825400.59815,
+      "volume": 417455617.2555608,
+      "volume24": 7959481.935384,
+      "vol1wk": 52036721.08638802,
+      "liquidity": 22802033.01896,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -87,21 +87,21 @@
       "outcomes": [
         {
           "label": "JD Vance",
-          "pct": 20.8
+          "pct": 21.1
         },
         {
           "label": "Gavin Newsom",
-          "pct": 18.4
+          "pct": 18.1
         },
         {
           "label": "Marco Rubio",
-          "pct": 13.7
+          "pct": 13.9
         }
       ],
-      "volume": 409766235.79077435,
-      "volume24": 7461603.334705001,
-      "vol1wk": 34277098.42097801,
-      "liquidity": 25895001.44375,
+      "volume": 409821983.8985293,
+      "volume24": 7323706.491911999,
+      "vol1wk": 34318607.57195201,
+      "liquidity": 25842495.29629,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -124,14 +124,40 @@
           "pct": 11.4
         }
       ],
-      "volume": 304464770.5796557,
-      "volume24": 5961938.113652002,
-      "vol1wk": 30576848.579913154,
-      "liquidity": 44282611.98573,
+      "volume": 304631408.26543766,
+      "volume24": 6007581.956027002,
+      "vol1wk": 30725710.177425157,
+      "liquidity": 44141717.39079,
       "open_interest": 0.0,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/2026-fifa-world-cup-winner-595"
+    },
+    {
+      "question": "UEFA Champions League Winner ",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Arsenal",
+          "pct": 25.5
+        },
+        {
+          "label": "Bayern Munich",
+          "pct": 21.5
+        },
+        {
+          "label": "Barcelona",
+          "pct": 13.5
+        }
+      ],
+      "volume": 282813452.5316864,
+      "volume24": 1465185.151023,
+      "vol1wk": 33604719.613450006,
+      "liquidity": 9860971.74957,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 May 2026",
+      "url": "https://polymarket.com/event/uefa-champions-league-winner"
     },
     {
       "question": "2026 NBA Champion",
@@ -143,17 +169,17 @@
         },
         {
           "label": "San Antonio Spurs",
-          "pct": 13.9
+          "pct": 13.8
         },
         {
           "label": "Boston Celtics",
           "pct": 13.2
         }
       ],
-      "volume": 254146395.83911496,
-      "volume24": 4336876.362831,
-      "vol1wk": 19851915.834513992,
-      "liquidity": 14505979.58343,
+      "volume": 254182112.46716398,
+      "volume24": 4317666.536719,
+      "vol1wk": 19870397.22348899,
+      "liquidity": 14488940.67562,
       "open_interest": 0.0,
       "category": "",
       "expiry": "01 Jul 2026",
@@ -169,17 +195,17 @@
         },
         {
           "label": "Nikola Jokic",
-          "pct": 6.1
+          "pct": 6.2
         },
         {
           "label": "Victor Wembanyama",
           "pct": 3.9
         }
       ],
-      "volume": 66370726.980788015,
-      "volume24": 1583903.9882389999,
-      "vol1wk": 9738602.450925,
-      "liquidity": 1809061.93947,
+      "volume": 66373810.39144002,
+      "volume24": 1584988.820691,
+      "vol1wk": 9739614.113433,
+      "liquidity": 1811458.53349,
       "open_interest": 0.0,
       "category": "",
       "expiry": "10 Jun 2026",
@@ -199,17 +225,43 @@
         },
         {
           "label": "Ludvig Aberg",
-          "pct": 5.9
+          "pct": 5.3
         }
       ],
-      "volume": 43909789.518472046,
-      "volume24": 2174008.6896349997,
-      "vol1wk": 15301389.339132002,
-      "liquidity": 2209211.64223,
+      "volume": 43934613.74890804,
+      "volume24": 2118073.08581,
+      "vol1wk": 15325056.301936002,
+      "liquidity": 2221641.87025,
       "open_interest": 0.0,
       "category": "",
       "expiry": "13 Apr 2026",
       "url": "https://polymarket.com/event/the-masters-winner"
+    },
+    {
+      "question": "What price will Bitcoin hit in March?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "↑ 70,000",
+          "pct": 100.0
+        },
+        {
+          "label": "↑ 75,000",
+          "pct": 66.5
+        },
+        {
+          "label": "↓ 65,000",
+          "pct": 40.9
+        }
+      ],
+      "volume": 43580216.200525835,
+      "volume24": 1530510.8567189996,
+      "vol1wk": 21617361.692365006,
+      "liquidity": 4983470.43466,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "01 Apr 2026",
+      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-march-2026"
     },
     {
       "question": "Oscars 2026: Best Picture Winner",
@@ -217,21 +269,21 @@
       "outcomes": [
         {
           "label": "One Battle After Another",
-          "pct": 78.5
+          "pct": 77.5
         },
         {
           "label": "Sinners",
-          "pct": 18.9
+          "pct": 19.4
         },
         {
           "label": "Hamnet",
           "pct": 1.8
         }
       ],
-      "volume": 35665311.1751829,
-      "volume24": 2561469.7539429995,
-      "vol1wk": 9889963.698426997,
-      "liquidity": 1219335.59848,
+      "volume": 35790937.6310869,
+      "volume24": 2641807.8602599995,
+      "vol1wk": 10002155.151724998,
+      "liquidity": 1225088.75835,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -254,10 +306,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 31475143.484658927,
-      "volume24": 1888607.6594379996,
-      "vol1wk": 23722346.79869106,
-      "liquidity": 1451426.82502,
+      "volume": 31557228.33185992,
+      "volume24": 1932725.2894339997,
+      "vol1wk": 23772433.72195506,
+      "liquidity": 1403744.58714,
       "open_interest": 0.0,
       "category": "",
       "expiry": "31 Mar 2026",
@@ -273,17 +325,17 @@
         },
         {
           "label": "June 30",
-          "pct": 60.0
+          "pct": 60.5
         },
         {
           "label": "May 31",
           "pct": 47.5
         }
       ],
-      "volume": 29053684.76929722,
-      "volume24": 2827086.0873400006,
-      "vol1wk": 19774253.099780988,
-      "liquidity": 1700795.0716,
+      "volume": 29077972.661505233,
+      "volume24": 2755612.6749890004,
+      "vol1wk": 19695839.072930988,
+      "liquidity": 1646285.65392,
       "open_interest": 0.0,
       "category": "",
       "expiry": "",
@@ -306,10 +358,10 @@
           "pct": 0.0
         }
       ],
-      "volume": 23403954.835959077,
-      "volume24": 1972664.0118829987,
-      "vol1wk": 16303298.784702005,
-      "liquidity": 343284.3753,
+      "volume": 23443426.69949608,
+      "volume24": 1970778.6304439988,
+      "vol1wk": 16243315.681942005,
+      "liquidity": 411697.66,
       "open_interest": 0.0,
       "category": "",
       "expiry": "",
@@ -325,17 +377,17 @@
         },
         {
           "label": "June 30",
-          "pct": 14.5
+          "pct": 14.0
         },
         {
           "label": "March 31",
-          "pct": 2.5
+          "pct": 2.8
         }
       ],
-      "volume": 15645424.54411292,
-      "volume24": 13029229.22998802,
-      "vol1wk": 15215195.166924018,
-      "liquidity": 1735741.45843,
+      "volume": 15723613.134809943,
+      "volume24": 12921689.22509702,
+      "vol1wk": 15293096.985315017,
+      "liquidity": 1671416.41967,
       "open_interest": 0.0,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -358,10 +410,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 11918732.137122972,
-      "volume24": 3545166.8826030013,
-      "vol1wk": 11851381.434574993,
-      "liquidity": 1927292.17784,
+      "volume": 11927852.925955972,
+      "volume24": 3546585.193437001,
+      "vol1wk": 11860402.460853992,
+      "liquidity": 1998185.26305,
       "open_interest": 0.0,
       "category": "",
       "expiry": "",
@@ -384,10 +436,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 10588351.720202995,
-      "volume24": 4969012.196495002,
-      "vol1wk": 9537957.398895994,
-      "liquidity": 268473.50735,
+      "volume": 10589927.704577995,
+      "volume24": 4970563.951983002,
+      "vol1wk": 9525684.689579993,
+      "liquidity": 270675.08308,
       "open_interest": 0.0,
       "category": "",
       "expiry": "12 Apr 2026",
@@ -399,21 +451,21 @@
       "outcomes": [
         {
           "label": "Michael B. Jordan",
-          "pct": 61.6
+          "pct": 60.8
         },
         {
           "label": "Timothée Chalamet",
-          "pct": 29.5
+          "pct": 30.0
         },
         {
           "label": "Wagner Moura",
-          "pct": 4.6
+          "pct": 5.0
         }
       ],
-      "volume": 10378713.431110987,
-      "volume24": 1781924.9420159992,
-      "vol1wk": 5033833.258928004,
-      "liquidity": 218056.32001,
+      "volume": 10505083.009418992,
+      "volume24": 1891448.7868349995,
+      "vol1wk": 5149974.522836005,
+      "liquidity": 198097.85163,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -425,7 +477,7 @@
       "outcomes": [
         {
           "label": "300-319",
-          "pct": 28.5
+          "pct": 27.5
         },
         {
           "label": "280-299",
@@ -433,13 +485,13 @@
         },
         {
           "label": "320-339",
-          "pct": 15.5
+          "pct": 15.0
         }
       ],
-      "volume": 9317988.889341,
-      "volume24": 2933997.298427,
-      "vol1wk": 8794531.432947,
-      "liquidity": 1574067.51903,
+      "volume": 9379406.639411,
+      "volume24": 2929533.6676910003,
+      "vol1wk": 8854884.34878,
+      "liquidity": 1591803.86699,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -462,10 +514,10 @@
           "pct": 21.5
         }
       ],
-      "volume": 6112396.249377003,
-      "volume24": 1538063.7455210001,
-      "vol1wk": 6112396.249376997,
-      "liquidity": 1776903.49903,
+      "volume": 6664964.1196540035,
+      "volume24": 2085640.56199,
+      "vol1wk": 6664970.448765997,
+      "liquidity": 1225433.79143,
       "open_interest": 0.0,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -488,10 +540,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 4977434.661702998,
-      "volume24": 4955842.649604991,
-      "vol1wk": 4977434.661702992,
-      "liquidity": 2286936.22864,
+      "volume": 4981438.581703004,
+      "volume24": 4959388.051087991,
+      "vol1wk": 4981438.581702992,
+      "liquidity": 2123105.83302,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -502,22 +554,22 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Aaron Nesmith: Points O/U 15.5",
+          "label": "Giannis Antetokounmpo: Rebounds O/U 9.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Giannis Antetokounmpo: Assists O/U 5.5",
           "pct": 100.0
         },
         {
           "label": "Jarace Walker: Assists O/U 2.5",
           "pct": 100.0
-        },
-        {
-          "label": "1H O/U 111.5",
-          "pct": 100.0
         }
       ],
-      "volume": 4445036.834057998,
-      "volume24": 4421354.818606003,
-      "vol1wk": 4445746.776652004,
-      "liquidity": 139159.04781,
+      "volume": 4538892.826607999,
+      "volume24": 4514413.868562004,
+      "vol1wk": 4538892.826608004,
+      "liquidity": 258893.15156,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -540,10 +592,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 3669930.072766997,
-      "volume24": 3668393.9013030026,
-      "vol1wk": 3669930.0727670025,
-      "liquidity": 1238973.87837,
+      "volume": 3676099.842767002,
+      "volume24": 3674561.4490820025,
+      "vol1wk": 3676099.8427670025,
+      "liquidity": 1838908.57314,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -554,22 +606,22 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Dean Wade: Points O/U 5.5",
+          "label": "Naji Marshall: Points O/U 15.5",
           "pct": 100.0
         },
         {
-          "label": "Dennis Schröder: Assists O/U 3.5",
+          "label": "P.J. Washington: Points O/U 12.5",
           "pct": 100.0
         },
         {
-          "label": "Naji Marshall: Assists O/U 2.5",
+          "label": "Cooper Flagg: Assists O/U 4.5",
           "pct": 100.0
         }
       ],
-      "volume": 3425091.9588919994,
-      "volume24": 3389663.640624998,
-      "vol1wk": 3425112.158891998,
-      "liquidity": 176156.49856,
+      "volume": 3549365.9142470025,
+      "volume24": 3516378.116893994,
+      "vol1wk": 3552066.4216689947,
+      "liquidity": 221016.57264,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -580,74 +632,48 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "O/U 220.5",
-          "pct": 77.5
+          "label": "1H O/U 115.5",
+          "pct": 100.0
         },
         {
-          "label": "O/U 219.5",
-          "pct": 76.5
+          "label": "1H Spread -1.5",
+          "pct": 100.0
         },
         {
-          "label": "O/U 221.5",
-          "pct": 75.5
+          "label": "1H Spread -2.5",
+          "pct": 100.0
         }
       ],
-      "volume": 2880404.817114,
-      "volume24": 2861547.594961998,
-      "vol1wk": 2884111.5260779983,
-      "liquidity": 125063.402,
+      "volume": 3054686.0379419993,
+      "volume24": 3031945.5459659994,
+      "vol1wk": 3054699.602081999,
+      "liquidity": 255337.32811,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
       "url": "https://polymarket.com/event/nba-det-tor-2026-03-15"
     },
     {
-      "question": "Liverpool FC vs. Tottenham Hotspur FC - More Markets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "O/U 1.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Both Teams to Score",
-          "pct": 100.0
-        },
-        {
-          "label": "Liverpool FC (-1.5)",
-          "pct": 0.1
-        }
-      ],
-      "volume": 2725070.03782,
-      "volume24": 2715613.424147002,
-      "vol1wk": 2724209.680001002,
-      "liquidity": 1151620.40825,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "15 Mar 2026",
-      "url": "https://polymarket.com/event/epl-liv-tot-2026-03-15-more-markets"
-    },
-    {
       "question": "Dota 2: Team Yandex vs Team Liquid (BO5) - PGL Wallachia Playoffs",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Total Kills Over/Under 42.5 in Game 2?",
+          "label": "Total Kills Over/Under 68.5 in Game 3?",
           "pct": 100.0
         },
         {
-          "label": "Total Kills Over/Under 43.5 in Game 2?",
+          "label": "Total Kills Over/Under 69.5 in Game 3?",
           "pct": 100.0
         },
         {
-          "label": "Total Kills Over/Under 44.5 in Game 2?",
+          "label": "Total Kills Over/Under 70.5 in Game 3?",
           "pct": 100.0
         }
       ],
-      "volume": 2636064.9239440016,
-      "volume24": 2636104.1396289994,
-      "vol1wk": 2636104.1396289994,
-      "liquidity": 1855737.11067,
+      "volume": 2913947.9495710004,
+      "volume24": 2913977.9495710004,
+      "vol1wk": 2913977.9495710004,
+      "liquidity": 1767192.38241,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
@@ -658,52 +684,52 @@
       "subtitle": "",
       "outcomes": [
         {
+          "label": "Match Winner",
+          "pct": 100.0
+        },
+        {
           "label": "Map 1 Winner",
           "pct": 100.0
         },
         {
           "label": "Map 3 Winner",
           "pct": 100.0
-        },
-        {
-          "label": "O/U 3.5 Games",
-          "pct": 100.0
         }
       ],
-      "volume": 2400646.2684009983,
-      "volume24": 2401027.0600180016,
-      "vol1wk": 2401027.0600180016,
-      "liquidity": 1949084.60363,
+      "volume": 2617511.8382809996,
+      "volume24": 2617645.798281002,
+      "vol1wk": 2617645.798281002,
+      "liquidity": 3409128.90943,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
       "url": "https://polymarket.com/event/cs2-navi-aur1-2026-03-15"
     },
     {
-      "question": "Liverpool FC vs. Tottenham Hotspur FC",
+      "question": "Bitcoin above ___ on March 16?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Draw (Liverpool FC vs. Tottenham Hotspur FC)",
+          "label": "60,000",
           "pct": 100.0
         },
         {
-          "label": "Liverpool FC",
-          "pct": 0.1
+          "label": "62,000",
+          "pct": 100.0
         },
         {
-          "label": "Tottenham Hotspur FC",
-          "pct": 0.1
+          "label": "58,000",
+          "pct": 100.0
         }
       ],
-      "volume": 2352200.9674270027,
-      "volume24": 2188314.8052499997,
-      "vol1wk": 2330418.8057549996,
-      "liquidity": 2088789.10824,
+      "volume": 2475671.3136820006,
+      "volume24": 1478578.2142009998,
+      "vol1wk": 2475671.313682,
+      "liquidity": 420711.16051,
       "open_interest": 0.0,
       "category": "",
-      "expiry": "15 Mar 2026",
-      "url": "https://polymarket.com/event/epl-liv-tot-2026-03-15"
+      "expiry": "16 Mar 2026",
+      "url": "https://polymarket.com/event/bitcoin-above-on-march-16"
     },
     {
       "question": "Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs",
@@ -723,39 +749,13 @@
         }
       ],
       "volume": 2124020.992149001,
-      "volume24": 2124020.992148998,
+      "volume24": 2124013.2323679985,
       "vol1wk": 2124020.992148998,
-      "liquidity": 204393.62887,
+      "liquidity": 154.81367,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
       "url": "https://polymarket.com/event/dota2-bb4-liquid-2026-03-15"
-    },
-    {
-      "question": "FC Barcelona vs. Sevilla FC",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "FC Barcelona",
-          "pct": 100.0
-        },
-        {
-          "label": "Draw (FC Barcelona vs. Sevilla FC)",
-          "pct": 0.1
-        },
-        {
-          "label": "Sevilla FC",
-          "pct": 0.1
-        }
-      ],
-      "volume": 2071037.552796002,
-      "volume24": 1997831.8824660003,
-      "vol1wk": 2068443.5238070001,
-      "liquidity": 2943459.33747,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "15 Mar 2026",
-      "url": "https://polymarket.com/event/lal-bar-sev-2026-03-15"
     },
     {
       "question": "Como 1907 vs. AS Roma",
@@ -774,10 +774,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 1607897.9473229987,
-      "volume24": 1562212.4835630008,
-      "vol1wk": 1592145.9200940004,
-      "liquidity": 2024423.00752,
+      "volume": 1609137.4173229993,
+      "volume24": 1553723.1133820005,
+      "vol1wk": 1593355.6400940004,
+      "liquidity": 1908833.27296,
       "open_interest": 0.0,
       "category": "",
       "expiry": "15 Mar 2026",
