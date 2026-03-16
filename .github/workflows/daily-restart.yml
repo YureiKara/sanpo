@@ -2,18 +2,15 @@ name: Daily Restart
 on:
   schedule:
     - cron: '0 22 * * *'
+  workflow_dispatch:
 jobs:
   restart:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: SSH and restart PM2
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Daily restart trigger
-        run: |
-          echo "$(date -u)" > .restart_timestamp
-          git config user.email "sanpo-bot@restart"
-          git config user.name "SANPO Bot"
-          git add .restart_timestamp
-          git commit -m "chore: daily restart"
-          git push
+          host: 152.42.163.65
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: pm2 restart openclaw && pm2 save
