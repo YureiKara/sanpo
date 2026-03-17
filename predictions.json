@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-18T07:00:29.441285+08:00",
+  "updated": "2026-03-18T07:30:06.273693+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,10 +20,10 @@
           "pct": 5.3
         }
       ],
-      "volume": 849918786.5334836,
-      "volume24": 11263765.980029998,
-      "vol1wk": 54536633.464890994,
-      "liquidity": 41925394.06104,
+      "volume": 850208109.4362786,
+      "volume24": 11401964.934384998,
+      "vol1wk": 54757727.34292399,
+      "liquidity": 41972070.98859,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -39,17 +39,17 @@
         },
         {
           "label": "25 bps decrease",
-          "pct": 0.5
+          "pct": 0.4
         },
         {
           "label": "50+ bps decrease",
           "pct": 0.1
         }
       ],
-      "volume": 471793274.9716369,
-      "volume24": 27408632.828296993,
-      "vol1wk": 165473109.1254711,
-      "liquidity": 21505157.41424,
+      "volume": 472147893.5640939,
+      "volume24": 27719795.808962993,
+      "vol1wk": 165689643.6365581,
+      "liquidity": 21614482.54851,
       "open_interest": 0.0,
       "category": "",
       "expiry": "18 Mar 2026",
@@ -60,22 +60,22 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Joe Kent",
-          "pct": 49.0
-        },
-        {
           "label": "Robert F. Kennedy Jr.",
           "pct": 49.0
         },
         {
           "label": "J.D. Vance",
           "pct": 39.0
+        },
+        {
+          "label": "Marco Rubio",
+          "pct": 26.3
         }
       ],
-      "volume": 427148900.121759,
-      "volume24": 3216123.399265,
-      "vol1wk": 52915509.53064603,
-      "liquidity": 22455322.64401,
+      "volume": 427225719.078158,
+      "volume24": 3270303.4291590005,
+      "vol1wk": 52970849.031642035,
+      "liquidity": 22727583.47336,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -98,10 +98,10 @@
           "pct": 11.7
         }
       ],
-      "volume": 418557467.8704317,
-      "volume24": 3998061.154046998,
-      "vol1wk": 33687861.92167794,
-      "liquidity": 26255653.99534,
+      "volume": 418631301.66926575,
+      "volume24": 3981199.215290998,
+      "vol1wk": 33685101.599788934,
+      "liquidity": 26277505.25256,
       "open_interest": 0.0,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -124,10 +124,10 @@
           "pct": 11.1
         }
       ],
-      "volume": 324154327.44503963,
-      "volume24": 6428924.481330008,
-      "vol1wk": 40649961.76422981,
-      "liquidity": 44738218.50311,
+      "volume": 324191350.57767063,
+      "volume24": 6022481.012229008,
+      "vol1wk": 40380755.96255682,
+      "liquidity": 44623994.1455,
       "open_interest": 0.0,
       "category": "",
       "expiry": "20 Jul 2026",
@@ -150,10 +150,10 @@
           "pct": 13.5
         }
       ],
-      "volume": 291368336.03375643,
-      "volume24": 6703404.229004998,
-      "vol1wk": 36392541.530733004,
-      "liquidity": 11942219.26393,
+      "volume": 291517840.1035355,
+      "volume24": 6793178.856411998,
+      "vol1wk": 36449372.444753006,
+      "liquidity": 11799818.36237,
       "open_interest": 0.0,
       "category": "",
       "expiry": "31 May 2026",
@@ -176,10 +176,10 @@
           "pct": 11.2
         }
       ],
-      "volume": 261615144.9924098,
-      "volume24": 3115867.9727849993,
-      "vol1wk": 22207573.161336966,
-      "liquidity": 13666047.83989,
+      "volume": 261794459.34391278,
+      "volume24": 3263214.8004729995,
+      "vol1wk": 22359048.233843967,
+      "liquidity": 13508655.53096,
       "open_interest": 0.0,
       "category": "",
       "expiry": "01 Jul 2026",
@@ -199,17 +199,43 @@
         },
         {
           "label": "↑ 80,000",
-          "pct": 42.5
+          "pct": 40.5
         }
       ],
-      "volume": 56404278.71453676,
-      "volume24": 8506709.427825004,
-      "vol1wk": 28097259.82950502,
-      "liquidity": 4968517.03878,
+      "volume": 56471271.70002876,
+      "volume24": 8408582.601365004,
+      "vol1wk": 28169345.19881002,
+      "liquidity": 5040725.70561,
       "open_interest": 0.0,
       "category": "",
       "expiry": "01 Apr 2026",
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-march-2026"
+    },
+    {
+      "question": "Netanyahu out by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 43.5
+        },
+        {
+          "label": "June 30",
+          "pct": 14.5
+        },
+        {
+          "label": "March 31",
+          "pct": 3.5
+        }
+      ],
+      "volume": 37149398.47691926,
+      "volume24": 8128108.073917017,
+      "vol1wk": 36695595.17354649,
+      "liquidity": 2790218.49777,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/netanyahu-out-before-2027"
     },
     {
       "question": "Will Crude Oil (CL) hit__ by end of March?",
@@ -228,40 +254,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 37035748.320436895,
-      "volume24": 2049084.9020449996,
-      "vol1wk": 16893054.980766017,
-      "liquidity": 1660769.10548,
+      "volume": 37057790.88325489,
+      "volume24": 2038309.2372869996,
+      "vol1wk": 16881712.695246015,
+      "liquidity": 1785427.18818,
       "open_interest": 0.0,
       "category": "",
       "expiry": "31 Mar 2026",
       "url": "https://polymarket.com/event/will-crude-oil-cl-hit-by-end-of-march"
-    },
-    {
-      "question": "Netanyahu out by...?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "December 31",
-          "pct": 43.5
-        },
-        {
-          "label": "June 30",
-          "pct": 14.5
-        },
-        {
-          "label": "March 31",
-          "pct": 3.4
-        }
-      ],
-      "volume": 36981817.71810925,
-      "volume24": 8140781.470534011,
-      "vol1wk": 36529051.8810345,
-      "liquidity": 2858147.44369,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "31 Dec 2026",
-      "url": "https://polymarket.com/event/netanyahu-out-before-2027"
     },
     {
       "question": "Iran strikes Israel on...?",
@@ -280,10 +280,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 23581773.726709057,
-      "volume24": 6200623.657199001,
-      "vol1wk": 22305456.528852034,
-      "liquidity": 4060935.91111,
+      "volume": 23585273.726709057,
+      "volume24": 6171147.4271990005,
+      "vol1wk": 22270829.52452303,
+      "liquidity": 4022462.68229,
       "open_interest": 0.0,
       "category": "",
       "expiry": "",
@@ -306,10 +306,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 12181864.817199882,
-      "volume24": 11535225.838231951,
-      "vol1wk": 12176923.93297095,
-      "liquidity": 3825491.20517,
+      "volume": 12207173.067199886,
+      "volume24": 11557822.227603953,
+      "vol1wk": 12201959.919814952,
+      "liquidity": 3788490.54392,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -329,13 +329,13 @@
         },
         {
           "label": "Arizona",
-          "pct": 16.3
+          "pct": 17.1
         }
       ],
-      "volume": 9824713.297918005,
-      "volume24": 3860471.185791,
-      "vol1wk": 8137864.946043001,
-      "liquidity": 6190012.31442,
+      "volume": 9868386.987158004,
+      "volume24": 3815149.893696,
+      "vol1wk": 8181350.342804001,
+      "liquidity": 6308764.43301,
       "open_interest": 0.0,
       "category": "",
       "expiry": "04 Apr 2026",
@@ -359,9 +359,9 @@
         }
       ],
       "volume": 8279365.849189005,
-      "volume24": 7405917.77505001,
-      "vol1wk": 8268534.766158016,
-      "liquidity": 18.90477,
+      "volume24": 7401658.41284201,
+      "vol1wk": 8268496.016158016,
+      "liquidity": 19.89964,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -384,10 +384,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 7810129.312734943,
-      "volume24": 6236971.86328397,
-      "vol1wk": 7803813.895632995,
-      "liquidity": 1955871.71593,
+      "volume": 7825750.642734939,
+      "volume24": 6224734.057701966,
+      "vol1wk": 7819508.377807992,
+      "liquidity": 1932147.44432,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -403,17 +403,17 @@
         },
         {
           "label": "260-279",
-          "pct": 20.0
+          "pct": 19.5
         },
         {
           "label": "240-259",
-          "pct": 19.3
+          "pct": 19.1
         }
       ],
-      "volume": 7346164.017802002,
-      "volume24": 2335521.304855,
-      "vol1wk": 6031818.470535002,
-      "liquidity": 1413363.75055,
+      "volume": 7377084.748477003,
+      "volume24": 2341711.283056,
+      "vol1wk": 6061954.9427700015,
+      "liquidity": 1443574.21673,
       "open_interest": 0.0,
       "category": "",
       "expiry": "20 Mar 2026",
@@ -436,10 +436,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 4748062.680934004,
-      "volume24": 4662502.257712,
-      "vol1wk": 4736359.380011999,
-      "liquidity": 2794054.79816,
+      "volume": 4748075.000934004,
+      "volume24": 4662488.279012,
+      "vol1wk": 4736371.700011998,
+      "liquidity": 67.34985,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -462,10 +462,10 @@
           "pct": 0.1
         }
       ],
-      "volume": 4730847.554223978,
-      "volume24": 3769906.982047001,
-      "vol1wk": 4725122.6417949945,
-      "liquidity": 777743.08467,
+      "volume": 4733332.834223978,
+      "volume24": 3765862.267273001,
+      "vol1wk": 4727507.921794995,
+      "liquidity": 775049.74601,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -477,21 +477,21 @@
       "outcomes": [
         {
           "label": "Pistons vs. Wizards",
-          "pct": 94.5
+          "pct": 93.5
         },
         {
           "label": "1H Moneyline",
           "pct": 87.0
         },
         {
-          "label": "Ausar Thompson: Rebounds O/U 4.5",
-          "pct": 57.0
+          "label": "1H O/U 118.5",
+          "pct": 73.0
         }
       ],
-      "volume": 3697706.3036909997,
-      "volume24": 3590629.758879,
-      "vol1wk": 3701257.2737799995,
-      "liquidity": 3152703.56119,
+      "volume": 4134764.8560470007,
+      "volume24": 4023736.9266009997,
+      "vol1wk": 4134776.0262469994,
+      "liquidity": 169220.14038,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -514,14 +514,66 @@
           "pct": 100.0
         }
       ],
-      "volume": 3445508.5301560033,
-      "volume24": 3085208.7466970016,
-      "vol1wk": 3445478.4101560027,
-      "liquidity": 1783400.67331,
+      "volume": 3449138.0301560033,
+      "volume24": 3086199.887162002,
+      "vol1wk": 3449107.9101560027,
+      "liquidity": 2046309.10023,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
       "url": "https://polymarket.com/event/ucl-mnc1-rma1-2026-03-17-more-markets"
+    },
+    {
+      "question": "Pacers vs. Knicks",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Jose Alvarado: Assists O/U 4.5",
+          "pct": 73.5
+        },
+        {
+          "label": "1H O/U 101.5",
+          "pct": 64.5
+        },
+        {
+          "label": "Karl-Anthony Towns: Assists O/U 2.5",
+          "pct": 59.5
+        }
+      ],
+      "volume": 3191324.0327100013,
+      "volume24": 3138476.237676997,
+      "vol1wk": 3191324.032709997,
+      "liquidity": 3485670.8164,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "17 Mar 2026",
+      "url": "https://polymarket.com/event/nba-ind-nyk-2026-03-17"
+    },
+    {
+      "question": "Heat vs. Hornets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "LaMelo Ball: Points O/U 19.5",
+          "pct": 75.5
+        },
+        {
+          "label": "O/U 230.5",
+          "pct": 66.5
+        },
+        {
+          "label": "Spread -3.5",
+          "pct": 65.0
+        }
+      ],
+      "volume": 3135496.6853240086,
+      "volume24": 3035147.936964003,
+      "vol1wk": 3135521.0453240043,
+      "liquidity": 260559.05522,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "17 Mar 2026",
+      "url": "https://polymarket.com/event/nba-mia-cha-2026-03-17"
     },
     {
       "question": "Arsenal FC vs. Bayer 04 Leverkusen",
@@ -540,66 +592,14 @@
           "pct": 0.1
         }
       ],
-      "volume": 2716723.363470999,
-      "volume24": 2476417.3508670027,
-      "vol1wk": 2715517.620936001,
-      "liquidity": 3781667.42368,
+      "volume": 2740644.863470999,
+      "volume24": 2497717.3819580027,
+      "vol1wk": 2739245.565117001,
+      "liquidity": 3741001.16005,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
       "url": "https://polymarket.com/event/ucl-ars-lev-2026-03-17"
-    },
-    {
-      "question": "Heat vs. Hornets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "LaMelo Ball: Points O/U 19.5",
-          "pct": 58.5
-        },
-        {
-          "label": "Miles Bridges: Assists O/U 2.5",
-          "pct": 58.0
-        },
-        {
-          "label": "O/U 233.5",
-          "pct": 56.5
-        }
-      ],
-      "volume": 2588018.929657,
-      "volume24": 2515442.1409789985,
-      "vol1wk": 2615111.829887,
-      "liquidity": 2395288.74287,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "17 Mar 2026",
-      "url": "https://polymarket.com/event/nba-mia-cha-2026-03-17"
-    },
-    {
-      "question": "Highest temperature in Tel Aviv on March 16?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "19°C",
-          "pct": 99.9
-        },
-        {
-          "label": "20°C",
-          "pct": 0.1
-        },
-        {
-          "label": "23°C or higher",
-          "pct": 0.0
-        }
-      ],
-      "volume": 2422871.344179,
-      "volume24": 1711000.9509839998,
-      "vol1wk": 2422871.3441790007,
-      "liquidity": 918663.1067,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "16 Mar 2026",
-      "url": "https://polymarket.com/event/highest-temperature-in-tel-aviv-on-march-16-2026"
     },
     {
       "question": "Howard Bison vs. UMBC Retrievers",
@@ -607,21 +607,21 @@
       "outcomes": [
         {
           "label": "O/U 143.5",
-          "pct": 83.0
+          "pct": 93.5
         },
         {
           "label": "O/U 139.5",
           "pct": 81.5
         },
         {
-          "label": "O/U 140.5",
-          "pct": 74.0
+          "label": "Howard Bison vs. UMBC Retrievers",
+          "pct": 79.8
         }
       ],
-      "volume": 2274048.0087020015,
-      "volume24": 2242834.110219999,
-      "vol1wk": 2274301.0304259993,
-      "liquidity": 146394.68842,
+      "volume": 2359844.8706109994,
+      "volume24": 2322574.6665629987,
+      "vol1wk": 2359844.8706109994,
+      "liquidity": 112100.68091,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
@@ -633,25 +633,51 @@
       "outcomes": [
         {
           "label": "O/U 157.5",
-          "pct": 51.5
+          "pct": 52.0
         },
         {
           "label": "North Carolina State Wolfpack vs. Texas Longhorns",
-          "pct": 50.5
+          "pct": 51.5
         },
         {
           "label": "Spread -1.5",
           "pct": 49.1
         }
       ],
-      "volume": 2067389.040641004,
-      "volume24": 1987580.736018003,
-      "vol1wk": 2067529.0406410028,
-      "liquidity": 1245748.12562,
+      "volume": 2198256.113094005,
+      "volume24": 2114749.136907004,
+      "vol1wk": 2198256.1130940034,
+      "liquidity": 1290886.63433,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
       "url": "https://polymarket.com/event/cbb-ncst-tx-2026-03-17"
+    },
+    {
+      "question": "Islanders vs. Maple Leafs",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Islanders vs. Maple Leafs",
+          "pct": 83.5
+        },
+        {
+          "label": "O/U 4.5",
+          "pct": 76.0
+        },
+        {
+          "label": "O/U 5.5",
+          "pct": 74.0
+        }
+      ],
+      "volume": 2060246.9405749985,
+      "volume24": 2033040.7195230005,
+      "vol1wk": 2060271.9405750004,
+      "liquidity": 31922.8859,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "17 Mar 2026",
+      "url": "https://polymarket.com/event/nhl-nyi-tor-2026-03-17"
     },
     {
       "question": "Sporting CP vs. FK Bodø/Glimt - More Markets",
@@ -670,92 +696,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 2008480.8934709947,
-      "volume24": 1806380.0159330005,
-      "vol1wk": 2008469.733470997,
-      "liquidity": 1229791.45149,
+      "volume": 2008499.8834709947,
+      "volume24": 1801114.0332850006,
+      "vol1wk": 2008488.723470997,
+      "liquidity": 275359.86961,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
       "url": "https://polymarket.com/event/ucl-spo1-bog1-2026-03-17-more-markets"
-    },
-    {
-      "question": "Islanders vs. Maple Leafs",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "O/U 4.5",
-          "pct": 78.5
-        },
-        {
-          "label": "Islanders vs. Maple Leafs",
-          "pct": 59.5
-        },
-        {
-          "label": "O/U 5.5",
-          "pct": 54.5
-        }
-      ],
-      "volume": 1995884.079274,
-      "volume24": 1969316.6427370002,
-      "vol1wk": 1996030.152443,
-      "liquidity": 1786333.9495,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "17 Mar 2026",
-      "url": "https://polymarket.com/event/nhl-nyi-tor-2026-03-17"
-    },
-    {
-      "question": "Suns vs. Timberwolves",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Royce O'Neale: Rebounds O/U 4.5",
-          "pct": 77.0
-        },
-        {
-          "label": "Collin Gillespie: Points O/U 10.5",
-          "pct": 64.5
-        },
-        {
-          "label": "Julius Randle: Points O/U 21.5",
-          "pct": 56.0
-        }
-      ],
-      "volume": 1858450.4617739955,
-      "volume24": 1822003.0153390018,
-      "vol1wk": 1864946.8384380022,
-      "liquidity": 1443053.8584,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "18 Mar 2026",
-      "url": "https://polymarket.com/event/nba-phx-min-2026-03-17"
-    },
-    {
-      "question": "Pacers vs. Knicks",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "1H O/U 101.5",
-          "pct": 64.5
-        },
-        {
-          "label": "Jose Alvarado: Assists O/U 4.5",
-          "pct": 57.5
-        },
-        {
-          "label": "OG Anunoby: Points O/U 17.5",
-          "pct": 56.5
-        }
-      ],
-      "volume": 1834473.795196002,
-      "volume24": 1781765.6667259985,
-      "vol1wk": 1834548.0809089988,
-      "liquidity": 1976857.19972,
-      "open_interest": 0.0,
-      "category": "",
-      "expiry": "17 Mar 2026",
-      "url": "https://polymarket.com/event/nba-ind-nyk-2026-03-17"
     },
     {
       "question": "Hurricanes vs. Blue Jackets",
@@ -763,25 +711,77 @@
       "outcomes": [
         {
           "label": "O/U 4.5",
-          "pct": 79.0
+          "pct": 74.0
         },
         {
           "label": "O/U 5.5",
-          "pct": 58.0
+          "pct": 61.5
         },
         {
-          "label": "Hurricanes vs. Blue Jackets",
-          "pct": 53.5
+          "label": "O/U 6.5",
+          "pct": 48.0
         }
       ],
-      "volume": 1673507.8128519997,
-      "volume24": 1663709.850116,
-      "vol1wk": 1673619.770296,
-      "liquidity": 1424016.2492,
+      "volume": 2002523.061427,
+      "volume24": 1992612.0776120008,
+      "vol1wk": 2002536.1114270012,
+      "liquidity": 32140.1423,
       "open_interest": 0.0,
       "category": "",
       "expiry": "17 Mar 2026",
       "url": "https://polymarket.com/event/nhl-car-cbj-2026-03-17"
+    },
+    {
+      "question": "Suns vs. Timberwolves",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Collin Gillespie: Points O/U 10.5",
+          "pct": 64.5
+        },
+        {
+          "label": "Julius Randle: Points O/U 21.5",
+          "pct": 58.5
+        },
+        {
+          "label": "Devin Booker: Assists O/U 4.5",
+          "pct": 57.5
+        }
+      ],
+      "volume": 1955075.4560339919,
+      "volume24": 1909436.9329350025,
+      "vol1wk": 1955075.456034003,
+      "liquidity": 2304963.7016,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "18 Mar 2026",
+      "url": "https://polymarket.com/event/nba-phx-min-2026-03-17"
+    },
+    {
+      "question": "Thunder vs. Magic",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Shai Gilgeous-Alexander: Points O/U 31.5",
+          "pct": 78.5
+        },
+        {
+          "label": "Thunder vs. Magic",
+          "pct": 76.5
+        },
+        {
+          "label": "1H Moneyline",
+          "pct": 61.0
+        }
+      ],
+      "volume": 1817642.8659360006,
+      "volume24": 1757216.6177480004,
+      "vol1wk": 1817768.8659360001,
+      "liquidity": 171306.6154,
+      "open_interest": 0.0,
+      "category": "",
+      "expiry": "17 Mar 2026",
+      "url": "https://polymarket.com/event/nba-okc-orl-2026-03-17"
     }
   ]
 }
