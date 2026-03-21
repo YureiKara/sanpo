@@ -1085,18 +1085,18 @@ def render_news_panel(symbol):
         html += f"<div style='padding:12px;background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;color:{_mut};font-size:11px;font-family:{FONTS}'>No news available</div>"
     else:
         _row_alt = t.get('bg3', '#131b2e')
-        html += f"<div style='background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;max-height:300px;overflow-y:auto'>"
+        html += f"<div style='background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;max-height:400px;overflow-y:auto'>"
         for i, item in enumerate(news):
             t_text = item['title']; u = item['url']; p = item['provider']; d = item['date']
             row_bg = _body_bg if i % 2 == 0 else _row_alt
-            title_el = f"<a href='{u}' target='_blank' style='color:{_link_c};text-decoration:none;font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>{t_text}</a>" if u else f"<span style='color:{_link_c};font-size:10.5px'>{t_text}</span>"
-            src_html = f"<span style='color:{pos_c};font-weight:600;font-size:9px'>{p}</span>" if p else ""
-            date_html = f"<span style='color:{_mut};font-size:9px'>{d}</span>" if d else ""
+            title_el = f"<a href='{u}' target='_blank' style='color:{_link_c};text-decoration:none;font-size:9.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>{t_text}</a>" if u else f"<span style='color:{_link_c};font-size:9.5px'>{t_text}</span>"
+            src_html = f"<span style='color:{pos_c};font-weight:600;font-size:8.5px'>{p}</span>" if p else ""
+            date_html = f"<span style='color:{_mut};font-size:8.5px'>{d}</span>" if d else ""
             html += (
-                f"<div style='padding:3px 10px;border-bottom:1px solid {_bdr_ln}10;font-family:{FONTS};background:{row_bg};"
+                f"<div style='padding:1px 8px;border-bottom:1px solid {_bdr_ln}10;font-family:{FONTS};background:{row_bg};"
                 f"display:flex;align-items:baseline;gap:0;white-space:nowrap;overflow:hidden'>"
-                f"<span style='flex-shrink:0;width:100px;text-align:left'>{src_html}</span>"
-                f"<span style='flex-shrink:0;width:60px;text-align:left'>{date_html}</span>"
+                f"<span style='flex-shrink:0;width:90px;text-align:left'>{src_html}</span>"
+                f"<span style='flex-shrink:0;width:55px;text-align:left'>{date_html}</span>"
                 f"<span style='overflow:hidden;text-overflow:ellipsis'>{title_el}</span>"
                 f"</div>"
             )
