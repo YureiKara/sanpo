@@ -856,7 +856,15 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         if boundaries:
             zone_status = get_zone(current_price, last_b.prev_high, last_b.prev_low, mid)
             chart_statuses[chart_idx] = STATUS_LABELS[zone_status]
-            computed_levels[boundary_type] = {'high': last_b.prev_high, 'low': last_b.prev_low, 'mid': mid, 'price': current_price, 'status': zone_status, 'label': label}
+            # Compute RB/RS from current period rolling high/low
+            _rb, _rs = None, None
+            _cp = hist.iloc[last_b.idx:]
+            if len(_cp) > 1:
+                _rh = _cp['High'].expanding().max().iloc[-1]
+                _rl = _cp['Low'].expanding().min().iloc[-1]
+                _rb = (_rh + last_b.prev_low) / 2
+                _rs = (_rl + last_b.prev_high) / 2
+            computed_levels[boundary_type] = {'high': last_b.prev_high, 'low': last_b.prev_low, 'mid': mid, 'price': current_price, 'status': zone_status, 'label': label, 'rb': _rb, 'rs': _rs}
 
         rsi_value = calculate_rsi(hist['Close']); chart_rsis[chart_idx] = rsi_value
 
@@ -1067,13 +1075,13 @@ def render_key_levels(symbol, levels):
     ds = clean_symbol(symbol); fn = SYMBOL_NAMES.get(symbol, symbol)
     if not levels: return
 
-    tfo = ['year','month','week','session']
+    tfo = ['session','week','month','year']
     statuses = [levels.get(tf,{}).get('status','') for tf in tfo]
     bull = sum(1 for s in statuses if s in ('above_high','above_mid')); bear = 4 - bull
-    hb = all(s in ('above_high','above_mid') for s in statuses[:2])
-    hr = all(s in ('below_mid','below_low') for s in statuses[:2])
-    lb = any(s in ('above_high','above_mid') for s in statuses[2:])
-    lr = any(s in ('below_mid','below_low') for s in statuses[2:])
+    hb = all(s in ('above_high','above_mid') for s in statuses[2:])
+    hr = all(s in ('below_mid','below_low') for s in statuses[2:])
+    lb = any(s in ('above_high','above_mid') for s in statuses[:2])
+    lr = any(s in ('below_mid','below_low') for s in statuses[:2])
     if bull == 4: sig, sc = 'STRONG ▲', t['str_up']
     elif bear == 4: sig, sc = 'STRONG ▼', t['str_dn']
     elif hb and lr: sig, sc = 'PULLBACK ↻', '#fbbf24'
@@ -1081,43 +1089,87 @@ def render_key_levels(symbol, levels):
     else: sig, sc = 'MIXED', '#6b7280'
 
     dec = 2; price = None
-    for tf in ['session','week','month','year']:
+    for tf in tfo:
         if tf in levels: price = levels[tf]['price']; dec = 2 if price > 10 else 4; break
 
-    _t = get_theme()
-    _il = _t.get('mode') == 'light'
+    _t = get_theme(); _il = _t.get('mode') == 'light'
     _hdr_bg = _t.get('bg3', '#1a2744'); _body_bg = _t.get('bg', '#1e1e1e')
     _bdr_ln = _t.get('border', '#2a2a2a')
     _txt1 = _t.get('text', '#e2e8f0'); _txt2 = _t.get('text2', '#b0b0b0')
     _mut = _t.get('muted', '#6d6d6d')
+    _row_alt = _t.get('bg3', '#131b2e')
 
-    html = f"""<div style='padding:8px 12px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
+    th = f"padding:4px 10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-bottom:1px solid {_bdr_ln};text-align:right"
+    td = f"padding:4px 10px;font-size:10px;font-variant-numeric:tabular-nums;text-align:right;border-bottom:1px solid {_bdr_ln}20"
+
+    html = f"""<div style='padding:6px 10px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
         <span><span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{ds} LEVELS</span>
-        <span style='color:{_mut};font-size:10px;margin-left:6px;font-weight:400'>{fn}</span></span>
-        <span style='color:{sc};font-size:10px;font-weight:700;letter-spacing:0.05em'>{sig}</span></div>"""
+        <span style='color:{_mut};font-size:9px;margin-left:6px'>{fn}</span></span>
+        <span style='color:{sc};font-size:10px;font-weight:700'>{sig}</span></div>"""
 
-    html += f"""<div style='background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px'><table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>
-        <thead><tr>
-            <th style='padding:5px 8px;color:#f8fafc;text-align:left;font-size:9px;text-transform:uppercase;border-bottom:1px solid {_bdr_ln};font-weight:600'></th>
-            <th style='padding:5px 8px;color:#f8fafc;text-align:right;font-size:9px;text-transform:uppercase;border-bottom:1px solid {_bdr_ln};font-weight:600'>HIGH</th>
-            <th style='padding:5px 8px;color:#f8fafc;text-align:right;font-size:9px;text-transform:uppercase;border-bottom:1px solid {_bdr_ln};font-weight:600'>MID</th>
-            <th style='padding:5px 8px;color:#f8fafc;text-align:right;font-size:9px;text-transform:uppercase;border-bottom:1px solid {_bdr_ln};font-weight:600'>LOW</th>
-            <th style='padding:5px 8px;color:#f8fafc;text-align:center;font-size:9px;text-transform:uppercase;border-bottom:1px solid {_bdr_ln};font-weight:600'>STATUS</th>
-        </tr></thead><tbody>"""
+    html += f"<div style='background:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;overflow-x:auto'>"
+    html += f"<table style='border-collapse:collapse;font-family:{FONTS};width:100%;line-height:1.2'><thead><tr>"
+    html += f"<th style='{th};text-align:left;color:{_mut}'>LEVEL</th>"
+    for tf in tfo:
+        html += f"<th style='{th};color:#f8fafc'>{tf.upper()}</th>"
+    html += "</tr></thead><tbody>"
 
+    # Price row
     if price is not None:
-        html += f"<tr><td style='padding:6px 8px;color:{_txt1};font-weight:700;border-bottom:1px solid {_bdr_ln}'>PRICE</td><td style='padding:6px 8px;color:{_txt1};font-weight:700;text-align:right;font-size:13px;border-bottom:1px solid {_bdr_ln}'>{price:,.{dec}f}</td><td colspan='3' style='border-bottom:1px solid {_bdr_ln}'></td></tr>"
+        html += f"<tr style='background:{_row_alt}'>"
+        html += f"<td style='{td};text-align:left;color:{_txt1};font-weight:700'>C</td>"
+        for tf in tfo:
+            p = levels.get(tf,{}).get('price')
+            html += f"<td style='{td};color:#ffffff;font-weight:700'>{f'{p:,.{dec}f}' if p else '—'}</td>"
+        html += "</tr>"
 
-    tfl = {'year':'YEAR','month':'MONTH','week':'WEEK','session':'SESSION'}
-    for tf in ['session','week','month','year']:
-        if tf not in levels: continue
-        l = levels[tf]; sco = zc.get(l['status'],_mut); stx = STATUS_LABELS.get(l['status'],'')
-        row_bg = f'linear-gradient(90deg,transparent,{sco}08)' if l['status'] in ('above_high','below_low') else 'transparent'
-        html += f"""<tr style='background:{row_bg}'><td style='padding:5px 8px;color:{_txt2};font-weight:600;border-bottom:1px solid {_bdr_ln}'>{tfl[tf]}</td>
-            <td style='padding:5px 8px;color:{_txt1};text-align:right;border-bottom:1px solid {_bdr_ln};font-variant-numeric:tabular-nums'>{l['high']:,.{dec}f}</td>
-            <td style='padding:5px 8px;color:{_mut};text-align:right;border-bottom:1px solid {_bdr_ln};font-variant-numeric:tabular-nums'>{l['mid']:,.{dec}f}</td>
-            <td style='padding:5px 8px;color:{_txt1};text-align:right;border-bottom:1px solid {_bdr_ln};font-variant-numeric:tabular-nums'>{l['low']:,.{dec}f}</td>
-            <td style='padding:5px 8px;text-align:center;border-bottom:1px solid {_bdr_ln}'><span style='color:{sco};font-size:10px;font-weight:700'>{stx}</span></td></tr>"""
+    _zc_hi = zc['above_high']; _zc_lo = zc['below_low']
+
+    # H row
+    html += f"<tr><td style='{td};text-align:left;color:{_zc_hi};font-weight:700'>H</td>"
+    for tf in tfo:
+        v = levels.get(tf,{}).get('high')
+        html += f"<td style='{td};color:{_zc_hi}'>{f'{v:,.{dec}f}' if v else '—'}</td>"
+    html += "</tr>"
+
+    # RB row
+    html += f"<tr style='background:{_row_alt}'><td style='{td};text-align:left;color:#22c55e;font-weight:700'>RB</td>"
+    for tf in tfo:
+        v = levels.get(tf,{}).get('rb')
+        html += f"<td style='{td};color:#22c55e'>{f'{v:,.{dec}f}' if v else '—'}</td>"
+    html += "</tr>"
+
+    # M row
+    html += f"<tr><td style='{td};text-align:left;color:{_mut};font-weight:700'>M</td>"
+    for tf in tfo:
+        v = levels.get(tf,{}).get('mid')
+        html += f"<td style='{td};color:{_mut}'>{f'{v:,.{dec}f}' if v else '—'}</td>"
+    html += "</tr>"
+
+    # RS row
+    html += f"<tr style='background:{_row_alt}'><td style='{td};text-align:left;color:#ef4444;font-weight:700'>RS</td>"
+    for tf in tfo:
+        v = levels.get(tf,{}).get('rs')
+        html += f"<td style='{td};color:#ef4444'>{f'{v:,.{dec}f}' if v else '—'}</td>"
+    html += "</tr>"
+
+    # L row
+    html += f"<tr><td style='{td};text-align:left;color:{_zc_lo};font-weight:700'>L</td>"
+    for tf in tfo:
+        v = levels.get(tf,{}).get('low')
+        html += f"<td style='{td};color:{_zc_lo}'>{f'{v:,.{dec}f}' if v else '—'}</td>"
+    html += "</tr>"
+
+    # Status row
+    html += f"<tr style='background:{_row_alt}'><td style='{td};text-align:left;color:{_mut};font-weight:700'>STATUS</td>"
+    for tf in tfo:
+        st_val = levels.get(tf,{}).get('status','')
+        sco = zc.get(st_val, _mut)
+        stx = STATUS_LABELS.get(st_val,'—')
+        html += f"<td style='{td};color:{sco};font-size:9px;font-weight:700;text-align:right'>{stx}</td>"
+    html += "</tr>"
+
+    # RSI placeholder row (from chart_statuses not available here — skip or leave blank)
     html += "</tbody></table></div>"
     st.markdown(html, unsafe_allow_html=True)
 
