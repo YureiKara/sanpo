@@ -982,13 +982,13 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                     font=dict(color=_col, size=9), bgcolor='rgba(0,0,0,0.4)',
                     bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
 
-            # Retrace buy/sell price labels on right axis
+            # Retrace buy/sell price labels on right axis — use LAST rolling value (end of line)
             current_period = hist.iloc[last_b.idx:]
             if len(current_period) > 1:
-                _cur_high = current_period['High'].max()
-                _cur_low  = current_period['Low'].min()
-                _retrace_buy  = (_cur_high + last_b.prev_low)  / 2
-                _retrace_sell = (_cur_low  + last_b.prev_high) / 2
+                _roll_high = current_period['High'].expanding().max().iloc[-1]
+                _roll_low  = current_period['Low'].expanding().min().iloc[-1]
+                _retrace_buy  = (_roll_high + last_b.prev_low)  / 2
+                _retrace_sell = (_roll_low  + last_b.prev_high) / 2
                 for _lvl, _col, _lbl in [
                     (_retrace_buy,  '#22c55e', f'{_retrace_buy:.{pd_dec}f}'),
                     (_retrace_sell, '#ef4444', f'{_retrace_sell:.{pd_dec}f}'),
@@ -1001,37 +1001,35 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                         bordercolor=_col, borderwidth=1, borderpad=2,
                         xanchor='left')
 
-    # Update subplot titles with status + RSI + legend squares
+    # Update subplot titles — clean: symbol + timeframe + RSI + status only
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
            '● BELOW MID': zc['below_mid'], '▼ BELOW LOW': zc['below_low']}
     title_labels = [tf[0].upper() for tf in CHART_CONFIGS]
     _clean_sym = clean_symbol(symbol)
+
+    # Universal legend text — H M L RB RS
+    _legend_html = (
+        f"<span style='color:{zc['above_high']}'>■</span> H  "
+        f"<span style='color:#94a3b8'>■</span> M  "
+        f"<span style='color:{zc['below_low']}'>■</span> L  "
+        f"<span style='color:#22c55e'>╌╌</span> RB  "
+        f"<span style='color:#ef4444'>╌╌</span> RS"
+    )
+
     for idx, ann in enumerate(fig['layout']['annotations']):
         txt = str(ann.text) if hasattr(ann, 'text') else ''
         if txt in title_labels:
             status = chart_statuses.get(idx, ''); rsi = chart_rsis.get(idx, np.nan)
-            # Legend squares: H=green, M=amber, L=red, Buy=green dot, Sell=red dot
-            legend = (
-                f"<span style='color:{zc['above_high']};font-size:10px'>■</span>"
-                f"<span style='color:#64748b;font-size:8px'>H </span>"
-                f"<span style='color:#94a3b8;font-size:10px'>■</span>"
-                f"<span style='color:#64748b;font-size:8px'>M </span>"
-                f"<span style='color:{zc['below_low']};font-size:10px'>■</span>"
-                f"<span style='color:#64748b;font-size:8px'>L </span>"
-                f"<span style='color:#22c55e;font-size:9px'>─ ─</span>"
-                f"<span style='color:#64748b;font-size:8px'>Buy </span>"
-                f"<span style='color:#ef4444;font-size:9px'>─ ─</span>"
-                f"<span style='color:#64748b;font-size:8px'>Sell</span>"
-            )
-            parts = [f"{_clean_sym}  {txt}"]
+            parts = [f"<b>{_clean_sym} {txt}</b>"]
             if not np.isnan(rsi):
                 rc = zc['above_mid'] if rsi > 50 else zc['below_low']
                 parts.append(f"<span style='color:{rc};font-size:9px'>RSI {rsi:.0f}</span>")
             if status:
                 c = stc.get(status, '#64748b')
                 parts.append(f"<span style='color:{c};font-size:9px'>{status}</span>")
-            parts.append(legend)
-            ann['text'] = '  '.join(parts); ann['font'] = dict(color='#f8fafc', size=10)
+            parts.append(f"<span style='color:#475569;font-size:8px'>  {_legend_html}</span>")
+            ann['text'] = '  '.join(parts)
+            ann['font'] = dict(color='#f8fafc', size=10)
 
     _t = get_theme()
     _pbg = _t.get('plot_bg', '#121212'); _grd = _t.get('grid', '#1f1f1f')
