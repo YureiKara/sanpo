@@ -958,21 +958,21 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         fig.update_layout(**{yref: dict(range=[y_min-pad, y_max+pad], side='right', tickfont=dict(size=9, color='#94a3b8'))})
 
         pd_dec = 4 if '=X' in symbol else 2
-        # Price label — bigger, white, with background box
+        # Price label — C suffix, white, boxed
         fig.add_annotation(x=1.02, y=current_price,
             xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
             yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
-            text=f'<b>{current_price:.{pd_dec}f}</b>', showarrow=False,
+            text=f'<b>{current_price:.{pd_dec}f} C</b>', showarrow=False,
             font=dict(color='#ffffff', size=11), bgcolor='rgba(0,0,0,0.5)',
             bordercolor=line_color, borderwidth=1, borderpad=3, xanchor='left')
 
-        # S/R level labels on right axis — coloured by zone with actual prices
+        # S/R level labels on right axis — price + label suffix
         if boundaries:
             _mid = (last_b.prev_high + last_b.prev_low) / 2
             _sr_labels = [
-                (last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f}'),
-                (_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f}'),
-                (last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f}'),
+                (last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f} H'),
+                (_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f} M'),
+                (last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f} L'),
             ]
             for _lvl, _col, _lbl in _sr_labels:
                 fig.add_annotation(x=1.02, y=_lvl,
@@ -982,7 +982,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                     font=dict(color=_col, size=9), bgcolor='rgba(0,0,0,0.4)',
                     bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
 
-            # Retrace buy/sell price labels on right axis — use LAST rolling value (end of line)
+            # Retrace labels — price + RB/RS suffix
             current_period = hist.iloc[last_b.idx:]
             if len(current_period) > 1:
                 _roll_high = current_period['High'].expanding().max().iloc[-1]
@@ -990,8 +990,8 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                 _retrace_buy  = (_roll_high + last_b.prev_low)  / 2
                 _retrace_sell = (_roll_low  + last_b.prev_high) / 2
                 for _lvl, _col, _lbl in [
-                    (_retrace_buy,  '#22c55e', f'{_retrace_buy:.{pd_dec}f}'),
-                    (_retrace_sell, '#ef4444', f'{_retrace_sell:.{pd_dec}f}'),
+                    (_retrace_buy,  '#22c55e', f'{_retrace_buy:.{pd_dec}f} RB'),
+                    (_retrace_sell, '#ef4444', f'{_retrace_sell:.{pd_dec}f} RS'),
                 ]:
                     fig.add_annotation(x=1.02, y=_lvl,
                         xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
@@ -1007,15 +1007,6 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
     title_labels = [tf[0].upper() for tf in CHART_CONFIGS]
     _clean_sym = clean_symbol(symbol)
 
-    # Universal legend text — H M L RB RS
-    _legend_html = (
-        f"<span style='color:{zc['above_high']}'>■</span> H  "
-        f"<span style='color:#94a3b8'>■</span> M  "
-        f"<span style='color:{zc['below_low']}'>■</span> L  "
-        f"<span style='color:#22c55e'>╌╌</span> RB  "
-        f"<span style='color:#ef4444'>╌╌</span> RS"
-    )
-
     for idx, ann in enumerate(fig['layout']['annotations']):
         txt = str(ann.text) if hasattr(ann, 'text') else ''
         if txt in title_labels:
@@ -1027,9 +1018,28 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             if status:
                 c = stc.get(status, '#64748b')
                 parts.append(f"<span style='color:{c};font-size:9px'>{status}</span>")
-            parts.append(f"<span style='color:#475569;font-size:8px'>  {_legend_html}</span>")
             ann['text'] = '  '.join(parts)
             ann['font'] = dict(color='#f8fafc', size=10)
+
+    # Single universal legend — top centre of figure
+    _leg = (
+        f"<span style='font-size:13px;color:{zc['above_high']}'>■</span>"
+        f"<span style='font-size:11px;color:#94a3b8'> H  </span>"
+        f"<span style='font-size:13px;color:#94a3b8'>■</span>"
+        f"<span style='font-size:11px;color:#94a3b8'> M  </span>"
+        f"<span style='font-size:13px;color:{zc['below_low']}'>■</span>"
+        f"<span style='font-size:11px;color:#94a3b8'> L  </span>"
+        f"<span style='font-size:13px;color:#22c55e'>■</span>"
+        f"<span style='font-size:11px;color:#94a3b8'> RB  </span>"
+        f"<span style='font-size:13px;color:#ef4444'>■</span>"
+        f"<span style='font-size:11px;color:#94a3b8'> RS</span>"
+    )
+    fig.add_annotation(
+        x=0.5, y=1.01, xref='paper', yref='paper',
+        text=_leg, showarrow=False,
+        font=dict(size=11, color='#94a3b8'),
+        xanchor='center', yanchor='bottom'
+    )
 
     _t = get_theme()
     _pbg = _t.get('plot_bg', '#121212'); _grd = _t.get('grid', '#1f1f1f')
