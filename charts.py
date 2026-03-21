@@ -879,6 +879,29 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_close]*2, mode='lines', line=dict(color='#475569', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'Close: {b.prev_close:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[ml]*2, mode='lines', line=dict(color='#d97706', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'), row=row, col=col)
 
+        # Dynamic retrace lines — Session chart only
+        # Buy retrace:  (Current Session High + Prev Session Low) / 2  → green dashed
+        # Sell retrace: (Current Session Low  + Prev Session High) / 2 → red dashed
+        if boundary_type == 'session' and boundaries:
+            last_b = boundaries[-1]
+            current_session = hist.iloc[last_b.idx:]
+            if len(current_session) > 0:
+                cur_high = current_session['High'].max()
+                cur_low  = current_session['Low'].min()
+                prev_high = last_b.prev_high
+                prev_low  = last_b.prev_low
+                retrace_buy  = (cur_high + prev_low)  / 2
+                retrace_sell = (cur_low  + prev_high) / 2
+                rx_start = last_b.idx; rx_end = len(hist) - 1
+                fig.add_trace(go.Scatter(
+                    x=[rx_start, rx_end], y=[retrace_buy, retrace_buy], mode='lines',
+                    line=dict(color='#22c55e', width=1.2, dash='dot'), showlegend=False,
+                    hovertemplate=f'Buy retrace: {retrace_buy:.2f}<extra></extra>'), row=row, col=col)
+                fig.add_trace(go.Scatter(
+                    x=[rx_start, rx_end], y=[retrace_sell, retrace_sell], mode='lines',
+                    line=dict(color='#ef4444', width=1.2, dash='dot'), showlegend=False,
+                    hovertemplate=f'Sell retrace: {retrace_sell:.2f}<extra></extra>'), row=row, col=col)
+
         # Reversal dots — close-to-close failed breakout:
         # Closed above high then back below → sell (amber)
         # Closed below low then back above → buy (green)
