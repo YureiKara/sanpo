@@ -982,6 +982,25 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                     font=dict(color=_col, size=9), bgcolor='rgba(0,0,0,0.4)',
                     bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
 
+            # Retrace buy/sell price labels on right axis
+            current_period = hist.iloc[last_b.idx:]
+            if len(current_period) > 1:
+                _cur_high = current_period['High'].max()
+                _cur_low  = current_period['Low'].min()
+                _retrace_buy  = (_cur_high + last_b.prev_low)  / 2
+                _retrace_sell = (_cur_low  + last_b.prev_high) / 2
+                for _lvl, _col, _lbl in [
+                    (_retrace_buy,  '#22c55e', f'{_retrace_buy:.{pd_dec}f}'),
+                    (_retrace_sell, '#ef4444', f'{_retrace_sell:.{pd_dec}f}'),
+                ]:
+                    fig.add_annotation(x=1.02, y=_lvl,
+                        xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
+                        yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
+                        text=f'{_lbl}', showarrow=False,
+                        font=dict(color=_col, size=8), bgcolor='rgba(0,0,0,0.3)',
+                        bordercolor=_col, borderwidth=1, borderpad=2,
+                        xanchor='left')
+
     # Update subplot titles with status + RSI + legend squares
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
            '● BELOW MID': zc['below_mid'], '▼ BELOW LOW': zc['below_low']}
