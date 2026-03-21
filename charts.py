@@ -958,14 +958,30 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         fig.update_layout(**{yref: dict(range=[y_min-pad, y_max+pad], side='right', tickfont=dict(size=9, color='#94a3b8'))})
 
         pd_dec = 4 if '=X' in symbol else 2
+        # Price label — bigger, white, with background box
         fig.add_annotation(x=1.02, y=current_price,
             xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
             yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
             text=f'<b>{current_price:.{pd_dec}f}</b>', showarrow=False,
-            font=dict(color=line_color, size=9), bgcolor='rgba(0,0,0,0)',
-            bordercolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
+            font=dict(color='#ffffff', size=11), bgcolor='rgba(0,0,0,0.5)',
+            bordercolor=line_color, borderwidth=1, borderpad=3, xanchor='left')
 
-    # Update subplot titles with status + RSI
+        # S/R level labels on right axis — coloured by zone
+        if boundaries:
+            _sr_labels = [
+                (last_b.prev_high, zc['above_high'], 'H'),
+                (last_b.prev_low,  zc['below_low'],  'L'),
+                ((last_b.prev_high + last_b.prev_low) / 2, '#d97706', 'M'),
+            ]
+            for _lvl, _col, _lbl in _sr_labels:
+                fig.add_annotation(x=1.02, y=_lvl,
+                    xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
+                    yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
+                    text=f'<b>{_lbl}</b>', showarrow=False,
+                    font=dict(color=_col, size=8), bgcolor='rgba(0,0,0,0)',
+                    bordercolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
+
+    # Update subplot titles with status + RSI + legend squares
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
            '● BELOW MID': zc['below_mid'], '▼ BELOW LOW': zc['below_low']}
     title_labels = [tf[0].upper() for tf in CHART_CONFIGS]
@@ -974,6 +990,19 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         txt = str(ann.text) if hasattr(ann, 'text') else ''
         if txt in title_labels:
             status = chart_statuses.get(idx, ''); rsi = chart_rsis.get(idx, np.nan)
+            # Legend squares: H=green, M=amber, L=red, Buy=green dot, Sell=red dot
+            legend = (
+                f"<span style='color:{zc['above_high']};font-size:10px'>■</span>"
+                f"<span style='color:#64748b;font-size:8px'>H </span>"
+                f"<span style='color:#d97706;font-size:10px'>■</span>"
+                f"<span style='color:#64748b;font-size:8px'>M </span>"
+                f"<span style='color:{zc['below_low']};font-size:10px'>■</span>"
+                f"<span style='color:#64748b;font-size:8px'>L </span>"
+                f"<span style='color:#22c55e;font-size:9px'>─ ─</span>"
+                f"<span style='color:#64748b;font-size:8px'>Buy </span>"
+                f"<span style='color:#ef4444;font-size:9px'>─ ─</span>"
+                f"<span style='color:#64748b;font-size:8px'>Sell</span>"
+            )
             parts = [f"{_clean_sym}  {txt}"]
             if not np.isnan(rsi):
                 rc = zc['above_mid'] if rsi > 50 else zc['below_low']
@@ -981,6 +1010,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             if status:
                 c = stc.get(status, '#64748b')
                 parts.append(f"<span style='color:{c};font-size:9px'>{status}</span>")
+            parts.append(legend)
             ann['text'] = '  '.join(parts); ann['font'] = dict(color='#f8fafc', size=10)
 
     _t = get_theme()
