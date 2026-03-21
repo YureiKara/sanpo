@@ -14,21 +14,10 @@ from urllib.parse import quote
 from html import escape as html_escape
 import re
 
-from config import (FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol)
+from config import (FUTURES_GROUPS, THEMES, SYMBOL_NAMES, CHART_CONFIGS,
+                     STATUS_LABELS, FONTS, clean_symbol)
 
 logger = logging.getLogger(__name__)
-
-CHART_CONFIGS = [
-    ('Day (15m)', '15m', 'Session High/Low', 'session'),
-    ('Weekly (4H)', '1h', 'Week High/Low', 'week'),
-    ('Monthly (Daily)', '1d', 'Month High/Low', 'month'),
-    ('Year (Weekly)', '1wk', 'Year High/Low', 'year'),
-]
-
-STATUS_LABELS = {
-    'above_high': '▲ ABOVE HIGH', 'above_mid': '– ABOVE MID',
-    'below_mid': '– BELOW MID', 'below_low': '▼ BELOW LOW',
-}
 
 def get_theme():
     name = st.session_state.get('theme', 'Dark')
@@ -79,24 +68,12 @@ def _slice_period(hist, period_type, now=None):
     dates = hist.index.map(_to_date)
 
     if period_type == 'session':
-        gaps = hist.index.to_series().diff()
-        median_gap = gaps.median()
         today = now.date()
-        if median_gap < pd.Timedelta(hours=4):
-            # Intraday data: use midnight date change
-            prev_data = hist[dates < today]
-            if prev_data.empty:
-                return None, None
-            prev_date = prev_data.index[-1].date()
-            prev_period = prev_data[prev_data.index.map(_to_date) == prev_date]
-            current_bars = hist[dates >= today]
-        else:
-            # Daily data: use calendar date
-            prev_data = hist[dates < today]
-            if prev_data.empty:
-                return None, None
-            prev_period = prev_data.iloc[-1:]
-            current_bars = hist[dates >= today]
+        prev_data = hist[dates < today]
+        if prev_data.empty:
+            return None, None
+        prev_period = prev_data.iloc[-1:]
+        current_bars = hist[dates >= today]
 
     elif period_type == 'week':
         wsd = (now - pd.Timedelta(days=now.weekday())).date()
@@ -151,28 +128,28 @@ class PeriodBoundaryCalculator:
     def get_boundaries(df, boundary_type, symbol=''):
         if df is None or len(df) == 0: return []
         boundaries = []
-        
-        # Session: use midnight date change for all markets
-        if boundary_type == 'session' and len(df) >= 2:
-            is_break = lambda i: df.index[i].date() != df.index[i-1].date()
-        else:
-            is_break = {
-                'year': lambda i: df.index[i].year != df.index[i-1].year,
-                'month': lambda i: (df.index[i].month != df.index[i-1].month or df.index[i].year != df.index[i-1].year),
-                'week': lambda i: (df.index[i].isocalendar()[1] != df.index[i-1].isocalendar()[1] or df.index[i].year != df.index[i-1].year),
-            }.get(boundary_type, lambda i: False)
-
-        prev_start = 0
+        boundary_rules = {
+            'year': lambda i: df.index[i].year != df.index[i-1].year,
+            'month': lambda i: (df.index[i].month != df.index[i-1].month or df.index[i].year != df.index[i-1].year),
+            'week': lambda i: (df.index[i].isocalendar()[1] != df.index[i-1].isocalendar()[1] or df.index[i].year != df.index[i-1].year),
+            'session': lambda i: df.index[i].date() != df.index[i-1].date()
+        }
+        mask_funcs = {
+            'year': lambda i: df.index.year == df.index[i-1].year,
+            'month': lambda i: ((df.index.month == df.index[i-1].month) & (df.index.year == df.index[i-1].year)),
+            'week': lambda i: ((df.index.map(lambda x: x.isocalendar()[1]) == df.index[i-1].isocalendar()[1]) & (df.index.year == df.index[i-1].year)),
+            'session': lambda i: df.index.date == df.index[i-1].date()
+        }
+        if boundary_type not in boundary_rules: return boundaries
         for i in range(1, len(df)):
-            if is_break(i):
-                prev_data = df.iloc[prev_start:i]
+            if boundary_rules[boundary_type](i):
+                prev_data = df.loc[mask_funcs[boundary_type](i)]
                 if len(prev_data) > 0:
                     boundaries.append(PeriodBoundary(
                         idx=i, date=df.index[i],
                         prev_high=prev_data['High'].max(),
                         prev_low=prev_data['Low'].min(),
                         prev_close=prev_data['Close'].iloc[-1]))
-                prev_start = i
         return boundaries
 
 def calculate_rsi(closes, period=14):
@@ -211,10 +188,10 @@ class FuturesMetrics:
     month_status: str = ''
     year_status: str = ''
     current_dd: float = np.nan
-    day_reversal: str = ''
-    week_reversal: str = ''
-    month_reversal: str = ''
-    year_reversal: str = ''
+    day_reversal: bool = False
+    week_reversal: bool = False
+    month_reversal: bool = False
+    year_reversal: bool = False
 
 class FuturesDataFetcher:
     def __init__(self, symbol):
@@ -377,24 +354,21 @@ class FuturesDataFetcher:
             return ''
 
     def _check_reversal(self, hist, period_type):
-        """Return 'buy' if bounced off low, 'sell' if rejected at high, '' otherwise."""
         try:
-            if len(hist) < 3: return ''
+            if len(hist) < 3: return False
             prev_period, current_bars = _slice_period(hist, period_type)
             if prev_period is None or current_bars is None or current_bars.empty:
-                return ''
+                return False
             ph, pl = prev_period['High'].max(), prev_period['Low'].min()
             current_close = current_bars['Close'].iloc[-1]
             period_high = current_bars['High'].max()
+            if period_high > ph and current_close <= ph: return True
             period_low = current_bars['Low'].min()
-            # Rejected at high → sell signal (amber)
-            if period_high > ph and current_close <= ph: return 'sell'
-            # Bounced off low → buy signal (green)
-            if period_low < pl and current_close >= pl: return 'buy'
-            return ''
+            if period_low < pl and current_close >= pl: return True
+            return False
         except Exception as e:
             logger.debug(f"[{self.symbol}] check_reversal ({period_type}) error: {e}")
-            return ''
+            return False
 
     def _calculate_period_returns(self, hist, current_price):
         try:
@@ -571,8 +545,8 @@ def render_return_bars(metrics, sort_by='Default'):
     max_abs = max(abs(v) for _, v in vals) or 1
 
     n = len(vals)
-    # Match scanner: 2-row thead ~52px + n rows ~26px each + 2px border
-    scanner_h = 52 + n * 26 + 2
+    # Match scanner height: ~40px thead + n*28px rows + 2px border
+    scanner_h = 40 + n * 28 + 2
     row_h = max((scanner_h - 46) // n, 18) if n > 0 else 22
 
     rows = ""
@@ -607,7 +581,7 @@ def render_return_bars(metrics, sort_by='Default'):
         </div>"""
 
     _bg0 = t.get('bg3', '#0f1522'); _bdr0 = t.get('border', '#1e293b')
-    html = f"""<div style='background:{_bg0};border:1px solid {_bdr0};border-radius:6px;padding:0 6px 0 6px;overflow:hidden;height:{scanner_h}px'>
+    html = f"""<div style='background:{_bg0};border:1px solid {_bdr0};border-radius:6px;padding:0 6px 0 6px;overflow:hidden;min-height:{scanner_h}px'>
         <div style='display:flex;align-items:flex-end;height:46px;padding:0 2px'>
             <span style='color:#f8fafc;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-family:{FONTS}'>{label}</span>
             <div style='flex:1;height:1px;background:{_bdr0};margin-left:8px'></div>
@@ -633,16 +607,15 @@ def render_scanner_table(metrics, selected_symbol):
         c = pos_c if val >= 0 else neg_c
         return f"<span style='color:{c};font-weight:600'>{'+' if val >= 0 else ''}{val:.2f}%</span>"
 
-    def _dot(status, reversal=''):
+    def _dot(status, reversal=False):
         ico = ""
         c = zc.get(status, _mut)
         if status == 'above_high': ico = f"<span style='color:{c};font-weight:700;font-size:8px'>▲</span>"
         elif status == 'below_low': ico = f"<span style='color:{c};font-weight:700;font-size:8px'>▼</span>"
-        if reversal == 'buy': ico += f"<span style='color:{pos_c};font-size:8px'>●</span>"
-        elif reversal == 'sell': ico += f"<span style='color:{neg_c};font-size:8px'>●</span>"
+        if reversal: ico += "<span style='color:#facc15;font-size:7px'>●</span>"
         return f"<span style='display:inline-block;width:20px;text-align:left;vertical-align:middle;margin-left:2px'>{ico}</span>"
 
-    def _chg(val, status, reversal=''):
+    def _chg(val, status, reversal=False):
         return f"<span style='display:inline-block;width:56px;text-align:right;font-variant-numeric:tabular-nums'>{_fv(val)}</span>{_dot(status, reversal)}"
 
     def _sharpe(val):
@@ -668,53 +641,45 @@ def render_scanner_table(metrics, selected_symbol):
         return f"{conf} <span style='color:{sc};font-size:9px;font-weight:600'>{sig}</span>"
 
     _bdr = t.get('border', '#1e293b'); _bg3 = t.get('bg3', '#0f172a'); _mut = t.get('muted', '#475569')
-    _row_alt = '#131d2e'
-    th = f"padding:5px 8px;border-bottom:1px solid {_bdr};color:#f8fafc;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;text-align:center;"
-    td = f"padding:4px 8px;border:none;"
+    th = f"padding:4px 8px;border-bottom:1px solid {_bdr};color:#f8fafc;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"
+    td = f"padding:5px 8px;border-bottom:1px solid {_bdr}22;"
 
-    # Compute shared height for scanner/bar chart alignment
-    _n_rows = len(metrics)
-    _scanner_h = 52 + _n_rows * 26 + 2
-
-    html = f"""<div style='overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid {_bdr};border-radius:6px;height:{_scanner_h}px;overflow-y:hidden'><table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>
+    html = f"""<div style='overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid {_bdr};border-radius:6px'><table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>
         <thead style='background:{_bg3}'><tr>
-            <th style='{th}text-align:left' rowspan='2'></th><th style='{th}' rowspan='2'>PRICE</th>
-            <th style='{th}border-bottom:none' colspan='4'>CHANGE</th>
-            <th style='{th}' rowspan='2'>TREND</th>
-            <th style='{th}' rowspan='2'>HV</th><th style='{th}' rowspan='2'>DD</th>
-            <th style='{th}border-bottom:none' colspan='4'>SHARPE</th>
+            <th style='{th}text-align:left' rowspan='2'></th><th style='{th}text-align:right' rowspan='2'>PRICE</th>
+            <th style='{th}text-align:center;border-bottom:none' colspan='4'>CHANGE</th>
+            <th style='{th}text-align:right' rowspan='2'>HV</th><th style='{th}text-align:right' rowspan='2'>DD</th>
+            <th style='{th}text-align:center' rowspan='2'>TREND</th>
+            <th style='{th}text-align:center;border-bottom:none' colspan='4'>SHARPE</th>
         </tr><tr>
-            <th style='{th}'>DAY</th><th style='{th}'>WTD</th>
-            <th style='{th}'>MTD</th><th style='{th}'>YTD</th>
-            <th style='{th}'>DAY</th><th style='{th}'>WTD</th>
-            <th style='{th}'>MTD</th><th style='{th}'>YTD</th>
+            <th style='{th}text-align:left'>DAY</th><th style='{th}text-align:left'>WTD</th>
+            <th style='{th}text-align:left'>MTD</th><th style='{th}text-align:left'>YTD</th>
+            <th style='{th}text-align:right'>DAY</th><th style='{th}text-align:right'>WTD</th>
+            <th style='{th}text-align:right'>MTD</th><th style='{th}text-align:right'>YTD</th>
         </tr></thead><tbody>"""
 
     _txt1 = t.get('text', '#e2e8f0'); _txt2 = t.get('text2', '#94a3b8')
 
-    for idx, m in enumerate(metrics):
+    for m in metrics:
         pf = f"{m.price:,.{m.decimals}f}"
         ss = clean_symbol(m.symbol)
-        if m.symbol == selected_symbol:
-            bg = f'linear-gradient(90deg,{pos_c}08,{t.get("bg3","#1a2744")},{pos_c}08)'
-        else:
-            bg = _row_alt if idx % 2 == 1 else 'transparent'
+        bg = (f'linear-gradient(90deg,{pos_c}08,{t.get("bg3","#1a2744")},{pos_c}08)' if m.symbol == selected_symbol else 'transparent')
         hv = f"<span style='color:{_txt2}'>{m.hist_vol:.1f}%</span>" if not pd.isna(m.hist_vol) else f"<span style='color:{_mut}'>—</span>"
         dd = f"<span style='color:{neg_c};font-weight:600'>{m.current_dd:.1f}%</span>" if not pd.isna(m.current_dd) else f"<span style='color:{_mut}'>—</span>"
         html += f"""<tr style='background:{bg}'>
             <td style='{td}color:{_txt1};font-weight:600;text-align:left;white-space:nowrap'>{ss}</td>
-            <td style='{td}color:#f8fafc;font-weight:700;text-align:center'>{pf}</td>
-            <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_day, m.day_status, m.day_reversal)}</td>
-            <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_wtd, m.week_status, m.week_reversal)}</td>
-            <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_mtd, m.month_status, m.month_reversal)}</td>
-            <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_ytd, m.year_status, m.year_reversal)}</td>
+            <td style='{td}color:#f8fafc;font-weight:700;text-align:right'>{pf}</td>
+            <td style='{td}text-align:left;white-space:nowrap'>{_chg(m.change_day, m.day_status, m.day_reversal)}</td>
+            <td style='{td}text-align:left;white-space:nowrap'>{_chg(m.change_wtd, m.week_status, m.week_reversal)}</td>
+            <td style='{td}text-align:left;white-space:nowrap'>{_chg(m.change_mtd, m.month_status, m.month_reversal)}</td>
+            <td style='{td}text-align:left;white-space:nowrap'>{_chg(m.change_ytd, m.year_status, m.year_reversal)}</td>
+            <td style='{td}text-align:right'>{hv}</td>
+            <td style='{td}text-align:right'>{dd}</td>
             <td style='{td}text-align:center;white-space:nowrap'>{_trend(m)}</td>
-            <td style='{td}text-align:center'>{hv}</td>
-            <td style='{td}text-align:center'>{dd}</td>
-            <td style='{td}text-align:center'>{_sharpe(m.day_sharpe)}</td>
-            <td style='{td}text-align:center'>{_sharpe(m.wtd_sharpe)}</td>
-            <td style='{td}text-align:center'>{_sharpe(m.mtd_sharpe)}</td>
-            <td style='{td}text-align:center'>{_sharpe(m.ytd_sharpe)}</td>
+            <td style='{td}text-align:right'>{_sharpe(m.day_sharpe)}</td>
+            <td style='{td}text-align:right'>{_sharpe(m.wtd_sharpe)}</td>
+            <td style='{td}text-align:right'>{_sharpe(m.mtd_sharpe)}</td>
+            <td style='{td}text-align:right'>{_sharpe(m.ytd_sharpe)}</td>
         </tr>"""
     html += "</tbody></table></div>"
     st.markdown(html, unsafe_allow_html=True)
@@ -743,10 +708,10 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             vertical_spacing=0.06)
         positions = [(1,1),(2,1),(3,1),(4,1)]
     else:
-        fig = make_subplots(rows=2, cols=2,
+        fig = make_subplots(rows=4, cols=1,
             subplot_titles=[tf[0].upper() for tf in CHART_CONFIGS],
-            vertical_spacing=0.08, horizontal_spacing=0.06)
-        positions = [(1,1),(1,2),(2,1),(2,2)]
+            vertical_spacing=0.06)
+        positions = [(1,1),(2,1),(3,1),(4,1)]
     chart_statuses = {}; chart_rsis = {}; computed_levels = {}
 
     for chart_idx, (label, interval, zone_desc, boundary_type) in enumerate(CHART_CONFIGS):
@@ -763,7 +728,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
 
         if boundary_type == 'session':
             tick_indices = [i for i, dt in enumerate(hist.index) if dt.minute == 0 and dt.hour % 4 == 0]
-            tick_labels = [hist.index[i].strftime('%d %b') if hist.index[i].hour == 0 else hist.index[i].strftime('%H:%M') for i in tick_indices]
+            tick_labels = [hist.index[i].strftime('%H:%M') for i in tick_indices]
         elif boundary_type == 'week':
             n = 8; tick_indices = list(range(0, len(hist), max(1, len(hist)//n)))
             tick_labels = [hist.index[i].strftime('%a %d') for i in tick_indices]
@@ -782,45 +747,25 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             elif price > mid: return 'above_mid'
             else: return 'below_mid'
 
-        def plot_line(x_data, closes, start_offset=0, datetimes=None, color='rgba(255,255,255,0.85)', width=1.8, zone_color=False, high=None, low=None, mid=None):
-            """Draw a line. If zone_color=True, color segments by zone (green above mid, amber below)."""
-            all_x = x_data if isinstance(x_data, list) else list(range(start_offset, start_offset+len(closes)))
-            all_y = list(closes)
-            all_dt = [dt.strftime('%d %b %H:%M') if boundary_type == 'session' else dt.strftime('%d %b %Y') for dt in datetimes] if datetimes is not None else None
-            hover = '%{customdata}<br>%{y:.2f}<extra></extra>' if all_dt else '%{y:.2f}<extra></extra>'
-
-            if not zone_color or mid is None:
-                fig.add_trace(go.Scatter(x=all_x, y=all_y, mode='lines',
-                    line=dict(color=color, width=width, shape='spline', smoothing=0.3),
-                    showlegend=False, customdata=all_dt, hovertemplate=hover), row=row, col=col)
-                return
-
-            # Zone-colored: split into segments at zone transitions
-            zones = []
-            for c in closes:
-                if c >= mid: zones.append('up')
-                else: zones.append('dn')
-
+        def plot_colored_segments(x_data, closes, high, low, mid, start_offset=0, datetimes=None):
+            zones = [get_zone(c, high, low, mid) for c in closes]
             i = 0
             while i < len(zones):
                 zone = zones[i]; start_i = i
                 while i < len(zones) and zones[i] == zone: i += 1
-                # Include 1 extra point for overlap (no gaps)
-                end_i = min(i + 1, len(all_x))
-                seg_x = all_x[start_i:end_i]
-                seg_y = all_y[start_i:end_i]
-                seg_dt = all_dt[start_i:end_i] if all_dt else None
-                seg_color = t['pos'] if zone == 'up' else t['neg']
+                seg_end = min(i + 1, len(closes))
+                seg_x = x_data[start_i:seg_end] if isinstance(x_data, list) else list(range(start_offset+start_i, start_offset+seg_end))
+                seg_y = closes[start_i:seg_end]
+                seg_dt = [dt.strftime('%d %b %H:%M') if boundary_type == 'session' else dt.strftime('%d %b %Y') for dt in datetimes[start_i:seg_end]] if datetimes is not None else None
+                hover = '%{customdata}<br>%{y:.2f}<extra></extra>' if seg_dt else '%{y:.2f}<extra></extra>'
                 fig.add_trace(go.Scatter(x=seg_x, y=seg_y, mode='lines',
-                    line=dict(color=seg_color, width=width, shape='spline', smoothing=0.3),
+                    line=dict(color=zc[zone], width=1.3),
                     showlegend=False, customdata=seg_dt, hovertemplate=hover), row=row, col=col)
 
         if boundaries:
             last_b = boundaries[-1]
             mid = (last_b.prev_high + last_b.prev_low) / 2
-            zone_status = get_zone(current_price, last_b.prev_high, last_b.prev_low, mid)
-            # Line color matches theme: green above mid, amber below
-            line_color = t['pos'] if zone_status in ('above_high', 'above_mid') else t['neg']
+            line_color = zc[get_zone(current_price, last_b.prev_high, last_b.prev_low, mid)]
             boundary_idx = last_b.idx
 
             if chart_type == 'bars':
@@ -833,15 +778,23 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             if len(boundaries) >= 2:
                 prev_b = boundaries[-2]; prev_mid = (prev_b.prev_high + prev_b.prev_low) / 2
                 ps, pe = prev_b.idx, boundary_idx
-                if pe > ps and chart_type == 'line':
-                    plot_line(x_vals[ps:pe], hist['Close'].values[ps:pe], ps, hist.index[ps:pe], width=1.5, zone_color=True, mid=prev_mid)
+                if pe > ps:
+                    if chart_type == 'line':
+                        plot_colored_segments(x_vals[ps:pe], hist['Close'].values[ps:pe], prev_b.prev_high, prev_b.prev_low, prev_mid, ps, hist.index[ps:pe])
+                    prev_seg = hist.iloc[ps:pe]
+                    if len(prev_seg) > 0:
+                        rh = prev_seg['High'].expanding().max(); rl = prev_seg['Low'].expanding().min()
+                        rx = list(range(ps, pe))
+                        fig.add_trace(go.Scatter(x=rx, y=((rh + prev_b.prev_low)/2).values, mode='lines', line=dict(color='#be185d', width=0.6, dash='dot'), showlegend=False, hovertemplate='Retrace Buy: %{y:.2f}<extra></extra>'), row=row, col=col)
+                        fig.add_trace(go.Scatter(x=rx, y=((rl + prev_b.prev_high)/2).values, mode='lines', line=dict(color='#0369a1', width=0.6, dash='dot'), showlegend=False, hovertemplate='Retrace Sell: %{y:.2f}<extra></extra>'), row=row, col=col)
 
             first_tracked = boundaries[-2].idx if len(boundaries) >= 2 else boundary_idx
             if first_tracked > 0 and chart_type == 'line':
-                plot_line(x_vals[:first_tracked], hist['Close'].values[:first_tracked], 0, hist.index[:first_tracked], color='rgba(255,255,255,0.25)', width=1.0)
+                dt_labels = [dt.strftime('%d %b %H:%M') if boundary_type == 'session' else dt.strftime('%d %b %Y') for dt in hist.index[:first_tracked]]
+                fig.add_trace(go.Scatter(x=x_vals[:first_tracked], y=hist['Close'].values[:first_tracked], mode='lines', line=dict(color='#4b5563', width=1.2), showlegend=False, customdata=dt_labels, hovertemplate='%{customdata}<br>%{y:.2f}<extra></extra>'), row=row, col=col)
 
             if boundary_idx < len(hist) and chart_type == 'line':
-                plot_line(x_vals[boundary_idx:], hist['Close'].values[boundary_idx:], boundary_idx, hist.index[boundary_idx:], width=2.0, zone_color=True, mid=mid)
+                plot_colored_segments(x_vals[boundary_idx:], hist['Close'].values[boundary_idx:], last_b.prev_high, last_b.prev_low, mid, boundary_idx, hist.index[boundary_idx:])
 
         elif not boundaries:
             if chart_type == 'bars':
@@ -851,7 +804,8 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                     increasing_fillcolor=t['pos'], decreasing_fillcolor=t['neg'],
                     showlegend=False, line=dict(width=1)), row=row, col=col)
             else:
-                plot_line(x_vals, hist['Close'].values, 0, hist.index, color='rgba(255,255,255,0.5)', width=1.5)
+                dt_labels = [dt.strftime('%d %b %H:%M') if boundary_type == 'session' else dt.strftime('%d %b %Y') for dt in hist.index]
+                fig.add_trace(go.Scatter(x=x_vals, y=hist['Close'].values, mode='lines', line=dict(color='#4b5563', width=1.2), showlegend=False, customdata=dt_labels, hovertemplate='%{customdata}<br>%{y:.2f}<extra></extra>'), row=row, col=col)
 
         if boundaries:
             zone_status = get_zone(current_price, last_b.prev_high, last_b.prev_low, mid)
@@ -872,66 +826,51 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         num_boundaries = min(2, len(boundaries))
         for j in range(num_boundaries):
             b = boundaries[-(j+1)]; px = b.idx; ex = len(hist)-1 if j == 0 else boundaries[-1].idx
-            fig.add_vline(x=px, line=dict(color='rgba(255,255,255,0.25)', width=0.8, dash='dot'), row=row, col=col)
+            fig.add_vline(x=px, line=dict(color='#334155', width=0.8, dash='dot'), row=row, col=col)
             ml = (b.prev_high + b.prev_low) / 2
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_high]*2, mode='lines', line=dict(color=zc['above_high'], width=0.9), showlegend=False, hovertemplate=f'High: {b.prev_high:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_low]*2, mode='lines', line=dict(color=zc['below_low'], width=0.9), showlegend=False, hovertemplate=f'Low: {b.prev_low:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_close]*2, mode='lines', line=dict(color='#475569', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'Close: {b.prev_close:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[ml]*2, mode='lines', line=dict(color='#d97706', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'), row=row, col=col)
 
-        # Reversal dots — close-to-close failed breakout:
-        # Closed above high then back below → sell (amber)
-        # Closed below low then back above → buy (green)
+        # Retrace lines (current period)
         if boundaries:
-            buy_x, buy_y, sell_x, sell_y = [], [], [], []
+            cp = hist.iloc[last_b.idx:]
+            if len(cp) > 0:
+                rh = cp['High'].expanding().max(); rl = cp['Low'].expanding().min()
+                rx = list(range(last_b.idx, last_b.idx+len(cp)))
+                fig.add_trace(go.Scatter(x=rx, y=((rh+last_b.prev_low)/2).values, mode='lines', line=dict(color='#be185d', width=0.6, dash='dot'), showlegend=False, hovertemplate='Retrace Buy: %{y:.2f}<extra></extra>'), row=row, col=col)
+                fig.add_trace(go.Scatter(x=rx, y=((rl+last_b.prev_high)/2).values, mode='lines', line=dict(color='#0369a1', width=0.6, dash='dot'), showlegend=False, hovertemplate='Retrace Sell: %{y:.2f}<extra></extra>'), row=row, col=col)
+
+        # Reversal dots
+        if boundaries:
+            rev_x, rev_y = [], []
             bi = last_b.idx; ph, pl = last_b.prev_high, last_b.prev_low
             for j in range(bi, len(hist) - 1):
                 c0 = hist['Close'].iloc[j]; c1 = hist['Close'].iloc[j + 1]
-                if c0 > ph and c1 <= ph: sell_x.append(j + 1); sell_y.append(c1)
-                elif c0 < pl and c1 >= pl: buy_x.append(j + 1); buy_y.append(c1)
+                if c0 > ph and c1 <= ph: rev_x.append(j + 1); rev_y.append(c1)
+                if c0 < pl and c1 >= pl: rev_x.append(j + 1); rev_y.append(c1)
             if len(boundaries) >= 2:
                 pb = boundaries[-2]; end_i = last_b.idx
                 for j in range(pb.idx, end_i - 1):
                     c0 = hist['Close'].iloc[j]; c1 = hist['Close'].iloc[j + 1]
-                    if c0 > pb.prev_high and c1 <= pb.prev_high: sell_x.append(j + 1); sell_y.append(c1)
-                    elif c0 < pb.prev_low and c1 >= pb.prev_low: buy_x.append(j + 1); buy_y.append(c1)
-            if buy_x:
-                fig.add_trace(go.Scatter(x=buy_x, y=buy_y, mode='markers',
-                    marker=dict(color=t['pos'], size=7, symbol='circle', line=dict(color='rgba(0,0,0,0.3)', width=0.5)),
-                    showlegend=False, hovertemplate='Buy reversal: %{y:.2f}<extra></extra>'), row=row, col=col)
-            if sell_x:
-                fig.add_trace(go.Scatter(x=sell_x, y=sell_y, mode='markers',
-                    marker=dict(color=t['neg'], size=7, symbol='circle', line=dict(color='rgba(0,0,0,0.3)', width=0.5)),
-                    showlegend=False, hovertemplate='Sell reversal: %{y:.2f}<extra></extra>'), row=row, col=col)
+                    if c0 > pb.prev_high and c1 <= pb.prev_high: rev_x.append(j + 1); rev_y.append(c1)
+                    if c0 < pb.prev_low and c1 >= pb.prev_low: rev_x.append(j + 1); rev_y.append(c1)
+            if rev_x:
+                fig.add_trace(go.Scatter(x=rev_x, y=rev_y, mode='markers',
+                    marker=dict(color='#facc15', size=5, symbol='circle', line=dict(color='#92400e', width=0.8)),
+                    showlegend=False, hovertemplate='Reversal: %{y:.2f}<extra></extra>'), row=row, col=col)
 
         # Axis formatting
         if tick_indices:
             axis_name = f'xaxis{chart_idx+1}' if chart_idx > 0 else 'xaxis'
-            fig.update_layout(**{axis_name: dict(tickmode='array', tickvals=tick_indices, ticktext=tick_labels, tickfont=dict(color='#e2e8f0', size=9))})
+            fig.update_layout(**{axis_name: dict(tickmode='array', tickvals=tick_indices, ticktext=tick_labels, tickfont=dict(color='#888888', size=8))})
 
-        # X-range: last data point at ~60% of visible chart width
-        xref = f'xaxis{chart_idx+1}' if chart_idx > 0 else 'xaxis'
-        last_bar = len(hist) - 1
-        if boundary_type == 'session':
-            # Show ~last 24h: for 15m bars that's ~96 bars
-            bars_24h = min(96, last_bar)
-            x_left = max(0, last_bar - bars_24h) - 2
-        else:
-            x_left = -2
-        x_right = x_left + int((last_bar - x_left) / 0.6)
-        fig.update_layout(**{xref: dict(range=[x_left, x_right])})
-
-        # Y-axis range — fit to visible data only
-        visible_start = max(0, x_left)
-        visible_hist = hist.iloc[visible_start:]
-        y_low_vals = visible_hist['Low'].dropna(); y_high_vals = visible_hist['High'].dropna()
-        if len(y_low_vals) > 10:
-            y_min = y_low_vals.quantile(0.005); y_max = y_high_vals.quantile(0.995)
-        else:
-            y_min = y_low_vals.min(); y_max = y_high_vals.max()
-        pad = (y_max - y_min) * 0.08
+        y_min, y_max = hist['Low'].min(), hist['High'].max(); pad = (y_max - y_min) * 0.08
         yref = f'yaxis{chart_idx+1}' if chart_idx > 0 else 'yaxis'
-        fig.update_layout(**{yref: dict(range=[y_min-pad, y_max+pad], side='right', tickfont=dict(size=9, color='#94a3b8'))})
+        fig.update_layout(**{yref: dict(range=[y_min-pad, y_max+pad], side='right', tickfont=dict(size=9, color='#888888'))})
+        xref = f'xaxis{chart_idx+1}' if chart_idx > 0 else 'xaxis'
+        fig.update_layout(**{xref: dict(range=[-2, len(hist)-1+int(len(hist)*0.4)])})
 
         pd_dec = 4 if '=X' in symbol else 2
         fig.add_annotation(x=1.02, y=current_price,
@@ -945,32 +884,31 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
            '● BELOW MID': zc['below_mid'], '▼ BELOW LOW': zc['below_low']}
     title_labels = [tf[0].upper() for tf in CHART_CONFIGS]
-    _clean_sym = clean_symbol(symbol)
     for idx, ann in enumerate(fig['layout']['annotations']):
         txt = str(ann.text) if hasattr(ann, 'text') else ''
         if txt in title_labels:
             status = chart_statuses.get(idx, ''); rsi = chart_rsis.get(idx, np.nan)
-            parts = [f"{_clean_sym}  {txt}"]
+            parts = [txt]
             if not np.isnan(rsi):
                 rc = zc['above_mid'] if rsi > 50 else zc['below_low']
                 parts.append(f"<span style='color:{rc};font-size:9px'>RSI {rsi:.0f}</span>")
             if status:
                 c = stc.get(status, '#64748b')
                 parts.append(f"<span style='color:{c};font-size:9px'>{status}</span>")
-            ann['text'] = '  '.join(parts); ann['font'] = dict(color='#f8fafc', size=10)
+            ann['text'] = '  '.join(parts); ann['font'] = dict(color='#94a3b8', size=10)
 
     _t = get_theme()
     _pbg = _t.get('plot_bg', '#121212'); _grd = _t.get('grid', '#1f1f1f')
-    _axl = _t.get('axis_line', '#2a2a2a')
+    _axl = _t.get('axis_line', '#2a2a2a'); _tk = _t.get('tick', '#888888')
     _tpl = 'plotly_white' if _t.get('mode') == 'light' else 'plotly_dark'
 
-    fig.update_layout(template=_tpl, height=1100 if mobile else 700, margin=dict(l=40,r=80,t=50,b=20),
+    fig.update_layout(template=_tpl, height=1100 if mobile else 950, margin=dict(l=40,r=80,t=50,b=30),
         showlegend=False, plot_bgcolor=_pbg, paper_bgcolor=_pbg,
         dragmode='pan', hovermode='closest', autosize=True)
-    fig.update_xaxes(gridcolor='rgba(255,255,255,0.03)', linecolor='rgba(0,0,0,0)', tickfont=dict(color='#e2e8f0', size=9),
-        showgrid=True, showticklabels=True, tickangle=0, rangeslider=dict(visible=False),
+    fig.update_xaxes(gridcolor=_grd, linecolor=_axl, tickfont=dict(color=_tk, size=8),
+        showgrid=True, showticklabels=True, tickangle=-45, rangeslider=dict(visible=False),
         fixedrange=False, showspikes=True, spikecolor='#475569', spikethickness=0.5, spikedash='dot', spikemode='across')
-    fig.update_yaxes(gridcolor='rgba(255,255,255,0.03)', linecolor='rgba(0,0,0,0)', showgrid=True, side='right', tickfont=dict(color='#94a3b8', size=9),
+    fig.update_yaxes(gridcolor=_grd, linecolor=_axl, showgrid=True, side='right',
         fixedrange=False, showspikes=True, spikecolor='#475569', spikethickness=0.5, spikedash='dot', spikemode='across')
 
     return fig, computed_levels
@@ -1009,7 +947,7 @@ def render_key_levels(symbol, levels):
     _txt1 = _t.get('text', '#e2e8f0'); _txt2 = _t.get('text2', '#b0b0b0')
     _mut = _t.get('muted', '#6d6d6d')
 
-    html = f"""<div style='padding:8px 12px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
+    html = f"""<div style='padding:8px 12px;background:linear-gradient(90deg,{pos_c}12,{_hdr_bg});border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
         <span><span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{ds} LEVELS</span>
         <span style='color:{_mut};font-size:10px;margin-left:6px;font-weight:400'>{fn}</span></span>
         <span style='color:{sc};font-size:10px;font-weight:700;letter-spacing:0.05em'>{sig}</span></div>"""
@@ -1054,7 +992,7 @@ def render_news_panel(symbol):
     _link_c = '#334155' if _il else '#c9d1d9'
     news = fetch_news(symbol)
 
-    html = f"""<div style='padding:8px 12px;background:{_hdr_bg};border-left:2px solid {pos_c};font-family:{FONTS};margin-top:8px;border-radius:4px 4px 0 0'>
+    html = f"""<div style='padding:8px 12px;background:linear-gradient(90deg,{pos_c}12,{_hdr_bg});border-left:2px solid {pos_c};font-family:{FONTS};margin-top:8px;border-radius:4px 4px 0 0'>
         <span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{ds} NEWS</span>
         <span style='color:{_mut};font-size:10px;margin-left:6px;font-weight:400'>{fn}</span></div>"""
 
@@ -1067,15 +1005,15 @@ def render_news_panel(symbol):
             t_text = item['title']; u = item['url']; p = item['provider']; d = item['date']
             row_bg = _body_bg if i % 2 == 0 else _row_alt
             title_el = f"<a href='{u}' target='_blank' style='color:{_link_c};text-decoration:none;font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>{t_text}</a>" if u else f"<span style='color:{_link_c};font-size:10.5px'>{t_text}</span>"
-            src_html = f"<span style='color:{pos_c};font-weight:600;font-size:9px'>{p}</span>" if p else ""
-            date_html = f"<span style='color:{_mut};font-size:9px'>{d}</span>" if d else ""
+            meta_parts = []
+            if p: meta_parts.append(f"<span style='color:{pos_c};font-weight:600'>{p}</span>")
+            if d: meta_parts.append(f"<span style='color:{_mut}'>{d}</span>")
+            meta_html = f" <span style='color:{_bdr_ln}'>|</span> ".join(meta_parts)
             html += (
-                f"<div style='padding:3px 10px;border-bottom:1px solid {_bdr_ln}10;font-family:{FONTS};background:{row_bg};"
-                f"display:flex;align-items:baseline;gap:0;white-space:nowrap;overflow:hidden'>"
-                f"<span style='flex-shrink:0;width:100px;text-align:left'>{src_html}</span>"
-                f"<span style='flex-shrink:0;width:60px;text-align:left'>{date_html}</span>"
-                f"<span style='overflow:hidden;text-overflow:ellipsis'>{title_el}</span>"
-                f"</div>"
+                f"<div style='padding:5px 12px;border-bottom:1px solid {_bdr_ln}10;font-family:{FONTS};background:{row_bg};"
+                f"display:flex;align-items:baseline;gap:6px;white-space:nowrap;overflow:hidden'>"
+                f"<span style='font-size:9px;flex-shrink:0;display:flex;gap:6px;align-items:baseline'>{meta_html}</span>"
+                f"{title_el}</div>"
             )
         html += "</div>"
     st.markdown(html, unsafe_allow_html=True)
@@ -1138,7 +1076,7 @@ def render_charts_tab(is_mobile, est):
         ct_idx = 0 if st.session_state.chart_type == 'line' else 1
         ct = st.selectbox("Chart", chart_options, index=ct_idx,
             key='chart_select', label_visibility='collapsed')
-        st.session_state.chart_type = 'line' if ct == 'Line' else 'bars'
+        st.session_state.chart_type = ct.lower()
 
     # Fetch data
     with st.spinner('Loading market data...'):
@@ -1159,29 +1097,26 @@ def render_charts_tab(is_mobile, est):
 
     # Scanner table + bar chart side by side
     if metrics:
-        col_scan, col_bars = st.columns([55, 45])
+        col_scan, col_bars = st.columns([65, 35])
         with col_scan:
             render_scanner_table(metrics, st.session_state.symbol)
         with col_bars:
             render_return_bars(metrics, sort_by)
 
-    # Spacer between scanner and charts
-    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
-
-    # Chart header markup (reused below)
+    # Chart header
     _sym = st.session_state.symbol
     _ds = clean_symbol(_sym); _fn = SYMBOL_NAMES.get(_sym, _sym)
     _hdr_bg = t.get('bg3', '#1a2744'); _bdr = t.get('border', '#1e293b')
     _hdr_mut = t.get('muted', '#475569')
-    _chart_hdr = (
-        f"<div style='padding:8px 12px;background:{_hdr_bg};"
-        f"border-left:2px solid {pos_c};font-family:{FONTS};border-radius:4px 4px 0 0'>"
-        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{_ds} CHARTS</span>"
-        f"<span style='color:{_hdr_mut};font-size:10px;margin-left:6px;font-weight:400'>{_fn}</span></div>")
+    st.markdown(
+        f"<div style='padding:8px 12px;background:linear-gradient(90deg,{pos_c}12,{_hdr_bg});"
+        f"border-left:2px solid {pos_c};font-family:{FONTS};border-radius:4px;margin-top:8px'>"
+        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{_ds}</span>"
+        f"<span style='color:{_hdr_mut};font-size:10px;margin-left:6px;font-weight:400'>{_fn}</span></div>",
+        unsafe_allow_html=True)
 
     # Charts + Levels + News
     if is_mobile:
-        st.markdown(_chart_hdr, unsafe_allow_html=True)
         with st.spinner('Loading charts...'):
             try:
                 fig, levels = create_4_chart_grid(st.session_state.symbol, st.session_state.chart_type, mobile=True)
@@ -1191,27 +1126,18 @@ def render_charts_tab(is_mobile, est):
         render_key_levels(st.session_state.symbol, levels)
         render_news_panel(st.session_state.symbol)
     else:
-        # ── Fetch chart data once ──
-        with st.spinner('Loading charts...'):
-            try:
-                fig, levels = create_4_chart_grid(st.session_state.symbol, st.session_state.chart_type, mobile=False)
-                chart_ok = True
-            except Exception as e:
-                st.error(f"Chart error: {str(e)}")
-                fig, levels, chart_ok = None, {}, False
-
-        # ── Levels + News side by side (equal columns, same height) ──
-        col_lvl, col_news = st.columns([1, 1])
-        with col_lvl:
+        col_charts, col_right = st.columns([65, 35])
+        with col_charts:
+            with st.spinner('Loading charts...'):
+                try:
+                    fig, levels = create_4_chart_grid(st.session_state.symbol, st.session_state.chart_type, mobile=False)
+                    st.plotly_chart(fig, use_container_width=True, config={
+                        'scrollZoom': True, 'displayModeBar': False,
+                        'responsive': True})
+                except Exception as e:
+                    st.error(f"Chart error: {str(e)}"); levels = {}
+        with col_right:
             render_key_levels(st.session_state.symbol, levels)
-        with col_news:
             render_news_panel(st.session_state.symbol)
-
-        # ── 2x2 Chart grid below, full width ──
-        st.markdown(_chart_hdr, unsafe_allow_html=True)
-        if chart_ok:
-            st.plotly_chart(fig, use_container_width=True, config={
-                'scrollZoom': True, 'displayModeBar': False,
-                'responsive': True})
 
     # Auto-refresh handled globally in app.py
