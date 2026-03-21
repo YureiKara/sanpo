@@ -966,20 +966,21 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             font=dict(color='#ffffff', size=11), bgcolor='rgba(0,0,0,0.5)',
             bordercolor=line_color, borderwidth=1, borderpad=3, xanchor='left')
 
-        # S/R level labels on right axis — coloured by zone
+        # S/R level labels on right axis — coloured by zone with actual prices
         if boundaries:
+            _mid = (last_b.prev_high + last_b.prev_low) / 2
             _sr_labels = [
-                (last_b.prev_high, zc['above_high'], 'H'),
-                (last_b.prev_low,  zc['below_low'],  'L'),
-                ((last_b.prev_high + last_b.prev_low) / 2, '#d97706', 'M'),
+                (last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f}'),
+                (_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f}'),
+                (last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f}'),
             ]
             for _lvl, _col, _lbl in _sr_labels:
                 fig.add_annotation(x=1.02, y=_lvl,
                     xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
                     yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
                     text=f'<b>{_lbl}</b>', showarrow=False,
-                    font=dict(color=_col, size=8), bgcolor='rgba(0,0,0,0)',
-                    bordercolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
+                    font=dict(color=_col, size=9), bgcolor='rgba(0,0,0,0.4)',
+                    bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
 
     # Update subplot titles with status + RSI + legend squares
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
@@ -994,7 +995,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             legend = (
                 f"<span style='color:{zc['above_high']};font-size:10px'>■</span>"
                 f"<span style='color:#64748b;font-size:8px'>H </span>"
-                f"<span style='color:#d97706;font-size:10px'>■</span>"
+                f"<span style='color:#94a3b8;font-size:10px'>■</span>"
                 f"<span style='color:#64748b;font-size:8px'>M </span>"
                 f"<span style='color:{zc['below_low']};font-size:10px'>■</span>"
                 f"<span style='color:#64748b;font-size:8px'>L </span>"
