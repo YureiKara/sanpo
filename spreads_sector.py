@@ -10,14 +10,16 @@ from spreads import (compute_sector_spreads, sort_spread_pairs,
 
 logger = logging.getLogger(__name__)
 
-# Intervals: yf fetch string, resample target (None = no resample), bars per trading day
+# yf interval, resample target, bars per trading day, max calendar days yfinance allows
 INTERVAL_CONFIG = {
-    '15m': {'yf': '15m', 'resample': None, 'bars_per_day': 26, 'max_cal_days': 59},
-    '1d':  {'yf': '1d',  'resample': None, 'bars_per_day': 1,  'max_cal_days': None},
-    '1wk': {'yf': '1wk', 'resample': None, 'bars_per_day': 0.2,'max_cal_days': None},
+    '15m': {'yf': '15m', 'resample': None, 'bars_per_day': 26,  'max_cal_days': 59},
+    '1h':  {'yf': '1h',  'resample': None, 'bars_per_day': 7,   'max_cal_days': 729},
+    '4h':  {'yf': '1h',  'resample': '4h', 'bars_per_day': 2,   'max_cal_days': 729},
+    '1d':  {'yf': '1d',  'resample': None, 'bars_per_day': 1,   'max_cal_days': None},
+    '1wk': {'yf': '1wk', 'resample': None, 'bars_per_day': 0.2, 'max_cal_days': None},
 }
 
-# Universal lookback list — label: trading days
+# Universal lookback — trading days (0 = YTD)
 LOOKBACK_OPTIONS = {
     'YTD':      0,
     '1 Day':    1,
@@ -31,8 +33,13 @@ LOOKBACK_OPTIONS = {
     '520 Days': 520,
 }
 
-# Ann factors per interval
-ANN_FACTORS = {'15m': 26 * 252, '1d': 252, '1wk': 52}
+ANN_FACTORS = {
+    '15m': 26 * 252,
+    '1h':  7 * 252,
+    '4h':  2 * 252,
+    '1d':  252,
+    '1wk': 52,
+}
 
 
 @st.cache_data(ttl=900, show_spinner=False)
@@ -42,7 +49,6 @@ def _fetch_interval_data(sector, interval_key, lookback_days):
     if not symbols:
         return None
 
-    # Convert trading days → calendar days to request
     if lookback_days == 0:  # YTD
         start = datetime.now().replace(month=1, day=1).strftime('%Y-%m-%d')
     else:
@@ -60,6 +66,8 @@ def _fetch_interval_data(sector, interval_key, lookback_days):
             closes = hist['Close'].copy()
             if closes.index.tz is not None:
                 closes.index = closes.index.tz_convert('UTC').tz_localize(None)
+            if cfg.get('resample'):
+                closes = closes.resample(cfg['resample']).last().dropna()
             if interval_key in ('1d', '1wk'):
                 closes.index = closes.index.normalize()
                 closes = closes.groupby(closes.index).last()
@@ -71,9 +79,8 @@ def _fetch_interval_data(sector, interval_key, lookback_days):
         return None
     data = data.ffill().dropna()
 
-    # Trim to requested bars
     if lookback_days > 0:
-        bars = int(lookback_days * cfg['bars_per_day'])
+        bars = max(int(lookback_days * cfg['bars_per_day']), 5)
         if len(data) > bars:
             data = data.iloc[-bars:]
 
@@ -88,7 +95,6 @@ def render_sector_tab(is_mobile):
     pos_c = theme['pos']
     _lbl = f"color:#e2e8f0;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
     _bg3 = theme.get('bg3', '#0f172a'); _mut = theme.get('muted', '#475569'); _txt2 = theme.get('text2', '#94a3b8')
-    ann_factor = 252
 
     # Controls
     if is_mobile:
@@ -145,7 +151,8 @@ def render_sector_tab(is_mobile):
         data = _fetch_interval_data(spread_sector, interval_key, lookback_days)
 
     if data is None or len(data.columns) < 2:
-        note = ' (15m limited to last 60 calendar days)' if interval_key == '15m' else ''
+        limits = {'15m': '60 days', '1h': '730 days', '4h': '730 days'}
+        note = f" ({interval_key} limited to last {limits[interval_key]})" if interval_key in limits else ''
         st.markdown(f"<div style='padding:12px;color:{_mut};font-size:11px;font-family:{FONTS}'>Need at least 2 assets with data for spread analysis{note}</div>", unsafe_allow_html=True)
         return
 
@@ -162,7 +169,7 @@ def render_sector_tab(is_mobile):
     best_long_name = SYMBOL_NAMES.get(best_long_sym, clean_symbol(best_long_sym))
     n_combos = len(pairs)
     n_beats = sum(1 for p in pairs if p['beats_long'])
-    fmt = '%d %b %H:%M' if interval_key == '15m' else '%d %b %Y'
+    fmt = '%d %b %H:%M' if interval_key in ('15m', '1h', '4h') else '%d %b %Y'
     start_date = data.index[0].strftime(fmt)
     end_date = data.index[-1].strftime(fmt)
 
