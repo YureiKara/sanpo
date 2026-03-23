@@ -86,7 +86,7 @@ def _detect_mobile():
 
 def main():
     from pulse import render_pulse_tab
-    from charts import render_charts_tab
+    from charts import render_charts_tab, render_scanner_charts_tab
     from spreads import render_spreads_tab
     from portfolio import render_portfolio_tab
     from news import render_news_tab
@@ -179,7 +179,11 @@ def main():
         render_spreads_tab(is_mobile)
 
     with tab_charts:
-        render_charts_tab(is_mobile, est)
+        sub_asset, sub_scanner = st.tabs(["BY ASSET", "BY TIMEFRAME"])
+        with sub_asset:
+            render_charts_tab(is_mobile, est)
+        with sub_scanner:
+            render_scanner_charts_tab(is_mobile, est)
 
     with tab_options:
         render_options_tab(is_mobile)
