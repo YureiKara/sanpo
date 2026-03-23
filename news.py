@@ -60,6 +60,58 @@ NEWS_FEEDS = {
     ],
 }
 
+# ── Intelligence layer ──────────────────────────────────────
+SOURCE_TIER = {
+    # Tier 1 — primary market movers
+    'bloomberg': 1, 'reuters': 1, 'financial times': 1, 'ft': 1,
+    'wsj': 1, 'wall street journal': 1, "barron's": 1, 'barrons': 1,
+    'ft.com': 1, 'marketwatch': 1,
+    # Tier 2 — reliable secondary
+    'cnbc': 2, 'investing.com': 2, 'forex.com': 2, 'seeking alpha': 2,
+    'kitco': 2, 'tradingeconomics': 2, 'bbc': 2, 'associated press': 2,
+    'ap news': 2, 'nikkei': 2,
+    # Tier 3 — general / lower signal
+    'yahoo finance': 3, 'motley fool': 3, 'the motley fool': 3,
+    'benzinga': 3, 'msn': 3, 'aol': 3, 'newsweek': 3, 'fortune': 3,
+    'usa today': 3, 'thestreet': 3,
+}
+
+def _source_tier(source_name):
+    s = source_name.lower()
+    for k, v in SOURCE_TIER.items():
+        if k in s:
+            return v
+    return 2  # default mid-tier
+
+def _recency_score(date_str):
+    """Return 0-3 recency score from '2h ago' style strings."""
+    if not date_str: return 1
+    m = re.match(r'(\d+)([mh])', date_str.lower())
+    if not m: return 1
+    val, unit = int(m.group(1)), m.group(2)
+    minutes = val if unit == 'm' else val * 60
+    if minutes <= 120:  return 3   # < 2h
+    if minutes <= 360:  return 2   # < 6h
+    if minutes <= 1440: return 1   # < 24h
+    return 0
+
+def score_and_rank(items, top_n=8):
+    """Score items by source tier + recency, deduplicate, return top N."""
+    seen_titles = set()
+    scored = []
+    for item in items:
+        title_key = re.sub(r'\s+', ' ', item.get('title','').lower())[:60]
+        if title_key in seen_titles:
+            continue
+        seen_titles.add(title_key)
+        tier  = _source_tier(item.get('source',''))
+        rec   = _recency_score(item.get('date',''))
+        score = (4 - tier) * 10 + rec   # tier 1 = 30+rec, tier 2 = 20+rec, tier 3 = 10+rec
+        scored.append({**item, '_score': score, '_tier': tier})
+    scored.sort(key=lambda x: x['_score'], reverse=True)
+    return scored[:top_n]
+
+# ─────────────────────────────────────────────────────────────
 def _clean(raw):
     if not raw: return ''
     t = re.sub(r'<[^>]+>', '', raw)
@@ -111,7 +163,7 @@ def fetch_rss_feed(name, url):
         return []
 
 def render_news_panel(region, feeds, max_items=20, height=600):
-    """Render a single news feed in iframe — matches Pulse news row spacing."""
+    """Render a ranked news panel — scores by source tier + recency."""
     t = get_theme(); pos_c = t['pos']
     _body_bg = t.get('bg2', '#0f1522')
     _bdr = t.get('border', '#1e293b')
@@ -124,6 +176,8 @@ def render_news_panel(region, feeds, max_items=20, height=600):
     all_items = []
     for name, url in feeds:
         all_items.extend(fetch_rss_feed(name, url))
+    # Intelligence layer: rank by source tier + recency, deduplicate
+    all_items = score_and_rank(all_items, top_n=max_items)
     all_items.sort(key=lambda x: x.get('sort_key', ''), reverse=True)
     all_items = all_items[:max_items]
 
