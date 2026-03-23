@@ -1113,7 +1113,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
 
 
 
-def render_key_levels(symbol, levels):
+def render_key_levels(symbol, levels, target_height=None):
     zc = zone_colors(); t = get_theme(); pos_c = t['pos']
     ds = clean_symbol(symbol); fn = SYMBOL_NAMES.get(symbol, symbol)
     if not levels: return
@@ -1145,12 +1145,13 @@ def render_key_levels(symbol, levels):
     th = f"padding:4px 10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-bottom:1px solid {_bdr_ln};text-align:right"
     td = f"padding:4px 10px;font-size:10px;font-variant-numeric:tabular-nums;text-align:right;border-bottom:1px solid {_bdr_ln}20"
 
-    html = f"""<div style='padding:6px 10px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
+    html = f"""<style>div[data-testid='column']{{border:none!important;box-shadow:none!important;}}</style><div style='padding:6px 10px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
         <span><span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{ds} LEVELS</span>
         <span style='color:{_mut};font-size:9px;margin-left:6px'>{fn}</span></span>
         <span style='color:{sc};font-size:10px;font-weight:700'>{sig}</span></div>"""
 
-    html += f"<div style='background:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;overflow-x:auto'>"
+    _levels_h = target_height or (44 + 52 + 9 * 26)
+    html += f"<div style='background:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;overflow-x:auto;height:{_levels_h - 44}px;overflow-y:auto'>"
     html += f"<table style='border-collapse:collapse;font-family:{FONTS};width:100%;line-height:1.2'><thead><tr>"
     html += f"<th style='{th};text-align:left;color:{_mut}'>LEVEL</th>"
     for tf in tfo:
@@ -1255,7 +1256,7 @@ def render_key_levels(symbol, levels):
 # NEWS PANEL
 # =============================================================================
 
-def render_news_panel(symbol):
+def render_news_panel(symbol, target_height=None):
     ds = clean_symbol(symbol); fn = SYMBOL_NAMES.get(symbol, symbol)
     t = get_theme(); pos_c = t['pos']
     _il = t.get('mode') == 'light'
@@ -1273,7 +1274,8 @@ def render_news_panel(symbol):
         html += f"<div style='padding:12px;background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;color:{_mut};font-size:11px;font-family:{FONTS}'>No news available</div>"
     else:
         _row_alt = t.get('bg3', '#131b2e')
-        html += f"<div style='background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;max-height:400px;overflow-y:auto'>"
+        _news_h = (target_height or 330) - 44
+        html += f"<div style='background-color:{_body_bg};border:1px solid {_bdr_ln};border-top:none;border-radius:0 0 4px 4px;height:{_news_h}px;overflow-y:auto'>"
         for i, item in enumerate(news):
             t_text = item['title']; u = item['url']; p = item['provider']; d = item['date']
             row_bg = _body_bg if i % 2 == 0 else _row_alt
@@ -1413,10 +1415,11 @@ def render_charts_tab(is_mobile, est):
 
         # ── Levels + News side by side (equal columns, same height) ──
         col_lvl, col_news = st.columns([1, 1])
+        _panel_h = 44 + 52 + 9 * 26   # 330px — levels table height
         with col_lvl:
-            render_key_levels(st.session_state.symbol, levels)
+            render_key_levels(st.session_state.symbol, levels, target_height=_panel_h)
         with col_news:
-            render_news_panel(st.session_state.symbol)
+            render_news_panel(st.session_state.symbol, target_height=_panel_h)
 
         # ── 2x2 Chart grid below, full width ──
         st.markdown(_chart_hdr, unsafe_allow_html=True)
