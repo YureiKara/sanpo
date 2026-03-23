@@ -876,21 +876,23 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             if ma_20.notna().any():
                 fig.add_trace(go.Scatter(x=x_vals, y=ma_20.values, mode='lines', line=dict(color='rgba(255,255,255,0.3)', width=0.7), showlegend=False, hovertemplate='MA20: %{y:.2f}<extra></extra>'), row=row, col=col)
                 _ma20_last = ma_20.dropna().iloc[-1]
-                fig.add_annotation(x=1.02, y=_ma20_last,
+                _ma20_y = float(np.clip(_ma20_last, y_min + (y_max-y_min)*0.05, y_max - (y_max-y_min)*0.05))
+                fig.add_annotation(x=1.02, y=_ma20_y,
                     xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
                     yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
                     text='MA20', showarrow=False,
-                    font=dict(color='rgba(255,255,255,0.5)', size=8),
-                    bgcolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
+                    font=dict(color='rgba(255,255,255,0.6)', size=8),
+                    bgcolor='rgba(0,0,0,0.4)', bordercolor='rgba(255,255,255,0.2)', borderwidth=1, borderpad=2, xanchor='left')
             if ma_40.notna().any():
                 fig.add_trace(go.Scatter(x=x_vals, y=ma_40.values, mode='lines', line=dict(color='rgba(168,85,247,0.5)', width=0.7), showlegend=False, hovertemplate='MA40: %{y:.2f}<extra></extra>'), row=row, col=col)
                 _ma40_last = ma_40.dropna().iloc[-1]
-                fig.add_annotation(x=1.02, y=_ma40_last,
+                _ma40_y = float(np.clip(_ma40_last, y_min + (y_max-y_min)*0.05, y_max - (y_max-y_min)*0.05))
+                fig.add_annotation(x=1.02, y=_ma40_y,
                     xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
                     yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
                     text='MA40', showarrow=False,
-                    font=dict(color='rgba(168,85,247,0.7)', size=8),
-                    bgcolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
+                    font=dict(color='rgba(168,85,247,0.8)', size=8),
+                    bgcolor='rgba(0,0,0,0.4)', bordercolor='rgba(168,85,247,0.3)', borderwidth=1, borderpad=2, xanchor='left')
 
         # Boundary lines
         num_boundaries = min(2, len(boundaries))
@@ -1003,7 +1005,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
 
         # De-collision: sort desc, enforce min gap, iterate to convergence
         if _axis_labels:
-            _y_range = max((y_max - y_min) if 'y_max' in dir() else 1, 1)
+            _y_range = max(y_max - y_min, 1)
             _min_gap = _y_range * 0.028
             _lbls = sorted(_axis_labels, key=lambda x: x[0], reverse=True)
             _pos  = [l[0] for l in _lbls]
