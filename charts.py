@@ -26,8 +26,8 @@ CHART_CONFIGS = [
 ]
 
 STATUS_LABELS = {
-    'above_high': '▲ ABOVE HIGH', 'above_mid': '– ABOVE MID',
-    'below_mid': '– BELOW MID', 'below_low': '▼ BELOW LOW',
+    'above_high': '▲ BREAKOUT',  'above_mid': '● BULL',
+    'below_mid':  '● BEAR',      'below_low': '▼ BREAKDOWN',
 }
 
 def get_theme():
@@ -540,7 +540,28 @@ def fetch_news(symbol):
                 })
         except Exception as e:
             logger.debug(f"News fetch error for {symbol} ({when}): {e}")
-    return results[:12]
+    # Score + rank by source tier and recency before returning
+    def _tier(src):
+        s = src.lower()
+        t1 = ['bloomberg','reuters','financial times','wsj','wall street journal',"barron's",'barrons','ft.com','marketwatch']
+        t3 = ['yahoo finance','motley fool','benzinga','msn','aol','fortune','usa today','thestreet']
+        if any(k in s for k in t1): return 1
+        if any(k in s for k in t3): return 3
+        return 2
+    def _rec(d):
+        import re as _re
+        m = _re.match(r'(\d+)([mh])', (d or '').lower())
+        if not m: return 1
+        mins = int(m.group(1)) if m.group(2)=='m' else int(m.group(1))*60
+        return 3 if mins<=120 else 2 if mins<=360 else 1
+    results.sort(key=lambda x: (4-_tier(x['provider']))*10 + _rec(x['date']), reverse=True)
+    # Deduplicate by title prefix
+    seen, deduped = set(), []
+    for r in results:
+        key = r['title'][:50].lower()
+        if key not in seen:
+            seen.add(key); deduped.append(r)
+    return deduped[:8]
 
 
 # =============================================================================
@@ -1191,6 +1212,23 @@ def render_key_levels(symbol, levels):
         html += f"<td style='{td};color:{sco};font-size:9px;font-weight:700;text-align:right'>{stx}</td>"
     html += "</tr>"
 
+    # DIST row — % distance from current price to nearest level (per TF)
+    html += f"<tr><td style='{td};text-align:left;color:{_mut};font-weight:700'>DIST</td>"
+    for tf in tfo:
+        lv = levels.get(tf, {})
+        cp = lv.get('price')
+        candidates = {k: lv.get(k) for k in ('high','rb','mid','rs','low') if lv.get(k)}
+        if cp and candidates:
+            nearest_k = min(candidates, key=lambda k: abs(candidates[k] - cp))
+            nearest_v = candidates[nearest_k]
+            pct = (cp - nearest_v) / nearest_v * 100
+            dc = zc['above_mid'] if pct >= 0 else zc['below_mid']
+            sign = '+' if pct >= 0 else ''
+            html += f"<td style='{td};color:{dc};font-size:9px'>{sign}{pct:.1f}%<span style='color:{_mut};font-size:8px'> {nearest_k.upper()}</span></td>"
+        else:
+            html += f"<td style='{td};color:{_mut}'>—</td>"
+    html += "</tr>"
+
     # RSI row
     def _rsi_color(v):
         if np.isnan(v): return _mut
@@ -1783,6 +1821,24 @@ def render_scanner_levels_table(symbols, interval, boundary_type, selected_secto
         else:
             rc = _rsi_color(v)
             html += f"<td style='{td};color:{rc};font-weight:700'>{float(v):.0f}</td>"
+    html += "</tr>"
+
+    # DIST row — % to nearest level
+    html += f"<tr>"
+    html += f"<td style='{td};text-align:left;color:{_mut};font-weight:700'>DIST</td>"
+    for sym in symbols:
+        lv = all_levels.get(sym, {})
+        cp = lv.get('price')
+        candidates = {k: lv.get(k) for k in ('high','rb','mid','rs','low') if lv.get(k)}
+        if cp and candidates:
+            nk = min(candidates, key=lambda k: abs(candidates[k] - cp))
+            nv = candidates[nk]
+            pct = (cp - nv) / nv * 100
+            dc = zc['above_mid'] if pct >= 0 else zc['below_mid']
+            sign = '+' if pct >= 0 else ''
+            html += f"<td style='{td};color:{dc};font-size:8px'>{sign}{pct:.1f}%<span style='color:{_mut};font-size:7px'>{nk.upper()}</span></td>"
+        else:
+            html += f"<td style='{td};color:{_mut}'>—</td>"
     html += "</tr>"
 
     html += "</tbody></table></div>"
