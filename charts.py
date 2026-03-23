@@ -356,7 +356,7 @@ class FuturesDataFetcher:
             if len(hist_intraday) < 30: return np.nan
             r = hist_intraday['Close'].pct_change().dropna()
             if len(r) < 20 or r.std() == 0: return np.nan
-            return (r.mean() / r.std()) * np.sqrt(252 * 390)
+            return (r.mean() / r.std()) * np.sqrt(252 * 26)  # 26 bars/day at 15m
         except Exception as e:
             logger.debug(f"[{self.symbol}] intraday_sharpe error: {e}")
             return np.nan
