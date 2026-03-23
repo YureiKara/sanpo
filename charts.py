@@ -1635,6 +1635,8 @@ def _get_levels_for_symbol(symbol, interval, boundary_type):
             rb = (rh + last_b.prev_low)  / 2
             rs = (rl + last_b.prev_high) / 2
 
+        rsi_value = calculate_rsi(hist['Close'])
+
         return {
             'price':  current_price,
             'high':   last_b.prev_high,
@@ -1643,6 +1645,7 @@ def _get_levels_for_symbol(symbol, interval, boundary_type):
             'rs':     rs,
             'low':    last_b.prev_low,
             'status': status,
+            'rsi':    rsi_value,
         }
     except Exception:
         return {}
@@ -1708,6 +1711,14 @@ def render_scanner_levels_table(symbols, interval, boundary_type, selected_secto
     def _fmt(v, dec):
         return f"{v:,.{dec}f}" if v is not None and not (isinstance(v, float) and np.isnan(v)) else '—'
 
+    def _rsi_color(v):
+        if v is None or (isinstance(v, float) and np.isnan(v)): return _mut
+        v = float(v)
+        if v >= 70: return '#f59e0b'       # overbought — amber
+        if v >= 50: return zc['above_mid'] # bullish
+        if v >= 30: return zc['below_mid'] # bearish
+        return '#22c55e'                   # oversold — green
+
     # Row definitions: (label, key, colour, alt_bg)
     rows = [
         ('C',      'price',  '#ffffff',       True),
@@ -1738,6 +1749,19 @@ def render_scanner_levels_table(symbols, interval, boundary_type, selected_secto
                     cell_c = _sig(lvl)
                 html += f"<td style='{td};color:{cell_c}'>{_fmt(val, dec)}</td>"
         html += "</tr>"
+
+    # RSI row
+    html += f"<tr style='background:{_row_alt}'>"
+    html += f"<td style='{td};text-align:left;color:{_mut};font-weight:700'>RSI</td>"
+    for sym in symbols:
+        lvl = all_levels.get(sym, {})
+        v = lvl.get('rsi')
+        if v is None or (isinstance(v, float) and np.isnan(v)):
+            html += f"<td style='{td};color:{_mut}'>—</td>"
+        else:
+            rc = _rsi_color(v)
+            html += f"<td style='{td};color:{rc};font-weight:700'>{float(v):.0f}</td>"
+    html += "</tr>"
 
     html += "</tbody></table></div>"
     st.markdown(html, unsafe_allow_html=True)
