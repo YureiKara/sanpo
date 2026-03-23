@@ -1575,8 +1575,157 @@ def create_single_asset_chart(symbol, chart_type, interval, boundary_type, mobil
     return fig, zone_status
 
 
+def _get_levels_for_symbol(symbol, interval, boundary_type):
+    """Fetch H/RB/M/RS/L/Status/Price levels for one symbol at one timeframe.
+    Returns a dict with keys: price, high, rb, mid, rs, low, status."""
+    try:
+        period = get_dynamic_period(boundary_type)
+        hist = fetch_chart_data(symbol, period, interval)
+        if hist.empty:
+            return {}
+
+        # Live price
+        live_price = None
+        try:
+            hist_lag = fetch_chart_data(symbol, '1d', '5m')
+            if not hist_lag.empty:
+                live_price = float(hist_lag['Close'].iloc[-1])
+        except Exception:
+            pass
+
+        boundaries = PeriodBoundaryCalculator.get_boundaries(hist, boundary_type, symbol)
+        if not boundaries:
+            return {}
+
+        current_price = live_price if live_price is not None else float(hist['Close'].iloc[-1])
+        last_b = boundaries[-1]
+        mid = (last_b.prev_high + last_b.prev_low) / 2
+
+        # Zone status
+        if current_price > last_b.prev_high:   status = 'above_high'
+        elif current_price < last_b.prev_low:  status = 'below_low'
+        elif current_price > mid:               status = 'above_mid'
+        else:                                   status = 'below_mid'
+
+        # Rolling retrace levels
+        rb = rs = None
+        current_period = hist.iloc[last_b.idx:]
+        if len(current_period) > 1:
+            rh = current_period['High'].expanding().max().iloc[-1]
+            rl = current_period['Low'].expanding().min().iloc[-1]
+            rb = (rh + last_b.prev_low)  / 2
+            rs = (rl + last_b.prev_high) / 2
+
+        return {
+            'price':  current_price,
+            'high':   last_b.prev_high,
+            'rb':     rb,
+            'mid':    mid,
+            'rs':     rs,
+            'low':    last_b.prev_low,
+            'status': status,
+        }
+    except Exception:
+        return {}
+
+
+def render_scanner_levels_table(symbols, interval, boundary_type, selected_sector, tf_choice, zone_desc):
+    """Wide levels table: rows = level labels, columns = each symbol in sector."""
+    zc  = zone_colors()
+    t   = get_theme()
+    pos_c = t['pos']
+    _hdr_bg   = t.get('bg3',    '#1a2744')
+    _body_bg  = t.get('bg',     '#1e1e1e')
+    _bdr_ln   = t.get('border', '#2a2a2a')
+    _mut      = t.get('muted',  '#6d6d6d')
+    _row_alt  = t.get('bg3',    '#131b2e')
+
+    # Fetch levels for every symbol
+    all_levels = {}
+    for sym in symbols:
+        all_levels[sym] = _get_levels_for_symbol(sym, interval, boundary_type)
+
+    # Determine signal for each symbol (for header colouring)
+    def _sig(lvl):
+        s = lvl.get('status', '')
+        if s == 'above_high': return zc['above_high']
+        if s == 'above_mid':  return zc['above_mid']
+        if s == 'below_mid':  return zc['below_mid']
+        if s == 'below_low':  return zc['below_low']
+        return _mut
+
+    th = (f"padding:4px 8px;font-size:9px;font-weight:700;text-transform:uppercase;"
+          f"letter-spacing:0.07em;border-bottom:1px solid {_bdr_ln};text-align:center;white-space:nowrap")
+    td = (f"padding:4px 8px;font-size:9px;font-variant-numeric:tabular-nums;"
+          f"text-align:center;border-bottom:1px solid {_bdr_ln}20;white-space:nowrap")
+
+    # ── Header ──
+    html = (
+        f"<div style='padding:7px 12px;background:{_hdr_bg};border-left:2px solid {pos_c};"
+        f"font-family:{FONTS};border-radius:4px 4px 0 0;display:flex;align-items:center;gap:10px'>"
+        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;"
+        f"text-transform:uppercase'>{selected_sector} LEVELS</span>"
+        f"<span style='color:{_mut};font-size:10px'>{tf_choice} · {zone_desc}</span>"
+        f"</div>"
+    )
+
+    html += (
+        f"<div style='background:{_body_bg};border:1px solid {_bdr_ln};border-top:none;"
+        f"border-radius:0 0 4px 4px;overflow-x:auto'>"
+        f"<table style='border-collapse:collapse;font-family:{FONTS};width:100%;line-height:1.2'>"
+        f"<thead><tr>"
+        f"<th style='{th};text-align:left;color:{_mut};min-width:48px'>LEVEL</th>"
+    )
+
+    # Symbol header cols — coloured by zone status
+    for sym in symbols:
+        ds   = clean_symbol(sym)
+        lvl  = all_levels.get(sym, {})
+        sc   = _sig(lvl)
+        html += f"<th style='{th};color:{sc}'>{ds}</th>"
+    html += "</tr></thead><tbody>"
+
+    # Helper to fmt a price value
+    def _fmt(v, dec):
+        return f"{v:,.{dec}f}" if v is not None and not (isinstance(v, float) and np.isnan(v)) else '—'
+
+    # Row definitions: (label, key, colour, alt_bg)
+    rows = [
+        ('C',      'price',  '#ffffff',       True),
+        ('H',      'high',   zc['above_high'],False),
+        ('RB',     'rb',     '#22c55e',       True),
+        ('M',      'mid',    _mut,            False),
+        ('RS',     'rs',     '#ef4444',       True),
+        ('L',      'low',    zc['below_low'], False),
+        ('STATUS', 'status', None,            True),
+    ]
+
+    for lbl, key, colour, use_alt in rows:
+        bg = f"background:{_row_alt}" if use_alt else ''
+        html += f"<tr style='{bg}'>"
+        html += f"<td style='{td};text-align:left;color:{colour or _mut};font-weight:700'>{lbl}</td>"
+        for sym in symbols:
+            lvl = all_levels.get(sym, {})
+            val = lvl.get(key)
+            dec = 4 if '=X' in sym else 2
+            if key == 'status':
+                sc   = zc.get(val, _mut) if val else _mut
+                text = STATUS_LABELS.get(val, '—') if val else '—'
+                html += f"<td style='{td};color:{sc};font-size:8px;font-weight:700'>{text}</td>"
+            else:
+                cell_c = colour if colour else _mut
+                # Price cell: colour by zone
+                if key == 'price' and val:
+                    cell_c = _sig(lvl)
+                html += f"<td style='{td};color:{cell_c}'>{_fmt(val, dec)}</td>"
+        html += "</tr>"
+
+    html += "</tbody></table></div>"
+    st.markdown(html, unsafe_allow_html=True)
+
+
 def render_scanner_charts_tab(is_mobile, est):
-    """Scanner Charts tab — lock one timeframe, show all assets in sector as 2-col grid."""
+    """Scanner Charts tab — lock one timeframe, levels table + all assets in 2-col chart grid."""
     t = get_theme()
     pos_c = t['pos']
     _lbl = f"color:#f8fafc;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
@@ -1591,10 +1740,7 @@ def render_scanner_charts_tab(is_mobile, est):
     if st.session_state.get('sc_sector') != st.session_state.sector:
         st.session_state.sc_sector = st.session_state.sector
 
-    if is_mobile:
-        col_sec, col_tf, col_ct = st.columns([3, 3, 2])
-    else:
-        col_sec, col_tf, col_ct = st.columns([3, 3, 2])
+    col_sec, col_tf, col_ct = st.columns([3, 3, 2])
 
     with col_sec:
         st.markdown(f"<div style='{_lbl}'>SECTOR</div>", unsafe_allow_html=True)
@@ -1611,30 +1757,35 @@ def render_scanner_charts_tab(is_mobile, est):
 
     with col_ct:
         st.markdown(f"<div style='{_lbl}'>CHART</div>", unsafe_allow_html=True)
-        chart_options = ['Line', 'Bars']
-        ct_idx = 0 if st.session_state.chart_type == 'line' else 1
-        ct = st.selectbox("Chart", chart_options, index=ct_idx,
+        ct = st.selectbox("Chart", ['Line', 'Bars'],
+            index=0 if st.session_state.chart_type == 'line' else 1,
             key='sc_chart_type', label_visibility='collapsed')
         chart_type = 'line' if ct == 'Line' else 'bars'
 
-    # ── Section header ──
-    _hdr_bg = t.get('bg3', '#1a2744')
+    symbols = FUTURES_GROUPS[selected_sector]
+    n = len(symbols)
+
+    # ── Wide levels table (full width, single panel) ──
+    st.markdown("<div style='height:10px'></div>", unsafe_allow_html=True)
+    with st.spinner('Loading levels…'):
+        render_scanner_levels_table(symbols, interval, boundary_type, selected_sector, tf_choice, zone_desc)
+
+    # ── Charts header ──
+    _hdr_bg  = t.get('bg3', '#1a2744')
     _hdr_mut = t.get('muted', '#475569')
     st.markdown(
-        f"<div style='padding:8px 12px;background:{_hdr_bg};"
-        f"border-left:2px solid {pos_c};font-family:{FONTS};border-radius:4px 4px 0 0;margin-top:12px'>"
-        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>"
-        f"{selected_sector} — {tf_choice}</span>"
-        f"<span style='color:{_hdr_mut};font-size:10px;margin-left:8px;font-weight:400'>{zone_desc}</span></div>",
+        f"<div style='padding:8px 12px;background:{_hdr_bg};border-left:2px solid {pos_c};"
+        f"font-family:{FONTS};border-radius:4px 4px 0 0;margin-top:14px'>"
+        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;"
+        f"text-transform:uppercase'>{selected_sector} CHARTS</span>"
+        f"<span style='color:{_hdr_mut};font-size:10px;margin-left:8px;font-weight:400'>"
+        f"{tf_choice} · {zone_desc}</span></div>",
         unsafe_allow_html=True)
     st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
 
-    # ── Render all assets in 2-col grid ──
-    symbols = FUTURES_GROUPS[selected_sector]
-    n = len(symbols)
-    pairs = [(symbols[i], symbols[i+1] if i+1 < n else None) for i in range(0, n, 2)]
-
+    # ── 2-col chart grid ──
     with st.spinner(f'Loading {n} charts…'):
+        pairs = [(symbols[i], symbols[i+1] if i+1 < n else None) for i in range(0, n, 2)]
         for sym_a, sym_b in pairs:
             cols = st.columns(2)
             for col, sym in zip(cols, [sym_a, sym_b]):
