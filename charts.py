@@ -867,6 +867,8 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             computed_levels[boundary_type] = {'high': last_b.prev_high, 'low': last_b.prev_low, 'mid': mid, 'price': current_price, 'status': zone_status, 'label': label, 'rb': _rb, 'rs': _rs}
 
         rsi_value = calculate_rsi(hist['Close']); chart_rsis[chart_idx] = rsi_value
+        if boundary_type in computed_levels:
+            computed_levels[boundary_type]['rsi'] = rsi_value
 
         # MAs on weekly chart
         if boundary_type == 'year':
@@ -1167,7 +1169,24 @@ def render_key_levels(symbol, levels):
         html += f"<td style='{td};color:{sco};font-size:9px;font-weight:700;text-align:right'>{stx}</td>"
     html += "</tr>"
 
-    # RSI placeholder row (from chart_statuses not available here — skip or leave blank)
+    # RSI row
+    def _rsi_color(v):
+        if np.isnan(v): return _mut
+        if v >= 70: return '#f59e0b'   # overbought — amber
+        if v >= 50: return zc['above_mid']
+        if v >= 30: return zc['below_mid']
+        return '#22c55e'               # oversold — green
+
+    html += f"<tr><td style='{td};text-align:left;color:{_mut};font-weight:700'>RSI</td>"
+    for tf in tfo:
+        v = levels.get(tf, {}).get('rsi', np.nan)
+        if v is None or (isinstance(v, float) and np.isnan(v)):
+            html += f"<td style='{td};color:{_mut}'>—</td>"
+        else:
+            rc = _rsi_color(float(v))
+            html += f"<td style='{td};color:{rc};font-weight:700'>{float(v):.0f}</td>"
+    html += "</tr>"
+
     html += "</tbody></table></div>"
     st.markdown(html, unsafe_allow_html=True)
 
