@@ -1066,9 +1066,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
     return fig, computed_levels
 
 
-# =============================================================================
-# KEY LEVELS PANEL
-# =============================================================================
+
 
 def render_key_levels(symbol, levels):
     zc = zone_colors(); t = get_theme(); pos_c = t['pos']
@@ -1347,5 +1345,308 @@ def render_charts_tab(is_mobile, est):
             st.plotly_chart(fig, use_container_width=True, config={
                 'scrollZoom': True, 'displayModeBar': False,
                 'responsive': True})
+
+    # Auto-refresh handled globally in app.py
+
+
+# =============================================================================
+# SCANNER CHART TAB — one timeframe, all assets in sector, 2-col grid
+# =============================================================================
+
+# Maps user-facing label → (interval, boundary_type, period_label)
+SCANNER_TF_OPTIONS = {
+    'Intraday (15m)':   ('15m',  'session', 'Day High/Low'),
+    'Short-Term (4H)':  ('1h',   'week',    'Week High/Low'),
+    'Medium (Daily)':   ('1d',   'month',   'Month High/Low'),
+    'Long-Term (Wkly)': ('1wk',  'year',    'Year High/Low'),
+}
+
+
+def create_single_asset_chart(symbol, chart_type, interval, boundary_type, mobile=False):
+    """One-panel chart for a single symbol at a fixed timeframe.
+    Returns (fig, zone_status_str) — stripped-down version of create_4_chart_grid."""
+    zc = zone_colors(); t = get_theme()
+    display_symbol = clean_symbol(symbol)
+
+    live_price = None
+    try:
+        hist_lag = fetch_chart_data(symbol, '1d', '5m')
+        if not hist_lag.empty:
+            live_price = float(hist_lag['Close'].iloc[-1])
+    except Exception:
+        pass
+
+    label_map = {cfg[1]: cfg[0] for cfg in CHART_CONFIGS}  # interval → label
+    bt_label = {v[1]: k for k, v in SCANNER_TF_OPTIONS.items()}
+
+    fig = make_subplots(rows=1, cols=1)
+
+    period = get_dynamic_period(boundary_type)
+    hist = fetch_chart_data(symbol, period, interval)
+    if hist.empty:
+        return fig, ''
+
+    boundaries = PeriodBoundaryCalculator.get_boundaries(hist, boundary_type, symbol)
+    current_price = hist['Close'].iloc[-1]
+    if live_price is not None:
+        current_price = live_price
+
+    x_vals = list(range(len(hist)))
+
+    if boundary_type == 'session':
+        tick_indices = [i for i, dt in enumerate(hist.index) if dt.minute == 0 and dt.hour % 4 == 0]
+        tick_labels = [hist.index[i].strftime('%d %b') if hist.index[i].hour == 0 else hist.index[i].strftime('%H:%M') for i in tick_indices]
+    elif boundary_type == 'week':
+        n = 8; tick_indices = list(range(0, len(hist), max(1, len(hist)//n)))
+        tick_labels = [hist.index[i].strftime('%a %d') for i in tick_indices]
+    elif boundary_type == 'month':
+        n = 8; tick_indices = list(range(0, len(hist), max(1, len(hist)//n)))
+        tick_labels = [hist.index[i].strftime('%d %b') for i in tick_indices]
+    else:
+        n = 8; tick_indices = list(range(0, len(hist), max(1, len(hist)//n)))
+        tick_labels = [hist.index[i].strftime("%b '%y") for i in tick_indices]
+
+    line_color = '#6b7280'
+    zone_status = ''
+
+    def get_zone(price, high, low, mid):
+        if price > high: return 'above_high'
+        elif price < low: return 'below_low'
+        elif price > mid: return 'above_mid'
+        else: return 'below_mid'
+
+    def plot_line(x_data, closes, datetimes=None, color='rgba(255,255,255,0.85)', width=1.8, zone_color=False, mid=None):
+        all_x = x_data; all_y = list(closes)
+        all_dt = [dt.strftime('%d %b %H:%M') if boundary_type == 'session' else dt.strftime('%d %b %Y') for dt in datetimes] if datetimes is not None else None
+        hover = '%{customdata}<br>%{y:.2f}<extra></extra>' if all_dt else '%{y:.2f}<extra></extra>'
+        if not zone_color or mid is None:
+            fig.add_trace(go.Scatter(x=all_x, y=all_y, mode='lines',
+                line=dict(color=color, width=width, shape='spline', smoothing=0.3),
+                showlegend=False, customdata=all_dt, hovertemplate=hover))
+            return
+        zones = ['up' if c >= mid else 'dn' for c in closes]
+        i = 0
+        while i < len(zones):
+            zone = zones[i]; start_i = i
+            while i < len(zones) and zones[i] == zone: i += 1
+            end_i = min(i + 1, len(all_x))
+            seg_x = all_x[start_i:end_i]; seg_y = all_y[start_i:end_i]
+            seg_dt = all_dt[start_i:end_i] if all_dt else None
+            seg_color = t['pos'] if zone == 'up' else t['neg']
+            fig.add_trace(go.Scatter(x=seg_x, y=seg_y, mode='lines',
+                line=dict(color=seg_color, width=width, shape='spline', smoothing=0.3),
+                showlegend=False, customdata=seg_dt, hovertemplate=hover))
+
+    if boundaries:
+        last_b = boundaries[-1]
+        mid = (last_b.prev_high + last_b.prev_low) / 2
+        zone_status = get_zone(current_price, last_b.prev_high, last_b.prev_low, mid)
+        line_color = t['pos'] if zone_status in ('above_high', 'above_mid') else t['neg']
+        boundary_idx = last_b.idx
+
+        if chart_type == 'bars':
+            fig.add_trace(go.Candlestick(
+                x=x_vals, open=hist['Open'].values, high=hist['High'].values,
+                low=hist['Low'].values, close=hist['Close'].values,
+                increasing_line_color=t['pos'], decreasing_line_color=t['neg'],
+                increasing_fillcolor=t['pos'], decreasing_fillcolor=t['neg'],
+                showlegend=False, line=dict(width=1)))
+
+        if len(boundaries) >= 2 and chart_type == 'line':
+            prev_b = boundaries[-2]; prev_mid = (prev_b.prev_high + prev_b.prev_low) / 2
+            ps, pe = prev_b.idx, boundary_idx
+            if pe > ps:
+                plot_line(x_vals[ps:pe], hist['Close'].values[ps:pe], hist.index[ps:pe], width=1.5, zone_color=True, mid=prev_mid)
+
+        if len(boundaries) >= 2 and chart_type == 'line':
+            first_tracked = boundaries[-2].idx
+            if first_tracked > 0:
+                plot_line(x_vals[:first_tracked], hist['Close'].values[:first_tracked], hist.index[:first_tracked], color='rgba(255,255,255,0.25)', width=1.0)
+
+        if boundary_idx < len(hist) and chart_type == 'line':
+            plot_line(x_vals[boundary_idx:], hist['Close'].values[boundary_idx:], hist.index[boundary_idx:], width=2.0, zone_color=True, mid=mid)
+
+    elif not boundaries:
+        if chart_type == 'bars':
+            fig.add_trace(go.Candlestick(
+                x=x_vals, open=hist['Open'].values, high=hist['High'].values,
+                low=hist['Low'].values, close=hist['Close'].values,
+                increasing_line_color=t['pos'], decreasing_line_color=t['neg'],
+                increasing_fillcolor=t['pos'], decreasing_fillcolor=t['neg'],
+                showlegend=False, line=dict(width=1)))
+        else:
+            plot_line(x_vals, hist['Close'].values, hist.index, color='rgba(255,255,255,0.5)', width=1.5)
+
+    # Boundary lines + retrace
+    if boundaries:
+        num_boundaries = min(2, len(boundaries))
+        for j in range(num_boundaries):
+            b = boundaries[-(j+1)]; px = b.idx; ex = len(hist) - 1 if j == 0 else boundaries[-1].idx
+            fig.add_vline(x=px, line=dict(color='rgba(255,255,255,0.2)', width=0.8, dash='dot'))
+            ml = (b.prev_high + b.prev_low) / 2
+            fig.add_trace(go.Scatter(x=[px, ex], y=[b.prev_high]*2, mode='lines', line=dict(color=zc['above_high'], width=0.9), showlegend=False, hovertemplate=f'High: {b.prev_high:.2f}<extra></extra>'))
+            fig.add_trace(go.Scatter(x=[px, ex], y=[b.prev_low]*2,  mode='lines', line=dict(color=zc['below_low'],  width=0.9), showlegend=False, hovertemplate=f'Low: {b.prev_low:.2f}<extra></extra>'))
+            fig.add_trace(go.Scatter(x=[px, ex], y=[ml]*2,          mode='lines', line=dict(color='#d97706', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'))
+
+        # Rolling retrace lines
+        last_b = boundaries[-1]
+        current_period = hist.iloc[last_b.idx:]
+        if len(current_period) > 1:
+            rolling_high = current_period['High'].expanding().max()
+            rolling_low  = current_period['Low'].expanding().min()
+            rx_vals = list(range(last_b.idx, last_b.idx + len(current_period)))
+            buy_y  = ((rolling_high + last_b.prev_low)  / 2).values
+            sell_y = ((rolling_low  + last_b.prev_high) / 2).values
+            fig.add_trace(go.Scatter(x=rx_vals, y=buy_y,  mode='lines', line=dict(color='#22c55e', width=1.0, dash='dot'), showlegend=False, hovertemplate='RB: %{y:.2f}<extra></extra>'))
+            fig.add_trace(go.Scatter(x=rx_vals, y=sell_y, mode='lines', line=dict(color='#ef4444', width=1.0, dash='dot'), showlegend=False, hovertemplate='RS: %{y:.2f}<extra></extra>'))
+
+    # Axis ticks
+    if tick_indices:
+        fig.update_layout(xaxis=dict(tickmode='array', tickvals=tick_indices, ticktext=tick_labels, tickfont=dict(color='#e2e8f0', size=8)))
+
+    # X range
+    last_bar = len(hist) - 1
+    if boundary_type == 'session':
+        bars_24h = min(96, last_bar)
+        x_left = max(0, last_bar - bars_24h) - 2
+    else:
+        x_left = -2
+    x_right = x_left + int((last_bar - x_left) / 0.6)
+    fig.update_layout(xaxis=dict(range=[x_left, x_right]))
+
+    # Y range
+    visible_hist = hist.iloc[max(0, x_left):]
+    y_lows = visible_hist['Low'].dropna(); y_highs = visible_hist['High'].dropna()
+    if len(y_lows) > 10:
+        y_min = y_lows.quantile(0.005); y_max = y_highs.quantile(0.995)
+    else:
+        y_min = y_lows.min(); y_max = y_highs.max()
+    pad = (y_max - y_min) * 0.08
+    fig.update_layout(yaxis=dict(range=[y_min - pad, y_max + pad], side='right', tickfont=dict(size=8, color='#94a3b8')))
+
+    pd_dec = 4 if '=X' in symbol else 2
+
+    # Price label
+    fig.add_annotation(x=1.02, y=current_price, xref='x domain', yref='y',
+        text=f'<b>{current_price:.{pd_dec}f} C</b>', showarrow=False,
+        font=dict(color='#ffffff', size=10), bgcolor='rgba(0,0,0,0.5)',
+        bordercolor=line_color, borderwidth=1, borderpad=2, xanchor='left')
+
+    # H/M/L labels
+    if boundaries:
+        _mid = (last_b.prev_high + last_b.prev_low) / 2
+        for _lvl, _col, _lbl in [
+            (last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f} H'),
+            (_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f} M'),
+            (last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f} L'),
+        ]:
+            fig.add_annotation(x=1.02, y=_lvl, xref='x domain', yref='y',
+                text=f'<b>{_lbl}</b>', showarrow=False,
+                font=dict(color=_col, size=8), bgcolor='rgba(0,0,0,0.35)',
+                bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
+
+    # Chart title — symbol + zone status + RSI
+    rsi_val = calculate_rsi(hist['Close'])
+    stc = {'above_high': zc['above_high'], 'above_mid': zc['above_mid'],
+           'below_mid': zc['below_mid'], 'below_low': zc['below_low']}
+    title_parts = [f"<b>{display_symbol}</b>"]
+    if not np.isnan(rsi_val):
+        rc = zc['above_mid'] if rsi_val > 50 else zc['below_low']
+        title_parts.append(f"<span style='color:{rc};font-size:9px'>RSI {rsi_val:.0f}</span>")
+    if zone_status:
+        sc = stc.get(zone_status, '#64748b')
+        title_parts.append(f"<span style='color:{sc};font-size:9px'>{STATUS_LABELS[zone_status]}</span>")
+    fig.update_layout(title=dict(text='  '.join(title_parts), font=dict(color='#f8fafc', size=10), x=0.02, xanchor='left', y=0.97, yanchor='top'))
+
+    _t = get_theme()
+    _pbg = _t.get('plot_bg', '#121212')
+    _tpl = 'plotly_white' if _t.get('mode') == 'light' else 'plotly_dark'
+    fig.update_layout(
+        template=_tpl, height=260, margin=dict(l=10, r=80, t=36, b=20),
+        showlegend=False, plot_bgcolor=_pbg, paper_bgcolor=_pbg,
+        dragmode='pan', hovermode='closest', autosize=True)
+    fig.update_xaxes(gridcolor='rgba(255,255,255,0.03)', linecolor='rgba(0,0,0,0)', tickfont=dict(color='#e2e8f0', size=8),
+        showgrid=True, tickangle=0, rangeslider=dict(visible=False), fixedrange=False,
+        showspikes=True, spikecolor='#475569', spikethickness=0.5, spikedash='dot', spikemode='across')
+    fig.update_yaxes(gridcolor='rgba(255,255,255,0.03)', linecolor='rgba(0,0,0,0)', showgrid=True, side='right',
+        tickfont=dict(color='#94a3b8', size=8), fixedrange=False,
+        showspikes=True, spikecolor='#475569', spikethickness=0.5, spikedash='dot', spikemode='across')
+
+    return fig, zone_status
+
+
+def render_scanner_charts_tab(is_mobile, est):
+    """Scanner Charts tab — lock one timeframe, show all assets in sector as 2-col grid."""
+    t = get_theme()
+    pos_c = t['pos']
+    _lbl = f"color:#f8fafc;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
+
+    # ── Controls: SECTOR | TIMEFRAME | CHART TYPE ──
+    def _on_sc_sector_change():
+        new_sector = st.session_state.sc_sector
+        st.session_state.sector = new_sector
+        st.session_state.symbol = FUTURES_GROUPS[new_sector][0]
+
+    sector_names = list(FUTURES_GROUPS.keys())
+    if st.session_state.get('sc_sector') != st.session_state.sector:
+        st.session_state.sc_sector = st.session_state.sector
+
+    if is_mobile:
+        col_sec, col_tf, col_ct = st.columns([3, 3, 2])
+    else:
+        col_sec, col_tf, col_ct = st.columns([3, 3, 2])
+
+    with col_sec:
+        st.markdown(f"<div style='{_lbl}'>SECTOR</div>", unsafe_allow_html=True)
+        st.selectbox("Sector", sector_names, key='sc_sector',
+            label_visibility='collapsed', on_change=_on_sc_sector_change)
+        selected_sector = st.session_state.sc_sector
+
+    with col_tf:
+        st.markdown(f"<div style='{_lbl}'>TIMEFRAME</div>", unsafe_allow_html=True)
+        tf_options = list(SCANNER_TF_OPTIONS.keys())
+        tf_choice = st.selectbox("Timeframe", tf_options, key='sc_timeframe',
+            label_visibility='collapsed')
+        interval, boundary_type, zone_desc = SCANNER_TF_OPTIONS[tf_choice]
+
+    with col_ct:
+        st.markdown(f"<div style='{_lbl}'>CHART</div>", unsafe_allow_html=True)
+        chart_options = ['Line', 'Bars']
+        ct_idx = 0 if st.session_state.chart_type == 'line' else 1
+        ct = st.selectbox("Chart", chart_options, index=ct_idx,
+            key='sc_chart_type', label_visibility='collapsed')
+        chart_type = 'line' if ct == 'Line' else 'bars'
+
+    # ── Section header ──
+    _hdr_bg = t.get('bg3', '#1a2744')
+    _hdr_mut = t.get('muted', '#475569')
+    st.markdown(
+        f"<div style='padding:8px 12px;background:{_hdr_bg};"
+        f"border-left:2px solid {pos_c};font-family:{FONTS};border-radius:4px 4px 0 0;margin-top:12px'>"
+        f"<span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>"
+        f"{selected_sector} — {tf_choice}</span>"
+        f"<span style='color:{_hdr_mut};font-size:10px;margin-left:8px;font-weight:400'>{zone_desc}</span></div>",
+        unsafe_allow_html=True)
+    st.markdown("<div style='height:4px'></div>", unsafe_allow_html=True)
+
+    # ── Render all assets in 2-col grid ──
+    symbols = FUTURES_GROUPS[selected_sector]
+    n = len(symbols)
+    pairs = [(symbols[i], symbols[i+1] if i+1 < n else None) for i in range(0, n, 2)]
+
+    with st.spinner(f'Loading {n} charts…'):
+        for sym_a, sym_b in pairs:
+            cols = st.columns(2)
+            for col, sym in zip(cols, [sym_a, sym_b]):
+                if sym is None:
+                    continue
+                with col:
+                    try:
+                        fig, zone_status = create_single_asset_chart(
+                            sym, chart_type, interval, boundary_type, mobile=is_mobile)
+                        st.plotly_chart(fig, use_container_width=True,
+                            config={'scrollZoom': True, 'displayModeBar': False, 'responsive': True})
+                    except Exception as e:
+                        st.error(f"{clean_symbol(sym)}: {e}")
 
     # Auto-refresh handled globally in app.py
