@@ -1145,7 +1145,7 @@ def render_key_levels(symbol, levels, target_height=None):
     th = f"padding:4px 10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;border-bottom:1px solid {_bdr_ln};text-align:right"
     td = f"padding:4px 10px;font-size:10px;font-variant-numeric:tabular-nums;text-align:right;border-bottom:1px solid {_bdr_ln}20"
 
-    html = f"""<style>div[data-testid='column']{{border:none!important;box-shadow:none!important;}}</style><div style='padding:6px 10px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
+    html = f"""<div style='padding:6px 10px;background:{_hdr_bg};border-left:2px solid {pos_c};display:flex;justify-content:space-between;align-items:center;font-family:{FONTS};border-radius:4px 4px 0 0'>
         <span><span style='color:#f8fafc;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase'>{ds} LEVELS</span>
         <span style='color:{_mut};font-size:9px;margin-left:6px'>{fn}</span></span>
         <span style='color:{sc};font-size:10px;font-weight:700'>{sig}</span></div>"""
