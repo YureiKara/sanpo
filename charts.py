@@ -791,7 +791,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
 
             if not zone_color or mid is None:
                 fig.add_trace(go.Scatter(x=all_x, y=all_y, mode='lines',
-                    line=dict(color=color, width=width, shape='spline', smoothing=0.3),
+                    line=dict(color=color, width=width, shape='linear'),
                     showlegend=False, customdata=all_dt, hovertemplate=hover), row=row, col=col)
                 return
 
@@ -812,7 +812,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
                 seg_dt = all_dt[start_i:end_i] if all_dt else None
                 seg_color = t['pos'] if zone == 'up' else t['neg']
                 fig.add_trace(go.Scatter(x=seg_x, y=seg_y, mode='lines',
-                    line=dict(color=seg_color, width=width, shape='spline', smoothing=0.3),
+                    line=dict(color=seg_color, width=width, shape='linear'),
                     showlegend=False, customdata=seg_dt, hovertemplate=hover), row=row, col=col)
 
         if boundaries:
@@ -875,8 +875,22 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             ma_20 = hist['Close'].rolling(window=20).mean(); ma_40 = hist['Close'].rolling(window=40).mean()
             if ma_20.notna().any():
                 fig.add_trace(go.Scatter(x=x_vals, y=ma_20.values, mode='lines', line=dict(color='rgba(255,255,255,0.3)', width=0.7), showlegend=False, hovertemplate='MA20: %{y:.2f}<extra></extra>'), row=row, col=col)
+                _ma20_last = ma_20.dropna().iloc[-1]
+                fig.add_annotation(x=1.02, y=_ma20_last,
+                    xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
+                    yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
+                    text='MA20', showarrow=False,
+                    font=dict(color='rgba(255,255,255,0.5)', size=8),
+                    bgcolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
             if ma_40.notna().any():
                 fig.add_trace(go.Scatter(x=x_vals, y=ma_40.values, mode='lines', line=dict(color='rgba(168,85,247,0.5)', width=0.7), showlegend=False, hovertemplate='MA40: %{y:.2f}<extra></extra>'), row=row, col=col)
+                _ma40_last = ma_40.dropna().iloc[-1]
+                fig.add_annotation(x=1.02, y=_ma40_last,
+                    xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
+                    yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
+                    text='MA40', showarrow=False,
+                    font=dict(color='rgba(168,85,247,0.7)', size=8),
+                    bgcolor='rgba(0,0,0,0)', borderwidth=0, borderpad=2, xanchor='left')
 
         # Boundary lines
         num_boundaries = min(2, len(boundaries))
@@ -887,7 +901,7 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_high]*2, mode='lines', line=dict(color=zc['above_high'], width=0.9), showlegend=False, hovertemplate=f'High: {b.prev_high:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_low]*2, mode='lines', line=dict(color=zc['below_low'], width=0.9), showlegend=False, hovertemplate=f'Low: {b.prev_low:.2f}<extra></extra>'), row=row, col=col)
             fig.add_trace(go.Scatter(x=[px,ex], y=[b.prev_close]*2, mode='lines', line=dict(color='#475569', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'Close: {b.prev_close:.2f}<extra></extra>'), row=row, col=col)
-            fig.add_trace(go.Scatter(x=[px,ex], y=[ml]*2, mode='lines', line=dict(color='#d97706', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'), row=row, col=col)
+            fig.add_trace(go.Scatter(x=[px,ex], y=[ml]*2, mode='lines', line=dict(color='#94a3b8', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'), row=row, col=col)
 
         # Dynamic retrace lines — all timeframes
         # Buy retrace:  (Rolling Period High + Prev Period Low)  / 2 → green dashed
@@ -968,48 +982,54 @@ def create_4_chart_grid(symbol, chart_type='line', mobile=False):
         fig.update_layout(**{yref: dict(range=[y_min-pad, y_max+pad], side='right', tickfont=dict(size=9, color='#94a3b8'))})
 
         pd_dec = 4 if '=X' in symbol else 2
-        # Price label — C suffix, white, boxed
-        fig.add_annotation(x=1.02, y=current_price,
-            xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
-            yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
-            text=f'<b>{current_price:.{pd_dec}f} C</b>', showarrow=False,
-            font=dict(color='#ffffff', size=11), bgcolor='rgba(0,0,0,0.5)',
-            bordercolor=line_color, borderwidth=1, borderpad=3, xanchor='left')
 
-        # S/R level labels on right axis — price + label suffix
+        # Collect all right-axis labels, then de-conflict positions
+        # Each entry: (price, color, text, font_size, bold)
+        _axis_labels = []
+        _axis_labels.append((current_price, line_color, f'{current_price:.{pd_dec}f} C', 11, True))
+
         if boundaries:
             _mid = (last_b.prev_high + last_b.prev_low) / 2
-            _sr_labels = [
-                (last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f} H'),
-                (_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f} M'),
-                (last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f} L'),
-            ]
-            for _lvl, _col, _lbl in _sr_labels:
-                fig.add_annotation(x=1.02, y=_lvl,
-                    xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
-                    yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
-                    text=f'<b>{_lbl}</b>', showarrow=False,
-                    font=dict(color=_col, size=9), bgcolor='rgba(0,0,0,0.4)',
-                    bordercolor=_col, borderwidth=1, borderpad=2, xanchor='left')
+            _axis_labels.append((last_b.prev_high, zc['above_high'], f'{last_b.prev_high:.{pd_dec}f} H', 9, True))
+            _axis_labels.append((_mid,             '#94a3b8',         f'{_mid:.{pd_dec}f} M',             9, True))
+            _axis_labels.append((last_b.prev_low,  zc['below_low'],   f'{last_b.prev_low:.{pd_dec}f} L',  9, True))
 
-            # Retrace labels — price + RB/RS suffix
             current_period = hist.iloc[last_b.idx:]
             if len(current_period) > 1:
                 _roll_high = current_period['High'].expanding().max().iloc[-1]
                 _roll_low  = current_period['Low'].expanding().min().iloc[-1]
-                _retrace_buy  = (_roll_high + last_b.prev_low)  / 2
-                _retrace_sell = (_roll_low  + last_b.prev_high) / 2
-                for _lvl, _col, _lbl in [
-                    (_retrace_buy,  '#22c55e', f'{_retrace_buy:.{pd_dec}f} RB'),
-                    (_retrace_sell, '#ef4444', f'{_retrace_sell:.{pd_dec}f} RS'),
-                ]:
-                    fig.add_annotation(x=1.02, y=_lvl,
-                        xref=f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain',
-                        yref=f'y{chart_idx+1}' if chart_idx > 0 else 'y',
-                        text=f'{_lbl}', showarrow=False,
-                        font=dict(color=_col, size=8), bgcolor='rgba(0,0,0,0.3)',
-                        bordercolor=_col, borderwidth=1, borderpad=2,
-                        xanchor='left')
+                _axis_labels.append(((_roll_high + last_b.prev_low)  / 2, '#22c55e', f'{(_roll_high + last_b.prev_low)/2:.{pd_dec}f} RB', 8, False))
+                _axis_labels.append(((_roll_low  + last_b.prev_high) / 2, '#ef4444', f'{(_roll_low  + last_b.prev_high)/2:.{pd_dec}f} RS', 8, False))
+
+        # De-collision: sort desc, enforce min gap, iterate to convergence
+        if _axis_labels:
+            _y_range = max((y_max - y_min) if 'y_max' in dir() else 1, 1)
+            _min_gap = _y_range * 0.028
+            _lbls = sorted(_axis_labels, key=lambda x: x[0], reverse=True)
+            _pos  = [l[0] for l in _lbls]
+            for _ in range(30):
+                _changed = False
+                for _i in range(1, len(_pos)):
+                    if _pos[_i-1] - _pos[_i] < _min_gap:
+                        _mid2 = (_pos[_i-1] + _pos[_i]) / 2
+                        _pos[_i-1] = _mid2 + _min_gap / 2
+                        _pos[_i]   = _mid2 - _min_gap / 2
+                        _changed = True
+                if not _changed:
+                    break
+
+            _xref = f'x{chart_idx+1} domain' if chart_idx > 0 else 'x domain'
+            _yref = f'y{chart_idx+1}' if chart_idx > 0 else 'y'
+            for (_price, _col, _lbl, _fs, _bold), _y in zip(_lbls, _pos):
+                _txt = f'<b>{_lbl}</b>' if _bold else _lbl
+                _bp  = 3 if _fs >= 11 else 2
+                fig.add_annotation(
+                    x=1.02, y=_y, xref=_xref, yref=_yref,
+                    text=_txt, showarrow=False,
+                    font=dict(color=_col, size=_fs),
+                    bgcolor='rgba(0,0,0,0.45)',
+                    bordercolor=_col, borderwidth=1, borderpad=_bp,
+                    xanchor='left')
 
     # Update subplot titles — clean: symbol + timeframe + RSI + status only
     stc = {'▲ ABOVE HIGH': zc['above_high'], '● ABOVE MID': zc['above_mid'],
@@ -1440,7 +1460,7 @@ def create_single_asset_chart(symbol, chart_type, interval, boundary_type, mobil
         hover = '%{customdata}<br>%{y:.2f}<extra></extra>' if all_dt else '%{y:.2f}<extra></extra>'
         if not zone_color or mid is None:
             fig.add_trace(go.Scatter(x=all_x, y=all_y, mode='lines',
-                line=dict(color=color, width=width, shape='spline', smoothing=0.3),
+                line=dict(color=color, width=width, shape='linear'),
                 showlegend=False, customdata=all_dt, hovertemplate=hover))
             return
         zones = ['up' if c >= mid else 'dn' for c in closes]
@@ -1453,7 +1473,7 @@ def create_single_asset_chart(symbol, chart_type, interval, boundary_type, mobil
             seg_dt = all_dt[start_i:end_i] if all_dt else None
             seg_color = t['pos'] if zone == 'up' else t['neg']
             fig.add_trace(go.Scatter(x=seg_x, y=seg_y, mode='lines',
-                line=dict(color=seg_color, width=width, shape='spline', smoothing=0.3),
+                line=dict(color=seg_color, width=width, shape='linear'),
                 showlegend=False, customdata=seg_dt, hovertemplate=hover))
 
     if boundaries:
@@ -1505,7 +1525,7 @@ def create_single_asset_chart(symbol, chart_type, interval, boundary_type, mobil
             ml = (b.prev_high + b.prev_low) / 2
             fig.add_trace(go.Scatter(x=[px, ex], y=[b.prev_high]*2, mode='lines', line=dict(color=zc['above_high'], width=0.9), showlegend=False, hovertemplate=f'High: {b.prev_high:.2f}<extra></extra>'))
             fig.add_trace(go.Scatter(x=[px, ex], y=[b.prev_low]*2,  mode='lines', line=dict(color=zc['below_low'],  width=0.9), showlegend=False, hovertemplate=f'Low: {b.prev_low:.2f}<extra></extra>'))
-            fig.add_trace(go.Scatter(x=[px, ex], y=[ml]*2,          mode='lines', line=dict(color='#d97706', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'))
+            fig.add_trace(go.Scatter(x=[px, ex], y=[ml]*2,          mode='lines', line=dict(color='#94a3b8', width=0.6, dash='dot'), showlegend=False, hovertemplate=f'50%: {ml:.2f}<extra></extra>'))
 
         # Rolling retrace lines
         last_b = boundaries[-1]
