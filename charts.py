@@ -1301,16 +1301,19 @@ def render_charts_tab(is_mobile, est):
     symbols = FUTURES_GROUPS[st.session_state.sector]
     sym_labels = [clean_symbol(s) for s in symbols]
 
-    # Ensure current symbol belongs to current sector
-    if st.session_state.symbol not in symbols:
+    # Ensure current symbol belongs to current sector (skip check if custom mode)
+    _is_custom = st.session_state.get('custom_mode', False)
+    if not _is_custom and st.session_state.symbol not in symbols:
         st.session_state.symbol = symbols[0]
-    current_idx = symbols.index(st.session_state.symbol)
+    current_idx = symbols.index(st.session_state.symbol) if (not _is_custom and st.session_state.symbol in symbols) else len(sym_labels)
 
     # Sector change callback
     def _on_sector_change():
         new_sector = st.session_state.sel_sector
         st.session_state.sector = new_sector
         st.session_state.symbol = FUTURES_GROUPS[new_sector][0]
+        st.session_state['custom_mode'] = False
+        st.session_state.pop('custom_ticker', None)
         # Clear asset key so selectbox picks up new list
         if 'sel_asset' in st.session_state:
             del st.session_state.sel_asset
@@ -1333,9 +1336,26 @@ def render_charts_tab(is_mobile, est):
             on_change=_on_sector_change)
     with col_ast:
         st.markdown(f"<div style='{_lbl}'>ASSET</div>", unsafe_allow_html=True)
-        selected_label = st.selectbox("Asset", sym_labels, index=current_idx,
+        sym_labels_ext = sym_labels + ["Custom"]
+        selected_label = st.selectbox("Asset", sym_labels_ext, index=current_idx,
             key='sel_asset', label_visibility='collapsed')
-        selected_sym = symbols[sym_labels.index(selected_label)]
+        if selected_label == "Custom":
+            st.session_state['custom_mode'] = True
+            _custom_val = st.session_state.get('custom_ticker', '')
+            _lbl_small = f"color:#94a3b8;font-size:10px;font-family:{FONTS}"
+            st.markdown(f"<div style='{_lbl_small}'>TICKER</div>", unsafe_allow_html=True)
+            custom_input = st.text_input("Ticker", value=_custom_val,
+                placeholder="e.g. AAPL, SPY, BTC-USD",
+                key='custom_ticker_input', label_visibility='collapsed').strip().upper()
+            if custom_input:
+                st.session_state['custom_ticker'] = custom_input
+                selected_sym = custom_input
+            else:
+                selected_sym = _custom_val or symbols[0]
+        else:
+            st.session_state['custom_mode'] = False
+            st.session_state.pop('custom_ticker', None)
+            selected_sym = symbols[sym_labels.index(selected_label)]
         if selected_sym != st.session_state.symbol:
             st.session_state.symbol = selected_sym
             st.rerun()
@@ -1925,3 +1945,4 @@ def render_scanner_charts_tab(is_mobile, est):
                         st.error(f"{clean_symbol(sym)}: {e}")
 
     # Auto-refresh handled globally in app.py
+
