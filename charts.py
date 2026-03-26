@@ -1298,105 +1298,137 @@ def render_charts_tab(is_mobile, est):
     t = get_theme()
     pos_c = t['pos']
 
-    symbols = FUTURES_GROUPS[st.session_state.sector]
-    sym_labels = [clean_symbol(s) for s in symbols]
+    # Determine if we're in Custom mode
+    _is_custom = (st.session_state.sector == 'Custom')
 
-    # Ensure current symbol belongs to current sector (skip check if custom mode)
-    _is_custom = st.session_state.get('custom_mode', False)
-    if not _is_custom and st.session_state.symbol not in symbols:
-        st.session_state.symbol = symbols[0]
-    current_idx = symbols.index(st.session_state.symbol) if (not _is_custom and st.session_state.symbol in symbols) else len(sym_labels)
+    if not _is_custom:
+        symbols = FUTURES_GROUPS[st.session_state.sector]
+        sym_labels = [clean_symbol(s) for s in symbols]
+        if st.session_state.symbol not in symbols:
+            st.session_state.symbol = symbols[0]
+        current_idx = symbols.index(st.session_state.symbol)
+    else:
+        symbols = []
+        sym_labels = []
+        current_idx = 0
 
     # Sector change callback
     def _on_sector_change():
         new_sector = st.session_state.sel_sector
         st.session_state.sector = new_sector
-        st.session_state.symbol = FUTURES_GROUPS[new_sector][0]
-        st.session_state['custom_mode'] = False
-        st.session_state.pop('custom_ticker', None)
-        # Clear asset key so selectbox picks up new list
+        if new_sector != 'Custom':
+            st.session_state.symbol = FUTURES_GROUPS[new_sector][0]
         if 'sel_asset' in st.session_state:
             del st.session_state.sel_asset
 
-    # Controls row: SECTOR + ASSET + SORT + CHART
+    # Controls row
     _lbl = f"color:#f8fafc;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
 
-    if is_mobile:
-        col_sec, col_ast, col_sort, col_ct = st.columns([3, 2, 2, 1])
-    else:
-        col_sec, col_ast, col_sort, col_ct = st.columns([3, 3, 2, 1])
-
-    with col_sec:
-        st.markdown(f"<div style='{_lbl}'>SECTOR</div>", unsafe_allow_html=True)
-        sector_names = list(FUTURES_GROUPS.keys())
-        if st.session_state.get('sel_sector') != st.session_state.sector:
-            st.session_state.sel_sector = st.session_state.sector
-        sector = st.selectbox("Sector", sector_names,
-            key='sel_sector', label_visibility='collapsed',
-            on_change=_on_sector_change)
-    with col_ast:
-        st.markdown(f"<div style='{_lbl}'>ASSET</div>", unsafe_allow_html=True)
-        sym_labels_ext = sym_labels + ["Custom"]
-        selected_label = st.selectbox("Asset", sym_labels_ext, index=current_idx,
-            key='sel_asset', label_visibility='collapsed')
-        if selected_label == "Custom":
-            st.session_state['custom_mode'] = True
-            _custom_val = st.session_state.get('custom_ticker', '')
-            _lbl_small = f"color:#94a3b8;font-size:10px;font-family:{FONTS}"
-            st.markdown(f"<div style='{_lbl_small}'>TICKER</div>", unsafe_allow_html=True)
-            custom_input = st.text_input("Ticker", value=_custom_val,
-                placeholder="e.g. AAPL, SPY, BTC-USD",
-                key='custom_ticker_input', label_visibility='collapsed').strip().upper()
-            if custom_input:
-                st.session_state['custom_ticker'] = custom_input
-                selected_sym = custom_input
-            else:
-                selected_sym = _custom_val or symbols[0]
+    if _is_custom:
+        # Custom mode: SECTOR + TICKER input + CHART
+        if is_mobile:
+            col_sec, col_ticker, col_ct = st.columns([3, 4, 1])
         else:
-            st.session_state['custom_mode'] = False
-            st.session_state.pop('custom_ticker', None)
+            col_sec, col_ticker, col_ct = st.columns([3, 5, 1])
+
+        with col_sec:
+            st.markdown(f"<div style='{_lbl}'>SECTOR</div>", unsafe_allow_html=True)
+            sector_names = list(FUTURES_GROUPS.keys()) + ['Custom']
+            sector_idx = sector_names.index('Custom')
+            st.selectbox("Sector", sector_names, index=sector_idx,
+                key='sel_sector', label_visibility='collapsed',
+                on_change=_on_sector_change)
+
+        with col_ticker:
+            st.markdown(f"<div style='{_lbl}'>TICKER SYMBOL</div>", unsafe_allow_html=True)
+            _prev = st.session_state.get('custom_ticker', '')
+            custom_input = st.text_input("Ticker", value=_prev,
+                placeholder="e.g. AAPL, SPY, BTC-USD, NVDA",
+                key='custom_ticker_input', label_visibility='collapsed')
+            custom_input = custom_input.strip().upper()
+            if custom_input and custom_input != _prev:
+                st.session_state['custom_ticker'] = custom_input
+                st.session_state.symbol = custom_input
+                st.rerun()
+            elif custom_input:
+                st.session_state.symbol = custom_input
+
+        with col_ct:
+            st.markdown(f"<div style='{_lbl}'>CHART</div>", unsafe_allow_html=True)
+            chart_options = ['Line', 'Bars']
+            ct_idx = 0 if st.session_state.chart_type == 'line' else 1
+            ct = st.selectbox("Chart", chart_options, index=ct_idx,
+                key='chart_select', label_visibility='collapsed')
+            st.session_state.chart_type = 'line' if ct == 'Line' else 'bars'
+
+        # Skip scanner — go straight to charts
+        if not st.session_state.get('custom_ticker'):
+            st.info("Enter a ticker symbol above to load charts, levels and news.")
+            return
+
+    else:
+        # Normal mode: SECTOR + ASSET + SORT + CHART
+        if is_mobile:
+            col_sec, col_ast, col_sort, col_ct = st.columns([3, 2, 2, 1])
+        else:
+            col_sec, col_ast, col_sort, col_ct = st.columns([3, 3, 2, 1])
+
+        with col_sec:
+            st.markdown(f"<div style='{_lbl}'>SECTOR</div>", unsafe_allow_html=True)
+            sector_names = list(FUTURES_GROUPS.keys()) + ['Custom']
+            sel_idx = sector_names.index(st.session_state.sector) if st.session_state.sector in sector_names else 0
+            if st.session_state.get('sel_sector') != st.session_state.sector:
+                st.session_state.sel_sector = st.session_state.sector
+            st.selectbox("Sector", sector_names, index=sel_idx,
+                key='sel_sector', label_visibility='collapsed',
+                on_change=_on_sector_change)
+
+        with col_ast:
+            st.markdown(f"<div style='{_lbl}'>ASSET</div>", unsafe_allow_html=True)
+            selected_label = st.selectbox("Asset", sym_labels, index=current_idx,
+                key='sel_asset', label_visibility='collapsed')
             selected_sym = symbols[sym_labels.index(selected_label)]
-        if selected_sym != st.session_state.symbol:
-            st.session_state.symbol = selected_sym
-            st.rerun()
-    with col_sort:
-        st.markdown(f"<div style='{_lbl}'>SORT</div>", unsafe_allow_html=True)
-        sort_options = ['Default', 'Day %', 'WTD %', 'MTD %', 'YTD %', 'HV', 'DD',
-                        'Sharpe Day', 'Sharpe WTD', 'Sharpe MTD', 'Sharpe YTD']
-        sort_by = st.selectbox("Sort", sort_options, index=0,
-            key='scanner_sort', label_visibility='collapsed')
-    with col_ct:
-        st.markdown(f"<div style='{_lbl}'>CHART</div>", unsafe_allow_html=True)
-        chart_options = ['Line', 'Bars']
-        ct_idx = 0 if st.session_state.chart_type == 'line' else 1
-        ct = st.selectbox("Chart", chart_options, index=ct_idx,
-            key='chart_select', label_visibility='collapsed')
-        st.session_state.chart_type = 'line' if ct == 'Line' else 'bars'
+            if selected_sym != st.session_state.symbol:
+                st.session_state.symbol = selected_sym
+                st.rerun()
 
-    # Fetch data
-    with st.spinner('Loading market data...'):
-        metrics = fetch_sector_data(st.session_state.sector)
+        with col_sort:
+            st.markdown(f"<div style='{_lbl}'>SORT</div>", unsafe_allow_html=True)
+            sort_options = ['Default', 'Day %', 'WTD %', 'MTD %', 'YTD %', 'HV', 'DD',
+                            'Sharpe Day', 'Sharpe WTD', 'Sharpe MTD', 'Sharpe YTD']
+            sort_by = st.selectbox("Sort", sort_options, index=0,
+                key='scanner_sort', label_visibility='collapsed')
 
-    # Sort scanner data
-    if metrics and sort_by != 'Default':
-        sort_map = {
-            'Day %': 'change_day', 'WTD %': 'change_wtd', 'MTD %': 'change_mtd', 'YTD %': 'change_ytd',
-            'HV': 'hist_vol', 'DD': 'current_dd',
-            'Sharpe Day': 'day_sharpe', 'Sharpe WTD': 'wtd_sharpe', 'Sharpe MTD': 'mtd_sharpe', 'Sharpe YTD': 'ytd_sharpe',
-        }
-        attr = sort_map.get(sort_by)
-        if attr:
-            reverse = sort_by not in ('HV', 'DD')  # higher is better for most, lower for HV/DD
-            metrics = sorted(metrics, key=lambda m: getattr(m, attr, 0) if not pd.isna(getattr(m, attr, None)) else -999,
-                           reverse=reverse)
+        with col_ct:
+            st.markdown(f"<div style='{_lbl}'>CHART</div>", unsafe_allow_html=True)
+            chart_options = ['Line', 'Bars']
+            ct_idx = 0 if st.session_state.chart_type == 'line' else 1
+            ct = st.selectbox("Chart", chart_options, index=ct_idx,
+                key='chart_select', label_visibility='collapsed')
+            st.session_state.chart_type = 'line' if ct == 'Line' else 'bars'
 
-    # Scanner table + bar chart side by side
-    if metrics:
-        col_scan, col_bars = st.columns([55, 45])
-        with col_scan:
-            render_scanner_table(metrics, st.session_state.symbol)
-        with col_bars:
-            render_return_bars(metrics, sort_by)
+        # Fetch and render scanner
+        with st.spinner('Loading market data...'):
+            metrics = fetch_sector_data(st.session_state.sector)
+
+        if metrics and sort_by != 'Default':
+            sort_map = {
+                'Day %': 'change_day', 'WTD %': 'change_wtd', 'MTD %': 'change_mtd', 'YTD %': 'change_ytd',
+                'HV': 'hist_vol', 'DD': 'current_dd',
+                'Sharpe Day': 'day_sharpe', 'Sharpe WTD': 'wtd_sharpe', 'Sharpe MTD': 'mtd_sharpe', 'Sharpe YTD': 'ytd_sharpe',
+            }
+            attr = sort_map.get(sort_by)
+            if attr:
+                reverse = sort_by not in ('HV', 'DD')
+                metrics = sorted(metrics, key=lambda m: getattr(m, attr, 0) if not pd.isna(getattr(m, attr, None)) else -999,
+                               reverse=reverse)
+
+        if metrics:
+            col_scan, col_bars = st.columns([55, 45])
+            with col_scan:
+                render_scanner_table(metrics, st.session_state.symbol)
+            with col_bars:
+                render_return_bars(metrics, sort_by)
 
     # Spacer between scanner and charts
     st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
@@ -1945,4 +1977,5 @@ def render_scanner_charts_tab(is_mobile, est):
                         st.error(f"{clean_symbol(sym)}: {e}")
 
     # Auto-refresh handled globally in app.py
+
 
