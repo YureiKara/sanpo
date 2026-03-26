@@ -423,13 +423,17 @@ class FuturesDataFetcher:
 # =============================================================================
 
 @st.cache_resource(ttl=900, show_spinner=False)
-def fetch_sector_data(sector_name):
+def fetch_sector_data(sector_name, symbols_override=None):
     """Fetch metrics for all symbols in a sector.
 
     Uses yf.download for a single batch request to get 1y daily data,
     then individual 1-minute calls only for intraday price/lag.
+    Pass symbols_override to fetch arbitrary symbols (e.g. Custom mode).
     """
-    symbols = FUTURES_GROUPS.get(sector_name, [])
+    if symbols_override is not None:
+        symbols = symbols_override
+    else:
+        symbols = FUTURES_GROUPS.get(sector_name, [])
     if not symbols:
         return []
 
@@ -1361,10 +1365,20 @@ def render_charts_tab(is_mobile, est):
                 key='chart_select', label_visibility='collapsed')
             st.session_state.chart_type = 'line' if ct == 'Line' else 'bars'
 
-        # Skip scanner — go straight to charts
+        # No ticker entered yet
         if not st.session_state.get('custom_ticker'):
             st.info("Enter a ticker symbol above to load charts, levels and news.")
             return
+
+        # Fetch and render scanner for the single custom symbol
+        with st.spinner('Loading market data...'):
+            metrics = fetch_sector_data('Custom', symbols_override=[st.session_state.symbol])
+        if metrics:
+            col_scan, col_bars = st.columns([55, 45])
+            with col_scan:
+                render_scanner_table(metrics, st.session_state.symbol)
+            with col_bars:
+                render_return_bars(metrics, 'Default')
 
     else:
         # Normal mode: SECTOR + ASSET + SORT + CHART
