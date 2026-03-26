@@ -451,10 +451,12 @@ def fetch_sector_data(sector_name, symbols_override=None):
             # Extract this symbol's daily data from batch result
             hist_yearly = pd.DataFrame()
             if not batch_daily.empty:
-                if len(symbols) == 1:
+                if isinstance(batch_daily.columns, pd.MultiIndex):
+                    if symbol in batch_daily.columns.get_level_values(0):
+                        hist_yearly = batch_daily[symbol].dropna(how='all')
+                else:
+                    # Single-symbol download returns flat columns
                     hist_yearly = batch_daily.copy()
-                elif symbol in batch_daily.columns.get_level_values(0):
-                    hist_yearly = batch_daily[symbol].dropna(how='all')
 
             # Fallback: individual fetch if batch missed this symbol
             if hist_yearly.empty:
