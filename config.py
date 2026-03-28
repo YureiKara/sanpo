@@ -56,61 +56,74 @@ FUTURES_GROUPS = OrderedDict([
 ])
 
 SYMBOL_NAMES = {
+    # Futures — Indices
     'ES=F': 'E-mini S&P 500', 'NQ=F': 'E-mini Nasdaq 100', 'YM=F': 'E-mini Dow',
     'RTY=F': 'E-mini Russell 2000', 'NKD=F': 'Nikkei 225',
+    # Futures — Rates
     'ZB=F': '30Y T-Bond', 'ZN=F': '10Y T-Note', 'ZF=F': '5Y T-Note', 'ZT=F': '2Y T-Note',
+    # Futures — Metals
     'GC=F': 'Gold', 'SI=F': 'Silver', 'PL=F': 'Platinum', 'HG=F': 'Copper',
+    # Futures — Energy
     'CL=F': 'Crude Oil WTI', 'NG=F': 'Natural Gas', 'RB=F': 'RBOB Gasoline', 'HO=F': 'Heating Oil',
+    # Futures — Grains
     'ZS=F': 'Soybeans', 'ZC=F': 'Corn', 'ZW=F': 'Wheat', 'ZM=F': 'Soybean Meal',
+    # Futures — Softs
     'SB=F': 'Sugar', 'KC=F': 'Coffee', 'CC=F': 'Cocoa', 'CT=F': 'Cotton',
+    # Crypto spot
     'BTC-USD': 'Bitcoin', 'ETH-USD': 'Ethereum', 'SOL-USD': 'Solana', 'XRP-USD': 'XRP',
+    # Crypto futures
     'BTC=F': 'Bitcoin Futures', 'ETH=F': 'Ethereum Futures',
+    # FX futures
     '6E=F': 'Euro FX', '6J=F': 'Japanese Yen', '6B=F': 'British Pound', '6A=F': 'Australian Dollar',
-    'USDSGD=X': 'USD/SGD',
-    'EUR=X': 'USD/EUR', 'GBP=X': 'USD/GBP', 'USDJPY=X': 'USD/JPY',
-    'JPY=X': 'USD/JPY', 'AUD=X': 'USD/AUD', 'NZD=X': 'USD/NZD',
-    'EUR=X': 'USD/EUR', 'GBP=X': 'USD/GBP', 'CHF=X': 'USD/CHF',
-    'SEK=X': 'USD/SEK', 'NOK=X': 'USD/NOK', 'PLN=X': 'USD/PLN',
-    'TRY=X': 'USD/TRY', 'ZAR=X': 'USD/ZAR', 'CAD=X': 'USD/CAD',
-    'MXN=X': 'USD/MXN', 'BRL=X': 'USD/BRL', 'KRW=X': 'USD/KRW',
-    'MYR=X': 'USD/MYR', 'INR=X': 'USD/INR', 'CNY=X': 'USD/CNY',
-    'HKD=X': 'USD/HKD', 'SGD=X': 'USD/SGD',
-    'AUD=X': 'USD/AUD', 'NZD=X': 'USD/NZD', 'CAD=X': 'USD/CAD',
+    # FX spot — USD base
+    'USDSGD=X': 'USD/SGD', 'USDJPY=X': 'USD/JPY', 'USDHKD=X': 'USD/HKD',
+    'USDCNY=X': 'USD/CNY', 'USDINR=X': 'USD/INR', 'USDMYR=X': 'USD/MYR', 'USDKRW=X': 'USD/KRW',
+    # FX spot — =X format (USD quoted)
+    'EUR=X': 'USD/EUR', 'GBP=X': 'USD/GBP', 'JPY=X': 'USD/JPY', 'AUD=X': 'USD/AUD',
+    'NZD=X': 'USD/NZD', 'CHF=X': 'USD/CHF', 'CAD=X': 'USD/CAD', 'SGD=X': 'USD/SGD',
+    'HKD=X': 'USD/HKD', 'CNY=X': 'USD/CNY', 'MYR=X': 'USD/MYR', 'INR=X': 'USD/INR',
+    'KRW=X': 'USD/KRW', 'SEK=X': 'USD/SEK', 'NOK=X': 'USD/NOK', 'PLN=X': 'USD/PLN',
+    'TRY=X': 'USD/TRY', 'ZAR=X': 'USD/ZAR', 'MXN=X': 'USD/MXN', 'BRL=X': 'USD/BRL',
+    # FX cross rates
     'EURUSD=X': 'EUR/USD', 'GBPUSD=X': 'GBP/USD', 'AUDUSD=X': 'AUD/USD', 'NZDUSD=X': 'NZD/USD',
-    'CHF=X': 'USD/CHF', 'SEK=X': 'USD/SEK', 'NOK=X': 'USD/NOK',
-    'USDHKD=X': 'USD/HKD', 'USDCNY=X': 'USD/CNY', 'USDINR=X': 'USD/INR',
-    'USDMYR=X': 'USD/MYR', 'USDKRW=X': 'USD/KRW', 'MXN=X': 'USD/MXN',
-    'BRL=X': 'USD/BRL', 'ZAR=X': 'USD/ZAR', 'TRY=X': 'USD/TRY',
-    'PLN=X': 'USD/PLN',
+    # Volatility
     '^VIX': 'VIX', '^VVIX': 'VIX of VIX', '^GVZ': 'Gold Volatility',
     '^OVX': 'Crude Oil Volatility', '^VXN': 'Nasdaq Volatility',
     '^SKEW': 'CBOE Skew Index', '^MOVE': 'Bond Volatility (MOVE)',
+    # Singapore
     'ES3.SI': 'STI ETF', 'S68.SI': 'SGX', 'MBH.SI': 'Amova IG Bond', 'MMS.SI': 'SGD Money Mkt',
+    # US Sectors
     'XLB': 'Materials', 'XLC': 'Comms', 'XLY': 'Cons Disc', 'XLP': 'Cons Staples',
     'XLE': 'Energy', 'XLF': 'Financials', 'XLV': 'Healthcare', 'XLI': 'Industrials',
     'XLK': 'Technology', 'XLU': 'Utilities', 'XLRE': 'Real Estate', 'SPY': 'S&P 500',
+    # Country ETFs
     'EWA': 'Australia', 'EWZ': 'Brazil', 'EWC': 'Canada', 'GXC': 'China',
     'EWQ': 'France', 'EWG': 'Germany', 'EWH': 'Hong Kong', 'PIN': 'India',
     'EWI': 'Italy', 'EWJ': 'Japan', 'EWM': 'Malaysia', 'EWW': 'Mexico',
     'EWS': 'Singapore', 'EWY': 'South Korea', 'EWP': 'Spain', 'EWT': 'Taiwan',
     'EWU': 'UK', 'VNM': 'Vietnam', 'KSA': 'Saudi Arabia', 'ARGT': 'Argentina',
+    'ECH': 'Chile', 'EIS': 'Israel', 'EZA': 'South Africa', 'EPOL': 'Poland', 'TUR': 'Turkey',
+    # Macro ETFs
     'DBC': 'Commodities', 'USO': 'Oil ETF', 'GLD': 'Gold ETF', 'SLV': 'Silver ETF',
     'CPER': 'Copper ETF', 'BIL': 'T-Bills', 'HYG': 'High Yield', 'LQD': 'IG Corp',
     'TLT': '20Y+ Treasury', 'BND': 'Total Bond', 'EMB': 'EM Bonds', 'EEM': 'EM Equity',
+    'IAU': 'iShares Gold', 'VOO': 'Vanguard S&P 500', 'VTI': 'Vanguard Total Mkt', 'SHV': 'Short Treasury',
+    # Exchanges
     'ICE': 'ICE', 'NDAQ': 'Nasdaq Inc', 'CME': 'CME Group', 'CBOE': 'Cboe Global',
     'X.TO': 'TMX Group', 'LSEG.L': 'LSEG', 'DB1.DE': 'Deutsche Börse',
     'ENX.PA': 'Euronext', '8697.T': 'JPX', '0388.HK': 'HKEX', 'ASX.AX': 'ASX Ltd',
-    'IAU': 'iShares Gold', 'VOO': 'Vanguard S&P 500', 'VTI': 'Vanguard Total Mkt',
-    'SHV': 'Short Treasury', 'BTC-USD': 'Bitcoin',
+    # Shipping
     'BOAT': 'Global Shipping ETF', 'SEA': 'Sea to Sky Cargo', 'ZIM': 'ZIM Shipping',
     'MATX': 'Matson', 'DAC': 'Danaos', 'CMRE': 'Costamare', 'FRO': 'Frontline',
     'STNG': 'Scorpio Tankers', 'INSW': 'Intl Seaways', 'TK': 'Teekay',
     'GOGL': 'Golden Ocean', 'SBLK': 'Star Bulk', 'GNK': 'Genco Shipping',
     'GSL': 'Global Ship Lease', 'AMKBY': 'Maersk',
+    # Strategy / MSTR
     'MSTR': 'Strategy', 'STRK': 'Strike Pref', 'STRF': 'Strife Pref',
     'STRC': 'Stretch Pref', 'STRD': 'Stride Pref',
     'MSTU': '2x Long MSTR', 'MSTX': '2x Long MSTR', 'MSTZ': '2x Inv MSTR',
     'MSTY': 'MSTR Options Income',
+    # Crypto companies
     'COIN': 'Coinbase', 'MARA': 'Marathon Digital', 'RIOT': 'Riot Platforms',
     'HOOD': 'Robinhood', 'CORZ': 'Core Scientific', 'CLSK': 'CleanSpark',
     'HUT': 'Hut 8', 'GLXY.TO': 'Galaxy Digital', 'CRCL': 'Circle',

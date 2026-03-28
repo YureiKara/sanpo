@@ -4,7 +4,7 @@ import re
 import logging
 import warnings
 
-from config import FONTS, THEMES
+from config import THEMES, get_theme
 
 # =============================================================================
 # SETUP
@@ -17,10 +17,6 @@ logging.getLogger('yfinance').setLevel(logging.CRITICAL)
 
 st.set_page_config(page_title="SANPO", layout="wide", initial_sidebar_state="collapsed")
 
-
-def get_theme():
-    name = st.session_state.get('theme', 'Dark')
-    return THEMES.get(name, THEMES['Dark'])
 
 
 def _inject_theme_css():
