@@ -732,7 +732,8 @@ def render_scanner_table(metrics, selected_symbol):
             elif s == 'below_mid': icon = '●'
             elif s == 'below_low': icon = '▼'
             else: icon = '·'
-            dots += f"<span title='{lbl}: {STATUS_LABELS.get(s, \"—\")}' style='color:{c};font-size:9px;font-weight:700'>{icon}</span>"
+            status_lbl = STATUS_LABELS.get(s, '—')
+            dots += f"<span title='{lbl}: {status_lbl}' style='color:{c};font-size:9px;font-weight:700'>{icon}</span>"
         return dots
 
     html = f"""<div style='overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid {_bdr};border-radius:6px;height:{_scanner_h}px;overflow-y:hidden'><table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>
