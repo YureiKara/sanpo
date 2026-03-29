@@ -181,7 +181,7 @@ def render_sector_tab(is_mobile):
                 Best long: <span style='color:{pos_c};font-weight:600'>{best_long_name}</span>
                 <span style='color:{_mut}'>Sharpe {best_long_sharpe:.2f}</span>
                 &nbsp;·&nbsp;
-                <span style='color:{beats_c}'>{n_beats} spread{"s" if n_beats != 1 else ""} beat{"s" if n_beats == 1 else ""} it</span>
+                <span style='color:{beats_c}'>{n_beats} spread{"s" if n_beats != 1 else ""} beat{"s" if n_beats != 1 else ""} it</span>
             </span>
         </div>""", unsafe_allow_html=True)
 

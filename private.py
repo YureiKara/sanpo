@@ -207,8 +207,10 @@ def fetch_prices():
         )
         for ticker in tickers:
             try:
-                if ticker in raw.columns.get_level_values(0):
+                if isinstance(raw.columns, pd.MultiIndex) and ticker in raw.columns.get_level_values(0):
                     df = raw[ticker]['Close'].dropna()
+                elif not isinstance(raw.columns, pd.MultiIndex) and 'Close' in raw.columns:
+                    df = raw['Close'].dropna()
                 else:
                     df = pd.Series(dtype=float)
 

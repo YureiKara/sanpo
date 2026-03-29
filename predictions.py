@@ -10,6 +10,7 @@ import json
 from datetime import datetime
 import pytz
 import logging
+import re
 from streamlit.components.v1 import html as st_html
 
 from config import THEMES, FONTS

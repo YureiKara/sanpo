@@ -347,7 +347,8 @@ def run_walkforward_grid(symbols, score_type='Win Rate', rebal_months=3, n_portf
     curr_w = eq_w.copy()
     for t in range(n_days):
         eq_daily[t] = curr_w @ ret_arr[t]
-        grown = curr_w * (1 + ret_arr[t]); curr_w = grown / grown.sum()
+        grown = curr_w * (1 + ret_arr[t]); g_sum = grown.sum()
+        curr_w = grown / g_sum if g_sum != 0 else eq_w.copy()
         if t + 1 < n_days and dates[t + 1] in eq_rebal_set:
             turnover = np.sum(np.abs(eq_w - curr_w)) / 2.0
             eq_daily[t] -= turnover * txn_cost; curr_w = eq_w.copy()
@@ -423,7 +424,8 @@ def run_fullsample(symbols, score_type='Win Rate', n_portfolios=10000,
 
     for t in range(n_days):
         eq_daily[t] = curr_w @ ret_arr[t]
-        grown = curr_w * (1 + ret_arr[t]); curr_w = grown / grown.sum()
+        grown = curr_w * (1 + ret_arr[t]); g_sum = grown.sum()
+        curr_w = grown / g_sum if g_sum != 0 else eq_w.copy()
         if t + 1 < n_days and dates[t + 1] in eq_rebal_set:
             turnover = np.sum(np.abs(eq_w - curr_w)) / 2.0
             eq_daily[t] -= turnover * txn_cost; curr_w = eq_w.copy()
@@ -454,7 +456,8 @@ def run_fullsample(symbols, score_type='Win Rate', n_portfolios=10000,
             is_daily = np.zeros(n_days); curr_opt = opt_w.copy()
             for t in range(n_days):
                 is_daily[t] = curr_opt @ ret_arr[t]
-                grown = curr_opt * (1 + ret_arr[t]); curr_opt = grown / grown.sum()
+                grown = curr_opt * (1 + ret_arr[t]); g_sum = grown.sum()
+                curr_opt = grown / g_sum if g_sum != 0 else opt_w.copy()
                 if t + 1 < n_days and dates[t + 1] in eq_rebal_set:
                     turnover = np.sum(np.abs(opt_w - curr_opt)) / 2.0
                     is_daily[t] -= turnover * txn_cost; curr_opt = opt_w.copy()

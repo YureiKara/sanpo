@@ -327,7 +327,7 @@ def render_options_tab(is_mobile):
             Put OI <b style='color:{neg_c}'>{total_put_oi:,}</b>
             &nbsp;·&nbsp; Call Vol <b style='color:{pos_c}'>{total_call_vol:,}</b>
             Put Vol <b style='color:{neg_c}'>{total_put_vol:,}</b>
-            &nbsp;·&nbsp; Max Pain <b style='color:{mp_c}'>${max_pain:.0f}</b>
+            &nbsp;·&nbsp; Max Pain <b style='color:{mp_c}'>{f"${max_pain:.0f}" if max_pain is not None else "N/A"}</b>
         </span>
     </div>""", unsafe_allow_html=True)
 

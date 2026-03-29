@@ -638,16 +638,16 @@ def _render_pulse_news(iframe_height=600):
     rows = ''
     for i, item in enumerate(all_items):
         bg = s['bg2'] if i % 2 == 0 else s['row_alt']
-        src_col = item['source']
-        dt_col  = item['date']
+        src_col = item.get('source', '')
+        dt_col  = item.get('date', '')
         rows += (
             "<div style='padding:4px 10px;background:" + bg + ";border-bottom:1px solid " + s['border'] + "18;"
             "display:flex;align-items:baseline;gap:6px;font-family:" + FONTS + ";white-space:nowrap;overflow:hidden'>"
             "<span style='flex-shrink:0;width:115px;display:flex;gap:5px;align-items:baseline'>"
             "<span style='color:" + pos_c + ";font-weight:600;font-size:9px'>" + src_col + "</span>"
             "<span style='color:" + s['muted'] + ";font-size:9px'>" + dt_col + "</span></span>"
-            "<a href='" + item['url'] + "' target='_blank' style='color:" + s['link'] + ";text-decoration:none;"
-            "font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>" + item['title'] + "</a>"
+            "<a href='" + item.get('url', '#') + "' target='_blank' style='color:" + s['link'] + ";text-decoration:none;"
+            "font-size:10.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis'>" + item.get('title', '') + "</a>"
             "</div>"
         )
 

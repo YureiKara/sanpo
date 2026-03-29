@@ -254,7 +254,7 @@ class FuturesDataFetcher:
                 last_timestamp = hist_intraday.index[-1]
             else:
                 current_price = hist_yearly['Close'].iloc[-1]
-                daily_open = hist_yearly['Open'].iloc[-1]
+                daily_open = hist_yearly['Open'].iloc[0]
                 daily_change = ((current_price - daily_open) / daily_open) * 100
                 last_timestamp = hist_yearly.index[-1]
 
