@@ -19,8 +19,8 @@ from config import (FUTURES_GROUPS, THEMES, SYMBOL_NAMES, FONTS, clean_symbol)
 logger = logging.getLogger(__name__)
 
 CHART_CONFIGS = [
-    ('Day (15m)', '15m', 'Session High/Low', 'session'),
-    ('Weekly (4H)', '1h', 'Week High/Low', 'week'),
+    ('Day (15m)', '15m', '5-Session High/Low', 'session'),
+    ('Weekly (1H)', '1h', 'Week High/Low', 'week'),
     ('Monthly (Daily)', '1d', 'Month High/Low', 'month'),
     ('Year (Weekly)', '1wk', 'Year High/Low', 'year'),
 ]
@@ -44,7 +44,7 @@ def zone_colors():
 
 def get_dynamic_period(boundary_type):
     now = pd.Timestamp.now()
-    if boundary_type == 'session': return '3d'
+    if boundary_type == 'session': return '10d'
     elif boundary_type == 'week': return f'{int(now.weekday() + 1 + 14 + 3)}d'
     elif boundary_type == 'month': return f'{int(now.day + 65 + 5)}d'
     elif boundary_type == 'year': return '3y'
@@ -83,19 +83,21 @@ def _slice_period(hist, period_type, now=None):
         median_gap = gaps.median()
         today = now.date()
         if median_gap < pd.Timedelta(hours=4):
-            # Intraday data: use midnight date change
+            # Intraday data: use last 5 sessions for a stable zone
             prev_data = hist[dates < today]
             if prev_data.empty:
                 return None, None
-            prev_date = prev_data.index[-1].date()
-            prev_period = prev_data[prev_data.index.map(_to_date) == prev_date]
+            unique_dates = sorted(set(prev_data.index.map(_to_date)))
+            n_sessions = min(5, len(unique_dates))
+            cutoff_dates = set(unique_dates[-n_sessions:])
+            prev_period = prev_data[prev_data.index.map(_to_date).isin(cutoff_dates)]
             current_bars = hist[dates >= today]
         else:
-            # Daily data: use calendar date
+            # Daily data: use last 5 trading days
             prev_data = hist[dates < today]
             if prev_data.empty:
                 return None, None
-            prev_period = prev_data.iloc[-1:]
+            prev_period = prev_data.iloc[-5:]
             current_bars = hist[dates >= today]
 
     elif period_type == 'week':
@@ -173,6 +175,21 @@ class PeriodBoundaryCalculator:
                         prev_low=prev_data['Low'].min(),
                         prev_close=prev_data['Close'].iloc[-1]))
                 prev_start = i
+
+        # Session boundaries: make the last boundary's H/L span the prior 5 sessions
+        # so the zone is a stable 5-day range instead of a single volatile session
+        if boundary_type == 'session' and len(boundaries) >= 2:
+            n_lookback = min(5, len(boundaries))
+            lookback = boundaries[-n_lookback:]
+            combined_high = max(b.prev_high for b in lookback)
+            combined_low = min(b.prev_low for b in lookback)
+            last = boundaries[-1]
+            boundaries[-1] = PeriodBoundary(
+                idx=last.idx, date=last.date,
+                prev_high=combined_high,
+                prev_low=combined_low,
+                prev_close=last.prev_close)
+
         return boundaries
 
 def calculate_rsi(closes, period=14):
@@ -703,10 +720,26 @@ def render_scanner_table(metrics, selected_symbol):
     _n_rows = len(metrics)
     _scanner_h = 52 + _n_rows * 26 + 2
 
+    def _zone_dots(m):
+        """Render 4 colored dots for D/W/M/Y zone status."""
+        labels = ['D', 'W', 'M', 'Y']
+        statuses = [m.day_status, m.week_status, m.month_status, m.year_status]
+        dots = ''
+        for lbl, s in zip(labels, statuses):
+            c = zc.get(s, _mut)
+            if s == 'above_high': icon = '▲'
+            elif s == 'above_mid': icon = '●'
+            elif s == 'below_mid': icon = '●'
+            elif s == 'below_low': icon = '▼'
+            else: icon = '·'
+            dots += f"<span title='{lbl}: {STATUS_LABELS.get(s, \"—\")}' style='color:{c};font-size:9px;font-weight:700'>{icon}</span>"
+        return dots
+
     html = f"""<div style='overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid {_bdr};border-radius:6px;height:{_scanner_h}px;overflow-y:hidden'><table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>
         <thead style='background:{_bg3}'><tr>
             <th style='{th}text-align:left' rowspan='2'></th><th style='{th}' rowspan='2'>PRICE</th>
             <th style='{th}border-bottom:none' colspan='4'>CHANGE</th>
+            <th style='{th}' rowspan='2'>ZONES</th>
             <th style='{th}' rowspan='2'>TREND</th>
             <th style='{th}' rowspan='2'>HV</th><th style='{th}' rowspan='2'>DD</th>
             <th style='{th}border-bottom:none' colspan='4'>SHARPE</th>
@@ -735,6 +768,7 @@ def render_scanner_table(metrics, selected_symbol):
             <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_wtd, m.week_status, m.week_reversal)}</td>
             <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_mtd, m.month_status, m.month_reversal)}</td>
             <td style='{td}text-align:center;white-space:nowrap'>{_chg(m.change_ytd, m.year_status, m.year_reversal)}</td>
+            <td style='{td}text-align:center;white-space:nowrap;letter-spacing:2px'>{_zone_dots(m)}</td>
             <td style='{td}text-align:center;white-space:nowrap'>{_trend(m)}</td>
             <td style='{td}text-align:center'>{hv}</td>
             <td style='{td}text-align:center'>{dd}</td>
