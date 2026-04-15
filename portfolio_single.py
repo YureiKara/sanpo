@@ -488,7 +488,7 @@ def _display_ew(is_mobile, theme):
     rebal_dates = sorted(res['rebal_set'])
     for rd in rebal_dates:
         if rd in cum.index:
-            fig.add_vline(x=rd, line=dict(color='rgba(251,191,36,0.25)', width=0.5))
+            fig.add_vline(x=rd, line=dict(color='#fbbf24', width=0.5), opacity=0.25)
 
     # End value
     fig.add_annotation(text=f"<b>{end_val:.0f}</b>", x=cum.index[-1], y=end_val,
