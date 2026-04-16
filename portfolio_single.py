@@ -411,7 +411,9 @@ def _run_ew(symbols, rebal_months, fetch_days, txn_cost, rebal_label, period_lab
     eq_w = np.ones(n_assets) / n_assets
 
     # Rebalance schedule
-    if rebal_months == 0:
+    if rebal_months == -1:
+        dates = returns.index; rebal_set = set()
+    elif rebal_months == 0:
         dates = returns.index; rebal_set = set(); seen_weeks = set()
         for d in dates:
             yw = (d.year, d.isocalendar()[1])
@@ -469,40 +471,62 @@ def _display_ew(is_mobile, theme):
         &nbsp;MDD <b style='color:{neg_c}'>{m["max_dd"]*100:.1f}%</b></span>
     </div>""", unsafe_allow_html=True)
 
-    # Equity curve
+    # Equity curve + Drawdown (2-panel like MC chart)
     _section('EW EQUITY CURVE', f'{res["rebal_label"]} · cost {res["txn_cost"]*100:.2f}%')
     _pbg = theme.get('plot_bg', '#121212'); _grd = theme.get('grid', '#1f1f1f')
     _axl = theme.get('axis_line', '#2a2a2a'); _tk = theme.get('tick', '#888888')
 
+    cum_arr = (1 + ew_ret).cumprod().values
     cum = (1 + ew_ret).cumprod() * 100
     end_val = float(cum.iloc[-1])
     end_c = '#f8fafc' if end_val >= 100 else neg_c
 
-    fig = go.Figure()
+    # Drawdown
+    peak = np.maximum.accumulate(cum_arr)
+    dd = (cum_arr - peak) / peak * 100  # percentage
+
+    from plotly.subplots import make_subplots
+    fig = make_subplots(rows=2, cols=1, row_heights=[0.75, 0.25],
+                        shared_xaxes=True, vertical_spacing=0.04)
+
+    # Equity curve
+    tot_pct = (cum_arr[-1] - 1) * 100
+    eq_lbl = f'Equal Weight ({tot_pct:+.1f}%)  Sharpe {m["sharpe"]:.2f} · Win {m["win_rate"]*100:.0f}%'
     fig.add_trace(go.Scatter(x=cum.index, y=cum.values,
-        mode='lines', line=dict(color=pos_c, width=2, shape='spline', smoothing=0.8),
-        hovertemplate='%{y:.1f}<extra></extra>'))
-    fig.add_hline(y=100, line=dict(color=_grd, width=0.8, dash='dot'))
+        mode='lines', line=dict(color=pos_c, width=2),
+        name=eq_lbl, hovertemplate='%{y:.1f}<extra></extra>'), row=1, col=1)
+    fig.add_hline(y=100, line=dict(color=_grd, width=0.8, dash='dot'), row=1, col=1)
 
     # Rebalance markers
     rebal_dates = sorted(res['rebal_set'])
     for rd in rebal_dates:
         if rd in cum.index:
-            fig.add_vline(x=rd, line=dict(color='#fbbf24', width=0.5), opacity=0.25)
+            fig.add_vline(x=rd, line=dict(color='#fbbf24', width=0.5), opacity=0.25, row=1, col=1)
 
     # End value
     fig.add_annotation(text=f"<b>{end_val:.0f}</b>", x=cum.index[-1], y=end_val,
         showarrow=False, font=dict(size=12, color=end_c, family=FONTS),
-        xanchor='left', xshift=6, yanchor='middle')
+        xanchor='left', xshift=6, yanchor='middle', row=1, col=1)
 
-    fig.update_layout(template='plotly_dark', height=300,
-        margin=dict(l=40, r=60, t=20, b=30),
+    # Drawdown panel
+    nr = neg_c.lstrip('#'); rv, gv, bv = int(nr[:2], 16), int(nr[2:4], 16), int(nr[4:6], 16)
+    fig.add_trace(go.Scatter(x=cum.index, y=dd, mode='lines', fill='tozeroy',
+        line=dict(color=neg_c, width=1), fillcolor=f'rgba({rv},{gv},{bv},0.2)',
+        name='Drawdown', showlegend=False,
+        hovertemplate='DD: %{y:.1f}%<extra></extra>'), row=2, col=1)
+
+    fig.update_layout(template='plotly_dark', height=400,
+        margin=dict(l=40, r=60, t=35, b=25),
         plot_bgcolor=_pbg, paper_bgcolor=_pbg,
-        showlegend=False, hovermode='x unified', font=dict(family=FONTS))
+        showlegend=True,
+        legend=dict(x=0.01, y=0.88, bgcolor='rgba(0,0,0,0)',
+                    font=dict(size=12, color='#ffffff', family=FONTS), borderwidth=0),
+        hovermode='x unified', font=dict(family=FONTS))
     fig.update_xaxes(gridcolor=_grd, linecolor=_axl,
         tickfont=dict(color=_tk, size=9, family=FONTS), showgrid=False)
     fig.update_yaxes(gridcolor=_grd, linecolor=_axl,
         tickfont=dict(color=_tk, size=9, family=FONTS), side='right')
+    fig.update_yaxes(ticksuffix='%', row=2, col=1)
     st.plotly_chart(fig, use_container_width=True, config={
         'scrollZoom': True, 'displayModeBar': False, 'responsive': True})
 
