@@ -49,7 +49,7 @@ PORTFOLIO_APPROACHES = OrderedDict([
 ])
 
 REBAL_OPTIONS = OrderedDict([
-    ('Weekly', 0), ('Monthly', 1), ('Quarterly', 3), ('Semi-Annual', 6), ('Annual', 12),
+    ('No Rebalance', -1), ('Weekly', 0), ('Monthly', 1), ('Quarterly', 3), ('Semi-Annual', 6), ('Annual', 12),
 ])
 
 PERIOD_OPTIONS = OrderedDict([
@@ -226,7 +226,9 @@ def _walk_forward_single(returns_df, approach, score_type, rebal_months,
     n_assets = returns_df.shape[1]; mw = max_weight; mnw = min_weight
     min_is_days = max(approach['windows'].values()); dates = returns_df.index
 
-    if rebal_months == 0:
+    if rebal_months == -1:
+        candidate_dates = [dates[min_is_days]] if len(dates) > min_is_days else []
+    elif rebal_months == 0:
         # Weekly: rebalance on first trading day of each week
         candidate_dates = []; seen_weeks = set()
         for d in dates:
@@ -328,7 +330,9 @@ def run_walkforward_grid(symbols, score_type='Win Rate', rebal_months=3, n_portf
 
     # Equal weight benchmark with drift + transaction costs
     eq_w = np.ones(n_assets) / n_assets
-    if rebal_months == 0:
+    if rebal_months == -1:
+        dates = returns.index; eq_rebal_set = set()
+    elif rebal_months == 0:
         # Weekly
         dates = returns.index; eq_rebal_set = set(); seen_weeks = set()
         for d in dates:
@@ -407,7 +411,9 @@ def run_fullsample(symbols, score_type='Win Rate', n_portfolios=10000,
     dates = returns.index
 
     # Build rebalance set for EW
-    if rebal_months == 0:
+    if rebal_months == -1:
+        eq_rebal_set = set()
+    elif rebal_months == 0:
         eq_rebal_set = set(); seen_weeks = set()
         for d in dates:
             yw = (d.year, d.isocalendar()[1])
