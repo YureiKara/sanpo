@@ -1,763 +1,763 @@
 {
-  "updated": "2026-04-20T07:09:26.956410+08:00",
+  "updated": "2026-04-20T07:09:49.633555+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
     {
-      "question": "What will WTI Crude Oil (WTI) hit in April 2026?",
+      "question": "Democratic Presidential Nominee 2028",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "↑ $110",
+          "label": "Gavin Newsom",
+          "pct": 27.5
+        },
+        {
+          "label": "Alexandria Ocasio-Cortez",
+          "pct": 8.3
+        },
+        {
+          "label": "Kamala Harris",
+          "pct": 6.8
+        }
+      ],
+      "volume": 1074121400.7026892,
+      "volume24": 3796539.11798,
+      "vol1wk": 41406283.524064034,
+      "liquidity": 54036580.48165,
+      "open_interest": 11441018.716861997,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
+    },
+    {
+      "question": "Republican Presidential Nominee 2028",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Robert F. Kennedy Jr.",
+          "pct": 49.0
+        },
+        {
+          "label": "J.D. Vance",
+          "pct": 39.1
+        },
+        {
+          "label": "Marco Rubio",
+          "pct": 21.3
+        }
+      ],
+      "volume": 569605174.1682996,
+      "volume24": 2439892.438553,
+      "vol1wk": 22285583.719574,
+      "liquidity": 29403098.86482,
+      "open_interest": 8129699.898559998,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
+    },
+    {
+      "question": "Presidential Election Winner 2028",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "JD Vance",
+          "pct": 18.7
+        },
+        {
+          "label": "Gavin Newsom",
+          "pct": 16.8
+        },
+        {
+          "label": "Marco Rubio",
+          "pct": 11.1
+        }
+      ],
+      "volume": 541559866.5787661,
+      "volume24": 2567880.596347001,
+      "vol1wk": 22797186.102720004,
+      "liquidity": 29540803.79697,
+      "open_interest": 30008373.579842,
+      "category": "",
+      "expiry": "07 Nov 2028",
+      "url": "https://polymarket.com/event/presidential-election-winner-2028"
+    },
+    {
+      "question": "Fed decision in April?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "No change",
+          "pct": 99.4
+        },
+        {
+          "label": "25 bps decrease",
+          "pct": 0.4
+        },
+        {
+          "label": "25+ bps increase",
+          "pct": 0.2
+        }
+      ],
+      "volume": 115984387.35420343,
+      "volume24": 4115743.3293970004,
+      "vol1wk": 39612042.22978201,
+      "liquidity": 13389156.28468,
+      "open_interest": 16521178.539782,
+      "category": "",
+      "expiry": "29 Apr 2026",
+      "url": "https://polymarket.com/event/fed-decision-in-april"
+    },
+    {
+      "question": "Israel x Hezbollah ceasefire by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "June 30",
           "pct": 100.0
         },
         {
-          "label": "↑ $100",
+          "label": "April 30",
           "pct": 100.0
         },
         {
-          "label": "↑ $90",
+          "label": "April 18",
           "pct": 100.0
         }
       ],
-      "volume": 42940121.10670103,
-      "volume24": 1429412.064011,
-      "vol1wk": 10782047.351396,
-      "liquidity": 1536723.533,
-      "open_interest": 8738706.393899,
+      "volume": 98242470.37020046,
+      "volume24": 33211474.460236132,
+      "vol1wk": 84204334.44172004,
+      "liquidity": 6765202.74768,
+      "open_interest": 53614451.416163,
       "category": "",
-      "expiry": "30 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-wti-hit-in-april-2026"
+      "expiry": "30 Jun 2026",
+      "url": "https://polymarket.com/event/israel-x-hezbollah-ceasefire-by"
     },
     {
-      "question": "What price will Bitcoin hit in April?",
+      "question": "Brazil Presidential Election",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "↑ 75,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 70,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 80,000",
-          "pct": 30.5
-        }
-      ],
-      "volume": 33135431.17672591,
-      "volume24": 2071331.3123559996,
-      "vol1wk": 14965994.144771999,
-      "liquidity": 4148797.72072,
-      "open_interest": 9602729.262324002,
-      "category": "",
-      "expiry": "01 May 2026",
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-april-2026"
-    },
-    {
-      "question": "What price will Bitcoin hit in 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↓ 85,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 65,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 90,000",
-          "pct": 100.0
-        }
-      ],
-      "volume": 32231120.20349088,
-      "volume24": 164713.81708500002,
-      "vol1wk": 2557937.728429001,
-      "liquidity": 1877630.70718,
-      "open_interest": 5854627.334168999,
-      "category": "",
-      "expiry": "01 Jan 2027",
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027"
-    },
-    {
-      "question": "MegaETH market cap (FDV) one day after launch? (if by June 30)",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": ">$600M",
-          "pct": 89.5
-        },
-        {
-          "label": ">$800M",
-          "pct": 73.0
-        },
-        {
-          "label": ">$1B",
-          "pct": 60.5
-        }
-      ],
-      "volume": 16277544.556547107,
-      "volume24": 72121.78946500001,
-      "vol1wk": 1038405.492802,
-      "liquidity": 363067.3181,
-      "open_interest": 2734006.0882800003,
-      "category": "",
-      "expiry": "01 Jul 2026",
-      "url": "https://polymarket.com/event/megaeth-market-cap-fdv-one-day-after-launch"
-    },
-    {
-      "question": "What price will Ethereum hit in April?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↑ 2,400",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 2,200",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 2,000",
-          "pct": 27.7
-        }
-      ],
-      "volume": 7676437.5361290015,
-      "volume24": 372409.941713,
-      "vol1wk": 3088640.0474380017,
-      "liquidity": 1675403.20532,
-      "open_interest": 2418768.9590890007,
-      "category": "",
-      "expiry": "01 May 2026",
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-in-april-2026"
-    },
-    {
-      "question": "What price will Ethereum hit in 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↓ 2,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 2,500",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 1,500",
-          "pct": 53.5
-        }
-      ],
-      "volume": 4291366.570324002,
-      "volume24": 44147.107977,
-      "vol1wk": 415298.788377,
-      "liquidity": 625757.73044,
-      "open_interest": 1298889.012772,
-      "category": "",
-      "expiry": "01 Jan 2027",
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-before-2027"
-    },
-    {
-      "question": "Predict.fun FDV above ___ one day after launch?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "$50M",
-          "pct": 96.2
-        },
-        {
-          "label": "$100M",
-          "pct": 87.5
-        },
-        {
-          "label": "$200M",
-          "pct": 71.5
-        }
-      ],
-      "volume": 4269006.064563002,
-      "volume24": 36543.159548,
-      "vol1wk": 437333.3324610001,
-      "liquidity": 536524.62212,
-      "open_interest": 1317484.379947,
-      "category": "",
-      "expiry": "01 Jan 2028",
-      "url": "https://polymarket.com/event/predictfun-fdv-above-one-day-after-launch"
-    },
-    {
-      "question": "USD.AI FDV above ___ one day after launch?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "$150M ",
-          "pct": 98.6
-        },
-        {
-          "label": "$100M ",
-          "pct": 98.5
-        },
-        {
-          "label": "$200M",
-          "pct": 87.0
-        }
-      ],
-      "volume": 3447261.5592989954,
-      "volume24": 94580.249619,
-      "vol1wk": 609152.830592,
-      "liquidity": 437531.29474,
-      "open_interest": 787176.871473,
-      "category": "",
-      "expiry": "01 Jan 2027",
-      "url": "https://polymarket.com/event/usdai-fdv-above-one-day-after-launch"
-    },
-    {
-      "question": "What price will Solana hit in April?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↑ 90",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 80",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 70",
-          "pct": 13.5
-        }
-      ],
-      "volume": 2299439.3326740013,
-      "volume24": 67230.22261900002,
-      "vol1wk": 1049917.269053,
-      "liquidity": 480872.6719,
-      "open_interest": 840975.9378190001,
-      "category": "",
-      "expiry": "01 May 2026",
-      "url": "https://polymarket.com/event/what-price-will-solana-hit-in-april-2026"
-    },
-    {
-      "question": "What price will Bitcoin hit April 13-19?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↑ 76,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 78,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 74,000",
-          "pct": 100.0
-        }
-      ],
-      "volume": 1718303.1244269994,
-      "volume24": 564446.632207,
-      "vol1wk": 1390899.5366300005,
-      "liquidity": 503947.24737,
-      "open_interest": 616732.921215,
-      "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-april-13-19"
-    },
-    {
-      "question": "Bitcoin above ___ on April 20?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "62,000",
-          "pct": 100.0
-        },
-        {
-          "label": "64,000",
-          "pct": 100.0
-        },
-        {
-          "label": "66,000",
-          "pct": 99.8
-        }
-      ],
-      "volume": 1538024.5037519995,
-      "volume24": 959600.92544,
-      "vol1wk": 1538024.503752,
-      "liquidity": 400052.60678,
-      "open_interest": 739414.292975,
-      "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-above-on-april-20"
-    },
-    {
-      "question": "Will MegaETH launch a token by ___?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "December 31, 2026",
-          "pct": 98.5
-        },
-        {
-          "label": "September 30, 2026",
-          "pct": 97.7
-        },
-        {
-          "label": "June 30, 2026",
-          "pct": 90.5
-        }
-      ],
-      "volume": 1172328.9612220007,
-      "volume24": 84716.848858,
-      "vol1wk": 600106.5297890002,
-      "liquidity": 61992.52585,
-      "open_interest": 483272.78940400004,
-      "category": "",
-      "expiry": "01 Jan 2027",
-      "url": "https://polymarket.com/event/will-megaeth-launch-a-token-by"
-    },
-    {
-      "question": "What price will XRP hit in April?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↑ 1.40",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 1.60",
-          "pct": 18.5
-        },
-        {
-          "label": "↓ 1.20",
-          "pct": 15.0
-        }
-      ],
-      "volume": 854134.3921140002,
-      "volume24": 32866.527933000005,
-      "vol1wk": 399276.32152099995,
-      "liquidity": 363353.28504,
-      "open_interest": 395923.10591,
-      "category": "",
-      "expiry": "01 May 2026",
-      "url": "https://polymarket.com/event/what-price-will-xrp-hit-in-april-2026"
-    },
-    {
-      "question": "What price will Ethereum hit April 13-19?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↑ 2,400",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 2,300",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 2,100",
-          "pct": 1.8
-        }
-      ],
-      "volume": 536750.055496,
-      "volume24": 138743.478934,
-      "vol1wk": 412477.9465859999,
-      "liquidity": 335330.03521,
-      "open_interest": 291981.410503,
-      "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-april-13-19"
-    },
-    {
-      "question": "Ethereum above ___ on April 20?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "1,700",
-          "pct": 100.0
-        },
-        {
-          "label": "1,800",
-          "pct": 100.0
-        },
-        {
-          "label": "1,900",
-          "pct": 99.7
-        }
-      ],
-      "volume": 416348.5524549999,
-      "volume24": 233738.432355,
-      "vol1wk": 416348.5524549999,
-      "liquidity": 238205.02883,
-      "open_interest": 192481.165981,
-      "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/ethereum-above-on-april-20"
-    },
-    {
-      "question": "What price will Bitcoin hit on April 19?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↓ 75,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 76,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↓ 74,000",
-          "pct": 100.0
-        }
-      ],
-      "volume": 372846.668096,
-      "volume24": 372846.668096,
-      "vol1wk": 372846.668096,
-      "liquidity": 616541.95631,
-      "open_interest": 201558.522709,
-      "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-on-april-19"
-    },
-    {
-      "question": "Bitcoin above ___ on April 21?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "66,000",
-          "pct": 99.2
-        },
-        {
-          "label": "68,000",
-          "pct": 99.1
-        },
-        {
-          "label": "70,000",
-          "pct": 93.6
-        }
-      ],
-      "volume": 351067.517438,
-      "volume24": 117859.681779,
-      "vol1wk": 351067.51743800007,
-      "liquidity": 269800.74913,
-      "open_interest": 181386.709014,
-      "category": "",
-      "expiry": "21 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-above-on-april-21"
-    },
-    {
-      "question": "Who will the \"Finding Satoshi\" documentary identify as Satoshi?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Hal Finney",
-          "pct": 63.5
-        },
-        {
-          "label": "Nick Szabo",
-          "pct": 14.5
-        },
-        {
-          "label": "Len Sassaman",
-          "pct": 10.5
-        }
-      ],
-      "volume": 130649.73521999999,
-      "volume24": 33815.992464,
-      "vol1wk": 118122.463129,
-      "liquidity": 99285.52019,
-      "open_interest": 56991.276707,
-      "category": "",
-      "expiry": "01 May 2026",
-      "url": "https://polymarket.com/event/who-will-the-finding-satoshi-documentary-identify-as-satoshi"
-    },
-    {
-      "question": "Bitcoin price on April 20?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "72,000-74,000",
-          "pct": 43.5
-        },
-        {
-          "label": "74,000-76,000",
+          "label": "Luiz Inácio Lula da Silva",
           "pct": 39.5
         },
         {
-          "label": "70,000-72,000",
-          "pct": 8.8
+          "label": "Flávio Bolsonaro",
+          "pct": 39.5
+        },
+        {
+          "label": "Renan Santos",
+          "pct": 6.5
         }
       ],
-      "volume": 126894.859725,
-      "volume24": 87506.914019,
-      "vol1wk": 126894.85972500002,
-      "liquidity": 249251.90966,
-      "open_interest": 81536.61429,
+      "volume": 54441230.07263467,
+      "volume24": 511663.048604,
+      "vol1wk": 5745809.027009001,
+      "liquidity": 4276631.13596,
+      "open_interest": 1796433.7997799998,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-price-on-april-20"
+      "expiry": "04 Oct 2026",
+      "url": "https://polymarket.com/event/brazil-presidential-election"
     },
     {
-      "question": "Bitcoin Up or Down - April 19, 4PM ET",
+      "question": "Iran x Israel/US conflict ends by...?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 100.0
+          "label": "December 31",
+          "pct": 97.2
         },
         {
-          "label": "Up",
-          "pct": 0.1
+          "label": "June 30",
+          "pct": 87.6
+        },
+        {
+          "label": "May 15",
+          "pct": 85.0
         }
       ],
-      "volume": 101703.96762000002,
-      "volume24": 101703.96761999998,
-      "vol1wk": 101703.96761999998,
-      "liquidity": 481747.36804,
-      "open_interest": 75135.475371,
+      "volume": 47909970.55853192,
+      "volume24": 2314190.948327999,
+      "vol1wk": 10606708.843032012,
+      "liquidity": 521993.45732,
+      "open_interest": 7180356.726670001,
       "category": "",
-      "expiry": "19 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-april-19-2026-4pm-et"
+      "expiry": "31 Mar 2026",
+      "url": "https://polymarket.com/event/iran-x-israelus-conflict-ends-by"
     },
     {
-      "question": "Ethereum above ___ on April 21?",
+      "question": "Next French Presidential Election",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "1,900",
-          "pct": 99.5
+          "label": "Jordan Bardella",
+          "pct": 22.5
         },
         {
-          "label": "2,000",
-          "pct": 98.2
+          "label": "Édouard Philippe",
+          "pct": 22.5
         },
         {
-          "label": "2,100",
-          "pct": 92.1
+          "label": "Jean-Luc Mélenchon",
+          "pct": 8.0
         }
       ],
-      "volume": 95317.18244299998,
-      "volume24": 69196.95865999999,
-      "vol1wk": 95317.182443,
-      "liquidity": 221821.53198,
-      "open_interest": 79233.17591700002,
+      "volume": 45576378.19008212,
+      "volume24": 803872.206854,
+      "vol1wk": 8141692.418165001,
+      "liquidity": 4649189.72572,
+      "open_interest": 475205.6430849998,
       "category": "",
-      "expiry": "21 Apr 2026",
-      "url": "https://polymarket.com/event/ethereum-above-on-april-21"
+      "expiry": "30 Apr 2027",
+      "url": "https://polymarket.com/event/next-french-presidential-election"
     },
     {
-      "question": "What price will Ethereum hit on April 19?",
+      "question": "Peru Presidential Election Winner",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "↑ 2,350",
-          "pct": 100.0
+          "label": "Keiko Fujimori",
+          "pct": 65.5
         },
         {
-          "label": "↓ 2,300",
-          "pct": 100.0
+          "label": "Roberto Sánchez Palomino",
+          "pct": 24.1
         },
         {
-          "label": "↓ 2,250",
-          "pct": 71.5
+          "label": "Rafael López Aliaga",
+          "pct": 8.0
         }
       ],
-      "volume": 80229.85741,
-      "volume24": 80229.85741,
-      "vol1wk": 80229.85741,
-      "liquidity": 102127.6295,
-      "open_interest": 38924.807355000004,
+      "volume": 37816088.85381085,
+      "volume24": 926573.945735,
+      "vol1wk": 22307182.150457982,
+      "liquidity": 5465187.81879,
+      "open_interest": 2946713.3664539997,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-on-april-19"
+      "expiry": "07 Jun 2026",
+      "url": "https://polymarket.com/event/peru-presidential-election-winner"
     },
     {
-      "question": "Bitcoin above ___ on April 24?",
+      "question": "Will the Iranian regime fall by April 30?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "68,000",
-          "pct": 93.4
+          "label": "No",
+          "pct": 99.0
         },
         {
-          "label": "70,000",
-          "pct": 85.4
-        },
-        {
-          "label": "72,000",
-          "pct": 69.5
+          "label": "Yes",
+          "pct": 1.1
         }
       ],
-      "volume": 72737.19647100002,
-      "volume24": 28028.454830000002,
-      "vol1wk": 72737.19647099999,
-      "liquidity": 247063.4222,
-      "open_interest": 54656.952196,
+      "volume": 36211501.57782316,
+      "volume24": 1532975.2684740005,
+      "vol1wk": 6613198.652234011,
+      "liquidity": 1856982.19195,
+      "open_interest": 13435618.228461,
       "category": "",
-      "expiry": "24 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-above-on-april-24"
+      "expiry": "30 Apr 2026",
+      "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-april-30"
     },
     {
-      "question": "Bitcoin Up or Down - April 19, 5PM ET",
+      "question": "Who will be confirmed as Fed Chair?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 100.0
+          "label": "Kevin Warsh",
+          "pct": 94.1
         },
         {
-          "label": "Up",
-          "pct": 0.1
+          "label": "Michelle Bowman",
+          "pct": 1.4
+        },
+        {
+          "label": "Judy Shelton",
+          "pct": 1.3
         }
       ],
-      "volume": 72226.88647199997,
-      "volume24": 72226.88647200001,
-      "vol1wk": 72226.88647200001,
-      "liquidity": 568020.00204,
-      "open_interest": 37477.881679,
+      "volume": 33081173.387464724,
+      "volume24": 965865.0908159949,
+      "vol1wk": 5639609.980499999,
+      "liquidity": 1010231.64233,
+      "open_interest": 5116159.467602999,
       "category": "",
-      "expiry": "19 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-april-19-2026-5pm-et"
+      "expiry": "31 Oct 2026",
+      "url": "https://polymarket.com/event/who-will-be-confirmed-as-fed-chair"
     },
     {
-      "question": "Bitcoin Up or Down - April 19, 6PM ET",
+      "question": "Will the Iranian regime fall by June 30?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 100.0
+          "label": "No",
+          "pct": 90.5
         },
         {
-          "label": "Up",
-          "pct": 0.1
+          "label": "Yes",
+          "pct": 9.5
         }
       ],
-      "volume": 68718.41369399987,
-      "volume24": 68718.41369399989,
-      "vol1wk": 68718.41369399989,
-      "liquidity": 396630.28624,
-      "open_interest": 48007.32262,
+      "volume": 32364706.771071937,
+      "volume24": 433222.4652569973,
+      "vol1wk": 2533708.2090090024,
+      "liquidity": 403054.3653,
+      "open_interest": 9503476.559119,
       "category": "",
-      "expiry": "19 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-april-19-2026-6pm-et"
+      "expiry": "30 Jun 2026",
+      "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-june-30"
     },
     {
-      "question": "Ethereum price on April 20?",
+      "question": "Kharg Island no longer under Iranian control by...?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "2,200-2,300",
+          "label": "June 30",
+          "pct": 21.0
+        },
+        {
+          "label": "May 31",
+          "pct": 16.5
+        },
+        {
+          "label": "April 30",
+          "pct": 6.6
+        }
+      ],
+      "volume": 29888729.6241317,
+      "volume24": 1142636.9156570002,
+      "vol1wk": 5987092.807092995,
+      "liquidity": 226146.80801,
+      "open_interest": 3685121.8328700005,
+      "category": "",
+      "expiry": "31 Mar 2026",
+      "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
+    },
+    {
+      "question": "Trump announces end of military operations against Iran by ...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "June 30",
+          "pct": 78.5
+        },
+        {
+          "label": "May 31",
+          "pct": 68.5
+        },
+        {
+          "label": "April 30",
+          "pct": 32.5
+        }
+      ],
+      "volume": 29012211.525645956,
+      "volume24": 561660.6860639995,
+      "vol1wk": 4164129.122979003,
+      "liquidity": 368852.8285,
+      "open_interest": 2457226.789768,
+      "category": "",
+      "expiry": "30 Jun 2026",
+      "url": "https://polymarket.com/event/trump-announces-end-of-military-operations-against-iran-by"
+    },
+    {
+      "question": "Will the US confirm that aliens exist by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 22.5
+        },
+        {
+          "label": "April 30",
+          "pct": 2.1
+        },
+        {
+          "label": "March 31",
+          "pct": 0.0
+        }
+      ],
+      "volume": 26731340.084425274,
+      "volume24": 617877.5933589998,
+      "vol1wk": 1873078.7396860009,
+      "liquidity": 751415.96045,
+      "open_interest": 6283064.455418,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/will-the-us-confirm-that-aliens-exist-before-2027"
+    },
+    {
+      "question": "2026 Seoul Mayoral Election Winner",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Chong Won-oh",
+          "pct": 89.0
+        },
+        {
+          "label": "Oh Se-hoon",
+          "pct": 7.5
+        },
+        {
+          "label": "Cho Eun-hee",
+          "pct": 0.4
+        }
+      ],
+      "volume": 26261722.07753002,
+      "volume24": 759004.2607879998,
+      "vol1wk": 6679840.837339004,
+      "liquidity": 2502414.49075,
+      "open_interest": 467091.4809220001,
+      "category": "",
+      "expiry": "03 Jun 2026",
+      "url": "https://polymarket.com/event/2026-seoul-mayoral-election-winner"
+    },
+    {
+      "question": "Colombia Presidential Election",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Candidate M",
           "pct": 49.5
         },
         {
-          "label": "2,300-2,400",
-          "pct": 27.0
+          "label": "Paloma Valencia",
+          "pct": 44.0
         },
         {
-          "label": "2,100-2,200",
-          "pct": 16.7
+          "label": "Iván Cepeda Castro",
+          "pct": 34.0
         }
       ],
-      "volume": 55459.99585299999,
-      "volume24": 42133.485729,
-      "vol1wk": 55459.99585299999,
-      "liquidity": 169928.40685,
-      "open_interest": 41933.467475,
+      "volume": 21220406.90597806,
+      "volume24": 428131.41893499997,
+      "vol1wk": 1496883.2843250001,
+      "liquidity": 1396612.72465,
+      "open_interest": 467303.748252,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/ethereum-price-on-april-20"
+      "expiry": "21 Jun 2026",
+      "url": "https://polymarket.com/event/colombia-presidential-election"
     },
     {
-      "question": "Bitcoin Up or Down on April 20?",
+      "question": "US x Iran permanent peace deal by...?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 89.5
+          "label": "June 30",
+          "pct": 64.5
         },
         {
-          "label": "Up",
-          "pct": 10.5
+          "label": "May 31",
+          "pct": 53.5
+        },
+        {
+          "label": "April 30",
+          "pct": 33.5
         }
       ],
-      "volume": 36240.76007799994,
-      "volume24": 33917.85615800002,
-      "vol1wk": 36240.760078000014,
-      "liquidity": 34617.6994,
-      "open_interest": 17825.640572,
+      "volume": 21068024.667549927,
+      "volume24": 3601548.0911530023,
+      "vol1wk": 18965671.63226593,
+      "liquidity": 1039879.2549,
+      "open_interest": 5983203.409642001,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/bitcoin-up-or-down-on-april-20-2026"
+      "expiry": "31 May 2026",
+      "url": "https://polymarket.com/event/us-x-iran-permanent-peace-deal-by"
     },
     {
-      "question": "Bitcoin Up or Down - April 19, 4:00PM-8:00PM ET",
+      "question": "Strait of Hormuz traffic returns to normal by end of April?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 98.2
+          "label": "No",
+          "pct": 77.5
         },
         {
-          "label": "Up",
-          "pct": 1.8
+          "label": "Yes",
+          "pct": 22.5
         }
       ],
-      "volume": 27134.257926000017,
-      "volume24": 27134.257926000017,
-      "vol1wk": 27134.257926000017,
-      "liquidity": 6042.20161,
-      "open_interest": 15773.175368,
+      "volume": 18380736.820679337,
+      "volume24": 1500876.7426599974,
+      "vol1wk": 10952579.219590878,
+      "liquidity": 403094.0292,
+      "open_interest": 3895685.537309,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/btc-updown-4h-1776628800"
+      "expiry": "30 Apr 2026",
+      "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30"
     },
     {
-      "question": "What price will XRP hit on April 19?",
+      "question": "Colombia Chamber of Representatives Election: 3rd Place",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "↓ 1.40",
-          "pct": 100.0
+          "label": "Partido Liberal Colombiano (PLC)",
+          "pct": 85.5
         },
         {
-          "label": "↑ 1.45",
-          "pct": 3.5
+          "label": "Historic Pact for Colombia (PH)",
+          "pct": 14.8
         },
         {
-          "label": "↓ 1.35",
-          "pct": 3.2
+          "label": "Centro Democrático (CD)",
+          "pct": 1.5
         }
       ],
-      "volume": 25743.135007,
-      "volume24": 25743.135007,
-      "vol1wk": 25743.135007,
-      "liquidity": 147403.92877,
-      "open_interest": 22368.873906,
+      "volume": 16011605.573256109,
+      "volume24": 2052712.4556580167,
+      "vol1wk": 7715699.389213005,
+      "liquidity": 58186.46935,
+      "open_interest": 19427.702403999996,
       "category": "",
-      "expiry": "20 Apr 2026",
-      "url": "https://polymarket.com/event/what-price-will-xrp-hit-on-april-19"
+      "expiry": "08 Mar 2026",
+      "url": "https://polymarket.com/event/colombia-chamber-of-representatives-election-3rd-place"
     },
     {
-      "question": "Ethereum Up or Down - April 19, 6PM ET",
+      "question": "Will the U.S. invade Iran before 2027?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Down",
-          "pct": 100.0
+          "label": "No",
+          "pct": 64.5
         },
         {
-          "label": "Up",
-          "pct": 0.1
+          "label": "Yes",
+          "pct": 35.5
         }
       ],
-      "volume": 25236.222190000048,
-      "volume24": 25228.520623000022,
-      "vol1wk": 25236.222190000022,
-      "liquidity": 269625.12553,
-      "open_interest": 18398.280044,
+      "volume": 13362400.504312947,
+      "volume24": 735996.8493410002,
+      "vol1wk": 4705235.296166968,
+      "liquidity": 295909.6473,
+      "open_interest": 3803766.523939,
       "category": "",
-      "expiry": "19 Apr 2026",
-      "url": "https://polymarket.com/event/ethereum-up-or-down-april-19-2026-6pm-et"
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027"
+    },
+    {
+      "question": "Starmer out by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 66.5
+        },
+        {
+          "label": "June 30",
+          "pct": 36.0
+        },
+        {
+          "label": "May 15",
+          "pct": 22.5
+        }
+      ],
+      "volume": 12787536.282629002,
+      "volume24": 505027.975287,
+      "vol1wk": 2960857.4096779986,
+      "liquidity": 212192.88072,
+      "open_interest": 1256463.199696,
+      "category": "",
+      "expiry": "31 Dec 2025",
+      "url": "https://polymarket.com/event/starmer-out-in-2025"
+    },
+    {
+      "question": "Elon Musk # tweets April 14 - April 21, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "220-239",
+          "pct": 36.5
+        },
+        {
+          "label": "240-259",
+          "pct": 23.5
+        },
+        {
+          "label": "200-219",
+          "pct": 23.2
+        }
+      ],
+      "volume": 7768468.883767999,
+      "volume24": 1273896.5952060001,
+      "vol1wk": 5672187.237862999,
+      "liquidity": 1658133.90175,
+      "open_interest": 944894.609906,
+      "category": "",
+      "expiry": "21 Apr 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-april-14-april-21"
+    },
+    {
+      "question": "US obtains Iranian enriched uranium by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 26.5
+        },
+        {
+          "label": "May 31",
+          "pct": 18.5
+        },
+        {
+          "label": "April 30",
+          "pct": 2.5
+        }
+      ],
+      "volume": 6031333.539246891,
+      "volume24": 521154.75469300017,
+      "vol1wk": 3798105.163025007,
+      "liquidity": 467240.5717,
+      "open_interest": 2105466.756736,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/us-obtains-iranian-enriched-uranium-by"
+    },
+    {
+      "question": "US x Iran diplomatic meeting by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "April 30",
+          "pct": 74.0
+        },
+        {
+          "label": "April 22",
+          "pct": 65.0
+        },
+        {
+          "label": "April 21",
+          "pct": 51.0
+        }
+      ],
+      "volume": 4325943.680325013,
+      "volume24": 1444052.7512769985,
+      "vol1wk": 3818928.761615001,
+      "liquidity": 157642.90572,
+      "open_interest": 818219.7876490001,
+      "category": "",
+      "expiry": "30 Apr 2026",
+      "url": "https://polymarket.com/event/us-x-iran-diplomatic-meeting-by-329"
+    },
+    {
+      "question": "Trump announces US blockade of Hormuz lifted by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "May 31",
+          "pct": 75.5
+        },
+        {
+          "label": "April 30",
+          "pct": 56.5
+        },
+        {
+          "label": "April 23",
+          "pct": 25.0
+        }
+      ],
+      "volume": 3302250.6355540017,
+      "volume24": 463267.264955,
+      "vol1wk": 1416275.3820290007,
+      "liquidity": 99926.79718,
+      "open_interest": 456540.731698,
+      "category": "",
+      "expiry": "30 Apr 2026",
+      "url": "https://polymarket.com/event/trump-announces-us-blockade-of-hormuz-lifted-by"
+    },
+    {
+      "question": "Will the Iranian regime fall by May 31?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "No",
+          "pct": 96.0
+        },
+        {
+          "label": "Yes",
+          "pct": 4.0
+        }
+      ],
+      "volume": 2866007.880971006,
+      "volume24": 606916.3864820002,
+      "vol1wk": 1678990.7077559994,
+      "liquidity": 294401.53728,
+      "open_interest": 748341.389881,
+      "category": "",
+      "expiry": "31 May 2026",
+      "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-may-31"
+    },
+    {
+      "question": "Elon Musk # tweets April 17 - April 24, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "240-259",
+          "pct": 18.5
+        },
+        {
+          "label": "220-239",
+          "pct": 17.5
+        },
+        {
+          "label": "200-219",
+          "pct": 13.9
+        }
+      ],
+      "volume": 2791773.5389499995,
+      "volume24": 696009.898383,
+      "vol1wk": 2225766.7584760003,
+      "liquidity": 1293588.14723,
+      "open_interest": 380667.121559,
+      "category": "",
+      "expiry": "24 Apr 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-april-17-april-24"
+    },
+    {
+      "question": "Israel military action against Iran by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "April 21",
+          "pct": 17.4
+        },
+        {
+          "label": "April 14",
+          "pct": 0.0
+        }
+      ],
+      "volume": 2516598.0540330047,
+      "volume24": 405131.5841359998,
+      "vol1wk": 1076133.2737869984,
+      "liquidity": 38656.92973,
+      "open_interest": 344425.149605,
+      "category": "",
+      "expiry": "21 Apr 2026",
+      "url": "https://polymarket.com/event/israel-military-action-against-iran-by-167"
+    },
+    {
+      "question": "Elon Musk # tweets April 18 - April 20, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "40-64",
+          "pct": 68.5
+        },
+        {
+          "label": "<40",
+          "pct": 16.4
+        },
+        {
+          "label": "65-89",
+          "pct": 12.5
+        }
+      ],
+      "volume": 974902.8290979997,
+      "volume24": 633899.658671,
+      "vol1wk": 974902.829098,
+      "liquidity": 308865.07731,
+      "open_interest": 353902.03992799995,
+      "category": "",
+      "expiry": "20 Apr 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-april-18-april-20"
     }
   ]
 }
