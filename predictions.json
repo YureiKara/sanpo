@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-01T21:00:44.498691+08:00",
+  "updated": "2026-05-01T21:30:07.248775+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -13,18 +13,18 @@
         },
         {
           "label": "Kamala Harris",
-          "pct": 11.3
+          "pct": 11.6
         },
         {
           "label": "Alexandria Ocasio-Cortez",
           "pct": 8.5
         }
       ],
-      "volume": 1115507941.0061502,
-      "volume24": 1528802.6032919998,
-      "vol1wk": 15608796.9835,
-      "liquidity": 48486251.69279,
-      "open_interest": 13946439.738251003,
+      "volume": 1115519881.2820523,
+      "volume24": 1510901.2813079997,
+      "vol1wk": 15544902.224912,
+      "liquidity": 48471591.89892,
+      "open_interest": 14065408.665427,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -46,11 +46,11 @@
           "pct": 11.1
         }
       ],
-      "volume": 871802462.8942946,
-      "volume24": 5874983.819292997,
-      "vol1wk": 121384967.86776897,
-      "liquidity": 192618120.41063,
-      "open_interest": 11085191.228632001,
+      "volume": 872236097.9596386,
+      "volume24": 6279844.504781997,
+      "vol1wk": 121712801.28056997,
+      "liquidity": 193022310.45959,
+      "open_interest": 11084699.738816006,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/2026-fifa-world-cup-winner-595"
@@ -69,14 +69,14 @@
         },
         {
           "label": "Marco Rubio",
-          "pct": 20.6
+          "pct": 20.8
         }
       ],
-      "volume": 595191265.5130268,
-      "volume24": 1324206.483402,
-      "vol1wk": 14410222.508814996,
-      "liquidity": 18578063.90748,
-      "open_interest": 33497364.46687599,
+      "volume": 595218508.8939998,
+      "volume24": 1343240.847512,
+      "vol1wk": 14418279.907939997,
+      "liquidity": 18539830.68928,
+      "open_interest": 33696407.72174999,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
@@ -98,11 +98,11 @@
           "pct": 10.8
         }
       ],
-      "volume": 561502877.5013129,
-      "volume24": 1066513.796872,
-      "vol1wk": 9899463.916943,
-      "liquidity": 23294504.93719,
-      "open_interest": 58533352.39061,
+      "volume": 561515879.0015408,
+      "volume24": 1068947.426034,
+      "vol1wk": 9901979.04183,
+      "liquidity": 23278770.53877,
+      "open_interest": 58572460.52082801,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/presidential-election-winner-2028"
@@ -117,18 +117,18 @@
         },
         {
           "label": "San Antonio Spurs",
-          "pct": 20.8
+          "pct": 20.4
         },
         {
           "label": "Boston Celtics",
           "pct": 8.8
         }
       ],
-      "volume": 355893789.6585765,
-      "volume24": 2916856.224599,
-      "vol1wk": 30664504.04086799,
-      "liquidity": 3966628.46702,
-      "open_interest": 7717659.284646998,
+      "volume": 355908395.3272435,
+      "volume24": 2893980.237749,
+      "vol1wk": 30648273.217884988,
+      "liquidity": 4008600.5338,
+      "open_interest": 7706149.676464001,
       "category": "",
       "expiry": "01 Jul 2026",
       "url": "https://polymarket.com/event/2026-nba-champion"
@@ -150,11 +150,11 @@
           "pct": 6.6
         }
       ],
-      "volume": 136437965.43763185,
-      "volume24": 731089.8439939999,
-      "vol1wk": 11032389.502314998,
-      "liquidity": 11653770.94881,
-      "open_interest": 1235317.1071619997,
+      "volume": 136452063.57961485,
+      "volume24": 736525.6117269999,
+      "vol1wk": 11031304.851569999,
+      "liquidity": 11644764.8575,
+      "open_interest": 1234385.377084,
       "category": "",
       "expiry": "06 Dec 2026",
       "url": "https://polymarket.com/event/2026-f1-drivers-champion"
@@ -169,18 +169,18 @@
         },
         {
           "label": "Greece",
-          "pct": 17.3
+          "pct": 17.2
         },
         {
           "label": "Denmark",
           "pct": 12.6
         }
       ],
-      "volume": 121507416.1146835,
-      "volume24": 1479305.956112,
-      "vol1wk": 12253974.905606996,
-      "liquidity": 14493135.40604,
-      "open_interest": 1632984.0375420002,
+      "volume": 121543385.0282035,
+      "volume24": 1488315.92897,
+      "vol1wk": 12268682.192133997,
+      "liquidity": 14523837.51241,
+      "open_interest": 1638268.223122,
       "category": "",
       "expiry": "16 May 2026",
       "url": "https://polymarket.com/event/eurovision-winner-2026"
@@ -191,25 +191,51 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 36.5
+          "pct": 38.5
         },
         {
           "label": "May 31",
-          "pct": 20.5
+          "pct": 21.5
         },
         {
           "label": "May 15",
           "pct": 6.5
         }
       ],
-      "volume": 66906167.27301834,
-      "volume24": 2416595.2250139993,
-      "vol1wk": 18015000.429788984,
-      "liquidity": 735613.6041,
-      "open_interest": 5163899.891461,
+      "volume": 66925623.17014534,
+      "volume24": 2418906.3575859996,
+      "vol1wk": 17936480.42722698,
+      "liquidity": 687634.7488,
+      "open_interest": 5135389.0527099995,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/us-x-iran-permanent-peace-deal-by"
+    },
+    {
+      "question": "Brazil Presidential Election",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Flávio Bolsonaro",
+          "pct": 42.5
+        },
+        {
+          "label": "Luiz Inácio Lula da Silva",
+          "pct": 37.5
+        },
+        {
+          "label": "Renan Santos",
+          "pct": 5.8
+        }
+      ],
+      "volume": 62512910.108607605,
+      "volume24": 594552.257462,
+      "vol1wk": 5189344.443592002,
+      "liquidity": 3979915.07853,
+      "open_interest": 1892459.9969020004,
+      "category": "",
+      "expiry": "04 Oct 2026",
+      "url": "https://polymarket.com/event/brazil-presidential-election"
     },
     {
       "question": "Next French Presidential Election",
@@ -228,11 +254,11 @@
           "pct": 8.5
         }
       ],
-      "volume": 55952720.5080151,
-      "volume24": 704236.9543460001,
-      "vol1wk": 4666299.3074509995,
-      "liquidity": 4560670.11594,
-      "open_interest": 495746.45829200005,
+      "volume": 55961168.6949571,
+      "volume24": 699944.50823,
+      "vol1wk": 4670069.837285,
+      "liquidity": 4557016.45675,
+      "open_interest": 488425.85331800004,
       "category": "",
       "expiry": "30 Apr 2027",
       "url": "https://polymarket.com/event/next-french-presidential-election"
@@ -254,11 +280,11 @@
           "pct": 0.1
         }
       ],
-      "volume": 46993290.613343894,
-      "volume24": 762746.302534999,
-      "vol1wk": 9142459.981261007,
-      "liquidity": 2503046.51365,
-      "open_interest": 5586868.3229559995,
+      "volume": 47030649.48917589,
+      "volume24": 765368.1097959989,
+      "vol1wk": 9158756.635596007,
+      "liquidity": 2478680.5845,
+      "open_interest": 5586696.196455999,
       "category": "",
       "expiry": "31 Oct 2026",
       "url": "https://polymarket.com/event/who-will-be-confirmed-as-fed-chair"
@@ -269,22 +295,22 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 56.5
+          "pct": 58.5
         },
         {
           "label": "May 31",
-          "pct": 34.0
+          "pct": 35.5
         },
         {
           "label": "March 1",
           "pct": 0.0
         }
       ],
-      "volume": 41575812.54989085,
-      "volume24": 1617557.3816899997,
-      "vol1wk": 7978891.974767989,
-      "liquidity": 251600.2009,
-      "open_interest": 1707532.7501390004,
+      "volume": 41580105.52944586,
+      "volume24": 1616391.7457009996,
+      "vol1wk": 7972311.999528987,
+      "liquidity": 269072.3056,
+      "open_interest": 1664511.036549,
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/trump-announces-end-of-military-operations-against-iran-by"
@@ -306,11 +332,11 @@
           "pct": 0.0
         }
       ],
-      "volume": 39154411.26510267,
-      "volume24": 651635.500577,
-      "vol1wk": 5212683.863408,
-      "liquidity": 418511.2543,
-      "open_interest": 3341606.4406620003,
+      "volume": 39173362.98963167,
+      "volume24": 609730.1761289999,
+      "vol1wk": 5226351.091016999,
+      "liquidity": 436847.4761,
+      "open_interest": 3362912.442382,
       "category": "",
       "expiry": "31 Mar 2026",
       "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
@@ -321,18 +347,18 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 99.9
+          "pct": 100.0
         },
         {
           "label": "Yes",
           "pct": 0.1
         }
       ],
-      "volume": 35122978.596962005,
-      "volume24": 1325626.1944890004,
-      "vol1wk": 8781118.845962992,
-      "liquidity": 479349.68932,
-      "open_interest": 4434289.551599,
+      "volume": 35126858.67696201,
+      "volume24": 1326592.5144890002,
+      "vol1wk": 8759875.753728995,
+      "liquidity": 918608.54809,
+      "open_interest": 4431755.681599,
       "category": "",
       "expiry": "30 Apr 2026",
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-april-30"
@@ -343,51 +369,25 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 64.5
+          "pct": 63.5
         },
         {
           "label": "May 31",
-          "pct": 40.5
+          "pct": 42.5
         },
         {
           "label": "May 15",
-          "pct": 25.5
+          "pct": 27.5
         }
       ],
-      "volume": 28672459.16622991,
-      "volume24": 681500.9268609998,
-      "vol1wk": 6068872.717180007,
-      "liquidity": 234553.69692,
-      "open_interest": 1121468.4115350002,
+      "volume": 28695589.98718791,
+      "volume24": 691438.5051049999,
+      "vol1wk": 6043820.716878007,
+      "liquidity": 252648.54878,
+      "open_interest": 1125609.081694,
       "category": "",
       "expiry": "30 Apr 2026",
       "url": "https://polymarket.com/event/us-x-iran-diplomatic-meeting-by-329"
-    },
-    {
-      "question": "MegaETH market cap (FDV) one day after launch? ",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": ">$1B",
-          "pct": 100.0
-        },
-        {
-          "label": ">$1.5B",
-          "pct": 100.0
-        },
-        {
-          "label": ">$800M",
-          "pct": 100.0
-        }
-      ],
-      "volume": 27519370.80621408,
-      "volume24": 3624247.3559170007,
-      "vol1wk": 9787932.46079,
-      "liquidity": 1000060.93931,
-      "open_interest": 4244474.988609,
-      "category": "",
-      "expiry": "01 Jul 2026",
-      "url": "https://polymarket.com/event/megaeth-market-cap-fdv-one-day-after-launch"
     },
     {
       "question": "When will Bitcoin hit $150k?",
@@ -410,7 +410,7 @@
       "volume24": 5821943.554085,
       "vol1wk": 15545643.352421002,
       "liquidity": 49842.41715,
-      "open_interest": 238287.39393299998,
+      "open_interest": 238466.033933,
       "category": "",
       "expiry": "",
       "url": "https://polymarket.com/event/when-will-bitcoin-hit-150k"
@@ -432,11 +432,11 @@
           "pct": 1.1
         }
       ],
-      "volume": 14735260.893367983,
-      "volume24": 1171648.1263299999,
-      "vol1wk": 4644783.717864004,
-      "liquidity": 2180351.64668,
-      "open_interest": 1616309.348557,
+      "volume": 14744320.709933983,
+      "volume24": 1177220.8655609998,
+      "vol1wk": 4651997.106502004,
+      "liquidity": 2179007.95878,
+      "open_interest": 1617557.8457640002,
       "category": "",
       "expiry": "17 Jun 2026",
       "url": "https://polymarket.com/event/fed-decision-in-june-825"
@@ -454,11 +454,11 @@
           "pct": 3.0
         }
       ],
-      "volume": 11983270.52031996,
-      "volume24": 868369.6004209997,
-      "vol1wk": 6084190.454016994,
-      "liquidity": 716857.41112,
-      "open_interest": 2011238.26503,
+      "volume": 11983437.83371596,
+      "volume24": 866242.7773099998,
+      "vol1wk": 6078037.864164993,
+      "liquidity": 859198.74845,
+      "open_interest": 2010754.122825,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-may-31"
@@ -469,22 +469,22 @@
       "outcomes": [
         {
           "label": "180-199",
-          "pct": 89.6
+          "pct": 91.5
         },
         {
           "label": "200-219",
-          "pct": 8.5
+          "pct": 7.5
         },
         {
           "label": "220-239",
-          "pct": 0.2
+          "pct": 0.1
         }
       ],
-      "volume": 9045192.912066003,
-      "volume24": 2510811.802819,
-      "vol1wk": 7742151.401395999,
-      "liquidity": 1339917.79812,
-      "open_interest": 789207.69082,
+      "volume": 9058381.700482003,
+      "volume24": 2488161.610909,
+      "vol1wk": 7746926.9756889995,
+      "liquidity": 1537834.24458,
+      "open_interest": 793143.0845570001,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/elon-musk-of-tweets-april-24-may-1"
@@ -506,11 +506,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 6115542.123011,
-      "volume24": 723831.5915809999,
-      "vol1wk": 5993743.347968,
-      "liquidity": 89484.25669,
-      "open_interest": 1105493.815608,
+      "volume": 6115964.423011,
+      "volume24": 687156.5758789999,
+      "vol1wk": 5994165.647968,
+      "liquidity": 90105.55799,
+      "open_interest": 1105524.7456109999,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/printr-public-sale-total-commitments"
@@ -520,23 +520,23 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "180-199",
-          "pct": 20.1
+          "label": "140-159",
+          "pct": 19.6
         },
         {
           "label": "160-179",
           "pct": 19.2
         },
         {
-          "label": "140-159",
-          "pct": 18.0
+          "label": "180-199",
+          "pct": 19.1
         }
       ],
-      "volume": 3628125.845749,
-      "volume24": 1184558.3294769998,
-      "vol1wk": 3628125.8457490006,
-      "liquidity": 1195754.3533,
-      "open_interest": 428695.738694,
+      "volume": 3651361.5410100003,
+      "volume24": 1200367.2786649999,
+      "vol1wk": 3651361.5410100003,
+      "liquidity": 1198639.30231,
+      "open_interest": 434825.05048900004,
       "category": "",
       "expiry": "05 May 2026",
       "url": "https://polymarket.com/event/elon-musk-of-tweets-april-28-may-5"
@@ -558,11 +558,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 3084373.052466998,
-      "volume24": 3061856.1526459996,
-      "vol1wk": 3084360.7224669997,
-      "liquidity": 2715695.69746,
-      "open_interest": 1920733.7817139998,
+      "volume": 3194217.772466997,
+      "volume24": 3170294.158718999,
+      "vol1wk": 3194205.442466999,
+      "liquidity": 6113396.58161,
+      "open_interest": 1950729.68747,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/lol-hle1-t1-2026-05-01"
@@ -581,14 +581,14 @@
         },
         {
           "label": "OpenAI",
-          "pct": 2.5
+          "pct": 2.8
         }
       ],
-      "volume": 2521010.089537996,
-      "volume24": 960304.5678140001,
-      "vol1wk": 2136456.092117,
-      "liquidity": 1213653.06996,
-      "open_interest": 228350.750102,
+      "volume": 2551136.0686989957,
+      "volume24": 960871.5438350003,
+      "vol1wk": 2165949.075824,
+      "liquidity": 1221485.16971,
+      "open_interest": 230110.8114190001,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/which-company-has-the-best-ai-model-end-of-may"
@@ -607,14 +607,14 @@
         },
         {
           "label": "↑ $110",
-          "pct": 74.5
+          "pct": 70.5
         }
       ],
-      "volume": 2469559.2529849997,
-      "volume24": 1794871.3827370002,
-      "vol1wk": 2469559.252985,
-      "liquidity": 809720.30147,
-      "open_interest": 1067337.8981579999,
+      "volume": 2498102.9115639995,
+      "volume24": 1795727.6234970002,
+      "vol1wk": 2498102.911564,
+      "liquidity": 816914.55082,
+      "open_interest": 1083098.0653600001,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/what-price-will-wti-hit-in-may-2026"
@@ -636,11 +636,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 2410366.0933600026,
-      "volume24": 2406067.9534959993,
-      "vol1wk": 2410341.1833599997,
-      "liquidity": 852256.55134,
-      "open_interest": 396312.47646100004,
+      "volume": 2410424.913360003,
+      "volume24": 2404149.6345669995,
+      "vol1wk": 2410400.0033599995,
+      "liquidity": 128100.4117,
+      "open_interest": 220634.209307,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/lol-dnf-bro2-2026-05-01"
@@ -662,11 +662,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 2033179.1329429995,
-      "volume24": 1595128.9100339997,
-      "vol1wk": 2033179.132943,
-      "liquidity": 506978.93746,
-      "open_interest": 1087410.253333,
+      "volume": 2097447.7486539995,
+      "volume24": 1654489.7211799996,
+      "vol1wk": 2097447.748654,
+      "liquidity": 573848.3175,
+      "open_interest": 1105230.024876,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/bitcoin-above-on-may-1"
@@ -680,19 +680,19 @@
           "pct": 100.0
         },
         {
-          "label": "First Blood in Game 1?",
-          "pct": 99.5
+          "label": "O/U 2.5 Games",
+          "pct": 100.0
         },
         {
-          "label": "Total Kills Over/Under 25.5 in Game 1?",
-          "pct": 92.5
+          "label": "First Blood in Game 1?",
+          "pct": 99.5
         }
       ],
-      "volume": 1533828.8477510018,
-      "volume24": 1532895.8603370008,
-      "vol1wk": 1533793.2777510006,
-      "liquidity": 597228.39943,
-      "open_interest": 1024048.533352,
+      "volume": 1854414.3771250015,
+      "volume24": 1853481.389711001,
+      "vol1wk": 1854378.807125001,
+      "liquidity": 1634949.47844,
+      "open_interest": 1134774.5904599999,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/lol-wb-ig1-2026-05-01"
@@ -714,11 +714,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 1493421.413246001,
-      "volume24": 1447209.3570809995,
-      "vol1wk": 1493366.400063,
-      "liquidity": 2605544.77138,
-      "open_interest": 895702.4541149999,
+      "volume": 1494602.5532460008,
+      "volume24": 1448390.4970809994,
+      "vol1wk": 1494547.5400629998,
+      "liquidity": 1369548.70826,
+      "open_interest": 674237.1040729998,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/lol-tes-al-2026-05-01"
@@ -728,23 +728,23 @@
       "subtitle": "",
       "outcomes": [
         {
+          "label": "Wendell Carter Jr.: Rebounds O/U 1.5",
+          "pct": 97.7
+        },
+        {
           "label": "Jalen Suggs: Points O/U 2.5",
           "pct": 97.5
         },
         {
-          "label": "Wendell Carter Jr.: Rebounds O/U 1.5",
-          "pct": 97.2
-        },
-        {
           "label": "Desmond Bane: Points O/U 4.5",
-          "pct": 97.0
+          "pct": 96.9
         }
       ],
-      "volume": 837711.9116750007,
-      "volume24": 832195.2811999994,
-      "vol1wk": 837711.9116749994,
-      "liquidity": 1191371.86017,
-      "open_interest": 544252.54495,
+      "volume": 863688.7265850006,
+      "volume24": 858168.0463949993,
+      "vol1wk": 863688.7265849992,
+      "liquidity": 1222946.20373,
+      "open_interest": 567836.721349,
       "category": "",
       "expiry": "01 May 2026",
       "url": "https://polymarket.com/event/nba-det-orl-2026-05-01"
@@ -767,10 +767,10 @@
         }
       ],
       "volume": 769253.8627409998,
-      "volume24": 626127.335504,
+      "volume24": 613217.6131150001,
       "vol1wk": 769253.8627410003,
       "liquidity": 0.0,
-      "open_interest": 6834.653214,
+      "open_interest": 6829.247809,
       "category": "",
       "expiry": "30 Apr 2026",
       "url": "https://polymarket.com/event/lol-sk-gal-2026-04-30"
