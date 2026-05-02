@@ -28,6 +28,19 @@ FUTURES_GROUPS = OrderedDict([
     ('Grains',    ['ZC=F', 'ZS=F', 'ZW=F', 'ZM=F']),
     ('Softs',     ['SB=F', 'KC=F', 'CC=F', 'CT=F']),
     ('Singapore', ['ES3.SI', 'S68.SI', 'MBH.SI', 'MMS.SI']),
+    ('STI', [
+        # Banks
+        'D05.SI', 'O39.SI', 'U11.SI',
+        # Telco / Conglomerates / Industrials
+        'Z74.SI', 'S63.SI', 'S68.SI', 'F34.SI', 'J36.SI', 'C6L.SI', 'BN4.SI',
+        'BS6.SI', 'H78.SI', 'U96.SI', 'Y92.SI', 'U14.SI', 'G13.SI',
+        '5E2.SI', 'C09.SI', 'D01.SI', 'S58.SI', 'V03.SI',
+        # REITs
+        'C38U.SI', 'A17U.SI', 'N2IU.SI', 'M44U.SI', 'AJBU.SI',
+        'ME8U.SI', 'J69U.SI', 'BUOU.SI',
+        # Other (CapitaLand Investment)
+        '9CI.SI',
+    ]),
     ('US Sectors',['XLB', 'XLC', 'XLY', 'XLP', 'XLE', 'XLF', 'XLV', 'XLI', 'XLK', 'XLU', 'XLRE', 'SPY']),
     ('Countries', [
         # Asia Pacific
@@ -42,6 +55,7 @@ FUTURES_GROUPS = OrderedDict([
         'GXC', 'PIN',
     ]),
     ('Macro',     ['DBC', 'USO', 'GLD', 'SLV', 'CPER', 'BIL', 'HYG', 'LQD', 'TLT', 'BND', 'EMB', 'EEM', 'SPY', 'BTC-USD', 'ETH-USD']),
+    ('Core 4',    ['SHV', 'VT', 'GLD', 'BTC-USD']),
     ('Core 5',    ['IAU', 'VOO', 'VTI', 'SHV', 'BTC-USD']),
     ('Exchanges', ['ICE', 'NDAQ', 'CME', 'CBOE', 'X.TO', 'LSEG.L', 'DB1.DE', 'ENX.PA', '8697.T', '0388.HK', 'ASX.AX', 'S68.SI']),
     ('Shipping',  ['BOAT', 'SEA', 'ZIM', 'MATX', 'DAC', 'CMRE', 'FRO', 'STNG', 'INSW', 'TK', 'GOGL', 'SBLK', 'GNK', 'GSL', 'AMKBY']),
@@ -92,6 +106,17 @@ SYMBOL_NAMES = {
     '^SKEW': 'CBOE Skew Index', '^MOVE': 'Bond Volatility (MOVE)',
     # Singapore
     'ES3.SI': 'STI ETF', 'S68.SI': 'SGX', 'MBH.SI': 'Amova IG Bond', 'MMS.SI': 'SGD Money Mkt',
+    # STI components
+    'D05.SI': 'DBS', 'O39.SI': 'OCBC', 'U11.SI': 'UOB',
+    'Z74.SI': 'Singtel', 'S63.SI': 'ST Engineering', 'F34.SI': 'Wilmar',
+    'J36.SI': 'Jardine Matheson', 'C6L.SI': 'Singapore Airlines', 'BN4.SI': 'Keppel',
+    'C38U.SI': 'CICT', 'BS6.SI': 'Yangzijiang', 'H78.SI': 'Hongkong Land',
+    '9CI.SI': 'CapitaLand Investment', 'A17U.SI': 'Ascendas REIT', 'U96.SI': 'Sembcorp Industries',
+    'Y92.SI': 'ThaiBev', 'U14.SI': 'UOL Group', 'G13.SI': 'Genting Singapore',
+    '5E2.SI': 'Seatrium', 'C09.SI': 'City Developments', 'N2IU.SI': 'Mapletree PACT',
+    'M44U.SI': 'Mapletree Logistics', 'AJBU.SI': 'Keppel DC REIT', 'D01.SI': 'DFI Retail',
+    'ME8U.SI': 'Mapletree Industrial', 'S58.SI': 'SATS', 'J69U.SI': 'Frasers Centrepoint',
+    'V03.SI': 'Venture Corp', 'BUOU.SI': 'Frasers Log & Comm',
     # US Sectors
     'XLB': 'Materials', 'XLC': 'Comms', 'XLY': 'Cons Disc', 'XLP': 'Cons Staples',
     'XLE': 'Energy', 'XLF': 'Financials', 'XLV': 'Healthcare', 'XLI': 'Industrials',
@@ -107,7 +132,7 @@ SYMBOL_NAMES = {
     'DBC': 'Commodities', 'USO': 'Oil ETF', 'GLD': 'Gold ETF', 'SLV': 'Silver ETF',
     'CPER': 'Copper ETF', 'BIL': 'T-Bills', 'HYG': 'High Yield', 'LQD': 'IG Corp',
     'TLT': '20Y+ Treasury', 'BND': 'Total Bond', 'EMB': 'EM Bonds', 'EEM': 'EM Equity',
-    'IAU': 'iShares Gold', 'VOO': 'Vanguard S&P 500', 'VTI': 'Vanguard Total Mkt', 'SHV': 'Short Treasury',
+    'IAU': 'iShares Gold', 'VOO': 'Vanguard S&P 500', 'VTI': 'Vanguard Total US Mkt', 'VT': 'Vanguard Total World', 'SHV': 'Short Treasury',
     # Exchanges
     'ICE': 'ICE', 'NDAQ': 'Nasdaq Inc', 'CME': 'CME Group', 'CBOE': 'Cboe Global',
     'X.TO': 'TMX Group', 'LSEG.L': 'LSEG', 'DB1.DE': 'Deutsche Börse',
