@@ -89,9 +89,8 @@ def main():
     from research import render as render_research_tab
     from options import render_options_tab
     from rates import render_rates_tab
-    from worldindices import render_worldindices_tab
+    from markets import render_markets_tab
     from private import render_private_tab
-    from fx import render_fx_tab
     from predictions import render_predictions_tab
 
     # Init session state
@@ -148,7 +147,7 @@ def main():
     """, unsafe_allow_html=True)
 
     # Tabs
-    tab_pulse, tab_news, tab_world, tab_fx, tab_pred, tab_private, tab_portfolio, tab_spreads, tab_charts, tab_options, tab_rates, tab_research = st.tabs(["PULSE", "NEWS", "WORLD", "FX", "PREDICT", "PRIVATE", "PORTFOLIO", "SPREADS", "CHARTS", "OPTIONS", "RATES", "RESEARCH"])
+    tab_pulse, tab_news, tab_markets, tab_pred, tab_private, tab_portfolio, tab_spreads, tab_charts, tab_options, tab_rates, tab_research = st.tabs(["PULSE", "NEWS", "MARKETS", "PREDICT", "PRIVATE", "PORTFOLIO", "SPREADS", "CHARTS", "OPTIONS", "RATES", "RESEARCH"])
 
     with tab_pulse:
         render_pulse_tab(is_mobile)
@@ -156,11 +155,8 @@ def main():
     with tab_news:
         render_news_tab(is_mobile)
 
-    with tab_world:
-        render_worldindices_tab(is_mobile)
-
-    with tab_fx:
-        render_fx_tab(is_mobile)
+    with tab_markets:
+        render_markets_tab(is_mobile)
 
     with tab_pred:
         render_predictions_tab(is_mobile)
