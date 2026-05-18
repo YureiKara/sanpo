@@ -368,11 +368,11 @@ def _render_results(results, theme, rank_by, is_mobile, is_mc=False):
     # Build table — same pattern as spreads_scan (works reliably)
     _render_scan_table(sorted_results, theme, is_mc)
 
-    # Weights per group
-    _render_weights_all(sorted_results, theme, is_mc)
-
     # Equity charts
     _render_ew_charts(sorted_results, theme, is_mobile)
+
+    # Weights for every group, stacked top to bottom (no dropdown)
+    _render_weights_all(sorted_results, theme, is_mc)
 
 
 def _render_scan_table(sorted_results, theme, is_mc):
@@ -447,84 +447,95 @@ def _render_scan_table(sorted_results, theme, is_mc):
 
 
 # =============================================================================
-# WEIGHTS PER GROUP — dropdown selector
+# WEIGHTS — full weights for every group, stacked top to bottom
 # =============================================================================
 
 def _render_weights_all(sorted_results, theme, is_mc=False):
+    """Render full weights for every group, stacked in ranked order.
+    No dropdown — every portfolio's allocation is visible on the page so a full
+    page screen capture / PDF print captures all 22 weight tables in one shot."""
     import portfolio
     pos_c = portfolio.C_POS; neg_c = portfolio.C_NEG
     _bg3 = theme.get('bg3', '#0f172a'); _bdr = theme.get('border', '#1e293b')
     _txt = theme.get('text', '#e2e8f0'); _txt2 = theme.get('text2', '#94a3b8')
     _mut = theme.get('muted', '#475569')
-    _lbl = f"color:#f8fafc;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-family:{FONTS}"
 
-    label = 'WEIGHTS' if is_mc else 'WEIGHTS'
-    sub = 'Optimized weights from best approach' if is_mc else 'Equal weight (1/n)'
+    label = 'WEIGHTS'
+    sub = 'Optimized weights for every group' if is_mc else 'Equal weight (1/n)'
     _section(label, sub)
 
-    group_names = [r.get('group', '?') for r in sorted_results]
-    if not group_names:
+    if not sorted_results:
         return
 
-    sel_col, _ = st.columns([3, 5])
-    with sel_col:
-        st.markdown(f"<div style='{_lbl};margin-top:4px'>GROUP</div>", unsafe_allow_html=True)
-        selected = st.selectbox("Group", group_names,
-                                key='portall_wt_group', label_visibility='collapsed')
-
-    # Find selected group
-    sel_r = next((r for r in sorted_results if r.get('group') == selected), None)
-    if sel_r is None:
-        return
-
-    syms = sel_r.get('symbols', [])
-    n = len(syms)
-    if n == 0:
-        return
-
-    approach = sel_r.get('best_approach', 'EW') if is_mc else 'EW'
-    w = sel_r.get('weights', None)
-    if is_mc and w and isinstance(w, dict) and len(w) > 0:
-        sorted_w = sorted(w.items(), key=lambda x: x[1], reverse=True)
-    else:
-        ew = 1.0 / n
-        sorted_w = [(s, ew) for s in syms]
-
-    # Render weights table
     th = f"padding:4px 8px;border-bottom:1px solid {_bdr};color:#f8fafc;font-weight:600;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"
     td = f"padding:5px 8px;border-bottom:1px solid {_bdr}22;"
 
-    html = (f"<div style='overflow-x:auto;border:1px solid {_bdr};border-radius:6px;margin-top:6px'>"
-        f"<table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>"
-        f"<thead style='background:{_bg3}'><tr>"
-        f"<th style='{th}text-align:left'>SYMBOL</th>"
-        f"<th style='{th}text-align:right'>WEIGHT</th>"
-        f"<th style='{th}text-align:left'>BAR</th>"
-        f"</tr></thead><tbody>")
+    for rank, r in enumerate(sorted_results, 1):
+        gname = r.get('group', '?')
+        syms = r.get('symbols', [])
+        n = len(syms)
+        if n == 0:
+            continue
 
-    max_abs = max(abs(v) for _, v in sorted_w) if sorted_w else 1.0
-    for sym, wt in sorted_w:
-        pct = wt * 100
-        bar_w = (abs(wt) / max_abs) * 100 if max_abs > 0 else 0
-        w_c = pos_c if wt >= 0 else neg_c
-        html += (f"<tr>"
-            f"<td style='{td}color:{_txt};font-weight:600'>{sym}</td>"
-            f"<td style='{td}text-align:right;color:{w_c};font-weight:700'>{pct:+.1f}%</td>"
-            f"<td style='{td}width:50%'>"
-            f"<div style='background:{w_c}22;border-radius:2px;height:14px;width:100%'>"
-            f"<div style='background:{w_c};border-radius:2px;height:14px;width:{bar_w:.1f}%'></div>"
-            f"</div></td>"
-            f"</tr>")
+        approach = r.get('best_approach', 'EW') if is_mc else 'EW'
+        w = r.get('weights', None)
+        if is_mc and w and isinstance(w, dict) and len(w) > 0:
+            sorted_w = sorted(w.items(), key=lambda x: x[1], reverse=True)
+        else:
+            ew = 1.0 / n
+            sorted_w = [(s, ew) for s in syms]
 
-    html += "</tbody></table></div>"
+        # Filter near-zero weights (long-only optimizers produce many 0% slots)
+        sorted_w = [(s, wt) for s, wt in sorted_w if abs(wt) > 0.001]
+        if not sorted_w:
+            continue
 
-    if is_mc:
+        # Summary stats for header
+        sharpe = r.get('sharpe', 0)
+        tot = r.get('total_ret', 0) * 100
+        mdd = r.get('max_dd', 0) * 100
+        sh_c = pos_c if sharpe >= 0 else neg_c
+        tot_c = pos_c if tot >= 0 else neg_c
+
+        # Header strip per group
         st.markdown(
-            f"<div style='font-family:{FONTS};font-size:9px;color:{_mut};margin-top:4px'>"
-            f"Approach: <b style='color:{_txt2}'>{approach}</b></div>",
+            f"<div style='margin-top:14px;padding:6px 10px;background:{_bg3};border:1px solid {_bdr};"
+            f"border-radius:6px 6px 0 0;font-family:{FONTS};font-size:11px;color:{_txt};"
+            f"display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px'>"
+            f"<span><b style='color:{_mut}'>#{rank}</b> <b>{gname}</b> "
+            f"<span style='color:{_txt2};font-size:10px'>({approach}, N={n})</span></span>"
+            f"<span style='color:{_txt2};font-size:10px'>"
+            f"Sharpe <b style='color:{sh_c}'>{sharpe:.2f}</b> · "
+            f"Tot <b style='color:{tot_c}'>{tot:+.1f}%</b> · "
+            f"MDD <b style='color:{neg_c}'>{mdd:.1f}%</b>"
+            f"</span></div>",
             unsafe_allow_html=True)
 
-    st.markdown(html, unsafe_allow_html=True)
+        # Weight table
+        max_abs = max(abs(v) for _, v in sorted_w) if sorted_w else 1.0
+        html = (f"<div style='border:1px solid {_bdr};border-top:none;border-radius:0 0 6px 6px;overflow-x:auto'>"
+            f"<table style='border-collapse:collapse;font-family:{FONTS};font-size:11px;width:100%;line-height:1.3'>"
+            f"<thead style='background:{_bg3}'><tr>"
+            f"<th style='{th}text-align:left'>SYMBOL</th>"
+            f"<th style='{th}text-align:right'>WEIGHT</th>"
+            f"<th style='{th}text-align:left'>BAR</th>"
+            f"</tr></thead><tbody>")
+
+        for sym, wt in sorted_w:
+            pct = wt * 100
+            bar_w = (abs(wt) / max_abs) * 100 if max_abs > 0 else 0
+            w_c = pos_c if wt >= 0 else neg_c
+            html += (f"<tr>"
+                f"<td style='{td}color:{_txt};font-weight:600'>{sym}</td>"
+                f"<td style='{td}text-align:right;color:{w_c};font-weight:700'>{pct:+.1f}%</td>"
+                f"<td style='{td}width:50%'>"
+                f"<div style='background:{w_c}22;border-radius:2px;height:14px;width:100%'>"
+                f"<div style='background:{w_c};border-radius:2px;height:14px;width:{bar_w:.1f}%'></div>"
+                f"</div></td>"
+                f"</tr>")
+
+        html += "</tbody></table></div>"
+        st.markdown(html, unsafe_allow_html=True)
 
 
 # =============================================================================
