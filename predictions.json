@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-22T11:30:06.947780+08:00",
+  "updated": "2026-05-22T11:37:13.429735+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -121,7 +121,7 @@
         },
         {
           "label": "New York Knicks",
-          "pct": 20.0
+          "pct": 20.1
         }
       ],
       "volume": 393209824.0532346,
@@ -517,15 +517,15 @@
       "outcomes": [
         {
           "label": "260-279",
-          "pct": 63.7
+          "pct": 65.0
         },
         {
           "label": "280-299",
-          "pct": 31.9
+          "pct": 31.4
         },
         {
           "label": "300-319",
-          "pct": 3.1
+          "pct": 3.5
         }
       ],
       "volume": 12895066.575141001,
@@ -543,7 +543,7 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 92.8
+          "pct": 92.9
         },
         {
           "label": "Yes",
@@ -612,32 +612,6 @@
       "url": "https://polymarket.com/event/iran-ceasefire-continues-through"
     },
     {
-      "question": "Canadiens vs. Hurricanes",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Canadiens vs. Hurricanes",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 5.5",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 4.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 2637387.542745003,
-      "volume24": 2586382.462368006,
-      "vol1wk": 2637387.542745006,
-      "liquidity": 1989384.53825,
-      "open_interest": 1923982.076861,
-      "category": "",
-      "expiry": "22 May 2026",
-      "url": "https://polymarket.com/event/nhl-mon-car-2026-05-21"
-    },
-    {
       "question": "Bitcoin above ___ on May 22?",
       "subtitle": "",
       "outcomes": [
@@ -688,6 +662,32 @@
       "category": "",
       "expiry": "28 May 2026",
       "url": "https://polymarket.com/event/mlb-tor-nyy-2026-05-21"
+    },
+    {
+      "question": "Elon Musk # tweets May 19 - May 26, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "260-279",
+          "pct": 19.5
+        },
+        {
+          "label": "280-299",
+          "pct": 18.5
+        },
+        {
+          "label": "240-259",
+          "pct": 15.5
+        }
+      ],
+      "volume": 1123575.896899,
+      "volume24": 732556.354633,
+      "vol1wk": 1083610.006899,
+      "liquidity": 1296433.79362,
+      "open_interest": 280722.2436580001,
+      "category": "",
+      "expiry": "26 May 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-may-19-may-26"
     },
     {
       "question": "Atlanta Braves vs. Miami Marlins",
@@ -751,11 +751,11 @@
         },
         {
           "label": "O/U 4.5",
-          "pct": 99.5
+          "pct": 100.0
         },
         {
           "label": "O/U 5.5",
-          "pct": 67.5
+          "pct": 57.0
         }
       ],
       "volume": 913343.434955999,
