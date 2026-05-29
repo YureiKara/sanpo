@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-30T05:01:29.185132+08:00",
+  "updated": "2026-05-30T05:30:11.768985+08:00",
   "source": "SANPO Private Companies",
   "count": 109,
   "companies": [
@@ -7,7 +7,7 @@
       "symbol": "SPAX.PVT",
       "name": "SpaceX",
       "price": 145.11,
-      "price_52w_pct": 244.43,
+      "price_52w_pct": null,
       "valuation_b": 1427.0,
       "total_raised_b": 8.923,
       "latest_date": "2026-02-02",
@@ -30,8 +30,8 @@
     {
       "symbol": "ANTH.PVT",
       "name": "Anthropic",
-      "price": 264.57,
-      "price_52w_pct": 371.69,
+      "price": 589.01,
+      "price_52w_pct": 950.12,
       "valuation_b": 380.005,
       "total_raised_b": 53.15,
       "latest_date": "2026-02-11",
@@ -354,8 +354,8 @@
     {
       "symbol": "PSIQ.PVT",
       "name": "PsiQuantum",
-      "price": 31.01,
-      "price_52w_pct": 6.78,
+      "price": 30.32,
+      "price_52w_pct": 4.41,
       "valuation_b": 5.748,
       "total_raised_b": 1.668,
       "latest_date": "2025-09-09",
@@ -762,8 +762,8 @@
     {
       "symbol": "NEFJ.PVT",
       "name": "Neo4j",
-      "price": 6.48,
-      "price_52w_pct": -28.56,
+      "price": 6.1,
+      "price_52w_pct": -32.75,
       "valuation_b": 1.239,
       "total_raised_b": 0.712,
       "latest_date": "2021-11-08",
