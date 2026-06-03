@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-04T07:31:59.978900+08:00",
+  "updated": "2026-06-04T07:35:38.594423+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -113,7 +113,7 @@
       "outcomes": [
         {
           "label": "San Antonio Spurs",
-          "pct": 64.2
+          "pct": 64.1
         },
         {
           "label": "New York Knicks",
@@ -247,7 +247,7 @@
         },
         {
           "label": "Roberto Sánchez Palomino",
-          "pct": 26.9
+          "pct": 26.8
         },
         {
           "label": "Rafael López Aliaga",
@@ -325,7 +325,7 @@
         },
         {
           "label": "Chong Won-oh",
-          "pct": 2.1
+          "pct": 2.6
         },
         {
           "label": "Cho Eun-hee",
@@ -340,6 +340,32 @@
       "category": "",
       "expiry": "03 Jun 2026",
       "url": "https://polymarket.com/event/2026-seoul-mayoral-election-winner"
+    },
+    {
+      "question": "Will the US confirm that aliens exist by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 15.5
+        },
+        {
+          "label": "September 30",
+          "pct": 7.5
+        },
+        {
+          "label": "June 30",
+          "pct": 2.1
+        }
+      ],
+      "volume": 48414799.32543851,
+      "volume24": 477456.172357,
+      "vol1wk": 2021263.714769,
+      "liquidity": 764178.50209,
+      "open_interest": 9183084.887257,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/will-the-us-confirm-that-aliens-exist-before-2027"
     },
     {
       "question": "Will the Iranian regime fall by June 30?",
@@ -377,7 +403,7 @@
         },
         {
           "label": "Steve Hilton",
-          "pct": 6.6
+          "pct": 6.5
         }
       ],
       "volume": 33107726.299666062,
@@ -421,7 +447,7 @@
       "outcomes": [
         {
           "label": "NVIDIA",
-          "pct": 93.5
+          "pct": 92.5
         },
         {
           "label": "Apple",
@@ -455,7 +481,7 @@
         },
         {
           "label": "OpenAI",
-          "pct": 3.6
+          "pct": 3.5
         }
       ],
       "volume": 11013669.049999012,
@@ -499,15 +525,15 @@
       "outcomes": [
         {
           "label": "Josh Hart: Rebounds O/U 2.5",
-          "pct": 98.5
+          "pct": 98.0
         },
         {
           "label": "Mikal Bridges: Points O/U 3.5",
           "pct": 97.5
         },
         {
-          "label": "Devin Vassell: Points O/U 2.5",
-          "pct": 96.3
+          "label": "Julian Champagnie: Points O/U 2.5",
+          "pct": 96.2
         }
       ],
       "volume": 7529166.119454073,
@@ -525,15 +551,15 @@
       "outcomes": [
         {
           "label": "Karen Bass",
-          "pct": 68.5
+          "pct": 67.0
         },
         {
           "label": "Nithya Raman",
-          "pct": 18.4
+          "pct": 19.7
         },
         {
           "label": "Spencer Pratt",
-          "pct": 8.5
+          "pct": 7.5
         }
       ],
       "volume": 6774672.551397007,
@@ -624,32 +650,6 @@
       "url": "https://polymarket.com/event/daegu-mayoral-election-winner"
     },
     {
-      "question": "Roland Garros ATP: Matteo Berrettini vs Matteo Arnaldi",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Roland Garros ATP: Matteo Berrettini vs Matteo Arnaldi Set 1 O/U 8.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Roland Garros ATP: Matteo Berrettini vs Matteo Arnaldi Set 1 O/U 9.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Roland Garros ATP: Matteo Berrettini vs Matteo Arnaldi Set 1 O/U 10.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 2371796.888891996,
-      "volume24": 2359362.7676709993,
-      "vol1wk": 2371796.8888919996,
-      "liquidity": 72772.27869,
-      "open_interest": 230513.04657500004,
-      "category": "",
-      "expiry": "10 Jun 2026",
-      "url": "https://polymarket.com/event/atp-berrett-arnaldi-2026-06-03"
-    },
-    {
       "question": "World Cup: Top Goalscorer",
       "subtitle": "",
       "outcomes": [
@@ -685,7 +685,7 @@
         },
         {
           "label": "64,000",
-          "pct": 60.9
+          "pct": 60.5
         },
         {
           "label": "66,000",
@@ -707,7 +707,7 @@
       "outcomes": [
         {
           "label": "Park Wan-soo",
-          "pct": 95.6
+          "pct": 96.4
         },
         {
           "label": "Kim Kyung-soo",
@@ -733,15 +733,15 @@
       "outcomes": [
         {
           "label": "O/U 4.5",
-          "pct": 64.5
+          "pct": 55.0
         },
         {
           "label": "O/U 5.5",
-          "pct": 48.5
+          "pct": 39.5
         },
         {
-          "label": "O/U 6.5",
-          "pct": 39.5
+          "label": "Spread -1.5",
+          "pct": 38.0
         }
       ],
       "volume": 1223171.1284159997,
@@ -767,7 +767,7 @@
         },
         {
           "label": "O/U 6.5",
-          "pct": 60.0
+          "pct": 60.5
         }
       ],
       "volume": 820111.0537220016,
