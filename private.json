@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-04T05:01:48.439280+08:00",
+  "updated": "2026-06-04T05:30:12.111083+08:00",
   "source": "SANPO Private Companies",
   "count": 109,
   "companies": [
@@ -7,7 +7,7 @@
       "symbol": "SPAX.PVT",
       "name": "SpaceX",
       "price": 128.88,
-      "price_52w_pct": 200.63,
+      "price_52w_pct": null,
       "valuation_b": 1427.0,
       "total_raised_b": 8.923,
       "latest_date": "2026-02-02",
@@ -138,8 +138,8 @@
     {
       "symbol": "RIPL.PVT",
       "name": "Ripple",
-      "price": 116.14,
-      "price_52w_pct": 62.3,
+      "price": 110.0,
+      "price_52w_pct": 53.72,
       "valuation_b": 17.71,
       "total_raised_b": 0.575,
       "latest_date": "2016-09-14",
@@ -222,8 +222,8 @@
     {
       "symbol": "LAMD.PVT",
       "name": "Lambda",
-      "price": 49.35,
-      "price_52w_pct": 146.26,
+      "price": 52.31,
+      "price_52w_pct": 161.03,
       "valuation_b": 11.053,
       "total_raised_b": 2.364,
       "latest_date": "2025-11-17",
@@ -234,8 +234,8 @@
     {
       "symbol": "KRAK.PVT",
       "name": "Kraken",
-      "price": 36.08,
-      "price_52w_pct": 50.21,
+      "price": 37.46,
+      "price_52w_pct": 55.95,
       "valuation_b": 10.581,
       "total_raised_b": 0.965,
       "latest_date": "2025-11-17",
@@ -318,8 +318,8 @@
     {
       "symbol": "GLEA.PVT",
       "name": "Glean",
-      "price": 45.17,
-      "price_52w_pct": -3.89,
+      "price": 45.16,
+      "price_52w_pct": -3.91,
       "valuation_b": 7.845,
       "total_raised_b": 0.775,
       "latest_date": "2025-06-09",
@@ -354,8 +354,8 @@
     {
       "symbol": "PSIQ.PVT",
       "name": "PsiQuantum",
-      "price": 30.32,
-      "price_52w_pct": 1.78,
+      "price": 30.31,
+      "price_52w_pct": 1.75,
       "valuation_b": 5.748,
       "total_raised_b": 1.668,
       "latest_date": "2025-09-09",
@@ -1098,8 +1098,8 @@
     {
       "symbol": "KORE.PVT",
       "name": "Kore.ai",
-      "price": 9.45,
-      "price_52w_pct": -5.5,
+      "price": 8.94,
+      "price_52w_pct": -10.6,
       "valuation_b": 0.531,
       "total_raised_b": 0.248,
       "latest_date": "2024-01-29",
