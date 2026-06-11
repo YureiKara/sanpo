@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T05:38:11.059040+08:00",
+  "updated": "2026-06-12T05:43:15.116380+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -35,7 +35,7 @@
       "outcomes": [
         {
           "label": "Gavin Newsom",
-          "pct": 23.1
+          "pct": 23.2
         },
         {
           "label": "Alexandria Ocasio-Cortez",
@@ -91,7 +91,7 @@
         },
         {
           "label": "San Antonio Spurs",
-          "pct": 20.9
+          "pct": 20.5
         },
         {
           "label": "Oklahoma City Thunder",
@@ -113,7 +113,7 @@
       "outcomes": [
         {
           "label": "December 31",
-          "pct": 74.0
+          "pct": 73.5
         },
         {
           "label": "October 31",
@@ -121,7 +121,7 @@
         },
         {
           "label": "August 31",
-          "pct": 54.5
+          "pct": 53.5
         }
       ],
       "volume": 290735126.07258636,
@@ -143,7 +143,7 @@
         },
         {
           "label": "Roberto Sánchez Palomino",
-          "pct": 2.6
+          "pct": 2.8
         },
         {
           "label": "Rafael López Aliaga",
@@ -217,7 +217,7 @@
       "outcomes": [
         {
           "label": "August 31",
-          "pct": 9.5
+          "pct": 10.0
         },
         {
           "label": "July 31",
@@ -228,11 +228,11 @@
           "pct": 4.2
         }
       ],
-      "volume": 53322617.00093959,
-      "volume24": 942257.7734139998,
-      "vol1wk": 3237342.4684010083,
-      "liquidity": 364663.87152,
-      "open_interest": 2721939.491425,
+      "volume": 53349880.4738206,
+      "volume24": 969407.6099329999,
+      "vol1wk": 3264605.941282008,
+      "liquidity": 333891.09675,
+      "open_interest": 2742329.548449,
       "category": "",
       "expiry": "31 Mar 2026",
       "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
@@ -243,11 +243,11 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 98.6
+          "pct": 98.5
         },
         {
           "label": "Yes",
-          "pct": 1.5
+          "pct": 1.6
         }
       ],
       "volume": 52606627.28982863,
@@ -269,7 +269,7 @@
         },
         {
           "label": "September 30",
-          "pct": 5.5
+          "pct": 4.5
         },
         {
           "label": "June 30",
@@ -317,15 +317,15 @@
       "outcomes": [
         {
           "label": "July 31",
-          "pct": 79.5
+          "pct": 75.5
         },
         {
           "label": "June 30",
-          "pct": 68.5
+          "pct": 67.5
         },
         {
-          "label": "June 17",
-          "pct": 61.5
+          "label": "June 19",
+          "pct": 61.0
         }
       ],
       "volume": 38361895.77765179,
@@ -360,42 +360,16 @@
       "url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027"
     },
     {
-      "question": "2026 Men's Australian Open Winner",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Carlos Alcaraz",
-          "pct": 100.0
-        },
-        {
-          "label": "Grigor Dimitrov",
-          "pct": 0.1
-        },
-        {
-          "label": "Jack Draper",
-          "pct": 0.0
-        }
-      ],
-      "volume": 29258267.094852,
-      "volume24": 1022980.0,
-      "vol1wk": 16949090.170630008,
-      "liquidity": 696056.79732,
-      "open_interest": 19300.373503,
-      "category": "",
-      "expiry": "01 Feb 2026",
-      "url": "https://polymarket.com/event/2026-mens-australian-open-winner"
-    },
-    {
       "question": "Strait of Hormuz traffic returns to normal by end of June?",
       "subtitle": "",
       "outcomes": [
         {
           "label": "No",
-          "pct": 83.5
+          "pct": 81.0
         },
         {
           "label": "Yes",
-          "pct": 16.5
+          "pct": 19.0
         }
       ],
       "volume": 18236638.74474653,
@@ -439,22 +413,22 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 13.5
+          "pct": 16.0
         },
         {
           "label": "June 15",
-          "pct": 7.5
+          "pct": 9.0
         },
         {
           "label": "June 14",
           "pct": 7.0
         }
       ],
-      "volume": 14181651.863622984,
-      "volume24": 1220280.323023,
-      "vol1wk": 7161870.216785,
-      "liquidity": 345398.34024,
-      "open_interest": 1112030.2013469997,
+      "volume": 14198465.634582985,
+      "volume24": 1224597.9128130001,
+      "vol1wk": 7178571.297745,
+      "liquidity": 321330.60862,
+      "open_interest": 1115504.710463,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/israel-closes-its-airspace-by"
@@ -491,7 +465,7 @@
       "outcomes": [
         {
           "label": ">$1T",
-          "pct": 98.8
+          "pct": 98.9
         },
         {
           "label": ">$1.4T",
@@ -543,7 +517,7 @@
       "outcomes": [
         {
           "label": "Aryna Sabalenka",
-          "pct": 24.0
+          "pct": 23.0
         },
         {
           "label": "Elena Rybakina",
@@ -603,7 +577,7 @@
         },
         {
           "label": "240-259",
-          "pct": 11.4
+          "pct": 11.2
         }
       ],
       "volume": 5192777.499411998,
@@ -699,22 +673,22 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 12.5
+          "pct": 13.0
         },
         {
           "label": "June 15",
-          "pct": 5.5
+          "pct": 6.0
         },
         {
           "label": "June 12",
-          "pct": 1.4
+          "pct": 1.6
         }
       ],
-      "volume": 2142912.3260469986,
-      "volume24": 925432.9187480002,
-      "vol1wk": 2133074.4703339995,
-      "liquidity": 262500.09648,
-      "open_interest": 530333.712696,
+      "volume": 2143506.776046999,
+      "volume24": 915112.4895660002,
+      "vol1wk": 2133668.9203339997,
+      "liquidity": 262811.39671,
+      "open_interest": 529416.092699,
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290"
@@ -732,8 +706,8 @@
           "pct": 100.0
         },
         {
-          "label": "1st 5 Innings Spread -1.5",
-          "pct": 86.5
+          "label": "O/U 6.5",
+          "pct": 87.5
         }
       ],
       "volume": 1486587.863422002,
@@ -754,12 +728,12 @@
           "pct": 89.0
         },
         {
-          "label": "O/U 198.5",
-          "pct": 87.0
+          "label": "1H O/U 100.5",
+          "pct": 88.0
         },
         {
-          "label": "Mikal Bridges: Rebounds O/U 0.5",
-          "pct": 86.0
+          "label": "O/U 198.5",
+          "pct": 87.0
         }
       ],
       "volume": 1395291.0762860086,
@@ -770,6 +744,32 @@
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/nba-nyk-sas-2026-06-13"
+    },
+    {
+      "question": "Mexico vs. South Africa - Exact Score",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Mexico 2 - 0 South Africa",
+          "pct": 100.0
+        },
+        {
+          "label": "Mexico 0 - 0 South Africa",
+          "pct": 0.0
+        },
+        {
+          "label": "Mexico 1 - 0 South Africa",
+          "pct": 0.0
+        }
+      ],
+      "volume": 914051.8579919994,
+      "volume24": 814626.3992549999,
+      "vol1wk": 884439.6014819995,
+      "liquidity": 999510.10558,
+      "open_interest": 705143.6602810001,
+      "category": "",
+      "expiry": "11 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-mex-rsa-2026-06-11-exact-score"
     }
   ]
 }
