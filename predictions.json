@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-12T03:50:56.281457+08:00",
+  "updated": "2026-06-12T03:54:11.158456+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -61,7 +61,7 @@
       "outcomes": [
         {
           "label": "New York Knicks",
-          "pct": 79.2
+          "pct": 79.5
         },
         {
           "label": "San Antonio Spurs",
@@ -87,11 +87,11 @@
       "outcomes": [
         {
           "label": "December 31",
-          "pct": 76.5
+          "pct": 77.5
         },
         {
           "label": "October 31",
-          "pct": 68.5
+          "pct": 69.5
         },
         {
           "label": "August 31",
@@ -160,16 +160,42 @@
       "url": "https://polymarket.com/event/fed-decision-in-june-825"
     },
     {
+      "question": "Kharg Island no longer under Iranian control by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "August 31",
+          "pct": 9.5
+        },
+        {
+          "label": "July 31",
+          "pct": 6.0
+        },
+        {
+          "label": "June 30",
+          "pct": 3.2
+        }
+      ],
+      "volume": 53235225.8081996,
+      "volume24": 924378.2215809993,
+      "vol1wk": 3155110.8778930083,
+      "liquidity": 284284.80348,
+      "open_interest": 2700278.77006,
+      "category": "",
+      "expiry": "31 Mar 2026",
+      "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
+    },
+    {
       "question": "Will the Iranian regime fall by June 30?",
       "subtitle": "",
       "outcomes": [
         {
           "label": "No",
-          "pct": 98.5
+          "pct": 98.6
         },
         {
           "label": "Yes",
-          "pct": 1.6
+          "pct": 1.5
         }
       ],
       "volume": 52404630.69550463,
@@ -217,7 +243,7 @@
         },
         {
           "label": "Steve Hilton",
-          "pct": 8.3
+          "pct": 8.5
         },
         {
           "label": "Rick Caruso",
@@ -239,15 +265,15 @@
       "outcomes": [
         {
           "label": "July 31",
-          "pct": 84.5
+          "pct": 83.0
         },
         {
           "label": "June 30",
-          "pct": 81.0
+          "pct": 75.0
         },
         {
           "label": "June 15",
-          "pct": 42.0
+          "pct": 40.5
         }
       ],
       "volume": 37802226.24932478,
@@ -265,11 +291,11 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 83.5
+          "pct": 82.5
         },
         {
           "label": "Yes",
-          "pct": 16.5
+          "pct": 17.5
         }
       ],
       "volume": 36303941.5487722,
@@ -335,11 +361,11 @@
       "outcomes": [
         {
           "label": "Vitality",
-          "pct": 44.0
+          "pct": 46.0
         },
         {
           "label": "Team Spirit",
-          "pct": 30.5
+          "pct": 29.5
         },
         {
           "label": "Falcons",
@@ -361,11 +387,11 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 17.5
+          "pct": 16.5
         },
         {
           "label": "June 15",
-          "pct": 8.5
+          "pct": 7.5
         },
         {
           "label": "June 14",
@@ -391,7 +417,7 @@
         },
         {
           "label": ">$1.2T",
-          "pct": 97.6
+          "pct": 97.8
         },
         {
           "label": ">$1.4T",
@@ -417,11 +443,11 @@
         },
         {
           "label": "Draw (Mexico vs. South Africa)",
-          "pct": 11.5
+          "pct": 12.5
         },
         {
           "label": "South Africa",
-          "pct": 2.4
+          "pct": 2.5
         }
       ],
       "volume": 9752200.851826299,
@@ -491,15 +517,15 @@
       "outcomes": [
         {
           "label": "220-239",
-          "pct": 54.1
+          "pct": 54.7
         },
         {
           "label": "200-219",
-          "pct": 29.5
+          "pct": 27.0
         },
         {
           "label": "240-259",
-          "pct": 13.6
+          "pct": 16.6
         }
       ],
       "volume": 5125395.294386998,
@@ -569,7 +595,7 @@
       "outcomes": [
         {
           "label": "Map 1 Rounds Handicap: Spirit (-3.5) vs Natus Vincere (+3.5)",
-          "pct": 99.1
+          "pct": 99.8
         },
         {
           "label": "Map 1 Rounds Handicap: Spirit (-9.5) vs Natus Vincere (+9.5)",
@@ -577,7 +603,7 @@
         },
         {
           "label": "Map 1 Rounds Handicap: Spirit (-6.5) vs Natus Vincere (+6.5)",
-          "pct": 90.5
+          "pct": 91.0
         }
       ],
       "volume": 2157007.6134800008,
@@ -621,7 +647,7 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 15.5
+          "pct": 14.5
         },
         {
           "label": "June 15",
@@ -629,7 +655,7 @@
         },
         {
           "label": "June 12",
-          "pct": 1.1
+          "pct": 1.0
         }
       ],
       "volume": 2098607.2607619986,
@@ -640,32 +666,6 @@
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/trump-announces-us-x-iran-ceasefire-over-byptptpt-20260607232555290"
-    },
-    {
-      "question": "Arizona Diamondbacks vs. Miami Marlins",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "1st 5 Innings Spread -1.5",
-          "pct": 100.0
-        },
-        {
-          "label": "NRFI",
-          "pct": 100.0
-        },
-        {
-          "label": "Spread -1.5",
-          "pct": 99.5
-        }
-      ],
-      "volume": 1484220.9487060003,
-      "volume24": 1475697.32623,
-      "vol1wk": 1484220.9487060006,
-      "liquidity": 51456.1649,
-      "open_interest": 967397.5391020001,
-      "category": "",
-      "expiry": "18 Jun 2026",
-      "url": "https://polymarket.com/event/mlb-ari-mia-2026-06-11"
     },
     {
       "question": "Counter-Strike: Aurora Gaming vs Monte (BO3) - IEM Cologne Major Stage 3",
@@ -729,7 +729,7 @@
         },
         {
           "label": "O/U 7.5",
-          "pct": 71.5
+          "pct": 70.5
         },
         {
           "label": "O/U 8.5",
