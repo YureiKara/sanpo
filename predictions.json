@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T06:51:43.784478+08:00",
+  "updated": "2026-06-13T07:00:05.475456+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -87,11 +87,11 @@
       "outcomes": [
         {
           "label": "New York Knicks",
-          "pct": 81.1
+          "pct": 80.8
         },
         {
           "label": "San Antonio Spurs",
-          "pct": 19.2
+          "pct": 19.4
         },
         {
           "label": "Oklahoma City Thunder",
@@ -143,7 +143,7 @@
         },
         {
           "label": "Roberto Sánchez Palomino",
-          "pct": 1.7
+          "pct": 1.8
         },
         {
           "label": "Rafael López Aliaga",
@@ -243,7 +243,7 @@
         },
         {
           "label": "June 30",
-          "pct": 59.0
+          "pct": 58.0
         },
         {
           "label": "June 18",
@@ -269,7 +269,7 @@
         },
         {
           "label": "June 30",
-          "pct": 68.0
+          "pct": 69.5
         },
         {
           "label": "June 19",
@@ -291,11 +291,11 @@
       "outcomes": [
         {
           "label": "July 31",
-          "pct": 74.5
+          "pct": 75.5
         },
         {
           "label": "June 30",
-          "pct": 62.5
+          "pct": 61.5
         },
         {
           "label": "June 15",
@@ -443,11 +443,11 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 56.5
+          "pct": 55.5
         },
         {
           "label": "Yes",
-          "pct": 43.5
+          "pct": 44.5
         }
       ],
       "volume": 8362333.117943034,
@@ -465,7 +465,7 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 10.9
+          "pct": 11.1
         },
         {
           "label": "April 30",
@@ -476,11 +476,11 @@
           "pct": 0.0
         }
       ],
-      "volume": 7474537.943593024,
-      "volume24": 1072088.4247530021,
-      "vol1wk": 2456343.964734999,
-      "liquidity": 227078.86073,
-      "open_interest": 2268262.776458,
+      "volume": 7474618.767257024,
+      "volume24": 1071732.732149002,
+      "vol1wk": 2455877.539444999,
+      "liquidity": 220859.91195,
+      "open_interest": 2268264.3764579995,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/israel-x-iran-permanent-peace-deal-by"
@@ -517,7 +517,7 @@
       "outcomes": [
         {
           "label": "Las Vegas Raiders",
-          "pct": 77.0
+          "pct": 76.8
         },
         {
           "label": "Seattle Seahawks",
@@ -538,46 +538,20 @@
       "url": "https://polymarket.com/event/where-will-maxx-crosby-play-in-2026"
     },
     {
-      "question": "SpaceX IPO Closing Market Cap",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "2.0T-2.5T",
-          "pct": 100.0
-        },
-        {
-          "label": "<1.0T",
-          "pct": 0.0
-        },
-        {
-          "label": "1.5T-2.0T",
-          "pct": 0.0
-        }
-      ],
-      "volume": 3845537.045613003,
-      "volume24": 912411.1562610001,
-      "vol1wk": 1439744.544786,
-      "liquidity": 58205.10566,
-      "open_interest": 229171.878985,
-      "category": "",
-      "expiry": "",
-      "url": "https://polymarket.com/event/spacex-ipo-closing-market-cap"
-    },
-    {
       "question": "FedEx Cup Playoffs: Winner",
       "subtitle": "",
       "outcomes": [
         {
           "label": "Scottie Scheffler",
-          "pct": 24.0
-        },
-        {
-          "label": "Min Woo Lee",
-          "pct": 15.4
+          "pct": 23.0
         },
         {
           "label": "Rory McIlroy",
-          "pct": 13.0
+          "pct": 11.5
+        },
+        {
+          "label": "Min Woo Lee",
+          "pct": 11.2
         }
       ],
       "volume": 2577413.1667,
@@ -595,7 +569,7 @@
       "outcomes": [
         {
           "label": "Julian Champagnie: Points O/U 2.5",
-          "pct": 95.4
+          "pct": 95.5
         },
         {
           "label": "Stephon Castle: Rebounds O/U 1.5",
@@ -651,7 +625,7 @@
         },
         {
           "label": "Top Esports",
-          "pct": 12.4
+          "pct": 12.3
         },
         {
           "label": "Anyone's Legend",
@@ -710,11 +684,11 @@
           "pct": 80.5
         }
       ],
-      "volume": 1482691.2392970005,
-      "volume24": 1316990.6811309997,
-      "vol1wk": 1471773.7817019997,
-      "liquidity": 1591393.85835,
-      "open_interest": 1249242.627167,
+      "volume": 1490305.9985040003,
+      "volume24": 1324559.3504759995,
+      "vol1wk": 1479388.5409089995,
+      "liquidity": 1657327.79102,
+      "open_interest": 1259044.338671,
       "category": "",
       "expiry": "13 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-qat-che-2026-06-13-more-markets"
@@ -733,7 +707,7 @@
         },
         {
           "label": "Kayvon Thibodeaux",
-          "pct": 50.0
+          "pct": 48.0
         }
       ],
       "volume": 1350122.763735,
@@ -746,20 +720,46 @@
       "url": "https://polymarket.com/event/which-nfl-players-will-be-traded"
     },
     {
+      "question": "Brazil vs. Morocco",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Brazil",
+          "pct": 58.5
+        },
+        {
+          "label": "Draw (Brazil vs. Morocco)",
+          "pct": 24.5
+        },
+        {
+          "label": "Morocco",
+          "pct": 17.5
+        }
+      ],
+      "volume": 1173451.893116009,
+      "volume24": 693583.731310997,
+      "vol1wk": 1056725.1841760145,
+      "liquidity": 2874857.8083,
+      "open_interest": 839723.144258,
+      "category": "",
+      "expiry": "13 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-bra-mar-2026-06-13"
+    },
+    {
       "question": "Los Angeles Dodgers vs. Chicago White Sox",
       "subtitle": "",
       "outcomes": [
         {
+          "label": "1st 5 Innings O/U 2.5",
+          "pct": 85.5
+        },
+        {
           "label": "O/U 5.5",
-          "pct": 79.5
+          "pct": 79.0
         },
         {
-          "label": "O/U 6.5",
-          "pct": 72.0
-        },
-        {
-          "label": "O/U 7.5",
-          "pct": 62.0
+          "label": "1st 5 Innings O/U 3.5",
+          "pct": 79.0
         }
       ],
       "volume": 894750.2642819998,
