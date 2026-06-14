@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T02:00:32.421703+08:00",
+  "updated": "2026-06-15T02:30:35.580585+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,11 +20,11 @@
           "pct": 11.2
         }
       ],
-      "volume": 2300634904.4379478,
-      "volume24": 94018823.00565597,
-      "vol1wk": 624403842.054195,
-      "liquidity": 479945616.62766,
-      "open_interest": 34376573.229330994,
+      "volume": 2304513097.2113557,
+      "volume24": 93822777.71478298,
+      "vol1wk": 627910250.1662492,
+      "liquidity": 481095238.65471,
+      "open_interest": 34565441.73053599,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-winner"
@@ -46,11 +46,11 @@
           "pct": 8.8
         }
       ],
-      "volume": 1196732325.1537135,
-      "volume24": 1963632.119906,
-      "vol1wk": 9025072.312396,
-      "liquidity": 63812845.85073,
-      "open_interest": 11799345.286365997,
+      "volume": 1196747893.4583883,
+      "volume24": 1967067.711089,
+      "vol1wk": 9038583.983142,
+      "liquidity": 63558642.65999,
+      "open_interest": 11799012.227688005,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -65,18 +65,18 @@
         },
         {
           "label": "J.D. Vance",
-          "pct": 33.1
+          "pct": 33.2
         },
         {
           "label": "Marco Rubio",
           "pct": 23.2
         }
       ],
-      "volume": 657872825.2524744,
-      "volume24": 996930.1077309999,
-      "vol1wk": 5508304.455452999,
-      "liquidity": 44732380.02508,
-      "open_interest": 8286576.649739998,
+      "volume": 657874015.0361184,
+      "volume24": 988806.7550080001,
+      "vol1wk": 5504841.855621999,
+      "liquidity": 44622687.6433,
+      "open_interest": 8291270.676104,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
@@ -98,11 +98,11 @@
           "pct": 14.3
         }
       ],
-      "volume": 627987805.3740144,
-      "volume24": 1470360.632433,
-      "vol1wk": 8806772.011215998,
-      "liquidity": 36438444.91772,
-      "open_interest": 55100549.8746,
+      "volume": 627990484.6370864,
+      "volume24": 1467278.602859,
+      "vol1wk": 8803295.540471997,
+      "liquidity": 36220978.4994,
+      "open_interest": 54481786.71349299,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/presidential-election-winner-2028"
@@ -113,22 +113,22 @@
       "outcomes": [
         {
           "label": "December 31",
-          "pct": 85.0
+          "pct": 82.5
         },
         {
           "label": "October 31",
-          "pct": 78.0
+          "pct": 77.5
         },
         {
           "label": "August 31",
-          "pct": 70.0
+          "pct": 67.5
         }
       ],
-      "volume": 314041791.7306193,
-      "volume24": 8314952.771732986,
-      "vol1wk": 48327761.594656,
-      "liquidity": 1694565.79688,
-      "open_interest": 21055744.259062,
+      "volume": 314375005.82791823,
+      "volume24": 7907423.502639989,
+      "vol1wk": 48618368.674368985,
+      "liquidity": 1554818.12259,
+      "open_interest": 21091729.875708,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/us-x-iran-permanent-peace-deal-by"
@@ -139,22 +139,22 @@
       "outcomes": [
         {
           "label": "Kimi Antonelli",
-          "pct": 57.9
+          "pct": 59.5
         },
         {
           "label": "George Russell",
-          "pct": 19.0
+          "pct": 18.0
         },
         {
           "label": "Lewis Hamilton",
-          "pct": 13.0
+          "pct": 13.9
         }
       ],
-      "volume": 173822807.84107542,
-      "volume24": 1472625.54152,
-      "vol1wk": 6047784.345485,
-      "liquidity": 12560581.54448,
-      "open_interest": 1226881.6847720006,
+      "volume": 173830918.81736842,
+      "volume24": 1463920.8579890002,
+      "vol1wk": 6051505.03297,
+      "liquidity": 12614904.9493,
+      "open_interest": 1230408.5984639996,
       "category": "",
       "expiry": "06 Dec 2026",
       "url": "https://polymarket.com/event/2026-f1-drivers-champion"
@@ -169,47 +169,21 @@
         },
         {
           "label": "Roberto Sánchez Palomino",
-          "pct": 0.8
+          "pct": 0.6
         },
         {
           "label": "Rafael López Aliaga",
           "pct": 0.1
         }
       ],
-      "volume": 101364341.40706868,
-      "volume24": 861551.2336510001,
-      "vol1wk": 33727069.27186323,
-      "liquidity": 14713275.91538,
-      "open_interest": 7507815.842922,
+      "volume": 101457756.17360169,
+      "volume24": 949126.2619880005,
+      "vol1wk": 33815199.29283323,
+      "liquidity": 14894232.71963,
+      "open_interest": 7451925.1479090005,
       "category": "",
       "expiry": "12 Apr 2026",
       "url": "https://polymarket.com/event/peru-presidential-election-winner"
-    },
-    {
-      "question": "Next French Presidential Election",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Jordan Bardella",
-          "pct": 26.5
-        },
-        {
-          "label": "Édouard Philippe",
-          "pct": 20.5
-        },
-        {
-          "label": "Jean-Luc Mélenchon",
-          "pct": 12.5
-        }
-      ],
-      "volume": 99434554.83644822,
-      "volume24": 848869.457917,
-      "vol1wk": 5961485.050023999,
-      "liquidity": 9574570.20351,
-      "open_interest": 626273.723376,
-      "category": "",
-      "expiry": "30 Apr 2027",
-      "url": "https://polymarket.com/event/next-french-presidential-election"
     },
     {
       "question": "Fed Decision in June?",
@@ -228,11 +202,11 @@
           "pct": 0.1
         }
       ],
-      "volume": 97995835.11698586,
-      "volume24": 5392063.191755999,
-      "vol1wk": 29071008.11238304,
-      "liquidity": 9358361.52892,
-      "open_interest": 15481126.407780997,
+      "volume": 98035599.34181786,
+      "volume24": 5354288.901525999,
+      "vol1wk": 29105273.82936504,
+      "liquidity": 9338194.5057,
+      "open_interest": 15495573.833875999,
       "category": "",
       "expiry": "17 Jun 2026",
       "url": "https://polymarket.com/event/fed-decision-in-june-825"
@@ -243,22 +217,22 @@
       "outcomes": [
         {
           "label": "July 31",
-          "pct": 85.0
+          "pct": 84.0
         },
         {
           "label": "June 30",
-          "pct": 76.0
+          "pct": 75.5
         },
         {
           "label": "June 19",
-          "pct": 64.5
+          "pct": 62.0
         }
       ],
-      "volume": 52796673.3630897,
-      "volume24": 6003609.080282006,
-      "vol1wk": 19550130.306610033,
-      "liquidity": 3645495.47731,
-      "open_interest": 5442806.070661,
+      "volume": 52874995.87592471,
+      "volume24": 5934494.7404870065,
+      "vol1wk": 19625682.41710103,
+      "liquidity": 3645515.29929,
+      "open_interest": 5451223.724559999,
       "category": "",
       "expiry": "",
       "url": "https://polymarket.com/event/us-announces-new-iran-agreementceasefire-extension-by"
@@ -269,22 +243,22 @@
       "outcomes": [
         {
           "label": "July 31",
-          "pct": 78.0
+          "pct": 77.5
         },
         {
           "label": "June 30",
-          "pct": 69.0
+          "pct": 64.5
         },
         {
           "label": "June 21",
-          "pct": 59.5
+          "pct": 54.5
         }
       ],
-      "volume": 33643452.18605888,
-      "volume24": 902928.8806939998,
-      "vol1wk": 4078094.499274006,
-      "liquidity": 273977.1453,
-      "open_interest": 1224523.9886389999,
+      "volume": 33666283.43167388,
+      "volume24": 892016.7712979998,
+      "vol1wk": 4100925.744889006,
+      "liquidity": 266372.8113,
+      "open_interest": 1225225.979843,
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/trump-announces-us-blockade-of-hormuz-lifted-by"
@@ -295,21 +269,47 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 85.5
+          "pct": 84.5
         },
         {
           "label": "Yes",
-          "pct": 14.5
+          "pct": 15.5
         }
       ],
-      "volume": 20949046.230900105,
-      "volume24": 845191.7359209999,
-      "vol1wk": 6412165.264442054,
-      "liquidity": 298306.9075,
-      "open_interest": 4611574.849574,
+      "volume": 20998296.7223101,
+      "volume24": 877915.8126290003,
+      "vol1wk": 6459776.492222053,
+      "liquidity": 310273.2588,
+      "open_interest": 4645046.825724,
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-end-of-june"
+    },
+    {
+      "question": "Germany vs. Curaçao",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Germany",
+          "pct": 99.9
+        },
+        {
+          "label": "Curaçao",
+          "pct": 0.1
+        },
+        {
+          "label": "Draw (Germany vs. Curaçao)",
+          "pct": 0.1
+        }
+      ],
+      "volume": 20989113.019218348,
+      "volume24": 18710616.951305065,
+      "vol1wk": 20713818.750532035,
+      "liquidity": 797188.65678,
+      "open_interest": 11609917.641600002,
+      "category": "",
+      "expiry": "14 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-ger-kor-2026-06-14"
     },
     {
       "question": "IEM Cologne Major 2026 Winner",
@@ -321,47 +321,21 @@
         },
         {
           "label": "Team Spirit",
-          "pct": 30.5
+          "pct": 29.5
         },
         {
-          "label": "FURIA",
-          "pct": 8.2
+          "label": "Falcons",
+          "pct": 8.5
         }
       ],
-      "volume": 20378629.785100926,
-      "volume24": 1076401.0060969999,
-      "vol1wk": 7820812.002438005,
-      "liquidity": 1115408.6984,
-      "open_interest": 952131.3591609999,
+      "volume": 20392413.678100925,
+      "volume24": 1017782.697009,
+      "vol1wk": 7827092.045387005,
+      "liquidity": 1163938.01914,
+      "open_interest": 960205.9093329997,
       "category": "",
       "expiry": "21 Jun 2026",
       "url": "https://polymarket.com/event/iem-cologne-major-2026-winner"
-    },
-    {
-      "question": "Germany vs. Curaçao",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Germany",
-          "pct": 95.7
-        },
-        {
-          "label": "Draw (Germany vs. Curaçao)",
-          "pct": 3.4
-        },
-        {
-          "label": "Curaçao",
-          "pct": 1.2
-        }
-      ],
-      "volume": 17040978.24501117,
-      "volume24": 14772919.650365986,
-      "vol1wk": 16765779.20632495,
-      "liquidity": 523239.85268,
-      "open_interest": 9813112.910044,
-      "category": "",
-      "expiry": "14 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-ger-kor-2026-06-14"
     },
     {
       "question": "Israel closes its airspace by...?",
@@ -369,25 +343,51 @@
       "outcomes": [
         {
           "label": "June 30",
-          "pct": 15.5
+          "pct": 24.0
         },
         {
           "label": "June 15",
-          "pct": 11.3
+          "pct": 14.3
         },
         {
           "label": "June 14",
-          "pct": 7.0
+          "pct": 7.8
         }
       ],
-      "volume": 15538289.769806975,
-      "volume24": 863360.3279330003,
-      "vol1wk": 6265848.522465996,
-      "liquidity": 189853.85719,
-      "open_interest": 1284623.465387,
+      "volume": 15608018.197417976,
+      "volume24": 905256.9297980003,
+      "vol1wk": 6302386.884593999,
+      "liquidity": 200918.66929,
+      "open_interest": 1285496.719276,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/israel-closes-its-airspace-by"
+    },
+    {
+      "question": "Which company has best AI model end of June?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Anthropic",
+          "pct": 88.3
+        },
+        {
+          "label": "Google",
+          "pct": 7.5
+        },
+        {
+          "label": "OpenAI",
+          "pct": 4.9
+        }
+      ],
+      "volume": 14835526.102513026,
+      "volume24": 1107341.615468,
+      "vol1wk": 3028239.40053,
+      "liquidity": 3028401.54508,
+      "open_interest": 825651.650392,
+      "category": "",
+      "expiry": "30 Jun 2026",
+      "url": "https://polymarket.com/event/which-company-has-best-ai-model-end-of-june"
     },
     {
       "question": "Germany vs. Curaçao - More Markets",
@@ -406,36 +406,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 12818785.695810996,
-      "volume24": 11854652.635346986,
-      "vol1wk": 12792299.509531988,
-      "liquidity": 850209.24717,
-      "open_interest": 9021277.628940996,
+      "volume": 14033586.956627006,
+      "volume24": 13039053.871873984,
+      "vol1wk": 14007100.770347986,
+      "liquidity": 2694153.57679,
+      "open_interest": 9531338.630463995,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-ger-kor-2026-06-14-more-markets"
-    },
-    {
-      "question": "Strait of Hormuz traffic returns to normal by June 15?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "No",
-          "pct": 99.8
-        },
-        {
-          "label": "Yes",
-          "pct": 0.2
-        }
-      ],
-      "volume": 9125732.202053118,
-      "volume24": 869134.010855,
-      "vol1wk": 5136944.251814986,
-      "liquidity": 673474.91724,
-      "open_interest": 3086698.142591,
-      "category": "",
-      "expiry": "15 Jun 2026",
-      "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-june-15"
     },
     {
       "question": "World Cup: Golden Boot Winner",
@@ -451,14 +429,14 @@
         },
         {
           "label": "Erling Haaland",
-          "pct": 8.5
+          "pct": 7.5
         }
       ],
-      "volume": 8580921.180346996,
-      "volume24": 2246312.0480429996,
-      "vol1wk": 5636673.442450998,
-      "liquidity": 3918563.48034,
-      "open_interest": 627890.9474000003,
+      "volume": 8607183.810145997,
+      "volume24": 2258225.6629159995,
+      "vol1wk": 5642438.331036999,
+      "liquidity": 4015579.32413,
+      "open_interest": 632410.8273479998,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-golden-boot-winner"
@@ -469,51 +447,25 @@
       "outcomes": [
         {
           "label": "Abiy Ahmed",
-          "pct": 69.7
+          "pct": 69.4
         },
         {
           "label": "Shimelis Abdisa",
-          "pct": 19.1
+          "pct": 13.9
         },
         {
           "label": "Berhanu Nega",
           "pct": 0.5
         }
       ],
-      "volume": 6927065.479637,
-      "volume24": 4746098.812384999,
-      "vol1wk": 6906267.350849999,
-      "liquidity": 37939.78835,
-      "open_interest": 9403.740916,
+      "volume": 6927072.486637,
+      "volume24": 4547205.819385,
+      "vol1wk": 6906274.357849999,
+      "liquidity": 44648.74203,
+      "open_interest": 9387.044824999999,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
-    },
-    {
-      "question": "Elon Musk # tweets June 9 - June 16, 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "160-179",
-          "pct": 39.5
-        },
-        {
-          "label": "180-199",
-          "pct": 25.5
-        },
-        {
-          "label": "140-159",
-          "pct": 16.9
-        }
-      ],
-      "volume": 4003539.7980929995,
-      "volume24": 1180457.587882,
-      "vol1wk": 2821506.488852001,
-      "liquidity": 1290361.34714,
-      "open_interest": 502582.1596569999,
-      "category": "",
-      "expiry": "16 Jun 2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-june-9-june-16"
     },
     {
       "question": "Netherlands vs. Japan",
@@ -521,7 +473,7 @@
       "outcomes": [
         {
           "label": "Netherlands",
-          "pct": 46.5
+          "pct": 45.5
         },
         {
           "label": "Draw (Netherlands vs. Japan)",
@@ -532,14 +484,40 @@
           "pct": 25.5
         }
       ],
-      "volume": 3910604.3605309334,
-      "volume24": 2647752.976527008,
-      "vol1wk": 3775024.854402947,
-      "liquidity": 6746303.8093,
-      "open_interest": 3046493.7767160004,
+      "volume": 4309828.341177936,
+      "volume24": 2998602.8590780175,
+      "vol1wk": 4174107.5692789406,
+      "liquidity": 7723610.4682,
+      "open_interest": 4170982.683903,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-nld-jpn-2026-06-14"
+    },
+    {
+      "question": "Elon Musk # tweets June 9 - June 16, 2026?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "160-179",
+          "pct": 41.4
+        },
+        {
+          "label": "180-199",
+          "pct": 29.5
+        },
+        {
+          "label": "140-159",
+          "pct": 13.1
+        }
+      ],
+      "volume": 4068149.098888,
+      "volume24": 1204990.8993660002,
+      "vol1wk": 2858858.2922590007,
+      "liquidity": 1284234.69528,
+      "open_interest": 493566.5762729999,
+      "category": "",
+      "expiry": "16 Jun 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-june-9-june-16"
     },
     {
       "question": "Côte d'Ivoire vs. Ecuador",
@@ -558,66 +536,40 @@
           "pct": 29.5
         }
       ],
-      "volume": 3213221.5730879256,
-      "volume24": 3044088.3993730065,
-      "vol1wk": 3174052.116752008,
-      "liquidity": 6472324.9822,
-      "open_interest": 2478623.333454,
+      "volume": 3249198.8834279208,
+      "volume24": 3078646.1960180076,
+      "vol1wk": 3210023.397092009,
+      "liquidity": 6598974.0445,
+      "open_interest": 2512138.935751,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-civ-ecu-2026-06-14"
     },
     {
-      "question": "Bitcoin above ___ on June 14?",
+      "question": "Germany vs. Curaçao - Exact Score",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "52,000",
-          "pct": 100.0
+          "label": "Any Other Score",
+          "pct": 99.5
         },
         {
-          "label": "54,000",
-          "pct": 100.0
+          "label": "Germany 0 - 0 Curaçao",
+          "pct": 0.1
         },
         {
-          "label": "56,000",
-          "pct": 100.0
+          "label": "Germany 0 - 1 Curaçao",
+          "pct": 0.1
         }
       ],
-      "volume": 2359704.349232,
-      "volume24": 1668485.793304,
-      "vol1wk": 2359704.349232,
-      "liquidity": 1892067.05082,
-      "open_interest": 1296823.049131,
+      "volume": 2442656.282126999,
+      "volume24": 2421603.7998599964,
+      "vol1wk": 2442414.2818399966,
+      "liquidity": 1459362.04206,
+      "open_interest": 1295107.7478990003,
       "category": "",
       "expiry": "14 Jun 2026",
-      "url": "https://polymarket.com/event/bitcoin-above-on-june-14-2026"
-    },
-    {
-      "question": "Elon Musk # tweets June 12 - June 19, 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "140-159",
-          "pct": 19.7
-        },
-        {
-          "label": "120-139",
-          "pct": 18.9
-        },
-        {
-          "label": "160-179",
-          "pct": 15.5
-        }
-      ],
-      "volume": 2216801.9211489996,
-      "volume24": 955054.0137699998,
-      "vol1wk": 1968769.5554829997,
-      "liquidity": 1143494.61394,
-      "open_interest": 306242.27508800005,
-      "category": "",
-      "expiry": "19 Jun 2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-june-12-june-19"
+      "url": "https://polymarket.com/event/fifwc-ger-kor-2026-06-14-exact-score"
     },
     {
       "question": "Counter-Strike: Aurora Gaming vs 9z (BO3) - IEM Cologne Major Stage 3",
@@ -636,40 +588,40 @@
           "pct": 100.0
         }
       ],
-      "volume": 2168989.201245998,
-      "volume24": 2168989.201245999,
-      "vol1wk": 2168989.201245999,
-      "liquidity": 3678299.79489,
-      "open_interest": 1354122.2593529995,
+      "volume": 2244865.1865719976,
+      "volume24": 2244865.186571999,
+      "vol1wk": 2244865.186571999,
+      "liquidity": 2994521.86888,
+      "open_interest": 1214372.922036,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/cs2-aur1-9z-2026-06-14"
     },
     {
-      "question": "Germany vs. Curaçao - Exact Score",
+      "question": "Elon Musk # tweets June 12 - June 19, 2026?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Any Other Score",
-          "pct": 66.0
+          "label": "140-159",
+          "pct": 20.0
         },
         {
-          "label": "Germany 3 - 1 Curaçao",
+          "label": "120-139",
+          "pct": 17.6
+        },
+        {
+          "label": "160-179",
           "pct": 17.5
-        },
-        {
-          "label": "Germany 3 - 2 Curaçao",
-          "pct": 6.6
         }
       ],
-      "volume": 2149273.249908999,
-      "volume24": 2128226.600973997,
-      "vol1wk": 2149031.249621997,
-      "liquidity": 613275.34188,
-      "open_interest": 1155905.4288410002,
+      "volume": 2224749.629012,
+      "volume24": 939135.8074059999,
+      "vol1wk": 1976717.2633459996,
+      "liquidity": 1237427.69656,
+      "open_interest": 304885.514038,
       "category": "",
-      "expiry": "14 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-ger-kor-2026-06-14-exact-score"
+      "expiry": "19 Jun 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-june-12-june-19"
     },
     {
       "question": "Counter-Strike: BetBoom Team vs Vitality (BO3) - IEM Cologne Major Stage 3",
@@ -688,11 +640,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 1985033.4675300044,
-      "volume24": 1985033.4675300003,
-      "vol1wk": 1985033.4675300003,
-      "liquidity": 2412038.4626,
-      "open_interest": 1465738.125087,
+      "volume": 2140489.2375300042,
+      "volume24": 2140489.23753,
+      "vol1wk": 2140489.23753,
+      "liquidity": 2795492.99759,
+      "open_interest": 1498224.621689,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/cs2-bb3-vit-2026-06-14"
@@ -714,11 +666,11 @@
           "pct": 21.5
         }
       ],
-      "volume": 1199741.33672299,
-      "volume24": 880196.6523259939,
-      "vol1wk": 1190805.8845429923,
-      "liquidity": 3545450.2372,
-      "open_interest": 909370.030029,
+      "volume": 1216340.6225449888,
+      "volume24": 896313.3669909934,
+      "vol1wk": 1207401.425267991,
+      "liquidity": 3297605.2428,
+      "open_interest": 915605.3323429999,
       "category": "",
       "expiry": "15 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-swe-tun-2026-06-14"
@@ -729,25 +681,77 @@
       "outcomes": [
         {
           "label": "O/U 0.5",
-          "pct": 91.5
-        },
-        {
-          "label": "2nd Half O/U 0.5",
-          "pct": 79.0
+          "pct": 92.5
         },
         {
           "label": "Netherlands O/U 0.5",
           "pct": 78.5
+        },
+        {
+          "label": "2nd Half O/U 0.5",
+          "pct": 77.0
         }
       ],
-      "volume": 1104036.9106719994,
-      "volume24": 952808.6655070004,
-      "vol1wk": 1099185.6648890001,
-      "liquidity": 1301528.20157,
-      "open_interest": 804593.152079,
+      "volume": 1152181.2719819997,
+      "volume24": 1000630.0038400005,
+      "vol1wk": 1147330.0261990002,
+      "liquidity": 1027772.2267,
+      "open_interest": 885247.0916650002,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-nld-jpn-2026-06-14-more-markets"
+    },
+    {
+      "question": "Counter-Strike: G2 vs Legacy (BO3) - IEM Cologne Major Stage 3",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 1 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Map 1 Rounds Handicap: G2 (-3.5) vs Legacy (+3.5)",
+          "pct": 100.0
+        },
+        {
+          "label": "Map 1 Total Rounds: Over/Under 18.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 1001115.4945140007,
+      "volume24": 1001115.4945139997,
+      "vol1wk": 1001115.4945139997,
+      "liquidity": 623804.87965,
+      "open_interest": 765391.610603,
+      "category": "",
+      "expiry": "14 Jun 2026",
+      "url": "https://polymarket.com/event/cs2-g2-lgc-2026-06-14"
+    },
+    {
+      "question": "Counter-Strike: Natus Vincere vs Team Falcons (BO3) - IEM Cologne Major Stage 3",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 2 Winner",
+          "pct": 56.5
+        },
+        {
+          "label": "O/U 2.5 Games",
+          "pct": 56.5
+        },
+        {
+          "label": "Map 1 Rounds Handicap: Team Falcons (-3.5) vs Natus Vincere (+3.5)",
+          "pct": 55.5
+        }
+      ],
+      "volume": 977075.8833449997,
+      "volume24": 977075.8833449993,
+      "vol1wk": 977075.8833449993,
+      "liquidity": 457537.3802,
+      "open_interest": 857427.7491629999,
+      "category": "",
+      "expiry": "14 Jun 2026",
+      "url": "https://polymarket.com/event/cs2-navi-fal2-2026-06-14"
     },
     {
       "question": "Netherlands vs. Japan - Exact Score",
@@ -758,19 +762,19 @@
           "pct": 14.5
         },
         {
-          "label": "Netherlands 2 - 1 Japan",
-          "pct": 12.5
-        },
-        {
           "label": "Netherlands 1 - 0 Japan",
           "pct": 11.5
+        },
+        {
+          "label": "Netherlands 2 - 0 Japan",
+          "pct": 9.5
         }
       ],
-      "volume": 929765.4045669987,
-      "volume24": 846865.7857959993,
-      "vol1wk": 864096.4064099994,
-      "liquidity": 502136.9564,
-      "open_interest": 338654.982923,
+      "volume": 957555.9769589985,
+      "volume24": 874471.7900759993,
+      "vol1wk": 891886.9788019994,
+      "liquidity": 490027.9581,
+      "open_interest": 349460.58949899994,
       "category": "",
       "expiry": "14 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-nld-jpn-2026-06-14-exact-score"
