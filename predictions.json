@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-15T11:25:04.064816+08:00",
+  "updated": "2026-06-15T11:30:07.687161+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -121,7 +121,7 @@
         },
         {
           "label": "August 31",
-          "pct": 96.2
+          "pct": 96.4
         }
       ],
       "volume": 338108515.37239045,
@@ -147,7 +147,7 @@
         },
         {
           "label": "Lewis Hamilton",
-          "pct": 12.3
+          "pct": 12.2
         }
       ],
       "volume": 174052618.04363436,
@@ -234,6 +234,32 @@
       "url": "https://polymarket.com/event/us-announces-new-iran-agreementceasefire-extension-by"
     },
     {
+      "question": "Kharg Island no longer under Iranian control by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "August 31",
+          "pct": 6.5
+        },
+        {
+          "label": "July 31",
+          "pct": 3.8
+        },
+        {
+          "label": "June 30",
+          "pct": 0.9
+        }
+      ],
+      "volume": 54984576.18406439,
+      "volume24": 862651.9989520011,
+      "vol1wk": 3627701.736963011,
+      "liquidity": 652864.64571,
+      "open_interest": 2843518.612827,
+      "category": "",
+      "expiry": "31 Mar 2026",
+      "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
+    },
+    {
       "question": "Strait of Hormuz traffic returns to normal by end of June?",
       "subtitle": "",
       "outcomes": [
@@ -287,11 +313,11 @@
       "outcomes": [
         {
           "label": "Sweden",
-          "pct": 75.5
+          "pct": 94.5
         },
         {
           "label": "Draw (Sweden vs. Tunisia)",
-          "pct": 19.5
+          "pct": 4.5
         },
         {
           "label": "Tunisia",
@@ -399,7 +425,7 @@
         },
         {
           "label": "OpenAI",
-          "pct": 3.9
+          "pct": 3.5
         }
       ],
       "volume": 14936107.416569028,
@@ -417,11 +443,11 @@
       "outcomes": [
         {
           "label": "Yes",
-          "pct": 99.4
+          "pct": 99.8
         },
         {
           "label": "No",
-          "pct": 0.6
+          "pct": 0.2
         }
       ],
       "volume": 10511958.430205071,
@@ -513,7 +539,7 @@
       "outcomes": [
         {
           "label": "180-199",
-          "pct": 50.5
+          "pct": 48.5
         },
         {
           "label": "200-219",
@@ -521,7 +547,7 @@
         },
         {
           "label": "160-179",
-          "pct": 22.7
+          "pct": 18.6
         }
       ],
       "volume": 4353461.925361,
@@ -573,7 +599,7 @@
         },
         {
           "label": "July 31",
-          "pct": 22.5
+          "pct": 21.5
         }
       ],
       "volume": 3694950.470555001,
@@ -647,7 +673,7 @@
         },
         {
           "label": "Fight won by KO/TKO?",
-          "pct": 68.0
+          "pct": 75.5
         },
         {
           "label": "Topuria to win by KO/TKO?",
@@ -662,32 +688,6 @@
       "category": "",
       "expiry": "15 Jun 2026",
       "url": "https://polymarket.com/event/ufc-jus3-ili1-2026-06-14"
-    },
-    {
-      "question": "UFC Freedom 250: Derrick Lewis vs. Josh Hokit (Heavyweight, Main Card)",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Fight won by KO/TKO?",
-          "pct": 100.0
-        },
-        {
-          "label": "Hokit to win by KO/TKO?",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 0.5 Rounds",
-          "pct": 100.0
-        }
-      ],
-      "volume": 2311206.459151993,
-      "volume24": 2018931.0656809965,
-      "vol1wk": 2290640.9011359946,
-      "liquidity": 688462.0732,
-      "open_interest": 2077493.3511499998,
-      "category": "",
-      "expiry": "15 Jun 2026",
-      "url": "https://polymarket.com/event/ufc-der-jos52-2026-06-14"
     },
     {
       "question": "Spain vs. Cabo Verde - More Markets",
@@ -747,15 +747,15 @@
       "outcomes": [
         {
           "label": "Any Other Score",
-          "pct": 30.0
-        },
-        {
-          "label": "Sweden 2 - 1 Tunisia",
-          "pct": 24.0
+          "pct": 37.0
         },
         {
           "label": "Sweden 3 - 1 Tunisia",
-          "pct": 20.7
+          "pct": 32.7
+        },
+        {
+          "label": "Sweden 3 - 2 Tunisia",
+          "pct": 12.3
         }
       ],
       "volume": 960995.1237969992,
