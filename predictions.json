@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-16T00:25:48.988249+08:00",
+  "updated": "2026-06-16T00:30:25.543306+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -64,12 +64,12 @@
           "pct": 98.2
         },
         {
-          "label": "August 31",
-          "pct": 97.9
+          "label": "October 31",
+          "pct": 98.1
         },
         {
-          "label": "October 31",
-          "pct": 97.9
+          "label": "July 31",
+          "pct": 98.0
         }
       ],
       "volume": 344351162.3276135,
@@ -165,7 +165,7 @@
         },
         {
           "label": "June 30",
-          "pct": 91.5
+          "pct": 91.0
         },
         {
           "label": "June 21",
@@ -191,11 +191,11 @@
         },
         {
           "label": "Spain O/U 0.5",
-          "pct": 97.0
+          "pct": 92.5
         },
         {
           "label": "O/U 1.5",
-          "pct": 87.5
+          "pct": 75.5
         }
       ],
       "volume": 26090840.73351708,
@@ -213,11 +213,11 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 74.5
+          "pct": 75.5
         },
         {
           "label": "Yes",
-          "pct": 25.5
+          "pct": 24.5
         }
       ],
       "volume": 23571671.78969875,
@@ -243,7 +243,7 @@
         },
         {
           "label": "FURIA",
-          "pct": 12.1
+          "pct": 13.0
         }
       ],
       "volume": 21145774.264966924,
@@ -313,15 +313,15 @@
       "outcomes": [
         {
           "label": "Spain",
-          "pct": 89.5
+          "pct": 83.5
         },
         {
           "label": "Draw (Spain vs. Cabo Verde)",
-          "pct": 7.8
+          "pct": 12.6
         },
         {
           "label": "Cabo Verde",
-          "pct": 3.2
+          "pct": 3.6
         }
       ],
       "volume": 15183407.908093859,
@@ -339,7 +339,7 @@
       "outcomes": [
         {
           "label": "Anthropic",
-          "pct": 89.8
+          "pct": 90.0
         },
         {
           "label": "Google",
@@ -417,7 +417,7 @@
         },
         {
           "label": "Qatar",
-          "pct": 28.1
+          "pct": 23.9
         },
         {
           "label": "No Meeting by June 30",
@@ -524,8 +524,8 @@
           "pct": 67.0
         },
         {
-          "label": "Troop Withdrawal",
-          "pct": 25.5
+          "label": "Enrichment of Uranium",
+          "pct": 25.9
         }
       ],
       "volume": 2695859.251932999,
@@ -546,12 +546,12 @@
           "pct": 100.0
         },
         {
-          "label": "Map 1 Rounds Handicap: BetBoom Team (-3.5) vs FUT Esports (+3.5)",
-          "pct": 99.6
+          "label": "Map 2 Winner",
+          "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 18.5",
-          "pct": 99.5
+          "label": "Match Winner",
+          "pct": 100.0
         }
       ],
       "volume": 2611068.092926999,
@@ -620,16 +620,16 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "June 22",
-          "pct": 100.0
-        },
-        {
           "label": "July 31",
           "pct": 100.0
         },
         {
           "label": "June 30",
           "pct": 100.0
+        },
+        {
+          "label": "June 22",
+          "pct": 99.9
         }
       ],
       "volume": 2197307.869507002,
@@ -672,16 +672,16 @@
       "subtitle": "",
       "outcomes": [
         {
+          "label": "Spain 2 - 0 Cabo Verde",
+          "pct": 20.5
+        },
+        {
           "label": "Any Other Score",
-          "pct": 44.0
+          "pct": 20.0
         },
         {
           "label": "Spain 3 - 0 Cabo Verde",
           "pct": 16.5
-        },
-        {
-          "label": "Spain 2 - 0 Cabo Verde",
-          "pct": 14.5
         }
       ],
       "volume": 1393843.2913459998,
@@ -750,15 +750,15 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Map 1 Total Rounds: Over/Under 20.5",
+          "label": "Map 2 Winner",
           "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 22.5",
+          "label": "Map 2 Total Rounds: Over/Under 21.5",
           "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 21.5",
+          "label": "O/U 2.5 Games",
           "pct": 100.0
         }
       ],
