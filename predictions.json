@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T07:01:09.269524+08:00",
+  "updated": "2026-06-28T07:30:07.785626+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,11 +20,11 @@
           "pct": 11.3
         }
       ],
-      "volume": 3279730097.591295,
-      "volume24": 66988447.531422,
-      "vol1wk": 499426179.15985954,
-      "liquidity": 342772113.12886,
-      "open_interest": 58725155.31382198,
+      "volume": 3282650959.7522,
+      "volume24": 69510168.50689599,
+      "vol1wk": 501832467.78476954,
+      "liquidity": 342516908.44317,
+      "open_interest": 59130809.907244004,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-winner"
@@ -46,11 +46,11 @@
           "pct": 9.3
         }
       ],
-      "volume": 1215991797.0020509,
-      "volume24": 1150434.3799400001,
-      "vol1wk": 7956567.260055999,
-      "liquidity": 65089277.7651,
-      "open_interest": 11178172.456302008,
+      "volume": 1216002099.3770158,
+      "volume24": 1148366.985455,
+      "vol1wk": 7948753.168496999,
+      "liquidity": 65116108.00872,
+      "open_interest": 11185439.438765004,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -69,14 +69,14 @@
         },
         {
           "label": "Lewis Hamilton",
-          "pct": 14.0
+          "pct": 14.3
         }
       ],
-      "volume": 179580413.13390055,
-      "volume24": 1553402.6070160002,
-      "vol1wk": 3144715.8396159997,
-      "liquidity": 13779766.26411,
-      "open_interest": 1235682.5907540002,
+      "volume": 179581560.86875355,
+      "volume24": 1553957.337203,
+      "vol1wk": 3132444.339077,
+      "liquidity": 13772252.44574,
+      "open_interest": 1236389.397109,
       "category": "",
       "expiry": "06 Dec 2026",
       "url": "https://polymarket.com/event/2026-f1-drivers-champion"
@@ -98,11 +98,11 @@
           "pct": 0.7
         }
       ],
-      "volume": 74472102.02804002,
-      "volume24": 3947557.933019,
-      "vol1wk": 27639973.246004995,
-      "liquidity": 145242.29624,
-      "open_interest": 19376.412982,
+      "volume": 74472103.05262302,
+      "volume24": 3947557.9361529998,
+      "vol1wk": 27639946.067075994,
+      "liquidity": 152525.75393,
+      "open_interest": 19377.437565,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
@@ -120,14 +120,40 @@
           "pct": 0.1
         }
       ],
-      "volume": 65626044.90445305,
-      "volume24": 980903.2820000001,
-      "vol1wk": 3639935.1991970576,
-      "liquidity": 1555503.23946,
-      "open_interest": 9536564.973037,
+      "volume": 65626145.10445305,
+      "volume24": 979626.2020000002,
+      "vol1wk": 3400658.036841053,
+      "liquidity": 1558913.16408,
+      "open_interest": 9536464.773037,
       "category": "",
       "expiry": "30 Jun 2026",
       "url": "https://polymarket.com/event/will-the-iranian-regime-fall-by-june-30"
+    },
+    {
+      "question": "Will the US confirm that aliens exist by...?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "December 31",
+          "pct": 9.5
+        },
+        {
+          "label": "September 30",
+          "pct": 4.5
+        },
+        {
+          "label": "June 30",
+          "pct": 0.1
+        }
+      ],
+      "volume": 60268001.313559525,
+      "volume24": 755338.6896170003,
+      "vol1wk": 4955273.943410007,
+      "liquidity": 1787108.28071,
+      "open_interest": 12411316.599143002,
+      "category": "",
+      "expiry": "31 Dec 2026",
+      "url": "https://polymarket.com/event/will-the-us-confirm-that-aliens-exist-before-2027"
     },
     {
       "question": "World Cup: Golden Boot Winner",
@@ -135,7 +161,7 @@
       "outcomes": [
         {
           "label": "Lionel Messi",
-          "pct": 37.9
+          "pct": 38.1
         },
         {
           "label": "Kylian Mbappe",
@@ -146,11 +172,11 @@
           "pct": 7.5
         }
       ],
-      "volume": 35448793.67113396,
-      "volume24": 1176649.580592,
-      "vol1wk": 13499821.781994002,
-      "liquidity": 4741707.0132,
-      "open_interest": 1249807.5655360008,
+      "volume": 35481541.74343796,
+      "volume24": 1202609.658257,
+      "vol1wk": 13528360.649088003,
+      "liquidity": 4770679.38367,
+      "open_interest": 1254149.794156001,
       "category": "",
       "expiry": "20 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-golden-boot-winner"
@@ -172,66 +198,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 29842937.427103106,
-      "volume24": 851887.415321,
-      "vol1wk": 8130349.959127,
-      "liquidity": 1309049.7129,
-      "open_interest": 6332108.629043,
+      "volume": 29855307.577620104,
+      "volume24": 854022.3545550001,
+      "vol1wk": 8133284.070468999,
+      "liquidity": 1319875.58699,
+      "open_interest": 6333688.136243999,
       "category": "",
       "expiry": "01 Jul 2026",
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-june-2026"
-    },
-    {
-      "question": "Croatia vs. Ghana",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Croatia",
-          "pct": 100.0
-        },
-        {
-          "label": "Draw (Croatia vs. Ghana)",
-          "pct": 0.1
-        },
-        {
-          "label": "Ghana",
-          "pct": 0.1
-        }
-      ],
-      "volume": 24750212.691656183,
-      "volume24": 24142427.927065104,
-      "vol1wk": 24666032.440537114,
-      "liquidity": 1027300.13251,
-      "open_interest": 14843973.232518,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-hrv-gha-2026-06-27"
-    },
-    {
-      "question": "Who will enter Iran by June 30?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Any U.S. Senator",
-          "pct": 0.5
-        },
-        {
-          "label": "Any U.S. House member",
-          "pct": 0.4
-        },
-        {
-          "label": "Benjamin Netanyahu",
-          "pct": 0.1
-        }
-      ],
-      "volume": 16186751.586917998,
-      "volume24": 6850692.399545001,
-      "vol1wk": 15764319.504090998,
-      "liquidity": 396913.5954,
-      "open_interest": 348165.45749199996,
-      "category": "",
-      "expiry": "30 Jun 2026",
-      "url": "https://polymarket.com/event/who-will-enter-iran-by-june-30"
     },
     {
       "question": "World Cup: Team to advance to Knockout Stages",
@@ -250,14 +224,40 @@
           "pct": 100.0
         }
       ],
-      "volume": 16169021.989569986,
-      "volume24": 1202372.1542120012,
-      "vol1wk": 5437919.275388003,
-      "liquidity": 217310.27452,
-      "open_interest": 1347105.4990340006,
+      "volume": 16231504.228592986,
+      "volume24": 1257623.982284001,
+      "vol1wk": 5497222.585518003,
+      "liquidity": 412821.71737,
+      "open_interest": 1381011.8252730004,
       "category": "",
       "expiry": "28 Jun 2026",
       "url": "https://polymarket.com/event/world-cup-team-to-advance-to-knockout-stages"
+    },
+    {
+      "question": "Who will enter Iran by June 30?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Any U.S. Senator",
+          "pct": 0.5
+        },
+        {
+          "label": "Any U.S. House member",
+          "pct": 0.4
+        },
+        {
+          "label": "Benjamin Netanyahu",
+          "pct": 0.1
+        }
+      ],
+      "volume": 16186786.028917998,
+      "volume24": 6845689.372545,
+      "vol1wk": 15764353.946091,
+      "liquidity": 418940.97217,
+      "open_interest": 348175.09949799994,
+      "category": "",
+      "expiry": "30 Jun 2026",
+      "url": "https://polymarket.com/event/who-will-enter-iran-by-june-30"
     },
     {
       "question": "2026 Women's Wimbledon Winner",
@@ -276,66 +276,14 @@
           "pct": 8.5
         }
       ],
-      "volume": 16090159.563592998,
-      "volume24": 2720208.759668,
-      "vol1wk": 8142029.680269999,
-      "liquidity": 1160875.40881,
-      "open_interest": 75539.13666399999,
+      "volume": 16093941.469679998,
+      "volume24": 2686101.8519050004,
+      "vol1wk": 8145611.586357,
+      "liquidity": 1144532.36802,
+      "open_interest": 77220.369715,
       "category": "",
       "expiry": "12 Jul 2026",
       "url": "https://polymarket.com/event/2026-womens-wimbledon-winner"
-    },
-    {
-      "question": "Panama vs. England - More Markets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "England (-1.5)",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 0.5",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 1.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 14411135.312993,
-      "volume24": 13966435.600418996,
-      "vol1wk": 14389181.643513,
-      "liquidity": 12577212.42206,
-      "open_interest": 7189801.898813001,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-pan-eng-2026-06-27-more-markets"
-    },
-    {
-      "question": "Panama vs. England",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "England",
-          "pct": 100.0
-        },
-        {
-          "label": "Draw (Panama vs. England)",
-          "pct": 0.1
-        },
-        {
-          "label": "Panama",
-          "pct": 0.1
-        }
-      ],
-      "volume": 11492549.206710074,
-      "volume24": 10405647.103277033,
-      "vol1wk": 11386781.740392063,
-      "liquidity": 2738766.86941,
-      "open_interest": 5831462.096923,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-pan-eng-2026-06-27"
     },
     {
       "question": "Colombia vs. Portugal",
@@ -343,22 +291,22 @@
       "outcomes": [
         {
           "label": "Portugal",
-          "pct": 52.5
-        },
-        {
-          "label": "Colombia",
-          "pct": 24.5
+          "pct": 53.5
         },
         {
           "label": "Draw (Colombia vs. Portugal)",
           "pct": 23.5
+        },
+        {
+          "label": "Colombia",
+          "pct": 23.5
         }
       ],
-      "volume": 10740814.406736262,
-      "volume24": 9772042.686960896,
-      "vol1wk": 10586877.27758892,
-      "liquidity": 10435995.5795,
-      "open_interest": 8247291.325902,
+      "volume": 15198896.344206402,
+      "volume24": 14211067.566859923,
+      "vol1wk": 15044736.880940944,
+      "liquidity": 10917248.8257,
+      "open_interest": 12172420.334368002,
       "category": "",
       "expiry": "27 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-col-prt-2026-06-27"
@@ -377,69 +325,17 @@
         },
         {
           "label": "Díaz-Canel - Cuba President",
-          "pct": 1.1
+          "pct": 1.0
         }
       ],
-      "volume": 5703124.038557998,
-      "volume24": 1050066.340056,
-      "vol1wk": 3891913.1205150015,
-      "liquidity": 994526.31354,
-      "open_interest": 208823.53454000002,
+      "volume": 5733375.500557998,
+      "volume24": 1080258.802056,
+      "vol1wk": 3916306.247978001,
+      "liquidity": 991806.80772,
+      "open_interest": 208701.12565200002,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/next-leader-out-of-power-before-2027-no-orban"
-    },
-    {
-      "question": "Croatia vs. Ghana - More Markets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "O/U 1.5",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 0.5",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 2.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 5609762.168401998,
-      "volume24": 5521075.6343600005,
-      "vol1wk": 5592198.272149,
-      "liquidity": 7001535.53224,
-      "open_interest": 3161131.6839109994,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-hrv-gha-2026-06-27-more-markets"
-    },
-    {
-      "question": "World Cup: Nation to Reach Final",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "France",
-          "pct": 36.0
-        },
-        {
-          "label": "Argentina",
-          "pct": 34.5
-        },
-        {
-          "label": "Spain",
-          "pct": 24.5
-        }
-      ],
-      "volume": 4397754.453904999,
-      "volume24": 1256749.826543,
-      "vol1wk": 2665089.242293,
-      "liquidity": 2810323.76512,
-      "open_interest": 1091820.5754429996,
-      "category": "",
-      "expiry": "20 Jul 2026",
-      "url": "https://polymarket.com/event/world-cup-nation-to-reach-final"
     },
     {
       "question": "DR Congo vs. Uzbekistan",
@@ -458,14 +354,66 @@
           "pct": 17.5
         }
       ],
-      "volume": 3685760.182358972,
-      "volume24": 3210431.2117840066,
-      "vol1wk": 3642938.541249005,
-      "liquidity": 4545380.2229,
-      "open_interest": 2749029.241588,
+      "volume": 4819508.431609952,
+      "volume24": 4341345.838032989,
+      "vol1wk": 4774099.392930984,
+      "liquidity": 5344421.8935,
+      "open_interest": 3674051.527058,
       "category": "",
       "expiry": "27 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-cdr-uzb-2026-06-27"
+    },
+    {
+      "question": "World Cup: Nation to Reach Final",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "France",
+          "pct": 35.5
+        },
+        {
+          "label": "Argentina",
+          "pct": 34.5
+        },
+        {
+          "label": "Spain",
+          "pct": 24.5
+        }
+      ],
+      "volume": 4447503.939014,
+      "volume24": 1292011.181629,
+      "vol1wk": 2712793.0083560003,
+      "liquidity": 2908427.18123,
+      "open_interest": 1093578.2189649998,
+      "category": "",
+      "expiry": "20 Jul 2026",
+      "url": "https://polymarket.com/event/world-cup-nation-to-reach-final"
+    },
+    {
+      "question": "Colombia vs. Portugal - More Markets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 0.5",
+          "pct": 95.0
+        },
+        {
+          "label": "Portugal O/U 0.5",
+          "pct": 85.5
+        },
+        {
+          "label": "O/U 1.5",
+          "pct": 80.5
+        }
+      ],
+      "volume": 4416688.016680997,
+      "volume24": 4023172.0073239966,
+      "vol1wk": 4398731.177779998,
+      "liquidity": 8436923.49863,
+      "open_interest": 3381558.1808449985,
+      "category": "",
+      "expiry": "27 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-col-prt-2026-06-27-more-markets"
     },
     {
       "question": "Algeria vs. Austria",
@@ -484,11 +432,11 @@
           "pct": 25.5
         }
       ],
-      "volume": 3043031.9482359784,
-      "volume24": 2453040.3654880007,
-      "vol1wk": 2967576.3461409984,
-      "liquidity": 2537475.1652,
-      "open_interest": 1865739.829304,
+      "volume": 3159179.069477981,
+      "volume24": 2568299.2462149994,
+      "vol1wk": 3083819.3397249966,
+      "liquidity": 2960664.2924,
+      "open_interest": 1931897.2685679998,
       "category": "",
       "expiry": "28 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-alg-aut-2026-06-27"
@@ -499,7 +447,7 @@
       "outcomes": [
         {
           "label": "Argentina",
-          "pct": 86.5
+          "pct": 85.5
         },
         {
           "label": "Draw (Jordan vs. Argentina)",
@@ -507,69 +455,17 @@
         },
         {
           "label": "Jordan",
-          "pct": 4.7
+          "pct": 4.2
         }
       ],
-      "volume": 2884827.5324230213,
-      "volume24": 1919415.0735500006,
-      "vol1wk": 2831418.153808017,
-      "liquidity": 2272419.30947,
-      "open_interest": 1943548.904387,
+      "volume": 3034044.2882550126,
+      "volume24": 2066994.325243999,
+      "vol1wk": 2980634.9096400086,
+      "liquidity": 2577895.62524,
+      "open_interest": 2050918.9420410001,
       "category": "",
       "expiry": "28 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-jor-arg-2026-06-27"
-    },
-    {
-      "question": "Colombia vs. Portugal - More Markets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "O/U 0.5",
-          "pct": 94.5
-        },
-        {
-          "label": "Portugal O/U 0.5",
-          "pct": 84.5
-        },
-        {
-          "label": "2nd Half O/U 0.5",
-          "pct": 80.0
-        }
-      ],
-      "volume": 2645777.119122001,
-      "volume24": 2267652.677079998,
-      "vol1wk": 2627917.930220999,
-      "liquidity": 6258436.19733,
-      "open_interest": 1837375.3768890016,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-col-prt-2026-06-27-more-markets"
-    },
-    {
-      "question": "Panama vs. England - Exact Score",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Panama 0 - 2 England",
-          "pct": 100.0
-        },
-        {
-          "label": "Panama 0 - 0 England",
-          "pct": 0.1
-        },
-        {
-          "label": "Panama 1 - 0 England",
-          "pct": 0.1
-        }
-      ],
-      "volume": 1875420.184841001,
-      "volume24": 1848994.1683000023,
-      "vol1wk": 1875288.4911430026,
-      "liquidity": 3691177.69167,
-      "open_interest": 1077566.1776190002,
-      "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-pan-eng-2026-06-27-exact-score"
     },
     {
       "question": "What will Trump say during the Faith & Freedom Coalition Conference?",
@@ -588,11 +484,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 1652829.5979080002,
-      "volume24": 1454339.5284310002,
-      "vol1wk": 1631005.433806,
-      "liquidity": 700549.64425,
-      "open_interest": 1423739.9358230003,
+      "volume": 1653829.5979080002,
+      "volume24": 1437671.042933,
+      "vol1wk": 1632005.433806,
+      "liquidity": 699661.74547,
+      "open_interest": 1425743.9358220003,
       "category": "",
       "expiry": "26 Jun 2026",
       "url": "https://polymarket.com/event/what-will-trump-say-during-the-faith-freedom-coalition-conference-20260626142533098"
@@ -603,25 +499,77 @@
       "outcomes": [
         {
           "label": "Croatia 2 - 1 Ghana",
-          "pct": 99.5
+          "pct": 100.0
         },
         {
           "label": "Croatia 0 - 0 Ghana",
-          "pct": 0.1
+          "pct": 0.0
         },
         {
           "label": "Croatia 1 - 0 Ghana",
-          "pct": 0.1
+          "pct": 0.0
         }
       ],
-      "volume": 1552693.244270999,
-      "volume24": 1516077.3942989996,
-      "vol1wk": 1552576.6242709996,
-      "liquidity": 1906744.79365,
-      "open_interest": 865399.0253279998,
+      "volume": 1592904.137795999,
+      "volume24": 1556288.2878239998,
+      "vol1wk": 1592787.5177959998,
+      "liquidity": 344882.65354,
+      "open_interest": 119940.24921699999,
       "category": "",
       "expiry": "27 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-hrv-gha-2026-06-27-exact-score"
+    },
+    {
+      "question": "Colombia vs. Portugal - Exact Score",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Exact Score: Any Other Score",
+          "pct": 14.0
+        },
+        {
+          "label": "Colombia 1 - 1 Portugal",
+          "pct": 11.5
+        },
+        {
+          "label": "Colombia 1 - 2 Portugal",
+          "pct": 11.5
+        }
+      ],
+      "volume": 1517970.9307839978,
+      "volume24": 1488661.657851999,
+      "vol1wk": 1517075.3657929988,
+      "liquidity": 3899826.61091,
+      "open_interest": 1025275.7883389997,
+      "category": "",
+      "expiry": "27 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-col-prt-2026-06-27-exact-score"
+    },
+    {
+      "question": "DR Congo vs. Uzbekistan - More Markets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 0.5",
+          "pct": 91.5
+        },
+        {
+          "label": "DR Congo O/U 0.5",
+          "pct": 82.0
+        },
+        {
+          "label": "2nd Half O/U 0.5",
+          "pct": 75.5
+        }
+      ],
+      "volume": 1412566.0708119993,
+      "volume24": 1333867.4664619986,
+      "vol1wk": 1397599.6037779988,
+      "liquidity": 7839159.13708,
+      "open_interest": 996529.6354529996,
+      "category": "",
+      "expiry": "27 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-cdr-uzb-2026-06-27-more-markets"
     },
     {
       "question": "Algeria vs. Austria - More Markets",
@@ -629,7 +577,7 @@
       "outcomes": [
         {
           "label": "O/U 0.5",
-          "pct": 76.5
+          "pct": 75.5
         },
         {
           "label": "2nd Half O/U 0.5",
@@ -640,14 +588,40 @@
           "pct": 60.5
         }
       ],
-      "volume": 1277872.8704109984,
-      "volume24": 986265.6691229998,
-      "vol1wk": 1267606.0610779994,
-      "liquidity": 5355823.86181,
-      "open_interest": 821944.2718129997,
+      "volume": 1344729.8950139983,
+      "volume24": 1051722.6612099998,
+      "vol1wk": 1334463.0856809996,
+      "liquidity": 5452306.45536,
+      "open_interest": 881039.4815619998,
       "category": "",
       "expiry": "28 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-alg-aut-2026-06-27-more-markets"
+    },
+    {
+      "question": "Jordan vs. Argentina - More Markets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 0.5",
+          "pct": 96.5
+        },
+        {
+          "label": "Argentina O/U 0.5",
+          "pct": 94.0
+        },
+        {
+          "label": "O/U 1.5",
+          "pct": 84.5
+        }
+      ],
+      "volume": 1273648.7831210005,
+      "volume24": 1038561.1262240001,
+      "vol1wk": 1265605.7706720002,
+      "liquidity": 6556713.75256,
+      "open_interest": 999840.3206730002,
+      "category": "",
+      "expiry": "28 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-jor-arg-2026-06-27-more-markets"
     },
     {
       "question": "South Africa vs. Canada",
@@ -666,40 +640,14 @@
           "pct": 16.5
         }
       ],
-      "volume": 1203780.0479189933,
-      "volume24": 1119760.2698289978,
-      "vol1wk": 1203780.0479189965,
-      "liquidity": 1793995.4818,
-      "open_interest": 1034148.1983050001,
+      "volume": 1211498.004158993,
+      "volume24": 1111119.2787139982,
+      "vol1wk": 1207989.2322309967,
+      "liquidity": 2187543.5009,
+      "open_interest": 1038236.026828,
       "category": "",
       "expiry": "28 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-rsa-can-2026-06-28"
-    },
-    {
-      "question": "Jordan vs. Argentina - More Markets",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "O/U 0.5",
-          "pct": 96.4
-        },
-        {
-          "label": "Argentina O/U 0.5",
-          "pct": 94.0
-        },
-        {
-          "label": "O/U 1.5",
-          "pct": 84.5
-        }
-      ],
-      "volume": 1203055.7549700004,
-      "volume24": 969533.4506699999,
-      "vol1wk": 1195075.9225210003,
-      "liquidity": 5855073.43991,
-      "open_interest": 952132.0747580003,
-      "category": "",
-      "expiry": "28 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-jor-arg-2026-06-27-more-markets"
     },
     {
       "question": "Brazil vs. Japan",
@@ -718,40 +666,40 @@
           "pct": 18.5
         }
       ],
-      "volume": 1041932.8529460016,
-      "volume24": 934181.9699279992,
-      "vol1wk": 1041932.8529460005,
-      "liquidity": 1418313.0139,
-      "open_interest": 781714.416459,
+      "volume": 1060740.6437920018,
+      "volume24": 951622.0925289992,
+      "vol1wk": 1060740.6437920008,
+      "liquidity": 1522659.2365,
+      "open_interest": 799517.215175,
       "category": "",
       "expiry": "29 Jun 2026",
       "url": "https://polymarket.com/event/fifwc-bra-jpn-2026-06-29"
     },
     {
-      "question": "Colombia vs. Portugal - Exact Score",
+      "question": "Algeria vs. Austria - Exact Score",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Colombia 1 - 1 Portugal",
-          "pct": 11.5
+          "label": "Algeria 0 - 0 Austria",
+          "pct": 24.5
         },
         {
-          "label": "Exact Score: Any Other Score",
-          "pct": 11.5
+          "label": "Algeria 1 - 1 Austria",
+          "pct": 19.5
         },
         {
-          "label": "Colombia 1 - 2 Portugal",
-          "pct": 10.5
+          "label": "Algeria 1 - 0 Austria",
+          "pct": 11.5
         }
       ],
-      "volume": 1010755.6107529991,
-      "volume24": 981691.9550909996,
-      "vol1wk": 1010071.7957619996,
-      "liquidity": 3724990.6853,
-      "open_interest": 666732.639239,
+      "volume": 940656.4571980016,
+      "volume24": 808779.6119700003,
+      "vol1wk": 940559.3316320004,
+      "liquidity": 3507973.93584,
+      "open_interest": 513596.714985,
       "category": "",
-      "expiry": "27 Jun 2026",
-      "url": "https://polymarket.com/event/fifwc-col-prt-2026-06-27-exact-score"
+      "expiry": "28 Jun 2026",
+      "url": "https://polymarket.com/event/fifwc-alg-aut-2026-06-27-exact-score"
     },
     {
       "question": "Cincinnati Reds vs. Pittsburgh Pirates",
@@ -770,14 +718,66 @@
           "pct": 100.0
         }
       ],
-      "volume": 821296.7334070004,
-      "volume24": 820103.9622530014,
-      "vol1wk": 821296.7334070014,
-      "liquidity": 178851.86986,
-      "open_interest": 408264.4945560001,
+      "volume": 929552.315373001,
+      "volume24": 928216.3381420012,
+      "vol1wk": 929469.1853730011,
+      "liquidity": 154525.47532,
+      "open_interest": 450160.684009,
       "category": "",
       "expiry": "04 Jul 2026",
       "url": "https://polymarket.com/event/mlb-cin-pit-2026-06-27"
+    },
+    {
+      "question": "MLB: NL Rookie of the Year",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "JJ Wetherholt",
+          "pct": 58.0
+        },
+        {
+          "label": "Bryce Eldridge",
+          "pct": 15.7
+        },
+        {
+          "label": "Sal Stewart",
+          "pct": 14.0
+        }
+      ],
+      "volume": 797189.4817240001,
+      "volume24": 729123.221817,
+      "vol1wk": 733074.991817,
+      "liquidity": 62929.44989,
+      "open_interest": 5680.284670999999,
+      "category": "",
+      "expiry": "19 Dec 2026",
+      "url": "https://polymarket.com/event/mlb-nl-rookie-of-the-year"
+    },
+    {
+      "question": "Counter-Strike: Acend vs ECHO (BO3) - Super DraculaN Playoffs",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 2 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Match Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "O/U 2.5 Games",
+          "pct": 100.0
+        }
+      ],
+      "volume": 684200.3970180004,
+      "volume24": 683229.181324,
+      "vol1wk": 684200.397018,
+      "liquidity": 678190.17962,
+      "open_interest": 202391.33883099997,
+      "category": "",
+      "expiry": "28 Jun 2026",
+      "url": "https://polymarket.com/event/cs2-ace1-echo-2026-06-27"
     }
   ]
 }
