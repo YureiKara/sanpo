@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-10T16:00:40.859172+08:00",
+  "updated": "2026-07-10T16:30:06.028951+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -13,17 +13,17 @@
         },
         {
           "label": "Argentina",
-          "pct": 18.2
+          "pct": 18.4
         },
         {
           "label": "Spain",
           "pct": 17.2
         }
       ],
-      "volume": 4145335015.3071,
-      "volume24": 32886108.780121006,
-      "vol1wk": 211167720.89422226,
-      "liquidity": 43903978.98163,
+      "volume": 4145676506.226627,
+      "volume24": 32387942.37555803,
+      "vol1wk": 211321385.9532114,
+      "liquidity": 43703741.6907,
       "open_interest": 67398307.13429703,
       "category": "",
       "expiry": "20 Jul 2026",
@@ -46,10 +46,10 @@
           "pct": 12.4
         }
       ],
-      "volume": 1229578289.5502934,
-      "volume24": 847012.7208830001,
-      "vol1wk": 7591034.160588,
-      "liquidity": 71415725.05009,
+      "volume": 1229594911.0397596,
+      "volume24": 849459.8442950001,
+      "vol1wk": 7599557.339205,
+      "liquidity": 71313810.59436,
       "open_interest": 10947367.567549998,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -61,7 +61,7 @@
       "outcomes": [
         {
           "label": "JD Vance",
-          "pct": 20.0
+          "pct": 19.9
         },
         {
           "label": "Marco Rubio",
@@ -69,13 +69,13 @@
         },
         {
           "label": "Gavin Newsom",
-          "pct": 11.5
+          "pct": 11.4
         }
       ],
-      "volume": 653522844.9587493,
-      "volume24": 1093485.687414,
-      "vol1wk": 8587786.39396191,
-      "liquidity": 38031002.23155,
+      "volume": 653563058.5602303,
+      "volume24": 1076889.6626050002,
+      "vol1wk": 8588271.25670591,
+      "liquidity": 38011177.23378,
       "open_interest": 62250111.98910703,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -87,7 +87,7 @@
       "outcomes": [
         {
           "label": "Kimi Antonelli",
-          "pct": 57.8
+          "pct": 57.9
         },
         {
           "label": "George Russell",
@@ -98,10 +98,10 @@
           "pct": 13.7
         }
       ],
-      "volume": 186556184.87889415,
-      "volume24": 2721723.878383,
-      "vol1wk": 4132233.2762269997,
-      "liquidity": 15032394.01413,
+      "volume": 186559140.40292016,
+      "volume24": 2723582.4162749997,
+      "vol1wk": 4131968.8842309997,
+      "liquidity": 15020025.36927,
       "open_interest": 1232306.1595899998,
       "category": "",
       "expiry": "06 Dec 2026",
@@ -124,10 +124,10 @@
           "pct": 0.5
         }
       ],
-      "volume": 161654121.37447608,
-      "volume24": 5821579.669203,
-      "vol1wk": 33110512.439706005,
-      "liquidity": 184862.63626,
+      "volume": 162143803.95447606,
+      "volume24": 5867524.326928,
+      "vol1wk": 33283992.919809006,
+      "liquidity": 185559.33434,
       "open_interest": 25239.881167,
       "category": "",
       "expiry": "01 Jun 2026",
@@ -150,14 +150,40 @@
           "pct": 8.2
         }
       ],
-      "volume": 111753851.20450947,
-      "volume24": 441469.46014400007,
-      "vol1wk": 2172073.457875,
-      "liquidity": 9619615.94413,
+      "volume": 111754466.05006246,
+      "volume24": 432643.85730500007,
+      "vol1wk": 2170777.912335,
+      "liquidity": 9589041.08082,
       "open_interest": 3680729.335642,
       "category": "",
       "expiry": "04 Oct 2026",
       "url": "https://polymarket.com/event/brazil-presidential-election"
+    },
+    {
+      "question": "Next French Presidential Election",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Marine Le Pen",
+          "pct": 27.3
+        },
+        {
+          "label": "Édouard Philippe",
+          "pct": 25.5
+        },
+        {
+          "label": "Jean-Luc Mélenchon",
+          "pct": 11.5
+        }
+      ],
+      "volume": 110906127.75761533,
+      "volume24": 395061.420229,
+      "vol1wk": 3986504.635049002,
+      "liquidity": 13029833.82371,
+      "open_interest": 806577.222773,
+      "category": "",
+      "expiry": "30 Apr 2027",
+      "url": "https://polymarket.com/event/next-french-presidential-election"
     },
     {
       "question": "Next leader out of power before 2027? (No Orban)",
@@ -176,10 +202,10 @@
           "pct": 0.4
         }
       ],
-      "volume": 60717762.268128,
-      "volume24": 2253463.897179,
-      "vol1wk": 34310624.429079,
-      "liquidity": 1210472.61434,
+      "volume": 61119392.998128,
+      "volume24": 2411980.787179,
+      "vol1wk": 34548547.529079005,
+      "liquidity": 1167903.04915,
       "open_interest": 227607.007761,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -202,10 +228,10 @@
           "pct": 11.2
         }
       ],
-      "volume": 52641339.31819197,
-      "volume24": 1549956.2418469999,
-      "vol1wk": 7708627.781622998,
-      "liquidity": 5320825.06555,
+      "volume": 52646414.149524964,
+      "volume24": 1543355.5170269995,
+      "vol1wk": 7696312.353374998,
+      "liquidity": 5261757.73787,
       "open_interest": 2314574.3819330004,
       "category": "",
       "expiry": "20 Jul 2026",
@@ -221,17 +247,17 @@
         },
         {
           "label": "25 bps increase",
-          "pct": 14.8
+          "pct": 14.7
         },
         {
           "label": "25 bps decrease",
           "pct": 0.5
         }
       ],
-      "volume": 48580527.070926085,
-      "volume24": 1761922.1776830016,
-      "vol1wk": 13290455.512998024,
-      "liquidity": 3475888.40468,
+      "volume": 48582050.753691085,
+      "volume24": 1758081.5381460015,
+      "vol1wk": 13221111.669704024,
+      "liquidity": 3484807.44119,
       "open_interest": 8945946.306370001,
       "category": "",
       "expiry": "29 Jul 2026",
@@ -254,10 +280,10 @@
           "pct": 2.9
         }
       ],
-      "volume": 22473315.435663,
-      "volume24": 2986309.009068,
-      "vol1wk": 5111882.270870999,
-      "liquidity": 1879495.86443,
+      "volume": 22474266.517374,
+      "volume24": 2740265.117068,
+      "vol1wk": 5107724.686278,
+      "liquidity": 1857857.69217,
       "open_interest": 702375.1611329998,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -273,17 +299,17 @@
         },
         {
           "label": "Miami Heat",
-          "pct": 16.2
+          "pct": 16.1
         },
         {
           "label": "Golden State Warriors",
-          "pct": 11.8
+          "pct": 11.7
         }
       ],
-      "volume": 16267395.187968004,
-      "volume24": 1013481.6796519998,
-      "vol1wk": 7026100.010085998,
-      "liquidity": 1878996.17636,
+      "volume": 16272006.495819004,
+      "volume24": 1016531.9991199998,
+      "vol1wk": 7016046.328351998,
+      "liquidity": 1894986.09797,
       "open_interest": 1706806.4060799999,
       "category": "",
       "expiry": "31 Oct 2026",
@@ -303,13 +329,13 @@
         },
         {
           "label": "England",
-          "pct": 38.5
+          "pct": 37.5
         }
       ],
-      "volume": 11299029.725068994,
-      "volume24": 386856.17314699996,
-      "vol1wk": 2113658.697862,
-      "liquidity": 1755373.35187,
+      "volume": 11318508.052261995,
+      "volume24": 405780.005278,
+      "vol1wk": 2127345.1000550003,
+      "liquidity": 1708200.76204,
       "open_interest": 1657647.6604410002,
       "category": "",
       "expiry": "20 Jul 2026",
@@ -332,10 +358,10 @@
           "pct": 0.0
         }
       ],
-      "volume": 9900694.700775985,
-      "volume24": 550761.8791279999,
-      "vol1wk": 1077257.81626,
-      "liquidity": 1734478.008,
+      "volume": 9900710.570775986,
+      "volume24": 550773.199388,
+      "vol1wk": 1077049.87376,
+      "liquidity": 1723967.1877,
       "open_interest": 699159.29515,
       "category": "",
       "expiry": "",
@@ -355,13 +381,13 @@
         },
         {
           "label": "↑ 65,000",
-          "pct": 84.0
+          "pct": 89.5
         }
       ],
-      "volume": 5952725.669240999,
-      "volume24": 611494.550684,
-      "vol1wk": 4755023.766856,
-      "liquidity": 1357345.35313,
+      "volume": 5971297.708171999,
+      "volume24": 589461.31731,
+      "vol1wk": 4753344.250467,
+      "liquidity": 1398087.69157,
       "open_interest": 2745049.7994419998,
       "category": "",
       "expiry": "01 Aug 2026",
@@ -384,10 +410,10 @@
           "pct": 79.5
         }
       ],
-      "volume": 5376636.075653993,
-      "volume24": 3390110.8711670013,
-      "vol1wk": 5376636.075654005,
-      "liquidity": 10413475.087665,
+      "volume": 5470825.539179992,
+      "volume24": 3481368.447441002,
+      "vol1wk": 5470825.539180006,
+      "liquidity": 10699606.005595,
       "open_interest": 3921770.777854,
       "category": "",
       "expiry": "10 Jul 2026",
@@ -410,10 +436,10 @@
           "pct": 16.6
         }
       ],
-      "volume": 4347148.377225874,
-      "volume24": 3061149.8651949707,
-      "vol1wk": 4347148.3772259485,
-      "liquidity": 9358382.94745,
+      "volume": 4428752.21419586,
+      "volume24": 3140144.618548969,
+      "vol1wk": 4428752.214195937,
+      "liquidity": 9221578.710375,
       "open_interest": 3696565.7935499996,
       "category": "",
       "expiry": "10 Jul 2026",
@@ -425,21 +451,21 @@
       "outcomes": [
         {
           "label": "180-199",
-          "pct": 80.9
+          "pct": 86.5
         },
         {
           "label": "200-219",
-          "pct": 13.9
+          "pct": 9.1
         },
         {
           "label": "220-239",
-          "pct": 1.8
+          "pct": 1.1
         }
       ],
-      "volume": 4282139.326785999,
-      "volume24": 1008270.4311760002,
-      "vol1wk": 3073108.9731819984,
-      "liquidity": 1166878.3489,
+      "volume": 4321875.764637,
+      "volume24": 979730.9959310001,
+      "vol1wk": 2830416.9874749985,
+      "liquidity": 1151097.73806,
       "open_interest": 502205.736443,
       "category": "",
       "expiry": "10 Jul 2026",
@@ -455,17 +481,17 @@
         },
         {
           "label": "Fight won by KO/TKO?",
-          "pct": 71.5
+          "pct": 72.0
         },
         {
           "label": "Max Holloway vs. Conor McGregor",
           "pct": 67.5
         }
       ],
-      "volume": 4106860.462237994,
-      "volume24": 1810952.4573070004,
-      "vol1wk": 3348272.6710960013,
-      "liquidity": 2230886.7186,
+      "volume": 4110103.888984993,
+      "volume24": 1813017.5707850005,
+      "vol1wk": 3350978.963731001,
+      "liquidity": 2238636.8921,
       "open_interest": 3747984.303664,
       "category": "",
       "expiry": "12 Jul 2026",
@@ -488,10 +514,10 @@
           "pct": 50.0
         }
       ],
-      "volume": 3978795.213829,
-      "volume24": 731561.973525,
-      "vol1wk": 2067430.6134950002,
-      "liquidity": 1322815.08379,
+      "volume": 3979780.4738670005,
+      "volume24": 732286.501943,
+      "vol1wk": 2068369.865169,
+      "liquidity": 1308255.8453,
       "open_interest": 272355.300852,
       "category": "",
       "expiry": "20 Jul 2026",
@@ -503,7 +529,7 @@
       "outcomes": [
         {
           "label": "O/U 0.5",
-          "pct": 94.2
+          "pct": 93.8
         },
         {
           "label": "England O/U 0.5",
@@ -514,10 +540,10 @@
           "pct": 82.0
         }
       ],
-      "volume": 3738697.766989133,
-      "volume24": 1271326.6950119997,
-      "vol1wk": 3738323.7771890517,
-      "liquidity": 5977563.18085,
+      "volume": 3767565.4647311345,
+      "volume24": 1261011.7641169997,
+      "vol1wk": 3767191.4749310515,
+      "liquidity": 6038913.419545,
       "open_interest": 2687163.548334,
       "category": "",
       "expiry": "11 Jul 2026",
@@ -541,9 +567,9 @@
         }
       ],
       "volume": 3248283.1013690014,
-      "volume24": 3034915.2738699988,
-      "vol1wk": 3248014.071369,
-      "liquidity": 333.51725,
+      "volume24": 3024998.0313859987,
+      "vol1wk": 3247933.9077089997,
+      "liquidity": 58.52085,
       "open_interest": 9048.387135000003,
       "category": "",
       "expiry": "09 Jul 2026",
@@ -566,10 +592,10 @@
           "pct": 11.5
         }
       ],
-      "volume": 2559679.970377,
-      "volume24": 2001721.4099029999,
-      "vol1wk": 2559679.9703769987,
-      "liquidity": 15471753.88971,
+      "volume": 2708975.0929840007,
+      "volume24": 2148817.35409,
+      "vol1wk": 2708975.092983999,
+      "liquidity": 15496968.13079,
       "open_interest": 1755026.568854,
       "category": "",
       "expiry": "10 Jul 2026",
@@ -592,14 +618,40 @@
           "pct": 22.9
         }
       ],
-      "volume": 2412738.1447789953,
-      "volume24": 832032.3834030003,
-      "vol1wk": 2412738.1447789934,
-      "liquidity": 4415532.120625,
+      "volume": 2432144.168310996,
+      "volume24": 847242.7176629999,
+      "vol1wk": 2432144.1683109943,
+      "liquidity": 4830002.523175,
       "open_interest": 1923212.5717210001,
       "category": "",
       "expiry": "11 Jul 2026",
       "url": "https://polymarket.com/event/fifwc-nor-eng-2026-07-11"
+    },
+    {
+      "question": "LoL: G2 Esports vs LYON (BO5) - Mid-Season Invitational Playoffs",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Match Winner",
+          "pct": 79.5
+        },
+        {
+          "label": "Both Teams Slay a Dragon",
+          "pct": 75.0
+        },
+        {
+          "label": "Odd/Even Total Kills",
+          "pct": 72.5
+        }
+      ],
+      "volume": 2184559.4286549995,
+      "volume24": 2153977.2273209994,
+      "vol1wk": 2184559.4286549995,
+      "liquidity": 660524.24872,
+      "open_interest": 988864.0199510001,
+      "category": "",
+      "expiry": "10 Jul 2026",
+      "url": "https://polymarket.com/event/lol-g2-ly-2026-07-10"
     },
     {
       "question": "Bitcoin above ___ on July 10?",
@@ -618,66 +670,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 1705544.9305639998,
-      "volume24": 1257967.5129199997,
-      "vol1wk": 1705544.9305639998,
-      "liquidity": 824869.85166,
+      "volume": 1766386.203498,
+      "volume24": 1307120.3727349997,
+      "vol1wk": 1766386.2034979996,
+      "liquidity": 916760.28139,
       "open_interest": 953768.2543380002,
       "category": "",
       "expiry": "10 Jul 2026",
       "url": "https://polymarket.com/event/bitcoin-above-on-july-10-2026"
-    },
-    {
-      "question": "Elon Musk # tweets July 7 - July 14, 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "220-239",
-          "pct": 23.4
-        },
-        {
-          "label": "240-259",
-          "pct": 20.0
-        },
-        {
-          "label": "260-279",
-          "pct": 15.8
-        }
-      ],
-      "volume": 1520337.857732,
-      "volume24": 391919.984615,
-      "vol1wk": 1373374.3417449999,
-      "liquidity": 838168.46172,
-      "open_interest": 251840.29697699996,
-      "category": "",
-      "expiry": "14 Jul 2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-july-7-july-14"
-    },
-    {
-      "question": "LoL: G2 Esports vs LYON (BO5) - Mid-Season Invitational Playoffs",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Match Winner",
-          "pct": 77.5
-        },
-        {
-          "label": "Game 1 Winner",
-          "pct": 67.5
-        },
-        {
-          "label": "Game 2 Winner",
-          "pct": 66.5
-        }
-      ],
-      "volume": 1174105.937422,
-      "volume24": 1145525.4528599998,
-      "vol1wk": 1174105.937422,
-      "liquidity": 1940224.627,
-      "open_interest": 988864.0199510001,
-      "category": "",
-      "expiry": "10 Jul 2026",
-      "url": "https://polymarket.com/event/lol-g2-ly-2026-07-10"
     },
     {
       "question": "Argentina vs. Switzerland",
@@ -696,10 +696,10 @@
           "pct": 16.1
         }
       ],
-      "volume": 693396.7008770038,
-      "volume24": 447092.3507810027,
-      "vol1wk": 693396.7008769998,
-      "liquidity": 2843465.824175,
+      "volume": 701117.6618980044,
+      "volume24": 453669.7096540026,
+      "vol1wk": 701117.6618979997,
+      "liquidity": 2836670.080525,
       "open_interest": 559790.937215,
       "category": "",
       "expiry": "12 Jul 2026",
@@ -725,7 +725,7 @@
       "volume": 620212.9179540001,
       "volume24": 481038.219528,
       "vol1wk": 494385.55620700005,
-      "liquidity": 30697.31655,
+      "liquidity": 29114.50915,
       "open_interest": 16814.978698000003,
       "category": "",
       "expiry": "11 Oct 2026",
@@ -737,17 +737,17 @@
       "outcomes": [
         {
           "label": "Completed Match",
-          "pct": 75.0
+          "pct": 74.5
         },
         {
           "label": "Newport: Jacob Fearnley vs Stefan Kozlov",
-          "pct": 67.0
+          "pct": 69.5
         }
       ],
-      "volume": 428028.99758099933,
-      "volume24": 428028.9975809999,
-      "vol1wk": 428028.9975809999,
-      "liquidity": 30965.9167,
+      "volume": 429537.7564819993,
+      "volume24": 429537.75648199994,
+      "vol1wk": 429537.75648199994,
+      "liquidity": 29838.9541,
       "open_interest": 162695.923725,
       "category": "",
       "expiry": "16 Jul 2026",
@@ -771,9 +771,9 @@
         }
       ],
       "volume": 426867.570612,
-      "volume24": 422521.3094190002,
+      "volume24": 422501.93504100014,
       "vol1wk": 426867.5706120002,
-      "liquidity": 120.6624,
+      "liquidity": 28.1624,
       "open_interest": 9257.221478,
       "category": "",
       "expiry": "10 Jul 2026",
