@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T23:04:48.637074+08:00",
+  "updated": "2026-07-24T23:30:06.087757+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -13,18 +13,18 @@
         },
         {
           "label": "Jon Ossoff",
-          "pct": 15.8
+          "pct": 15.9
         },
         {
           "label": "Alexandria Ocasio-Cortez",
           "pct": 14.4
         }
       ],
-      "volume": 1246358319.4552336,
-      "volume24": 532507.762209,
-      "vol1wk": 7054701.245196,
-      "liquidity": 71729879.54114,
-      "open_interest": 10779082.852679,
+      "volume": 1246359263.6528335,
+      "volume24": 533025.317059,
+      "vol1wk": 7052365.481413,
+      "liquidity": 71732454.11389,
+      "open_interest": 10779082.852678994,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -46,10 +46,10 @@
           "pct": 12.6
         }
       ],
-      "volume": 669828758.6921219,
-      "volume24": 454929.77157800004,
-      "vol1wk": 7282837.768281001,
-      "liquidity": 46749573.2453,
+      "volume": 669829636.5861559,
+      "volume24": 454105.837911,
+      "vol1wk": 7282104.162879001,
+      "liquidity": 46725198.67007,
       "open_interest": 54584083.18654198,
       "category": "",
       "expiry": "07 Nov 2028",
@@ -74,12 +74,38 @@
       ],
       "volume": 229954465.86110228,
       "volume24": 1998008.1658700001,
-      "vol1wk": 30547290.698905,
-      "liquidity": 153502.62133,
+      "vol1wk": 30285090.698905,
+      "liquidity": 154384.77734,
       "open_interest": 35585.609883000005,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
+    },
+    {
+      "question": "Brazil Presidential Election",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Luiz Inácio Lula da Silva",
+          "pct": 60.5
+        },
+        {
+          "label": "Flávio Bolsonaro",
+          "pct": 23.1
+        },
+        {
+          "label": "Renan Santos",
+          "pct": 11.6
+        }
+      ],
+      "volume": 115441783.72373804,
+      "volume24": 297227.57989100006,
+      "vol1wk": 1981997.153742999,
+      "liquidity": 9091278.53015,
+      "open_interest": 3937401.6433619997,
+      "category": "",
+      "expiry": "04 Oct 2026",
+      "url": "https://polymarket.com/event/brazil-presidential-election"
     },
     {
       "question": "Fed Decision in July?",
@@ -87,21 +113,21 @@
       "outcomes": [
         {
           "label": "No change",
-          "pct": 73.2
+          "pct": 75.3
         },
         {
           "label": "25 bps increase",
-          "pct": 25.1
+          "pct": 24.3
         },
         {
           "label": "50+ bps increase",
           "pct": 0.7
         }
       ],
-      "volume": 89447571.06376217,
-      "volume24": 2365474.9964360003,
-      "vol1wk": 21312756.081159934,
-      "liquidity": 4478239.97438,
+      "volume": 89460951.19555119,
+      "volume24": 2274383.073619001,
+      "vol1wk": 21316588.76628394,
+      "liquidity": 4597382.50145,
       "open_interest": 17647309.52915,
       "category": "",
       "expiry": "29 Jul 2026",
@@ -113,11 +139,11 @@
       "outcomes": [
         {
           "label": "August 31",
-          "pct": 10.2
+          "pct": 9.8
         },
         {
           "label": "July 31",
-          "pct": 2.9
+          "pct": 3.1
         },
         {
           "label": "June 24",
@@ -125,9 +151,9 @@
         }
       ],
       "volume": 66197005.015870444,
-      "volume24": 323551.929577,
-      "vol1wk": 2026754.6369090003,
-      "liquidity": 205105.51689,
+      "volume24": 323546.929577,
+      "vol1wk": 2023853.334587,
+      "liquidity": 206375.81185,
       "open_interest": 2809632.394987,
       "category": "",
       "expiry": "31 Mar 2026",
@@ -150,10 +176,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 49709352.74777687,
-      "volume24": 445243.97126900003,
-      "vol1wk": 2663660.8887300002,
-      "liquidity": 2235209.37226,
+      "volume": 49710547.68248087,
+      "volume24": 416561.51906,
+      "vol1wk": 2664687.9288200005,
+      "liquidity": 2206657.81351,
       "open_interest": 9015398.570652999,
       "category": "",
       "expiry": "01 Jan 2027",
@@ -172,10 +198,10 @@
           "pct": 29.5
         }
       ],
-      "volume": 46690419.21469936,
-      "volume24": 383030.14086000004,
-      "vol1wk": 2984155.9397969977,
-      "liquidity": 715495.4663,
+      "volume": 46692976.60699637,
+      "volume24": 384074.88982500025,
+      "vol1wk": 2985782.129922999,
+      "liquidity": 708757.1292,
       "open_interest": 7193480.492462,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -191,17 +217,17 @@
         },
         {
           "label": "Cleveland Cavaliers",
-          "pct": 26.8
+          "pct": 26.2
         },
         {
           "label": "Golden State Warriors",
-          "pct": 14.9
+          "pct": 14.8
         }
       ],
-      "volume": 41265687.60793309,
-      "volume24": 1832835.025605,
-      "vol1wk": 17835577.564589996,
-      "liquidity": 4943862.83032,
+      "volume": 41301331.52267709,
+      "volume24": 1867338.8820300002,
+      "vol1wk": 17866173.781297997,
+      "liquidity": 4914743.56059,
       "open_interest": 4361286.775217,
       "category": "",
       "expiry": "31 Oct 2026",
@@ -213,21 +239,21 @@
       "outcomes": [
         {
           "label": "Mojtaba Khamenei",
-          "pct": 72.7
+          "pct": 72.6
         },
         {
           "label": "No Head of State",
-          "pct": 7.4
+          "pct": 7.3
         },
         {
           "label": "Reza Pahlavi",
-          "pct": 5.1
+          "pct": 4.8
         }
       ],
-      "volume": 34661793.478988975,
-      "volume24": 446042.2609400003,
-      "vol1wk": 4125827.5769619606,
-      "liquidity": 1478686.19619,
+      "volume": 34676269.86633697,
+      "volume24": 460435.83228800027,
+      "vol1wk": 4139979.9883419573,
+      "liquidity": 1469398.58447,
       "open_interest": 767046.4494980001,
       "category": "",
       "expiry": "31 Dec 2026",
@@ -239,21 +265,21 @@
       "outcomes": [
         {
           "label": "August 31",
-          "pct": 44.0
+          "pct": 43.0
         },
         {
           "label": "August 15",
-          "pct": 39.0
+          "pct": 38.0
         },
         {
           "label": "July 31",
           "pct": 22.5
         }
       ],
-      "volume": 24283312.744931966,
-      "volume24": 342639.50990999996,
-      "vol1wk": 1545461.6021750001,
-      "liquidity": 156555.54283,
+      "volume": 24288814.53766697,
+      "volume24": 348069.860573,
+      "vol1wk": 1550813.3349100002,
+      "liquidity": 158595.52715,
       "open_interest": 916186.8871170001,
       "category": "",
       "expiry": "31 May 2026",
@@ -276,10 +302,10 @@
           "pct": 11.5
         }
       ],
-      "volume": 20670510.522922006,
-      "volume24": 569676.242361,
-      "vol1wk": 12211815.488873005,
-      "liquidity": 12109508.08455,
+      "volume": 20670686.452073004,
+      "volume24": 565535.323661,
+      "vol1wk": 12211268.288590007,
+      "liquidity": 12121852.5762,
       "open_interest": 1787245.054872,
       "category": "",
       "expiry": "31 Oct 2026",
@@ -298,10 +324,10 @@
           "pct": 0.7
         }
       ],
-      "volume": 20297543.075524233,
-      "volume24": 511360.27710099996,
-      "vol1wk": 2896640.9056510055,
-      "liquidity": 530723.41926,
+      "volume": 20299576.545524236,
+      "volume24": 494567.70437800005,
+      "vol1wk": 2898103.3756510057,
+      "liquidity": 518590.13515,
       "open_interest": 3716441.939677,
       "category": "",
       "expiry": "31 Jul 2026",
@@ -324,10 +350,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 17249657.310711015,
-      "volume24": 852771.846036,
-      "vol1wk": 5695282.389941,
-      "liquidity": 1075537.88297,
+      "volume": 17300393.105051015,
+      "volume24": 894122.6973359999,
+      "vol1wk": 5743617.910094,
+      "liquidity": 1360660.00965,
       "open_interest": 4991698.232093999,
       "category": "",
       "expiry": "01 Aug 2026",
@@ -350,10 +376,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 11434956.808020003,
-      "volume24": 746102.0138470001,
-      "vol1wk": 3540061.87305,
-      "liquidity": 1163811.60083,
+      "volume": 11444854.076350003,
+      "volume24": 721111.1146740001,
+      "vol1wk": 3549669.2238290003,
+      "liquidity": 1097333.5199,
       "open_interest": 2913483.165561,
       "category": "",
       "expiry": "01 Aug 2026",
@@ -372,14 +398,14 @@
           "pct": 100.0
         },
         {
-          "label": "First Blood in Game 2?",
+          "label": "Both Teams Slay Baron Nashor",
           "pct": 100.0
         }
       ],
-      "volume": 4755289.247723004,
-      "volume24": 4746902.353453999,
-      "vol1wk": 4755283.365371998,
-      "liquidity": 4638562.39299,
+      "volume": 4805714.657723004,
+      "volume24": 4795793.9734539995,
+      "vol1wk": 4805708.775371999,
+      "liquidity": 4370622.48662,
       "open_interest": 2413213.3659370006,
       "category": "",
       "expiry": "24 Jul 2026",
@@ -405,7 +431,7 @@
       "volume": 4459289.423528001,
       "volume24": 4454962.853090999,
       "vol1wk": 4459193.409029999,
-      "liquidity": 4217.45119,
+      "liquidity": 2669.98212,
       "open_interest": 27923.527083999998,
       "category": "",
       "expiry": "24 Jul 2026",
@@ -428,10 +454,10 @@
           "pct": 99.7
         }
       ],
-      "volume": 4162582.939012,
-      "volume24": 1236410.919966,
-      "vol1wk": 3884934.279396998,
-      "liquidity": 382919.1181,
+      "volume": 4184637.3316760003,
+      "volume24": 1254629.7856069999,
+      "vol1wk": 3906873.6160849985,
+      "liquidity": 412805.33633,
       "open_interest": 1394562.3219629999,
       "category": "",
       "expiry": "31 Aug 2026",
@@ -454,10 +480,10 @@
           "pct": 50.0
         }
       ],
-      "volume": 3965989.14404499,
-      "volume24": 318589.12360799994,
-      "vol1wk": 1213286.3050069998,
-      "liquidity": 1069909.03915,
+      "volume": 3966007.6731569907,
+      "volume24": 318511.07271999994,
+      "vol1wk": 1213266.8847529998,
+      "liquidity": 1078673.27917,
       "open_interest": 1099741.804464,
       "category": "",
       "expiry": "31 Jul 2026",
@@ -469,51 +495,25 @@
       "outcomes": [
         {
           "label": "200-219",
-          "pct": 99.2
+          "pct": 99.5
         },
         {
           "label": "220-239",
-          "pct": 0.8
+          "pct": 0.6
         },
         {
           "label": "240-259",
           "pct": 0.1
         }
       ],
-      "volume": 3492183.7266979977,
-      "volume24": 981972.9769959999,
-      "vol1wk": 2223097.352690998,
-      "liquidity": 933513.76899,
+      "volume": 3506563.8784369975,
+      "volume24": 993430.8679879999,
+      "vol1wk": 2237257.285809998,
+      "liquidity": 926267.72557,
       "open_interest": 464904.82993199996,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/elon-musk-of-tweets-july-17-july-24"
-    },
-    {
-      "question": "LoL: Bilibili Gaming vs ThunderTalk Gaming (BO3) - LPL Group Ascend",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Game 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Match Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 2.5 Games",
-          "pct": 100.0
-        }
-      ],
-      "volume": 3489207.948800997,
-      "volume24": 423276.296134,
-      "vol1wk": 3475369.3346450003,
-      "liquidity": 0.0,
-      "open_interest": 2741.421583,
-      "category": "",
-      "expiry": "23 Jul 2026",
-      "url": "https://polymarket.com/event/lol-blg-tt-2026-07-23"
     },
     {
       "question": "Counter-Strike: Heroic vs TheMongolz (BO3) - BLAST Bounty Qualifier",
@@ -532,10 +532,10 @@
           "pct": 100.0
         }
       ],
-      "volume": 2036137.784736999,
-      "volume24": 2013631.9494709994,
-      "vol1wk": 2034721.0994079998,
-      "liquidity": 615844.64797,
+      "volume": 2202739.8294580006,
+      "volume24": 2179974.3452859996,
+      "vol1wk": 2201329.1441289997,
+      "liquidity": 593843.83587,
       "open_interest": 1031387.398154,
       "category": "",
       "expiry": "24 Jul 2026",
@@ -558,48 +558,22 @@
           "pct": 100.0
         }
       ],
-      "volume": 1791180.4105669996,
-      "volume24": 1329471.2202720004,
-      "vol1wk": 1753604.4173290003,
-      "liquidity": 864554.99432,
-      "open_interest": 971677.6081949999,
+      "volume": 1821430.2676259994,
+      "volume24": 1355372.7225650004,
+      "vol1wk": 1783854.2743880004,
+      "liquidity": 848619.42288,
+      "open_interest": 971677.608195,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/bitcoin-above-on-july-24-2026"
-    },
-    {
-      "question": "Hamburg European Open: Mayar Sherif vs Paula Badosa",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Hamburg European Open: Mayar Sherif vs Paula Badosa",
-          "pct": 100.0
-        },
-        {
-          "label": "Hamburg European Open: Mayar Sherif vs Paula Badosa Set 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Hamburg European Open: Mayar Sherif vs Paula Badosa Match O/U 21.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 1644457.0511010005,
-      "volume24": 1644457.0511009996,
-      "vol1wk": 1644457.0511009996,
-      "liquidity": 1183915.21167,
-      "open_interest": 748671.5430059999,
-      "category": "",
-      "expiry": "31 Jul 2026",
-      "url": "https://polymarket.com/event/wta-sherif-badosa-2026-07-24"
     },
     {
       "question": "Counter-Strike: Liquid vs Vitality (BO3) - BLAST Bounty Qualifier",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Map 3 Total Rounds: Over/Under 18.5",
-          "pct": 72.0
+          "label": "Map 2 Total Rounds: Over/Under 18.5",
+          "pct": 75.5
         },
         {
           "label": "Map Handicap: VIT (-1.5) vs Liquid (+1.5)",
@@ -607,17 +581,43 @@
         },
         {
           "label": "Map 2 Total Rounds: Over/Under 21.5",
-          "pct": 53.0
+          "pct": 61.0
         }
       ],
-      "volume": 927199.2895370004,
-      "volume24": 906553.2261649999,
-      "vol1wk": 927199.289537,
-      "liquidity": 487627.4733,
-      "open_interest": 823721.478066,
+      "volume": 945875.2692810001,
+      "volume24": 925216.2059089999,
+      "vol1wk": 945875.2692809999,
+      "liquidity": 510848.0333,
+      "open_interest": 823721.4780660002,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/cs2-tl1-vit-2026-07-24"
+    },
+    {
+      "question": "Estoril Open: Andrey Rublev vs Luca Van Assche",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Set 1 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Total Sets: O/U 2.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Set 2 O/U 8.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 915639.8772569997,
+      "volume24": 915639.8772570004,
+      "vol1wk": 915639.8772570004,
+      "liquidity": 317084.44863,
+      "open_interest": 379451.7053859999,
+      "category": "",
+      "expiry": "31 Jul 2026",
+      "url": "https://polymarket.com/event/atp-rublev-assche-2026-07-24"
     },
     {
       "question": "Next Claude Opus released by...?",
@@ -636,40 +636,14 @@
           "pct": 97.0
         }
       ],
-      "volume": 897136.2574669998,
-      "volume24": 419051.84918300004,
-      "vol1wk": 724389.3098229999,
-      "liquidity": 82085.93952,
-      "open_interest": 321586.69217700005,
+      "volume": 907266.8840779997,
+      "volume24": 428525.38800900005,
+      "vol1wk": 734561.9364339999,
+      "liquidity": 75813.06174,
+      "open_interest": 321586.692177,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/next-claude-opus-released-byptptpt-20260701204710232"
-    },
-    {
-      "question": "Estoril Open: Andrey Rublev vs Luca Van Assche",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Set 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Set 1 O/U 8.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Estoril Open: Andrey Rublev vs Luca Van Assche Set 2 O/U 8.5",
-          "pct": 99.6
-        }
-      ],
-      "volume": 758479.8344679998,
-      "volume24": 758479.8344680001,
-      "vol1wk": 758479.8344680001,
-      "liquidity": 440981.67294,
-      "open_interest": 379451.7053859999,
-      "category": "",
-      "expiry": "31 Jul 2026",
-      "url": "https://polymarket.com/event/atp-rublev-assche-2026-07-24"
     },
     {
       "question": "World Cup Final: U.S. Viewership",
@@ -689,13 +663,39 @@
         }
       ],
       "volume": 706620.199432,
-      "volume24": 541881.900892,
+      "volume24": 540985.8597789999,
       "vol1wk": 656791.244542,
-      "liquidity": 670615.71034,
-      "open_interest": 563969.0217979997,
+      "liquidity": 670242.33392,
+      "open_interest": 563969.0217980001,
       "category": "",
       "expiry": "19 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-final-uptspt-viewership-20260717004559442"
+    },
+    {
+      "question": "LoL: G2 Esports vs Movistar KOI (BO3) - LEC Regular Season",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Total Kills Over/Under 27.5 in Game 2?",
+          "pct": 77.5
+        },
+        {
+          "label": "Total Kills Over/Under 30.5 in Game 2?",
+          "pct": 71.5
+        },
+        {
+          "label": "Game 2 Winner",
+          "pct": 63.5
+        }
+      ],
+      "volume": 543683.1227210001,
+      "volume24": 540877.764184,
+      "vol1wk": 542619.786993,
+      "liquidity": 440474.9831,
+      "open_interest": 247571.29395699996,
+      "category": "",
+      "expiry": "24 Jul 2026",
+      "url": "https://polymarket.com/event/lol-g2-mkoi-2026-07-24"
     },
     {
       "question": "Counter-Strike: 1WIN vs Eternal Fire (BO5) - European Pro League Series 8 Playoffs",
@@ -717,7 +717,7 @@
       "volume": 443529.6280049996,
       "volume24": 443465.7697089998,
       "vol1wk": 443529.6280049998,
-      "liquidity": 624575.09373,
+      "liquidity": 607076.87946,
       "open_interest": 178102.874112,
       "category": "",
       "expiry": "24 Jul 2026",
@@ -728,23 +728,23 @@
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Map 1 Rounds Handicap: ECHO (-3.5) vs Nuclear TigeRES (+3.5)",
+          "label": "Map 2 Total Rounds: Over/Under 21.5",
           "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 18.5",
-          "pct": 99.5
+          "label": "Map Handicap: ECHO (-1.5) vs Nuclear TigeRES (+1.5)",
+          "pct": 100.0
         },
         {
-          "label": "Map 2 Total Rounds: Over/Under 21.5",
-          "pct": 75.5
+          "label": "Map 1 Rounds Handicap: ECHO (-3.5) vs Nuclear TigeRES (+3.5)",
+          "pct": 100.0
         }
       ],
-      "volume": 346267.3184709998,
-      "volume24": 346257.31847099995,
-      "vol1wk": 346257.31847099995,
-      "liquidity": 290248.12991,
-      "open_interest": 213063.491863,
+      "volume": 377051.7540319998,
+      "volume24": 377051.75403199997,
+      "vol1wk": 377051.75403199997,
+      "liquidity": 2454780.02944,
+      "open_interest": 213063.49186299997,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/cs2-ntr-echo-2026-07-24"
@@ -763,13 +763,13 @@
         },
         {
           "label": "Livesport Prague Open: Lilli Tagger vs Sara Bejlek",
-          "pct": 68.5
+          "pct": 79.5
         }
       ],
-      "volume": 340085.9191430005,
-      "volume24": 340085.9191429999,
-      "vol1wk": 340085.9191429999,
-      "liquidity": 325196.56595,
+      "volume": 368764.37749800057,
+      "volume24": 368764.3774979998,
+      "vol1wk": 368764.3774979998,
+      "liquidity": 319747.3172,
       "open_interest": 231000.091831,
       "category": "",
       "expiry": "31 Jul 2026",
