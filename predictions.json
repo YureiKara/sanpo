@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-25T01:30:05.846196+08:00",
+  "updated": "2026-07-25T02:00:30.835645+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,11 +20,11 @@
           "pct": 14.4
         }
       ],
-      "volume": 1246428978.4564066,
-      "volume24": 538715.304501,
-      "vol1wk": 7022688.125355,
-      "liquidity": 71659057.20625,
-      "open_interest": 10670063.626896003,
+      "volume": 1246431518.5344346,
+      "volume24": 534800.248092,
+      "vol1wk": 7009650.733235,
+      "liquidity": 72232721.16694,
+      "open_interest": 10669870.483302,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -39,18 +39,18 @@
         },
         {
           "label": "Marco Rubio",
-          "pct": 13.2
+          "pct": 13.1
         },
         {
           "label": "Gavin Newsom",
           "pct": 12.6
         }
       ],
-      "volume": 670257542.225295,
-      "volume24": 783522.8182620001,
-      "vol1wk": 7665931.824177001,
-      "liquidity": 47777642.39358,
-      "open_interest": 58143669.14752997,
+      "volume": 670263545.3981059,
+      "volume24": 787980.075161,
+      "vol1wk": 7667527.336400001,
+      "liquidity": 47701428.38817,
+      "open_interest": 58092828.09988699,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/presidential-election-winner-2028"
@@ -61,22 +61,22 @@
       "outcomes": [
         {
           "label": "Abiy Ahmed",
-          "pct": 94.2
+          "pct": 94.1
         },
         {
           "label": "Alesa Mengesha",
-          "pct": 2.3
+          "pct": 2.2
         },
         {
           "label": "Gedion Timothewos",
           "pct": 1.8
         }
       ],
-      "volume": 229954526.4776543,
-      "volume24": 1997692.2314590001,
-      "vol1wk": 27000951.578791,
-      "liquidity": 148865.14352,
-      "open_interest": 35651.584889000005,
+      "volume": 229954528.2881793,
+      "volume24": 1997693.021984,
+      "vol1wk": 26705152.358416,
+      "liquidity": 151283.63515,
+      "open_interest": 35608.055451,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
@@ -87,22 +87,22 @@
       "outcomes": [
         {
           "label": "No change",
-          "pct": 74.9
+          "pct": 72.4
         },
         {
           "label": "25 bps increase",
-          "pct": 24.3
+          "pct": 26.4
         },
         {
           "label": "50+ bps increase",
           "pct": 0.7
         }
       ],
-      "volume": 89915207.24555025,
-      "volume24": 2355252.9971859995,
-      "vol1wk": 21074547.84700994,
-      "liquidity": 4549722.30442,
-      "open_interest": 17491771.548767,
+      "volume": 90834965.57814725,
+      "volume24": 3225777.041310999,
+      "vol1wk": 21760458.41090593,
+      "liquidity": 3712273.34324,
+      "open_interest": 17688717.340363,
       "category": "",
       "expiry": "29 Jul 2026",
       "url": "https://polymarket.com/event/fed-decision-in-july-181"
@@ -113,51 +113,25 @@
       "outcomes": [
         {
           "label": "August 31",
-          "pct": 9.4
+          "pct": 9.3
         },
         {
           "label": "July 31",
-          "pct": 3.6
+          "pct": 3.5
         },
         {
           "label": "June 24",
           "pct": 0.0
         }
       ],
-      "volume": 66235946.687997445,
-      "volume24": 325181.565348,
-      "vol1wk": 1928807.2907550007,
-      "liquidity": 227319.92129,
-      "open_interest": 2808100.9583199997,
+      "volume": 66239428.83799745,
+      "volume24": 317744.629379,
+      "vol1wk": 1913739.7446200007,
+      "liquidity": 238025.54359,
+      "open_interest": 2817092.413451,
       "category": "",
       "expiry": "31 Mar 2026",
       "url": "https://polymarket.com/event/kharg-island-no-longer-under-iranian-control-by-march-31"
-    },
-    {
-      "question": "What price will Bitcoin hit in 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "↓ 60,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 65,000",
-          "pct": 100.0
-        },
-        {
-          "label": "↑ 65,000",
-          "pct": 100.0
-        }
-      ],
-      "volume": 49725450.638427876,
-      "volume24": 340257.595857,
-      "vol1wk": 2665826.1720800004,
-      "liquidity": 2188630.40263,
-      "open_interest": 9016919.131370999,
-      "category": "",
-      "expiry": "01 Jan 2027",
-      "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-before-2027"
     },
     {
       "question": "Will the U.S. invade Iran before 2027?",
@@ -165,18 +139,18 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 70.5
+          "pct": 71.5
         },
         {
           "label": "Yes",
-          "pct": 29.5
+          "pct": 28.5
         }
       ],
-      "volume": 46904836.350946546,
-      "volume24": 529859.3153130002,
-      "vol1wk": 2971406.508724005,
-      "liquidity": 627991.6446,
-      "open_interest": 7192305.201863,
+      "volume": 46928407.29322455,
+      "volume24": 550672.3041110002,
+      "vol1wk": 2971456.7789670043,
+      "liquidity": 631713.315,
+      "open_interest": 7160883.555187,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027"
@@ -198,11 +172,11 @@
           "pct": 0.1
         }
       ],
-      "volume": 43673667.47699209,
-      "volume24": 4017561.5624869997,
-      "vol1wk": 20184200.529772006,
-      "liquidity": 7785333.45519,
-      "open_interest": 4784797.514255001,
+      "volume": 43688119.496975094,
+      "volume24": 3985894.6724099996,
+      "vol1wk": 20189341.394520007,
+      "liquidity": 9271833.94951,
+      "open_interest": 4648530.074287002,
       "category": "",
       "expiry": "31 Oct 2026",
       "url": "https://polymarket.com/event/nba-lebron-james-next-team"
@@ -213,22 +187,22 @@
       "outcomes": [
         {
           "label": "Mojtaba Khamenei",
-          "pct": 73.0
+          "pct": 73.4
         },
         {
           "label": "No Head of State",
-          "pct": 7.3
+          "pct": 8.4
         },
         {
           "label": "Reza Pahlavi",
           "pct": 4.9
         }
       ],
-      "volume": 34688317.445539966,
-      "volume24": 517551.59876600036,
-      "vol1wk": 4288335.594811958,
-      "liquidity": 1474956.42655,
-      "open_interest": 757120.720721,
+      "volume": 34688869.28341097,
+      "volume24": 517380.26540700044,
+      "vol1wk": 4288154.602682958,
+      "liquidity": 1382089.98082,
+      "open_interest": 758632.6187219998,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/iran-leader-end-of-2026"
@@ -243,18 +217,18 @@
         },
         {
           "label": "August 15",
-          "pct": 43.0
+          "pct": 42.5
         },
         {
           "label": "July 31",
-          "pct": 31.0
+          "pct": 31.5
         }
       ],
-      "volume": 24399899.408423968,
-      "volume24": 432108.15965200006,
-      "vol1wk": 1622810.6866060002,
-      "liquidity": 152598.25067,
-      "open_interest": 933032.5414570001,
+      "volume": 24409941.743428968,
+      "volume24": 430481.968835,
+      "vol1wk": 1631930.6606030003,
+      "liquidity": 148764.93402,
+      "open_interest": 936802.1238780001,
       "category": "",
       "expiry": "31 May 2026",
       "url": "https://polymarket.com/event/israel-closes-its-airspace-by"
@@ -269,18 +243,18 @@
         },
         {
           "label": "Lamine Yamal",
-          "pct": 25.0
+          "pct": 24.8
         },
         {
           "label": "Kylian Mbappé",
           "pct": 11.6
         }
       ],
-      "volume": 20731892.900635008,
-      "volume24": 494927.972224,
-      "vol1wk": 12244527.312956005,
-      "liquidity": 12071201.35988,
-      "open_interest": 1792535.0584660005,
+      "volume": 20736883.943989005,
+      "volume24": 489283.635679,
+      "vol1wk": 12247987.031894006,
+      "liquidity": 12147924.76844,
+      "open_interest": 1791123.6392649994,
       "category": "",
       "expiry": "31 Oct 2026",
       "url": "https://polymarket.com/event/ballon-dor-winner-2026"
@@ -298,11 +272,11 @@
           "pct": 0.7
         }
       ],
-      "volume": 20343051.317826245,
-      "volume24": 489000.878672,
-      "vol1wk": 2847464.6177620036,
-      "liquidity": 542174.45362,
-      "open_interest": 3706109.698645,
+      "volume": 20343364.20508625,
+      "volume24": 489304.76593200007,
+      "vol1wk": 2847777.505022004,
+      "liquidity": 541080.07155,
+      "open_interest": 3706966.841498,
       "category": "",
       "expiry": "31 Jul 2026",
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-july-31"
@@ -324,11 +298,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 17491474.110165015,
-      "volume24": 936798.9144399998,
-      "vol1wk": 5731716.614913,
-      "liquidity": 1281109.21622,
-      "open_interest": 5078189.490852998,
+      "volume": 17522642.253734015,
+      "volume24": 903100.0667559999,
+      "vol1wk": 5748268.255846,
+      "liquidity": 1293006.03271,
+      "open_interest": 5077213.791248998,
       "category": "",
       "expiry": "01 Aug 2026",
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026"
@@ -350,11 +324,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 11567038.532785004,
-      "volume24": 753121.000343,
-      "vol1wk": 3577466.0647690007,
-      "liquidity": 1062881.2273,
-      "open_interest": 2950973.51385,
+      "volume": 11575665.115104005,
+      "volume24": 741766.501304,
+      "vol1wk": 3598822.0202720007,
+      "liquidity": 1059824.31692,
+      "open_interest": 2953362.594559,
       "category": "",
       "expiry": "01 Aug 2026",
       "url": "https://polymarket.com/event/what-price-will-wti-hit-in-july-2026"
@@ -376,11 +350,11 @@
           "pct": 12.4
         }
       ],
-      "volume": 10879769.907149997,
-      "volume24": 1184644.5324859999,
-      "vol1wk": 3802471.0426169997,
-      "liquidity": 9443347.44463,
-      "open_interest": 475179.730113,
+      "volume": 10904159.866849996,
+      "volume24": 1190883.369791,
+      "vol1wk": 3826216.8423169996,
+      "liquidity": 9317738.72387,
+      "open_interest": 485021.22197099996,
       "category": "",
       "expiry": "01 Jul 2027",
       "url": "https://polymarket.com/event/nba-2027-champion"
@@ -402,11 +376,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 4937227.026396004,
-      "volume24": 4925800.022609001,
-      "vol1wk": 4937221.144045,
-      "liquidity": 1362.0,
-      "open_interest": 1142658.979311,
+      "volume": 4937232.276396004,
+      "volume24": 4922493.341361001,
+      "vol1wk": 4937226.394045,
+      "liquidity": 1357.8,
+      "open_interest": 32286.135266999998,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/lol-edg-blg-2026-07-24"
@@ -424,15 +398,15 @@
           "pct": 100.0
         },
         {
-          "label": "July 22",
-          "pct": 99.8
+          "label": "July 23",
+          "pct": 99.7
         }
       ],
-      "volume": 4469400.453236,
-      "volume24": 1402881.26472,
-      "vol1wk": 4181613.1345729986,
-      "liquidity": 379006.61919,
-      "open_interest": 1520104.890159,
+      "volume": 4511858.455493,
+      "volume24": 1409484.717272,
+      "vol1wk": 4223713.146829999,
+      "liquidity": 403254.00118,
+      "open_interest": 1579926.2314799998,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
@@ -455,13 +429,65 @@
         }
       ],
       "volume": 4459289.423528001,
-      "volume24": 4454391.808270999,
+      "volume24": 4454383.666513999,
       "vol1wk": 4459193.409029999,
       "liquidity": 235.0,
-      "open_interest": 5573.446844000001,
+      "open_interest": 5322.152207000001,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/lol-we-jdg-2026-07-24"
+    },
+    {
+      "question": "Largest Company end of July?",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "NVIDIA",
+          "pct": 79.5
+        },
+        {
+          "label": "Company A",
+          "pct": 50.0
+        },
+        {
+          "label": "Company B",
+          "pct": 50.0
+        }
+      ],
+      "volume": 4010811.4176639966,
+      "volume24": 307826.0216839998,
+      "vol1wk": 1247385.9246379999,
+      "liquidity": 1384091.69338,
+      "open_interest": 1098501.1360300002,
+      "category": "",
+      "expiry": "31 Jul 2026",
+      "url": "https://polymarket.com/event/largest-company-end-of-july-20260624192302727"
+    },
+    {
+      "question": "LoL: G2 Esports vs Movistar KOI (BO3) - LEC Regular Season",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Game 2 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Match Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "O/U 2.5 Games",
+          "pct": 100.0
+        }
+      ],
+      "volume": 3740907.9025150063,
+      "volume24": 3738013.445390001,
+      "vol1wk": 3739776.196787001,
+      "liquidity": 1795007.92245,
+      "open_interest": 1909203.3555769997,
+      "category": "",
+      "expiry": "24 Jul 2026",
+      "url": "https://polymarket.com/event/lol-g2-mkoi-2026-07-24"
     },
     {
       "question": "Elon Musk # tweets July 17 - July 24, 2026?",
@@ -480,66 +506,14 @@
           "pct": 0.1
         }
       ],
-      "volume": 3642143.546239998,
-      "volume24": 1083598.402394,
-      "vol1wk": 2357208.9570729984,
-      "liquidity": 1078655.60456,
-      "open_interest": 503460.80338899983,
+      "volume": 3643330.426239998,
+      "volume24": 1065512.753972,
+      "vol1wk": 2357937.134479998,
+      "liquidity": 1105143.67474,
+      "open_interest": 504377.0157149999,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/elon-musk-of-tweets-july-17-july-24"
-    },
-    {
-      "question": "LoL: G2 Esports vs Movistar KOI (BO3) - LEC Regular Season",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Game 2 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 2.5 Games",
-          "pct": 100.0
-        },
-        {
-          "label": "First Blood in Game 2?",
-          "pct": 100.0
-        }
-      ],
-      "volume": 3382771.5270180055,
-      "volume24": 3379877.069893,
-      "vol1wk": 3381639.8212900003,
-      "liquidity": 1500492.70992,
-      "open_interest": 1431846.497371,
-      "category": "",
-      "expiry": "24 Jul 2026",
-      "url": "https://polymarket.com/event/lol-g2-mkoi-2026-07-24"
-    },
-    {
-      "question": "Counter-Strike: Heroic vs TheMongolz (BO3) - BLAST Bounty Qualifier",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Map 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "O/U 2.5 Games",
-          "pct": 100.0
-        },
-        {
-          "label": "Map 1 Rounds Handicap: Heroic (-3.5) vs TheMongolz (+3.5)",
-          "pct": 100.0
-        }
-      ],
-      "volume": 2845698.447180998,
-      "volume24": 2821637.9155069995,
-      "vol1wk": 2844287.761852,
-      "liquidity": 957636.90128,
-      "open_interest": 1016213.367422,
-      "category": "",
-      "expiry": "24 Jul 2026",
-      "url": "https://polymarket.com/event/cs2-hero-mglz-2026-07-24"
     },
     {
       "question": "Counter-Strike: Liquid vs Vitality (BO3) - BLAST Bounty Qualifier",
@@ -550,19 +524,19 @@
           "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 21.5",
+          "label": "Map 2 Winner",
           "pct": 100.0
         },
         {
-          "label": "Map 1 Total Rounds: Over/Under 18.5",
+          "label": "Match Winner",
           "pct": 100.0
         }
       ],
-      "volume": 2797117.7284809984,
-      "volume24": 2775513.0099279997,
-      "vol1wk": 2797117.7284809994,
-      "liquidity": 1311728.76613,
-      "open_interest": 1595044.451225,
+      "volume": 3311599.9951900006,
+      "volume24": 3289995.2766369986,
+      "vol1wk": 3311599.9951899988,
+      "liquidity": 5663025.44147,
+      "open_interest": 2021936.458402,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/cs2-tl1-vit-2026-07-24"
@@ -584,21 +558,21 @@
           "pct": 100.0
         }
       ],
-      "volume": 1337225.197395,
-      "volume24": 776033.6329920002,
-      "vol1wk": 1163165.8229789997,
-      "liquidity": 433115.93101,
-      "open_interest": 361673.992728,
+      "volume": 1338070.4073949999,
+      "volume24": 763184.0002550001,
+      "vol1wk": 1164004.7229789996,
+      "liquidity": 617356.14377,
+      "open_interest": 612487.872412,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/next-claude-opus-released-byptptpt-20260701204710232"
     },
     {
-      "question": "Hamburg European Open: Tamara Korpatsch vs Anhelina Kalinina",
+      "question": "Bloomfield Hills: Michael Zheng vs Adam Walton",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Hamburg European Open: Tamara Korpatsch vs Anhelina Kalinina",
+          "label": "Bloomfield Hills: Michael Zheng vs Adam Walton",
           "pct": 100.0
         },
         {
@@ -606,18 +580,18 @@
           "pct": 100.0
         },
         {
-          "label": "Hamburg European Open: Tamara Korpatsch vs Anhelina Kalinina Set 1 Winner",
+          "label": "Bloomfield Hills: Michael Zheng vs Adam Walton Total Sets: O/U 2.5",
           "pct": 100.0
         }
       ],
-      "volume": 1017960.876343998,
-      "volume24": 1017778.2548949997,
-      "vol1wk": 1017960.8763439995,
-      "liquidity": 770701.25377,
-      "open_interest": 461643.77327299997,
+      "volume": 782563.513422,
+      "volume24": 772167.3507660001,
+      "vol1wk": 782563.5134220001,
+      "liquidity": 562105.8251,
+      "open_interest": 508998.37545099994,
       "category": "",
       "expiry": "31 Jul 2026",
-      "url": "https://polymarket.com/event/wta-korpats-kalinin-2026-07-24"
+      "url": "https://polymarket.com/event/atp-zheng-walton-2026-07-24"
     },
     {
       "question": "World Cup Final: U.S. Viewership",
@@ -637,39 +611,39 @@
         }
       ],
       "volume": 710720.199432,
-      "volume24": 542834.334181,
+      "volume24": 541786.945078,
       "vol1wk": 660733.244542,
-      "liquidity": 666780.20401,
-      "open_interest": 565937.0217980001,
+      "liquidity": 1465611.9928,
+      "open_interest": 567937.0217979999,
       "category": "",
       "expiry": "19 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-final-uptspt-viewership-20260717004559442"
     },
     {
-      "question": "Bloomfield Hills: Michael Zheng vs Adam Walton",
+      "question": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Bloomfield Hills: Michael Zheng vs Adam Walton Set 1 O/U 8.5",
+          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set 1 O/U 8.5",
           "pct": 100.0
         },
         {
-          "label": "Bloomfield Hills: Michael Zheng vs Adam Walton Set 2 O/U 8.5",
+          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set 2 Winner",
           "pct": 100.0
         },
         {
-          "label": "Bloomfield Hills: Michael Zheng vs Adam Walton Set 2 Winner",
+          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set 2 O/U 8.5",
           "pct": 100.0
         }
       ],
-      "volume": 652661.6234759995,
-      "volume24": 642428.116505,
-      "vol1wk": 652661.6234759999,
-      "liquidity": 367473.1487,
-      "open_interest": 360744.60663999995,
+      "volume": 565223.4206860013,
+      "volume24": 562742.3188470002,
+      "vol1wk": 565223.4206860003,
+      "liquidity": 536123.2407,
+      "open_interest": 378774.890888,
       "category": "",
       "expiry": "31 Jul 2026",
-      "url": "https://polymarket.com/event/atp-zheng-walton-2026-07-24"
+      "url": "https://polymarket.com/event/atp-burruch-blockx-2026-07-24"
     },
     {
       "question": "Next Claude Opus released on...?",
@@ -688,40 +662,14 @@
           "pct": 0.1
         }
       ],
-      "volume": 514748.53132600005,
-      "volume24": 334877.68655,
-      "vol1wk": 496790.18594500003,
-      "liquidity": 316682.12278,
-      "open_interest": 77195.98077400001,
+      "volume": 530596.6313260001,
+      "volume24": 342604.688711,
+      "vol1wk": 512638.28594500007,
+      "liquidity": 290682.17291,
+      "open_interest": 136790.599748,
       "category": "",
       "expiry": "31 Jul 2026",
       "url": "https://polymarket.com/event/next-claude-opus-released-onptptpt-20260714203533730"
-    },
-    {
-      "question": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set 1 O/U 8.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set 1 O/U 9.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Estoril Open: Roman Andres Burruchaga vs Alexander Blockx Set Handicap +/-1.5",
-          "pct": 80.0
-        }
-      ],
-      "volume": 440853.13894100056,
-      "volume24": 438376.537102,
-      "vol1wk": 440853.138941,
-      "liquidity": 288404.3147,
-      "open_interest": 285216.78106999997,
-      "category": "",
-      "expiry": "31 Jul 2026",
-      "url": "https://polymarket.com/event/atp-burruch-blockx-2026-07-24"
     },
     {
       "question": "Valorant: FUT Esports vs BBL Esports (BO3) - VCT EMEA Group Alpha",
@@ -732,22 +680,74 @@
           "pct": 100.0
         },
         {
-          "label": "O/U 2.5 Games",
+          "label": "Match Winner",
           "pct": 100.0
         },
         {
-          "label": "Map 1 Rounds Handicap: BBL Esports (-2.5) vs FUT Esports (+2.5)",
+          "label": "O/U 2.5 Games",
           "pct": 100.0
         }
       ],
-      "volume": 315842.791792,
-      "volume24": 312467.798209,
-      "vol1wk": 315842.79179199995,
-      "liquidity": 778536.9548,
-      "open_interest": 175705.47213100002,
+      "volume": 419138.3307129998,
+      "volume24": 415725.2431260001,
+      "vol1wk": 419138.33071300003,
+      "liquidity": 1029920.08303,
+      "open_interest": 234364.65112400003,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/val-fut1-bbl1-2026-07-24"
+    },
+    {
+      "question": "Counter-Strike: Astralis vs Heroic (BO3) - StarLadder StarSeries European Qualifier Group B",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 1 Total Rounds: Over/Under 21.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Map Handicap: HERO (-1.5) vs Astralis (+1.5)",
+          "pct": 76.5
+        },
+        {
+          "label": "Map 2 Total Rounds: Over/Under 21.5",
+          "pct": 50.5
+        }
+      ],
+      "volume": 406548.470836,
+      "volume24": 406548.4708360001,
+      "vol1wk": 406548.4708360001,
+      "liquidity": 499869.43007,
+      "open_interest": 224045.692446,
+      "category": "",
+      "expiry": "24 Jul 2026",
+      "url": "https://polymarket.com/event/cs2-ast10-hero-2026-07-24"
+    },
+    {
+      "question": "LoL: Team Vitality vs Karmine Corp (BO3) - LEC Regular Season",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Total Kills Over/Under 27.5 in Game 1?",
+          "pct": 60.5
+        },
+        {
+          "label": "Total Kills Over/Under 27.5 in Game 2?",
+          "pct": 51.5
+        },
+        {
+          "label": "First Blood in Game 2?",
+          "pct": 50.5
+        }
+      ],
+      "volume": 384382.65043700003,
+      "volume24": 368681.49341099994,
+      "vol1wk": 384333.00780099997,
+      "liquidity": 588133.1608,
+      "open_interest": 339111.448652,
+      "category": "",
+      "expiry": "25 Jul 2026",
+      "url": "https://polymarket.com/event/lol-vit-kc-2026-07-24"
     },
     {
       "question": "Counter-Strike: Team Nemesis vs Infinite (BO3) - StarLadder StarSeries European Qualifier Group A",
@@ -766,11 +766,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 310639.7574779997,
-      "volume24": 310639.7574779998,
-      "vol1wk": 310639.7574779998,
-      "liquidity": 462004.49898,
-      "open_interest": 159730.56903599997,
+      "volume": 311756.6274779997,
+      "volume24": 311756.6274779998,
+      "vol1wk": 311756.6274779998,
+      "liquidity": 404721.66169,
+      "open_interest": 127636.68070800001,
       "category": "",
       "expiry": "24 Jul 2026",
       "url": "https://polymarket.com/event/cs2-nem-inf6-2026-07-24"
