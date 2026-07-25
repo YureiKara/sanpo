@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-26T01:43:48.978895+08:00",
+  "updated": "2026-07-26T02:40:35.540562+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,11 +20,11 @@
           "pct": 14.1
         }
       ],
-      "volume": 1247568190.3710506,
-      "volume24": 1137461.770507,
-      "vol1wk": 6218606.579431,
-      "liquidity": 73063945.54738,
-      "open_interest": 10609506.302277999,
+      "volume": 1247576035.7405295,
+      "volume24": 1124861.261624,
+      "vol1wk": 6208349.969402,
+      "liquidity": 73205580.02992,
+      "open_interest": 10502508.850471001,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
@@ -46,11 +46,11 @@
           "pct": 27.0
         }
       ],
-      "volume": 679900085.2901547,
-      "volume24": 1593815.305064,
-      "vol1wk": 3462698.912388,
-      "liquidity": 55938956.42856,
-      "open_interest": 10085600.911625002,
+      "volume": 679908557.0496427,
+      "volume24": 1597504.146894,
+      "vol1wk": 3469306.191267,
+      "liquidity": 55864721.9012,
+      "open_interest": 10079784.32187,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
@@ -72,11 +72,11 @@
           "pct": 12.6
         }
       ],
-      "volume": 670965606.195009,
-      "volume24": 705568.119212,
-      "vol1wk": 7464417.462544004,
-      "liquidity": 49891572.95573,
-      "open_interest": 60160011.12385701,
+      "volume": 670975916.0801691,
+      "volume24": 704484.763257,
+      "vol1wk": 7457179.958065004,
+      "liquidity": 49773787.33966,
+      "open_interest": 60075374.969651006,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/presidential-election-winner-2028"
@@ -99,10 +99,10 @@
         }
       ],
       "volume": 231806945.23398829,
-      "volume24": 1852418.756334,
-      "vol1wk": 17142722.855423998,
-      "liquidity": 171479.95434,
-      "open_interest": 37274.51342,
+      "volume24": 1852416.945809,
+      "vol1wk": 17142686.830835,
+      "liquidity": 173868.1899,
+      "open_interest": 37273.45962,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
@@ -113,22 +113,22 @@
       "outcomes": [
         {
           "label": "No change",
-          "pct": 75.2
+          "pct": 75.8
         },
         {
           "label": "25 bps increase",
-          "pct": 24.1
+          "pct": 23.9
         },
         {
           "label": "50+ bps increase",
           "pct": 0.8
         }
       ],
-      "volume": 92031441.4487172,
-      "volume24": 2019120.8049469998,
-      "vol1wk": 21165183.273489967,
-      "liquidity": 4419755.42722,
-      "open_interest": 18056892.174875,
+      "volume": 92088925.8331142,
+      "volume24": 1232290.4846350003,
+      "vol1wk": 21199202.627708964,
+      "liquidity": 4243166.30681,
+      "open_interest": 18068828.405410003,
       "category": "",
       "expiry": "29 Jul 2026",
       "url": "https://polymarket.com/event/fed-decision-in-july-181"
@@ -139,18 +139,18 @@
       "outcomes": [
         {
           "label": "No",
-          "pct": 74.5
+          "pct": 73.5
         },
         {
           "label": "Yes",
-          "pct": 25.5
+          "pct": 26.5
         }
       ],
-      "volume": 47544779.95560568,
-      "volume24": 617563.2067309998,
-      "vol1wk": 3059160.5165169965,
-      "liquidity": 677894.1096,
-      "open_interest": 7201139.222348,
+      "volume": 47556237.77296169,
+      "volume24": 618589.91085,
+      "vol1wk": 3048860.598222995,
+      "liquidity": 590373.8007,
+      "open_interest": 7201864.464383,
       "category": "",
       "expiry": "31 Dec 2026",
       "url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027"
@@ -172,40 +172,14 @@
           "pct": 0.1
         }
       ],
-      "volume": 45465245.22809209,
-      "volume24": 1785292.1464030007,
-      "vol1wk": 18255953.60944101,
-      "liquidity": 15425209.86652,
-      "open_interest": 4746938.064741001,
+      "volume": 45484613.21099509,
+      "volume24": 1747233.6771719996,
+      "vol1wk": 17407847.45165701,
+      "liquidity": 15419880.09657,
+      "open_interest": 4754181.118626001,
       "category": "",
       "expiry": "31 Oct 2026",
       "url": "https://polymarket.com/event/nba-lebron-james-next-team"
-    },
-    {
-      "question": "Ballon d'Or Winner 2026",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Harry Kane",
-          "pct": 40.9
-        },
-        {
-          "label": "Lamine Yamal",
-          "pct": 25.7
-        },
-        {
-          "label": "Kylian Mbappé",
-          "pct": 11.6
-        }
-      ],
-      "volume": 21109867.09331801,
-      "volume24": 375810.881857,
-      "vol1wk": 12115444.292719005,
-      "liquidity": 12159704.01132,
-      "open_interest": 1863934.068307,
-      "category": "",
-      "expiry": "31 Oct 2026",
-      "url": "https://polymarket.com/event/ballon-dor-winner-2026"
     },
     {
       "question": "What price will Bitcoin hit in July?",
@@ -224,11 +198,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 17976762.381347008,
-      "volume24": 456036.9637760001,
-      "vol1wk": 5628461.325951997,
-      "liquidity": 1389211.94112,
-      "open_interest": 5137564.563386,
+      "volume": 18030797.75511601,
+      "volume24": 502189.65765600005,
+      "vol1wk": 5629667.865048997,
+      "liquidity": 1337091.83506,
+      "open_interest": 5150074.822758001,
       "category": "",
       "expiry": "01 Aug 2026",
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-july-2026"
@@ -250,11 +224,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 12110903.578097,
-      "volume24": 538627.962708,
-      "vol1wk": 3937340.2813750007,
-      "liquidity": 1351092.16387,
-      "open_interest": 3063275.757394,
+      "volume": 12163212.673446001,
+      "volume24": 538283.863948,
+      "vol1wk": 3979443.3272900004,
+      "liquidity": 1404098.46589,
+      "open_interest": 3071379.9057840006,
       "category": "",
       "expiry": "01 Aug 2026",
       "url": "https://polymarket.com/event/what-price-will-wti-hit-in-july-2026"
@@ -276,11 +250,11 @@
           "pct": 13.5
         }
       ],
-      "volume": 11753758.229152996,
-      "volume24": 859008.861145,
-      "vol1wk": 4399291.779646999,
-      "liquidity": 11524529.90805,
-      "open_interest": 577669.696032,
+      "volume": 11766027.711933997,
+      "volume24": 844803.842821,
+      "vol1wk": 4433081.973735999,
+      "liquidity": 11471354.38207,
+      "open_interest": 577679.7302250001,
       "category": "",
       "expiry": "01 Jul 2027",
       "url": "https://polymarket.com/event/nba-2027-champion"
@@ -299,14 +273,14 @@
         },
         {
           "label": "July 22",
-          "pct": 99.8
+          "pct": 99.9
         }
       ],
-      "volume": 6583479.384485996,
-      "volume24": 2089197.8431460008,
-      "vol1wk": 5873187.262279,
-      "liquidity": 596139.9246,
-      "open_interest": 2057888.866774,
+      "volume": 6753967.585327996,
+      "volume24": 2182258.457578001,
+      "vol1wk": 6040718.827842,
+      "liquidity": 685423.76687,
+      "open_interest": 2078253.2908410002,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
@@ -328,11 +302,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 5182186.566542994,
-      "volume24": 5177356.718061001,
-      "vol1wk": 5182186.566543001,
-      "liquidity": 1398298.20529,
-      "open_interest": 2251659.2445650008,
+      "volume": 5183416.556542994,
+      "volume24": 5175351.080411,
+      "vol1wk": 5183416.556543001,
+      "liquidity": 815616.53147,
+      "open_interest": 1192361.4632319997,
       "category": "",
       "expiry": "25 Jul 2026",
       "url": "https://polymarket.com/event/lol-tes-tt-2026-07-25"
@@ -343,25 +317,51 @@
       "outcomes": [
         {
           "label": "August 31",
-          "pct": 66.0
+          "pct": 63.5
         },
         {
           "label": "August 14",
-          "pct": 47.5
+          "pct": 50.0
         },
         {
           "label": "July 31",
-          "pct": 34.5
+          "pct": 36.5
         }
       ],
-      "volume": 3017657.209172999,
-      "volume24": 401327.0609959999,
-      "vol1wk": 1982279.6330870008,
-      "liquidity": 215398.02153,
-      "open_interest": 783814.0451570001,
+      "volume": 3037356.885318999,
+      "volume24": 418523.2952309999,
+      "vol1wk": 1995970.9472910005,
+      "liquidity": 244654.82967,
+      "open_interest": 781844.624682,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/us-x-iran-effective-ceasfire-byptptpt-2-week-pause-20260715194822042"
+    },
+    {
+      "question": "LoL: Karmine Corp vs Movistar KOI (BO3) - LEC Regular Season",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Game 1 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Game 2 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Match Winner",
+          "pct": 100.0
+        }
+      ],
+      "volume": 2445457.164718001,
+      "volume24": 2443948.90918,
+      "vol1wk": 2445265.772918,
+      "liquidity": 2089601.08113,
+      "open_interest": 1213412.8153009997,
+      "category": "",
+      "expiry": "25 Jul 2026",
+      "url": "https://polymarket.com/event/lol-kc-mkoi-2026-07-25"
     },
     {
       "question": "Elon Musk # tweets July 21 - July 28, 2026?",
@@ -369,22 +369,22 @@
       "outcomes": [
         {
           "label": "260-279",
-          "pct": 24.6
+          "pct": 24.2
         },
         {
           "label": "280-299",
-          "pct": 24.6
+          "pct": 24.1
         },
         {
           "label": "300-319",
-          "pct": 18.3
+          "pct": 17.3
         }
       ],
-      "volume": 2017640.800227,
-      "volume24": 758248.885357,
-      "vol1wk": 1635455.743691,
-      "liquidity": 530939.3331,
-      "open_interest": 365512.5398670001,
+      "volume": 2025420.115995,
+      "volume24": 730350.506513,
+      "vol1wk": 1561877.083027,
+      "liquidity": 548545.72577,
+      "open_interest": 372119.14871300006,
       "category": "",
       "expiry": "28 Jul 2026",
       "url": "https://polymarket.com/event/elon-musk-of-tweets-july-21-july-28"
@@ -406,11 +406,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 1956070.9463529985,
-      "volume24": 1956070.9463530001,
-      "vol1wk": 1956070.9463530001,
-      "liquidity": 867529.83523,
-      "open_interest": 897962.8894310001,
+      "volume": 1965407.9263529985,
+      "volume24": 1965407.926353,
+      "vol1wk": 1965407.926353,
+      "liquidity": 512126.64239,
+      "open_interest": 822633.0687340001,
       "category": "",
       "expiry": "25 Jul 2026",
       "url": "https://polymarket.com/event/cs2-hotu-ast10-2026-07-25"
@@ -424,48 +424,22 @@
           "pct": 100.0
         },
         {
-          "label": "First Blood in Game 1?",
+          "label": "Both Teams Slay a Dragon",
           "pct": 100.0
         },
         {
-          "label": "Total Kills Over/Under 27.5 in Game 1?",
+          "label": "Odd/Even Total Kills",
           "pct": 100.0
         }
       ],
-      "volume": 1917021.4300719998,
-      "volume24": 1892050.8363270005,
-      "vol1wk": 1915818.7279120006,
-      "liquidity": 1055437.36823,
-      "open_interest": 1142186.9499150005,
+      "volume": 1924744.820072,
+      "volume24": 1899366.6115700004,
+      "vol1wk": 1923542.1179120007,
+      "liquidity": 605562.21151,
+      "open_interest": 709047.1334130001,
       "category": "",
       "expiry": "25 Jul 2026",
       "url": "https://polymarket.com/event/lol-vit-g2-2026-07-25"
-    },
-    {
-      "question": "LoL: Karmine Corp vs Movistar KOI (BO3) - LEC Regular Season",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Game 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Total Kills Over/Under 30.5 in Game 1?",
-          "pct": 100.0
-        },
-        {
-          "label": "Total Kills Over/Under 27.5 in Game 1?",
-          "pct": 100.0
-        }
-      ],
-      "volume": 1903966.4576950013,
-      "volume24": 1902729.5762399996,
-      "vol1wk": 1903775.0658949995,
-      "liquidity": 793024.79548,
-      "open_interest": 472894.4362209999,
-      "category": "",
-      "expiry": "25 Jul 2026",
-      "url": "https://polymarket.com/event/lol-kc-mkoi-2026-07-25"
     },
     {
       "question": "World Cup Final: U.S. Viewership",
@@ -484,40 +458,14 @@
           "pct": 0.0
         }
       ],
-      "volume": 1548130.7794320001,
-      "volume24": 837410.5800000001,
-      "vol1wk": 1487269.084965,
-      "liquidity": 2236625.76207,
-      "open_interest": 1342084.0942969997,
+      "volume": 1646930.7794320001,
+      "volume24": 936210.5800000001,
+      "vol1wk": 1586069.084965,
+      "liquidity": 2064028.74007,
+      "open_interest": 1343084.0942979997,
       "category": "",
       "expiry": "19 Jul 2026",
       "url": "https://polymarket.com/event/world-cup-final-uptspt-viewership-20260717004559442"
-    },
-    {
-      "question": "Elon Musk # tweets July 23 - July 25, 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "90-114",
-          "pct": 100.0
-        },
-        {
-          "label": "115-139",
-          "pct": 0.1
-        },
-        {
-          "label": "140-164",
-          "pct": 0.1
-        }
-      ],
-      "volume": 1174210.463086,
-      "volume24": 813733.3506400002,
-      "vol1wk": 1101505.454702,
-      "liquidity": 309267.46353,
-      "open_interest": 203254.61334900002,
-      "category": "",
-      "expiry": "25 Jul 2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-july-23-july-25"
     },
     {
       "question": "UFC Fight Night: Mike Davis vs. Nurullo Aliev (Lightweight, Prelims)",
@@ -536,14 +484,40 @@
           "pct": 99.5
         }
       ],
-      "volume": 869084.3513249995,
-      "volume24": 834323.2300490001,
-      "vol1wk": 868685.7762010002,
-      "liquidity": 33706.61512,
-      "open_interest": 645705.988388,
+      "volume": 869301.3113249996,
+      "volume24": 834222.1597470002,
+      "vol1wk": 868902.7362010003,
+      "liquidity": 34744.79309,
+      "open_interest": 645447.8533860001,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-mik1-nur-2026-07-25"
+    },
+    {
+      "question": "Kansas City Royals vs. Detroit Tigers",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "1st 5 Innings O/U 2.5",
+          "pct": 100.0
+        },
+        {
+          "label": "O/U 5.5",
+          "pct": 43.5
+        },
+        {
+          "label": "Spread -1.5",
+          "pct": 35.5
+        }
+      ],
+      "volume": 804944.4879449996,
+      "volume24": 804520.615708,
+      "vol1wk": 804944.4879450001,
+      "liquidity": 328581.355,
+      "open_interest": 453729.727318,
+      "category": "",
+      "expiry": "01 Aug 2026",
+      "url": "https://polymarket.com/event/mlb-kc-det-2026-07-25"
     },
     {
       "question": "UFC Fight Night: Ismael Bonfim vs. Axel Sola (Lightweight, Prelims)",
@@ -554,19 +528,19 @@
           "pct": 50.0
         },
         {
-          "label": "Sola to win by KO/TKO?",
+          "label": "Fight won by submission?",
           "pct": 50.0
         },
         {
-          "label": "Fight won by submission?",
+          "label": "O/U 0.5 Rounds",
           "pct": 50.0
         }
       ],
-      "volume": 780342.8128589987,
-      "volume24": 756957.12895,
-      "vol1wk": 779902.1630480005,
-      "liquidity": 58752.57408,
-      "open_interest": 621377.546946,
+      "volume": 790815.4695239982,
+      "volume24": 767425.2387400006,
+      "vol1wk": 790374.8197130011,
+      "liquidity": 82813.35918,
+      "open_interest": 621752.981945,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-ism1-axe-2026-07-25"
@@ -588,14 +562,66 @@
           "pct": 50.0
         }
       ],
-      "volume": 730619.3019940006,
-      "volume24": 726362.560692,
-      "vol1wk": 730517.3843489999,
-      "liquidity": 311375.0496,
-      "open_interest": 284815.15116699995,
+      "volume": 778119.1229930006,
+      "volume24": 773862.381691,
+      "vol1wk": 778017.205348,
+      "liquidity": 221289.3481,
+      "open_interest": 330219.9619199999,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-wel-isl2-2026-07-25"
+    },
+    {
+      "question": "Counter-Strike: FOKUS vs MOUZ (BO3) - BLAST Bounty Qualifier",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 1 Total Rounds: Over/Under 21.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Map 1 Total Rounds: Over/Under 18.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Map Handicap: MOUZ (-1.5) vs FOKUS (+1.5)",
+          "pct": 75.5
+        }
+      ],
+      "volume": 747255.2593840008,
+      "volume24": 747255.2593840002,
+      "vol1wk": 747255.2593840002,
+      "liquidity": 1064221.45325,
+      "open_interest": 364158.868376,
+      "category": "",
+      "expiry": "25 Jul 2026",
+      "url": "https://polymarket.com/event/cs2-fokus-mouz-2026-07-25"
+    },
+    {
+      "question": "UFC Fight Night: Magomed Ankalaev vs. Bogdan Guskov (Light Heavyweight, Main Card)",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 0.5 Rounds",
+          "pct": 99.5
+        },
+        {
+          "label": "Magomed Ankalaev vs. Bogdan Guskov",
+          "pct": 90.5
+        },
+        {
+          "label": "Fight to Go the Distance?",
+          "pct": 58.0
+        }
+      ],
+      "volume": 642843.0101080006,
+      "volume24": 586987.95751,
+      "vol1wk": 642637.5401669999,
+      "liquidity": 26037.04917,
+      "open_interest": 273928.254008,
+      "category": "",
+      "expiry": "26 Jul 2026",
+      "url": "https://polymarket.com/event/ufc-mag1-bog1-2026-07-25"
     },
     {
       "question": "UFC Fight Night: Brendson Ribeiro vs. Magomed Tuchalov (Light Heavyweight, Prelims)",
@@ -603,7 +629,7 @@
       "outcomes": [
         {
           "label": "O/U 1.5 Rounds",
-          "pct": 99.5
+          "pct": 99.7
         },
         {
           "label": "Fight to Go the Distance?",
@@ -614,40 +640,40 @@
           "pct": 50.0
         }
       ],
-      "volume": 581586.9774180006,
-      "volume24": 579061.638119,
-      "vol1wk": 581175.28758,
-      "liquidity": 30903.76298,
-      "open_interest": 492262.943221,
+      "volume": 583573.6374180005,
+      "volume24": 581048.298119,
+      "vol1wk": 583149.77758,
+      "liquidity": 97873.94544,
+      "open_interest": 491901.8632230001,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-bre7-mtucha-2026-07-25"
     },
     {
-      "question": "Kansas City Royals vs. Detroit Tigers",
+      "question": "Estoril Open: Luca Van Assche vs Hugo Gaston",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "1st 5 Innings O/U 2.5",
-          "pct": 81.5
+          "label": "Estoril Open: Luca Van Assche vs Hugo Gaston",
+          "pct": 100.0
         },
         {
-          "label": "1st 5 Innings O/U 3.5",
-          "pct": 63.0
+          "label": "Completed Match",
+          "pct": 100.0
         },
         {
-          "label": "O/U 7.5",
-          "pct": 53.0
+          "label": "Estoril Open: Luca Van Assche vs Hugo Gaston Set 1 Winner",
+          "pct": 100.0
         }
       ],
-      "volume": 491688.2990339995,
-      "volume24": 491264.426797,
-      "vol1wk": 491688.29903399997,
-      "liquidity": 192268.48965,
-      "open_interest": 236055.80513400002,
+      "volume": 508113.6611600001,
+      "volume24": 507772.86131100025,
+      "vol1wk": 508113.66116000025,
+      "liquidity": 807424.86467,
+      "open_interest": 328990.218818,
       "category": "",
       "expiry": "01 Aug 2026",
-      "url": "https://polymarket.com/event/mlb-kc-det-2026-07-25"
+      "url": "https://polymarket.com/event/atp-assche-gaston-2026-07-25"
     },
     {
       "question": "UFC Fight Night: Thomas Petersen vs. Valter Walker (Heavyweight, Prelims)",
@@ -666,14 +692,40 @@
           "pct": 49.5
         }
       ],
-      "volume": 470138.7107670008,
-      "volume24": 448547.9082330003,
-      "vol1wk": 470083.71076700056,
-      "liquidity": 32114.04903,
-      "open_interest": 415037.375777,
+      "volume": 488283.21542400087,
+      "volume24": 466648.1113080004,
+      "vol1wk": 488228.2154240006,
+      "liquidity": 70037.74732,
+      "open_interest": 422784.347442,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-tho4-val7-2026-07-25"
+    },
+    {
+      "question": "Counter-Strike: NIP vs Heroic (BO3) - StarLadder StarSeries European Qualifier Play-In",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 2 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "O/U 2.5 Games",
+          "pct": 100.0
+        },
+        {
+          "label": "Map 1 Total Rounds: Over/Under 18.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 479905.81473700044,
+      "volume24": 479905.8147369997,
+      "vol1wk": 479905.8147369997,
+      "liquidity": 558517.25476,
+      "open_interest": 303582.835186,
+      "category": "",
+      "expiry": "25 Jul 2026",
+      "url": "https://polymarket.com/event/cs2-nip-hero-2026-07-25"
     },
     {
       "question": "UFC Fight Night: Magomed Zaynukov vs. Damian Rzepecki (Lightweight, Main Card)",
@@ -692,92 +744,40 @@
           "pct": 99.5
         }
       ],
-      "volume": 431083.173292,
-      "volume24": 410492.50902700017,
-      "vol1wk": 431044.079174,
-      "liquidity": 139846.45074,
-      "open_interest": 137865.81322500002,
+      "volume": 463333.0932920002,
+      "volume24": 442699.8933160003,
+      "vol1wk": 463283.9991740002,
+      "liquidity": 226764.65322,
+      "open_interest": 336234.45579999994,
       "category": "",
       "expiry": "26 Jul 2026",
       "url": "https://polymarket.com/event/ufc-mag11-drzepe-2026-07-25"
     },
     {
-      "question": "UFC Fight Night: Abubakar Vagaev vs. Saygid Izagakhmaev (Welterweight, Main Card)",
+      "question": "LoL: FURIA Esports vs LOS (BO3) - CBLOL Regular Season",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Abubakar Vagaev vs. Saygid Izagakhmaev",
+          "label": "First Blood in Game 1?",
           "pct": 100.0
         },
         {
-          "label": "Fight to Go the Distance?",
-          "pct": 98.0
+          "label": "Total Kills Over/Under 27.5 in Game 2?",
+          "pct": 76.5
         },
         {
-          "label": "O/U 0.5 Rounds",
+          "label": "Odd/Even Total Kills",
           "pct": 50.5
         }
       ],
-      "volume": 424152.7628570003,
-      "volume24": 418786.0450329998,
-      "vol1wk": 424127.1928569998,
-      "liquidity": 112.36054,
-      "open_interest": 241556.36663200002,
-      "category": "",
-      "expiry": "26 Jul 2026",
-      "url": "https://polymarket.com/event/ufc-avagae-say1-2026-07-25"
-    },
-    {
-      "question": "Counter-Strike: FOKUS vs MOUZ (BO3) - BLAST Bounty Qualifier",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Map Handicap: MOUZ (-1.5) vs FOKUS (+1.5)",
-          "pct": 66.5
-        },
-        {
-          "label": "Map 2 Rounds Handicap: MOUZ (-3.5) vs FOKUS (+3.5)",
-          "pct": 56.5
-        },
-        {
-          "label": "Map 3 Rounds Handicap: MOUZ (-3.5) vs FOKUS (+3.5)",
-          "pct": 52.0
-        }
-      ],
-      "volume": 409926.2141730001,
-      "volume24": 409918.5218669999,
-      "vol1wk": 409918.5218669999,
-      "liquidity": 265040.4745,
-      "open_interest": 167576.57334499998,
+      "volume": 424580.09268999967,
+      "volume24": 424233.6983409999,
+      "vol1wk": 424580.0926899999,
+      "liquidity": 623487.99742,
+      "open_interest": 166611.616144,
       "category": "",
       "expiry": "25 Jul 2026",
-      "url": "https://polymarket.com/event/cs2-fokus-mouz-2026-07-25"
-    },
-    {
-      "question": "Estoril Open: Luca Van Assche vs Hugo Gaston",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Estoril Open: Luca Van Assche vs Hugo Gaston Set 1 Winner",
-          "pct": 99.5
-        },
-        {
-          "label": "Estoril Open: Luca Van Assche vs Hugo Gaston Set 1 O/U 8.5",
-          "pct": 99.5
-        },
-        {
-          "label": "Estoril Open: Luca Van Assche vs Hugo Gaston Set 1 O/U 9.5",
-          "pct": 99.5
-        }
-      ],
-      "volume": 363172.2408690007,
-      "volume24": 363009.4418459999,
-      "vol1wk": 363172.2408689999,
-      "liquidity": 232873.9953,
-      "open_interest": 207867.260995,
-      "category": "",
-      "expiry": "01 Aug 2026",
-      "url": "https://polymarket.com/event/atp-assche-gaston-2026-07-25"
+      "url": "https://polymarket.com/event/lol-fur-los-2026-07-25"
     }
   ]
 }
