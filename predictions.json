@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17T02:00:07.947769+08:00",
+  "updated": "2026-08-17T02:30:19.571031+08:00",
   "source": "SANPO Predictions - Polymarket",
   "count": 30,
   "markets": [
@@ -20,40 +20,14 @@
           "pct": 14.8
         }
       ],
-      "volume": 1258821068.7557924,
-      "volume24": 489134.51474,
-      "vol1wk": 5071376.005419,
-      "liquidity": 81164442.97415,
-      "open_interest": 10577559.369417004,
+      "volume": 1258821461.272685,
+      "volume24": 477156.440642,
+      "vol1wk": 4327380.740031,
+      "liquidity": 81092809.70901,
+      "open_interest": 10580554.862835,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/democratic-presidential-nominee-2028"
-    },
-    {
-      "question": "Republican Presidential Nominee 2028",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Robert F. Kennedy Jr.",
-          "pct": 49.0
-        },
-        {
-          "label": "J.D. Vance",
-          "pct": 46.9
-        },
-        {
-          "label": "Marco Rubio",
-          "pct": 22.9
-        }
-      ],
-      "volume": 688387510.1337641,
-      "volume24": 347709.183211,
-      "vol1wk": 1777706.354921,
-      "liquidity": 58207989.0452,
-      "open_interest": 10646006.188531997,
-      "category": "",
-      "expiry": "07 Nov 2028",
-      "url": "https://polymarket.com/event/republican-presidential-nominee-2028"
     },
     {
       "question": "Presidential Election Winner 2028",
@@ -72,11 +46,11 @@
           "pct": 13.1
         }
       ],
-      "volume": 686419429.3993251,
-      "volume24": 906105.908753,
-      "vol1wk": 6393597.003385999,
-      "liquidity": 64106985.76656,
-      "open_interest": 61496545.29161501,
+      "volume": 686432911.4951222,
+      "volume24": 912051.3739919999,
+      "vol1wk": 6406432.839290999,
+      "liquidity": 64067109.23388,
+      "open_interest": 61486862.049642004,
       "category": "",
       "expiry": "07 Nov 2028",
       "url": "https://polymarket.com/event/presidential-election-winner-2028"
@@ -98,11 +72,11 @@
           "pct": 0.8
         }
       ],
-      "volume": 279858484.252091,
-      "volume24": 1037410.457025,
-      "vol1wk": 7405323.409665,
-      "liquidity": 165405.51388,
-      "open_interest": 33703.177197,
+      "volume": 279858487.29241896,
+      "volume24": 1037413.497353,
+      "vol1wk": 7405326.449993,
+      "liquidity": 164420.7902,
+      "open_interest": 33705.050393,
       "category": "",
       "expiry": "01 Jun 2026",
       "url": "https://polymarket.com/event/next-prime-minister-of-ethiopia"
@@ -117,47 +91,21 @@
         },
         {
           "label": "Flávio Bolsonaro",
-          "pct": 28.6
+          "pct": 28.7
         },
         {
           "label": "Renan Santos",
-          "pct": 4.9
+          "pct": 5.3
         }
       ],
-      "volume": 124207545.18515301,
-      "volume24": 657286.92927,
-      "vol1wk": 2563868.810885,
-      "liquidity": 10828906.92438,
-      "open_interest": 4668028.114265999,
+      "volume": 124208352.502792,
+      "volume24": 637034.144958,
+      "vol1wk": 2564374.028524,
+      "liquidity": 10789477.69961,
+      "open_interest": 4667073.478945999,
       "category": "",
       "expiry": "04 Oct 2026",
       "url": "https://polymarket.com/event/brazil-presidential-election"
-    },
-    {
-      "question": "Fed Decision in September?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "No change",
-          "pct": 73.5
-        },
-        {
-          "label": "25 bps increase",
-          "pct": 24.5
-        },
-        {
-          "label": "25 bps decrease",
-          "pct": 1.2
-        }
-      ],
-      "volume": 34111563.71815202,
-      "volume24": 324323.281965,
-      "vol1wk": 13471225.247745989,
-      "liquidity": 3538261.31852,
-      "open_interest": 8601877.515186,
-      "category": "",
-      "expiry": "16 Sep 2026",
-      "url": "https://polymarket.com/event/fed-decision-in-september-762"
     },
     {
       "question": "Israel x Iran ceasefire continues through...?",
@@ -176,11 +124,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 25496013.041644003,
-      "volume24": 486082.78409099986,
-      "vol1wk": 2024997.3279730023,
-      "liquidity": 489268.05505,
-      "open_interest": 1372608.9112330002,
+      "volume": 25514495.641799998,
+      "volume24": 503000.24645499984,
+      "vol1wk": 2035156.9078270022,
+      "liquidity": 479434.97579,
+      "open_interest": 1365610.781232,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/israel-x-iran-ceasefire-continues-throughptptpt-20260716224448963"
@@ -198,11 +146,11 @@
           "pct": 0.1
         }
       ],
-      "volume": 21275093.011478014,
-      "volume24": 475505.3645270011,
-      "vol1wk": 5787932.950880004,
-      "liquidity": 3003543.75154,
-      "open_interest": 5937878.626411,
+      "volume": 21275509.67814402,
+      "volume24": 468086.2556390009,
+      "vol1wk": 5689050.012811004,
+      "liquidity": 3004000.43773,
+      "open_interest": 5937798.383077,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/strait-of-hormuz-traffic-returns-to-normal-by-august-31-20260702154212320"
@@ -213,7 +161,7 @@
       "outcomes": [
         {
           "label": "December 31",
-          "pct": 80.8
+          "pct": 80.4
         },
         {
           "label": "October 31",
@@ -224,11 +172,11 @@
           "pct": 40.5
         }
       ],
-      "volume": 15641716.800201997,
-      "volume24": 606527.0111850001,
-      "vol1wk": 4257080.938326,
-      "liquidity": 646070.02554,
-      "open_interest": 1531184.675802,
+      "volume": 15646194.749858998,
+      "volume24": 601959.846821,
+      "vol1wk": 4235070.574534001,
+      "liquidity": 637885.80478,
+      "open_interest": 1534776.856163,
       "category": "",
       "expiry": "31 Aug 2026",
       "url": "https://polymarket.com/event/us-announces-end-of-iranian-blockade-byptptpt-20260713152715080"
@@ -250,11 +198,11 @@
           "pct": 50.0
         }
       ],
-      "volume": 8597730.790861998,
-      "volume24": 473314.970056,
-      "vol1wk": 3372103.138733,
-      "liquidity": 8377875.74065,
-      "open_interest": 323186.430012,
+      "volume": 8606505.790861998,
+      "volume24": 473259.970056,
+      "vol1wk": 3371495.446685,
+      "liquidity": 8476139.2115,
+      "open_interest": 323166.590012,
       "category": "",
       "expiry": "30 May 2027",
       "url": "https://polymarket.com/event/uefa-champions-league-2027-champion-20260701202025549"
@@ -276,11 +224,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 7191698.786336999,
-      "volume24": 596643.526266,
-      "vol1wk": 3465717.969441,
-      "liquidity": 995307.71875,
-      "open_interest": 3495183.226575,
+      "volume": 7193169.648776,
+      "volume24": 587838.621986,
+      "vol1wk": 3465705.651046,
+      "liquidity": 1048761.60715,
+      "open_interest": 3500480.1692540008,
       "category": "",
       "expiry": "01 Sep 2026",
       "url": "https://polymarket.com/event/what-price-will-bitcoin-hit-in-august-2026"
@@ -302,11 +250,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 4926158.362441004,
-      "volume24": 4905875.156938991,
-      "vol1wk": 4926158.36244099,
-      "liquidity": 2840469.53701,
-      "open_interest": 4392596.211829999,
+      "volume": 4928617.802441,
+      "volume24": 4908334.59693899,
+      "vol1wk": 4928617.80244099,
+      "liquidity": 1779751.37481,
+      "open_interest": 4389103.426431,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/ecs-ars-mci-2026-08-16-more-markets"
@@ -328,11 +276,11 @@
           "pct": 0.1
         }
       ],
-      "volume": 4742935.930701005,
-      "volume24": 4712844.945829012,
-      "vol1wk": 4742935.930701013,
-      "liquidity": 2104815.87245,
-      "open_interest": 4049830.142568,
+      "volume": 4770751.060701004,
+      "volume24": 4740657.298053012,
+      "vol1wk": 4770751.060701012,
+      "liquidity": 1830287.57219,
+      "open_interest": 4050048.102568,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/ecs-ars-mci-2026-08-16"
@@ -354,40 +302,40 @@
           "pct": 100.0
         }
       ],
-      "volume": 3847897.6982759996,
-      "volume24": 3843202.838084001,
-      "vol1wk": 3847824.8280320014,
+      "volume": 3847897.6982760015,
+      "volume24": 3843154.9333260013,
+      "vol1wk": 3847808.9686570014,
       "liquidity": 71.5,
-      "open_interest": 42754.834992000004,
+      "open_interest": 38120.67215,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lol-wb-ig1-2026-08-16"
     },
     {
-      "question": "EWC 2026 CS2: Winner",
+      "question": "Counter-Strike: Astralis vs NIP (BO3) - Esports World Cup Group B",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "A",
-          "pct": 50.0
+          "label": "Map 1 Winner",
+          "pct": 100.0
         },
         {
-          "label": "B",
-          "pct": 50.0
+          "label": "O/U 2.5 Games",
+          "pct": 100.0
         },
         {
-          "label": "C",
-          "pct": 50.0
+          "label": "Map 2 Total Rounds: Over/Under 21.5",
+          "pct": 99.5
         }
       ],
-      "volume": 2333553.912422,
-      "volume24": 342803.417786,
-      "vol1wk": 1830884.01346,
-      "liquidity": 822508.37041,
-      "open_interest": 167048.40733499997,
+      "volume": 2221504.235121,
+      "volume24": 2198597.695452999,
+      "vol1wk": 2221499.145120999,
+      "liquidity": 1907790.22085,
+      "open_interest": 1037480.3497339999,
       "category": "",
-      "expiry": "",
-      "url": "https://polymarket.com/event/ewc-2026-cs2-winner-20260810160005076"
+      "expiry": "16 Aug 2026",
+      "url": "https://polymarket.com/event/cs2-ast10-nip-2026-08-16"
     },
     {
       "question": "LoL: Top Esports vs EDward Gaming (BO3) - LPL Group Ascend",
@@ -406,11 +354,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 2205602.033034001,
-      "volume24": 2194797.406458001,
-      "vol1wk": 2200204.877233001,
-      "liquidity": 675.51,
-      "open_interest": 1383779.1117970003,
+      "volume": 2205607.033034,
+      "volume24": 2193756.540623001,
+      "vol1wk": 2200209.877233001,
+      "liquidity": 327.15,
+      "open_interest": 11760.007935000001,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lol-tes-edg-2026-08-16"
@@ -432,40 +380,40 @@
           "pct": 100.0
         }
       ],
-      "volume": 2099003.4874949986,
-      "volume24": 2099003.4874950005,
-      "vol1wk": 2099003.4874950005,
-      "liquidity": 2644374.25493,
-      "open_interest": 929929.155611,
+      "volume": 2103792.857495,
+      "volume24": 2103422.857495,
+      "vol1wk": 2103792.857495,
+      "liquidity": 2040200.1828,
+      "open_interest": 997179.6456790001,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/cs2-9z-mgc-2026-08-16"
     },
     {
-      "question": "Counter-Strike: Astralis vs NIP (BO3) - Esports World Cup Group B",
+      "question": "Elon Musk # tweets August 11 - August 18, 2026?",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "Map 1 Winner",
-          "pct": 100.0
+          "label": "180-199",
+          "pct": 38.5
         },
         {
-          "label": "O/U 2.5 Games",
-          "pct": 100.0
+          "label": "160-179",
+          "pct": 37.5
         },
         {
-          "label": "Map 2 Total Rounds: Over/Under 21.5",
-          "pct": 100.0
+          "label": "200-219",
+          "pct": 15.5
         }
       ],
-      "volume": 1927634.7757269999,
-      "volume24": 1909174.8481949992,
-      "vol1wk": 1931425.7978629991,
-      "liquidity": 2054694.54949,
-      "open_interest": 657753.5480369998,
+      "volume": 1516404.985643,
+      "volume24": 351484.47589299997,
+      "vol1wk": 1121456.482379,
+      "liquidity": 682867.53124,
+      "open_interest": 314974.73294500005,
       "category": "",
-      "expiry": "16 Aug 2026",
-      "url": "https://polymarket.com/event/cs2-ast10-nip-2026-08-16"
+      "expiry": "18 Aug 2026",
+      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-11-august-18"
     },
     {
       "question": "LoL: Movistar KOI vs Natus Vincere (BO3) - LEC Regular Season",
@@ -484,66 +432,14 @@
           "pct": 100.0
         }
       ],
-      "volume": 1465257.8798230004,
-      "volume24": 1453307.0692710003,
-      "vol1wk": 1465266.0898230001,
-      "liquidity": 1923699.27168,
-      "open_interest": 861117.428132,
+      "volume": 1481211.1898229998,
+      "volume24": 1469227.6794770001,
+      "vol1wk": 1481211.1898230002,
+      "liquidity": 1898480.45995,
+      "open_interest": 838657.852979,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lol-mkoi-navi-2026-08-16"
-    },
-    {
-      "question": "Elon Musk # tweets August 11 - August 18, 2026?",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "180-199",
-          "pct": 38.5
-        },
-        {
-          "label": "160-179",
-          "pct": 36.5
-        },
-        {
-          "label": "200-219",
-          "pct": 15.5
-        }
-      ],
-      "volume": 1452387.9383430001,
-      "volume24": 345027.88780499995,
-      "vol1wk": 1104524.4368709999,
-      "liquidity": 682699.684,
-      "open_interest": 308322.66308900004,
-      "category": "",
-      "expiry": "18 Aug 2026",
-      "url": "https://polymarket.com/event/elon-musk-of-tweets-august-11-august-18"
-    },
-    {
-      "question": "Cincinnati Open: Christopher O'Connell vs Casper Ruud",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud",
-          "pct": 100.0
-        },
-        {
-          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud Set 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud Set 1 O/U 8.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 1072438.9446420004,
-      "volume24": 1072064.2107120005,
-      "vol1wk": 1072438.9446420006,
-      "liquidity": 12139.881,
-      "open_interest": 669469.360048,
-      "category": "",
-      "expiry": "23 Aug 2026",
-      "url": "https://polymarket.com/event/atp-oconnel-ruud-2026-08-16"
     },
     {
       "question": "LoL: G2 Esports vs Fnatic (BO3) - LEC Regular Season",
@@ -562,14 +458,40 @@
           "pct": 99.5
         }
       ],
-      "volume": 882588.9244019996,
-      "volume24": 881624.6776129999,
-      "vol1wk": 883591.5516239998,
-      "liquidity": 2321675.09227,
-      "open_interest": 223316.242224,
+      "volume": 1458798.1071439993,
+      "volume24": 1454060.2668970001,
+      "vol1wk": 1458798.1071440002,
+      "liquidity": 2411277.31744,
+      "open_interest": 656806.107298,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lol-g2-fnc-2026-08-16"
+    },
+    {
+      "question": "Cincinnati Open: Christopher O'Connell vs Casper Ruud",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud",
+          "pct": 100.0
+        },
+        {
+          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud Set 1 Winner",
+          "pct": 100.0
+        },
+        {
+          "label": "Cincinnati Open: Christopher O'Connell vs Casper Ruud Set 1 O/U 8.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 1072554.0326420006,
+      "volume24": 1072179.2987120005,
+      "vol1wk": 1072554.0326420006,
+      "liquidity": 12699.13904,
+      "open_interest": 26167.230867,
+      "category": "",
+      "expiry": "23 Aug 2026",
+      "url": "https://polymarket.com/event/atp-oconnel-ruud-2026-08-16"
     },
     {
       "question": "LoL: Team Secret Whales vs CTBC Flying Oyster (BO5) - LCP Group Stage",
@@ -588,11 +510,11 @@
           "pct": 100.0
         }
       ],
-      "volume": 876041.6994650003,
-      "volume24": 875724.4335779997,
+      "volume": 876041.6994650002,
+      "volume24": 875503.6099099998,
       "vol1wk": 876041.6994649997,
       "liquidity": 73.5,
-      "open_interest": 5654.453748,
+      "open_interest": 5644.247541,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lol-tsw-cfo-2026-08-16"
@@ -603,22 +525,22 @@
       "outcomes": [
         {
           "label": "RCD Espanyol de Barcelona",
-          "pct": 92.5
+          "pct": 96.8
         },
         {
           "label": "Draw (RCD Espanyol de Barcelona vs. Levante UD)",
-          "pct": 6.5
+          "pct": 3.5
         },
         {
           "label": "Levante UD",
-          "pct": 1.4
+          "pct": 0.4
         }
       ],
-      "volume": 834047.9603849996,
-      "volume24": 832759.7316160008,
-      "vol1wk": 837252.7264450007,
-      "liquidity": 585439.15282,
-      "open_interest": 163004.599983,
+      "volume": 870253.4042519993,
+      "volume24": 865055.8633260006,
+      "vol1wk": 870253.4042520006,
+      "liquidity": 538485.09443,
+      "open_interest": 682982.539773,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lal-esp-lev-2026-08-16"
@@ -640,14 +562,144 @@
           "pct": 100.0
         }
       ],
-      "volume": 572287.8305749994,
-      "volume24": 569953.6129499999,
-      "vol1wk": 575398.1766849998,
-      "liquidity": 493480.4528,
-      "open_interest": 271990.84390200005,
+      "volume": 598021.2775799996,
+      "volume24": 592576.7138449998,
+      "vol1wk": 598021.2775799999,
+      "liquidity": 302887.80821,
+      "open_interest": 466819.783891,
       "category": "",
       "expiry": "23 Aug 2026",
       "url": "https://polymarket.com/event/mlb-bal-tb-2026-08-16"
+    },
+    {
+      "question": "Cincinnati Open: Janice Tjen vs Viktorija Golubic",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic",
+          "pct": 100.0
+        },
+        {
+          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic Set 2 O/U 8.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic Match O/U 21.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 528920.3693739999,
+      "volume24": 528609.0469900001,
+      "vol1wk": 528920.3693740001,
+      "liquidity": 527229.07297,
+      "open_interest": 245952.01959500002,
+      "category": "",
+      "expiry": "23 Aug 2026",
+      "url": "https://polymarket.com/event/wta-tjen-golubic-2026-08-16"
+    },
+    {
+      "question": "RCD Espanyol de Barcelona vs. Levante UD - More Markets",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "O/U 0.5",
+          "pct": 100.0
+        },
+        {
+          "label": "O/U 1.5",
+          "pct": 100.0
+        },
+        {
+          "label": "1st Half O/U 0.5",
+          "pct": 100.0
+        }
+      ],
+      "volume": 510629.45839499997,
+      "volume24": 507978.54084000003,
+      "vol1wk": 510523.69265700004,
+      "liquidity": 1135352.35047,
+      "open_interest": 384739.98745700007,
+      "category": "",
+      "expiry": "16 Aug 2026",
+      "url": "https://polymarket.com/event/lal-esp-lev-2026-08-16-more-markets"
+    },
+    {
+      "question": "Counter-Strike: Legacy vs MIBR (BO3) - Esports World Cup Group B",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Map 2 Winner",
+          "pct": 60.5
+        },
+        {
+          "label": "Match Winner",
+          "pct": 58.5
+        },
+        {
+          "label": "Map 1 Winner",
+          "pct": 54.5
+        }
+      ],
+      "volume": 483115.27532399993,
+      "volume24": 479141.65212799987,
+      "vol1wk": 483115.2753239999,
+      "liquidity": 486552.8387,
+      "open_interest": 217669.439713,
+      "category": "",
+      "expiry": "16 Aug 2026",
+      "url": "https://polymarket.com/event/cs2-lgc-mibr-2026-08-16"
+    },
+    {
+      "question": "Miami Marlins vs. Cincinnati Reds",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "1st 5 Innings O/U 2.5",
+          "pct": 61.5
+        },
+        {
+          "label": "1st 5 Innings Spread -1.5",
+          "pct": 58.5
+        },
+        {
+          "label": "1st 5 Innings O/U 3.5",
+          "pct": 56.5
+        }
+      ],
+      "volume": 467104.1323060001,
+      "volume24": 467054.67923099996,
+      "vol1wk": 467104.1323059999,
+      "liquidity": 598293.2066,
+      "open_interest": 307273.75408900005,
+      "category": "",
+      "expiry": "23 Aug 2026",
+      "url": "https://polymarket.com/event/mlb-mia-cin-2026-08-16"
+    },
+    {
+      "question": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime",
+      "subtitle": "",
+      "outcomes": [
+        {
+          "label": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime Set 1 O/U 8.5",
+          "pct": 100.0
+        },
+        {
+          "label": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime Set Handicap +/-1.5",
+          "pct": 90.0
+        },
+        {
+          "label": "Completed Match",
+          "pct": 50.0
+        }
+      ],
+      "volume": 447652.6918379999,
+      "volume24": 445147.50630799966,
+      "vol1wk": 447652.6918379997,
+      "liquidity": 427620.22225,
+      "open_interest": 289149.894054,
+      "category": "",
+      "expiry": "23 Aug 2026",
+      "url": "https://polymarket.com/event/atp-tsitsip-augeral-2026-08-16"
     },
     {
       "question": "RCD Espanyol de Barcelona vs. Levante UD - Exact Score",
@@ -655,22 +707,22 @@
       "outcomes": [
         {
           "label": "RCD Espanyol de Barcelona 2 - 0 Levante UD",
-          "pct": 25.0
+          "pct": 38.0
         },
         {
           "label": "RCD Espanyol de Barcelona 3 - 0 Levante UD",
-          "pct": 18.9
+          "pct": 21.4
         },
         {
           "label": "RCD Espanyol de Barcelona 2 - 1 Levante UD",
-          "pct": 16.5
+          "pct": 14.0
         }
       ],
-      "volume": 407850.5801719999,
-      "volume24": 407786.88017199986,
-      "vol1wk": 407852.2801719998,
-      "liquidity": 1030515.78289,
-      "open_interest": 245968.47601399999,
+      "volume": 420016.90710699995,
+      "volume24": 419951.5071069998,
+      "vol1wk": 420016.90710699983,
+      "liquidity": 708366.29584,
+      "open_interest": 374686.553065,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/lal-esp-lev-2026-08-16-exact-score"
@@ -692,92 +744,40 @@
           "pct": 100.0
         }
       ],
-      "volume": 402249.7791440001,
-      "volume24": 402249.7791440001,
-      "vol1wk": 402249.7791440001,
-      "liquidity": 594927.26474,
-      "open_interest": 279036.21499599994,
+      "volume": 402652.2791440001,
+      "volume24": 402652.2791440001,
+      "vol1wk": 402652.2791440001,
+      "liquidity": 468976.162,
+      "open_interest": 290494.377439,
       "category": "",
       "expiry": "16 Aug 2026",
       "url": "https://polymarket.com/event/val-ff3-jl-2026-08-16"
     },
     {
-      "question": "RCD Espanyol de Barcelona vs. Levante UD - More Markets",
+      "question": "Arizona Diamondbacks vs. Atlanta Braves",
       "subtitle": "",
       "outcomes": [
         {
-          "label": "O/U 0.5",
-          "pct": 100.0
+          "label": "1st 5 Innings O/U 2.5",
+          "pct": 63.5
         },
         {
-          "label": "O/U 1.5",
-          "pct": 100.0
+          "label": "O/U 6.5",
+          "pct": 60.5
         },
         {
-          "label": "1st Half O/U 0.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 395654.01885299996,
-      "volume24": 394898.120942,
-      "vol1wk": 397480.272759,
-      "liquidity": 1143301.33225,
-      "open_interest": 173391.669651,
-      "category": "",
-      "expiry": "16 Aug 2026",
-      "url": "https://polymarket.com/event/lal-esp-lev-2026-08-16-more-markets"
-    },
-    {
-      "question": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime Set Handicap +/-1.5",
-          "pct": 59.0
-        },
-        {
-          "label": "Completed Match",
-          "pct": 50.0
-        },
-        {
-          "label": "Cincinnati Open: Stefanos Tsitsipas vs Felix Auger-Aliassime Set 2 O/U 8.5",
+          "label": "1st 5 Innings Spread -1.5",
           "pct": 50.0
         }
       ],
-      "volume": 384878.1757410001,
-      "volume24": 382573.78999399993,
-      "vol1wk": 384894.05599499994,
-      "liquidity": 500315.4481,
-      "open_interest": 44651.123736,
+      "volume": 361445.67713200004,
+      "volume24": 361341.444993,
+      "vol1wk": 361445.677132,
+      "liquidity": 545110.8247,
+      "open_interest": 219967.75478199995,
       "category": "",
       "expiry": "23 Aug 2026",
-      "url": "https://polymarket.com/event/atp-tsitsip-augeral-2026-08-16"
-    },
-    {
-      "question": "Cincinnati Open: Janice Tjen vs Viktorija Golubic",
-      "subtitle": "",
-      "outcomes": [
-        {
-          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic Set 2 O/U 8.5",
-          "pct": 100.0
-        },
-        {
-          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic Set 1 Winner",
-          "pct": 100.0
-        },
-        {
-          "label": "Cincinnati Open: Janice Tjen vs Viktorija Golubic Set 1 O/U 8.5",
-          "pct": 100.0
-        }
-      ],
-      "volume": 313375.6498039999,
-      "volume24": 320036.5462419999,
-      "vol1wk": 320347.8686259999,
-      "liquidity": 278172.07456,
-      "open_interest": 108521.22251099999,
-      "category": "",
-      "expiry": "23 Aug 2026",
-      "url": "https://polymarket.com/event/wta-tjen-golubic-2026-08-16"
+      "url": "https://polymarket.com/event/mlb-ari-atl-2026-08-16"
     }
   ]
 }
